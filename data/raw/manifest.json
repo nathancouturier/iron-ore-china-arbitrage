@@ -453,6 +453,934 @@
   "redistributed": true,
   "note": "Secured Overnight Financing Rate, percent, daily (NY Fed)"
  },
+ "gacc/index_2018.html": {
+  "source_url": "http://english.customs.gov.cn/statics/report/monthly2018.html",
+  "retrieved_at": "2026-10-16T18:08:57Z",
+  "sha256": "03977173769e6ba9435d90a3cd9e711ee2bcc526c4abb8ce94301425f0a17014",
+  "bytes": 60728,
+  "redistributed": false,
+  "note": "GACC monthly bulletin index"
+ },
+ "gacc/index_2019.html": {
+  "source_url": "http://english.customs.gov.cn/statics/report/monthly2019.html",
+  "retrieved_at": "2026-10-16T18:09:18Z",
+  "sha256": "1342137029b1c1948a637d38980242964ecc1d6671269b344712ec448ce4897d",
+  "bytes": 60406,
+  "redistributed": false,
+  "note": "GACC monthly bulletin index"
+ },
+ "gacc/index_2020.html": {
+  "source_url": "http://english.customs.gov.cn/statics/report/monthly2020.html",
+  "retrieved_at": "2026-10-16T18:09:36Z",
+  "sha256": "d3c36016bced62e41c44aeeef7fdb3684a3766ceffcc0006f48797b44f8f1d24",
+  "bytes": 57319,
+  "redistributed": false,
+  "note": "GACC monthly bulletin index"
+ },
+ "gacc/index_2021.html": {
+  "source_url": "http://english.customs.gov.cn/statics/report/monthly2021.html",
+  "retrieved_at": "2026-10-16T18:09:54Z",
+  "sha256": "259c25a3e0c3cd89b15c5bb451f4ffb1d041ac8784fecdb392f1aa021e209362",
+  "bytes": 60397,
+  "redistributed": false,
+  "note": "GACC monthly bulletin index"
+ },
+ "gacc/index_2022.html": {
+  "source_url": "http://english.customs.gov.cn/statics/report/monthly2022.html",
+  "retrieved_at": "2026-10-16T18:10:12Z",
+  "sha256": "bcf96aae59adc5b9fddfeed86472ab877538baa6d68186e0eaf78a3e0134c570",
+  "bytes": 60413,
+  "redistributed": false,
+  "note": "GACC monthly bulletin index"
+ },
+ "gacc/index_2023.html": {
+  "source_url": "http://english.customs.gov.cn/statics/report/monthly2023.html",
+  "retrieved_at": "2026-10-16T18:10:30Z",
+  "sha256": "d7199eb5da5935948edaf451e47053943a83152ac67ae3b0f4cdb13dcb6654de",
+  "bytes": 60413,
+  "redistributed": false,
+  "note": "GACC monthly bulletin index"
+ },
+ "gacc/index_2024.html": {
+  "source_url": "http://english.customs.gov.cn/statics/report/monthly2024.html",
+  "retrieved_at": "2026-10-16T18:10:48Z",
+  "sha256": "c90eaf138e4e36fe84514908af0cd3df9d37157eb5764a24687e849f5c5f1c9b",
+  "bytes": 54472,
+  "redistributed": false,
+  "note": "GACC monthly bulletin index"
+ },
+ "gacc/index_2025.html": {
+  "source_url": "http://english.customs.gov.cn/statics/report/monthly2025.html",
+  "retrieved_at": "2026-10-16T18:11:08Z",
+  "sha256": "14f6fc765cd0f223c0c34f66077150f53a6eabfde52235fb207d231d72947f4c",
+  "bytes": 40286,
+  "redistributed": false,
+  "note": "GACC monthly bulletin index"
+ },
+ "gacc/index_2026.html": {
+  "source_url": "http://english.customs.gov.cn/statics/report/monthly.html",
+  "retrieved_at": "2026-10-16T18:11:26Z",
+  "sha256": "d74af93a321be3d39dde33b701402417910d79f7d1d0fc045c09a82052788c1b",
+  "bytes": 34183,
+  "redistributed": false,
+  "note": "GACC monthly bulletin index"
+ },
+ "gacc/p6_2024-09.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/18460040-2e22-4588-b729-aa88f961083c.html",
+  "retrieved_at": "2026-10-16T18:11:05Z",
+  "sha256": "91aa3ee3183a04f5eba218f92f46516a6f451f0c203bc178dc6fdda559a543fa",
+  "bytes": 42534,
+  "redistributed": false,
+  "note": "GACC preliminary table (6)"
+ },
+ "gacc/p6_2024-10.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/248c156f-0b48-4947-8ae4-6050a4eaed10.html",
+  "retrieved_at": "2026-10-16T18:11:06Z",
+  "sha256": "0192bc884b9055b370ef7615a60a71f2aa4e32b8a898033d454ec02708c2e273",
+  "bytes": 30524,
+  "redistributed": false,
+  "note": "GACC preliminary table (6)"
+ },
+ "gacc/p6_2026-09.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/6192bee0-d609-4238-94f9-9f901428b1ef.html",
+  "retrieved_at": "2026-10-16T18:11:40Z",
+  "sha256": "0ddde28a173cb2cf352c655cd5a1575aa5c9923c99bfa836fb0e127fbaa6a75f",
+  "bytes": 42185,
+  "redistributed": false,
+  "note": "GACC preliminary table (6)"
+ },
+ "gacc/prelim_index_2020.html": {
+  "source_url": "http://english.customs.gov.cn/statics/report/preliminary2020.html",
+  "retrieved_at": "2026-10-16T18:09:53Z",
+  "sha256": "f33324e22ea10d3e698ec6cd7e509ebd35343d3489e5204d9e23a7f74badc546",
+  "bytes": 44657,
+  "redistributed": false,
+  "note": "GACC preliminary index"
+ },
+ "gacc/prelim_index_2024.html": {
+  "source_url": "http://english.customs.gov.cn/statics/report/preliminary2024.html",
+  "retrieved_at": "2026-10-16T18:11:04Z",
+  "sha256": "e2110bfc5d825c02b350df44bd1d716dfb3172ff6f94ee1be0e5d402b245c972",
+  "bytes": 44502,
+  "redistributed": false,
+  "note": "GACC preliminary index"
+ },
+ "gacc/prelim_index_2026.html": {
+  "source_url": "http://english.customs.gov.cn/statics/report/preliminary.html",
+  "retrieved_at": "2026-10-16T18:11:38Z",
+  "sha256": "d642d66ceb9400ea962a97cc7a5ca95c58683e1ad4e643335c88280bf9be1536",
+  "bytes": 27769,
+  "redistributed": false,
+  "note": "GACC preliminary index"
+ },
+ "gacc/t14_2018-01.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/b93a3883-f103-46f0-be4c-adebc309c292.html",
+  "retrieved_at": "2026-10-16T18:08:59Z",
+  "sha256": "4c91e49d72c98f302b7d7a53d64f47316db7e3afc4ee4ae3579078776e23b639",
+  "bytes": 582198,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2018-02.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/1cb262a0-0b23-4a6c-8aa6-f9663727f909.html",
+  "retrieved_at": "2026-10-16T18:09:01Z",
+  "sha256": "f04b0eaf8e0ff156f58bc0f300c397103c7858e5631ad6578451ba967ae86b50",
+  "bytes": 582583,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2018-03.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/76e7c78e-4e05-4971-8803-e4d70be1bacd.html",
+  "retrieved_at": "2026-10-16T18:09:02Z",
+  "sha256": "17a26f0c8e5a6e39e9ea2b43b293513230ad4f6ff3f9bf83ee82e2c0f3a05299",
+  "bytes": 582173,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2018-04.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/de785ead-a655-4049-ab46-3e7d3719a281.html",
+  "retrieved_at": "2026-10-16T18:09:04Z",
+  "sha256": "e2490f825454cc7ce1867a353fcb575485e606480a2fdbff38f13df59baee312",
+  "bytes": 582219,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2018-05.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/c9533386-375f-4da3-811c-69ae9ec41d00.html",
+  "retrieved_at": "2026-10-16T18:09:06Z",
+  "sha256": "2eba919e4f52c70c10fd3ea3502e9bb3676a8b6e9e23838426016bd3a9b85656",
+  "bytes": 582341,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2018-06.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/90cf18ee-70a2-4220-a983-068fdffbabd0.html",
+  "retrieved_at": "2026-10-16T18:09:07Z",
+  "sha256": "47c65ddbdc9fd4becd2d708ff97fd5cf674792636c6058bab0600c9c50879741",
+  "bytes": 582230,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2018-07.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/5720e7b5-e4f1-43b3-a80f-b45cb68f155f.html",
+  "retrieved_at": "2026-10-16T18:09:09Z",
+  "sha256": "82f37d979d378ecc32b56d2749f1447e6f2eb9d8e9c4e59d43d65ca2a0c6352d",
+  "bytes": 582639,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2018-08.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/350912f8-0a72-4275-b62e-671a4838b5b3.html",
+  "retrieved_at": "2026-10-16T18:09:11Z",
+  "sha256": "353a3f588599baaa1efe810194bd38919c6e8388b6e0acc46066f1bb08056c58",
+  "bytes": 768128,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2018-09.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/aa5f19ce-ee7e-4d1b-83bb-4331ac31ba70.html",
+  "retrieved_at": "2026-10-16T18:09:12Z",
+  "sha256": "0c11d33eb9ea3d5601d877f996a5344fac0665d33c9ee175fc26d7c4472b5e00",
+  "bytes": 768172,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2018-10.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/f93d12cd-874c-44eb-ac7f-aace198554cf.html",
+  "retrieved_at": "2026-10-16T18:09:14Z",
+  "sha256": "ddaacfb1778f36191ce066f8294556b5d3baf34bbc61f29af1fa72ac9769f359",
+  "bytes": 768174,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2018-11.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/8a85825e-77ec-443d-8a90-39a7f8906c6e.html",
+  "retrieved_at": "2026-10-16T18:09:15Z",
+  "sha256": "5ce3074b814bd8454fb2d433610b9f944aab38430e98bce32a3c94d79b042561",
+  "bytes": 290598,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2018-12.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/87acc42a-18ac-41d2-b426-1295a38f13f8.html",
+  "retrieved_at": "2026-10-16T18:09:16Z",
+  "sha256": "bed6c1a8f14156f752823d0d5e9ee5c1d6c20d3591f9dd1e425641cd3b0f4624",
+  "bytes": 194888,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2019-01.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/19df9718-4b72-4fc3-ac42-6e255a672843.html",
+  "retrieved_at": "2026-10-16T18:09:19Z",
+  "sha256": "57badb71e8019325c2d966f291be655a98ceef7c03eedf6ac753cab9c46b9cfb",
+  "bytes": 291082,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2019-02.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/3092ce9f-cd31-4ef3-96d4-01178c7518bb.html",
+  "retrieved_at": "2026-10-16T18:09:21Z",
+  "sha256": "0090fcdd8558c3b5497d0ed8e7ace3e0220f6a2eecf34bc7671d5f84a7de966d",
+  "bytes": 291159,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2019-03.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/0cf30b6f-53ce-46b6-b41e-181cd61dbe92.html",
+  "retrieved_at": "2026-10-16T18:09:22Z",
+  "sha256": "771c8dd971434298d61b6e88a0e245c7e0de8be589d34e4ff6719e6267602dac",
+  "bytes": 291430,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2019-04.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/9d8eac80-ed05-4119-a91f-ce26b3484df6.html",
+  "retrieved_at": "2026-10-16T18:09:23Z",
+  "sha256": "8e62caf57484f5286488d51ead3ed22662cc61e6a419467e732d8acf90fc9afa",
+  "bytes": 302487,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2019-05.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/26b25edb-1608-4cce-be69-1277fbd4e88a.html",
+  "retrieved_at": "2026-10-16T18:09:25Z",
+  "sha256": "218cd65d14ea911a737012df9cfb6a546f2985ed060f95235e70ea601886ee01",
+  "bytes": 302219,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2019-06.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/33de6dd9-4e13-4c5e-9bd7-accf4c76c19d.html",
+  "retrieved_at": "2026-10-16T18:09:26Z",
+  "sha256": "30c714901939232408d3380f03f66906833714b9f54b71e48203dd8c0868fc59",
+  "bytes": 291635,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2019-07.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/340feacc-ea91-4327-8e48-9526bc2489e9.html",
+  "retrieved_at": "2026-10-16T18:09:28Z",
+  "sha256": "5c23519f626b38af0ca9a1af194f974525ba7493db7b54fdfcb196f852a65921",
+  "bytes": 291656,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2019-08.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/33376b66-785b-4725-909e-a3b3c582e944.html",
+  "retrieved_at": "2026-10-16T18:09:29Z",
+  "sha256": "4634b123d2bd09234f9467b3fa4d83940cadf94385edf22e526b897c547010fa",
+  "bytes": 302731,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2019-09.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/d7dcefe1-d2ed-49ee-8549-3dc6dfd36600.html",
+  "retrieved_at": "2026-10-16T18:09:30Z",
+  "sha256": "e2bbd7771f746851b6e28a8cc4d67f768aab4ad90b0673ee88cc7c9264cd6c69",
+  "bytes": 302787,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2019-10.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/2b7c604a-b7fb-4afb-a804-dc341b090e49.html",
+  "retrieved_at": "2026-10-16T18:09:32Z",
+  "sha256": "c395fecdfed7cd15f7a16f7d1b269a030a623560f70492291039b0e14a7e5fb6",
+  "bytes": 302781,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2019-11.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/55d8a5a7-2047-4ac9-8e97-8426388c080a.html",
+  "retrieved_at": "2026-10-16T18:09:33Z",
+  "sha256": "c587cf1fe7abfe32b16ee7305163d9db490a5b2f9a056705ccc048e4fc94efee",
+  "bytes": 302767,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2019-12.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/32738168-86b3-476a-8f56-413e577a3615.html",
+  "retrieved_at": "2026-10-16T18:09:35Z",
+  "sha256": "2c7f18afa274d9efa90c56b7e8c56c37c4b8329dc99a404017f28c50b360ce05",
+  "bytes": 302744,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2020-02.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/6df0fbc0-dd19-45c6-afd1-597cef757210.html",
+  "retrieved_at": "2026-10-16T18:09:37Z",
+  "sha256": "b2c7a1fb5705383cc06674129fff12947754a00577ac23256c98f78bad2b3d89",
+  "bytes": 108010,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2020-03.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/5c4e9d25-54f5-4f91-a5a2-04b1101d3c1c.html",
+  "retrieved_at": "2026-10-16T18:09:39Z",
+  "sha256": "2a0d4cae3d21f5b9d7513788ef07a05227b2e8327ae1f3fde170da439b95dd2b",
+  "bytes": 114212,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2020-04.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/6a6a178c-a181-4624-8516-9b51c56c7406.html",
+  "retrieved_at": "2026-10-16T18:09:40Z",
+  "sha256": "e23917f1ae4a095877590a0bf6408984e5059dba6594d502de58387f6f937ee6",
+  "bytes": 170242,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2020-05.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/72b1b24b-1ecb-4d3e-bfe7-d898768128d3.html",
+  "retrieved_at": "2026-10-16T18:09:41Z",
+  "sha256": "3ad13cd9b0030490f331a8320b5351ebc222229f0ce4c2a016f392a845837bc0",
+  "bytes": 114321,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2020-06.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/59faaf81-fb44-4209-9429-37041b50885c.html",
+  "retrieved_at": "2026-10-16T18:09:43Z",
+  "sha256": "04716c89bdd405dcdb75369aeb65d194fb2eaf1a8be46a72b31a2b2514336b44",
+  "bytes": 170350,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2020-07.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/d091df72-b35f-4780-b9bd-14b66455f353.html",
+  "retrieved_at": "2026-10-16T18:09:44Z",
+  "sha256": "4a250f6ddcffcd2e9b3a4ffc888b9b043872cdf65b166ad31caa5e644547aa06",
+  "bytes": 170505,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2020-08.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/f32de8f5-05e1-4523-bcd3-8e6757a15403.html",
+  "retrieved_at": "2026-10-16T18:09:46Z",
+  "sha256": "f5a513a632fa10c923c175253e63cdd46734fc8e61cd25f0e71847198821e1d0",
+  "bytes": 170588,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2020-09.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/004d8849-fc2f-4d31-b71b-9bd837227c08.html",
+  "retrieved_at": "2026-10-16T18:09:47Z",
+  "sha256": "fcefb8c56ffee9210cf4b8f154c5186e8335f9dfbea46a9dec4c46ffd6fd3f0b",
+  "bytes": 170571,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2020-10.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/51fb849e-400a-4a08-967d-8b610d026d5b.html",
+  "retrieved_at": "2026-10-16T18:09:48Z",
+  "sha256": "19a6455ff1f96be887e469620de0d279a3252dc94ce39e224fb050bf3711d83c",
+  "bytes": 170622,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2020-11.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/e346c252-fda3-477b-af2b-db1555558d88.html",
+  "retrieved_at": "2026-10-16T18:09:50Z",
+  "sha256": "3b9c1e2bea5a0c71658e09dadb813ca280af3c28b20242f52aa99b86bab37cad",
+  "bytes": 164403,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2020-12.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/12aedea3-cc62-406e-9046-8622685209ce.html",
+  "retrieved_at": "2026-10-16T18:09:52Z",
+  "sha256": "fd587e4259b31881c0252c481faa3cb00711404a19eac509d33c8e3e18d68262",
+  "bytes": 418021,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2021-01.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/5a8697ae-0562-4c70-8b7d-e60e10555ed0.html",
+  "retrieved_at": "2026-10-16T18:09:56Z",
+  "sha256": "c1f6862df16b4e58e819145febe324f9dadc21a0eb140a261744cf35bc7c7469",
+  "bytes": 174946,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2021-02.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/91a28f93-6450-4c62-8b48-f41bda956c38.html",
+  "retrieved_at": "2026-10-16T18:09:57Z",
+  "sha256": "5610924cef7033dfafa948f98b14baad703452fcdabe3b1be9cbc8735844a322",
+  "bytes": 174985,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2021-03.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/2bfeeb01-0948-45e9-94a6-cc374c889634.html",
+  "retrieved_at": "2026-10-16T18:09:59Z",
+  "sha256": "cc06598f06019922c573c9d14ce72c734655e46219e22a7a1fb7e3e4ec762fd7",
+  "bytes": 175165,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2021-04.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/23aa4f66-da75-415f-a353-77b06ff5e862.html",
+  "retrieved_at": "2026-10-16T18:10:00Z",
+  "sha256": "2cfd0468beceb1fbbd380d1b2ce67b5864560c27a8184b12f6a5363d2060455e",
+  "bytes": 182028,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2021-05.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/47d19cfc-3e0a-4e31-8de5-518400054e57.html",
+  "retrieved_at": "2026-10-16T18:10:01Z",
+  "sha256": "d59ca8084c599dac1b77f064312ccbfbbdbef7cdf4b880439eabbce9ec24c043",
+  "bytes": 122181,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2021-06.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/d40b6da5-d34b-4bed-a626-49bd9d9a506a.html",
+  "retrieved_at": "2026-10-16T18:10:03Z",
+  "sha256": "04788e8adad36aadc494f55ee25e7e3f61a481e5767c86db3fb79793ca2f94dd",
+  "bytes": 175278,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2021-07.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/d854e74d-5749-486f-8057-f4afd77592ec.html",
+  "retrieved_at": "2026-10-16T18:10:04Z",
+  "sha256": "5f5e7f5ef42e6e5f041de6a61fb6830eb3d9fa43a24869d44529c7a449489ab9",
+  "bytes": 122240,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2021-08.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/f1e3209a-ba25-4a77-87d9-1ab81eb8e2a8.html",
+  "retrieved_at": "2026-10-16T18:10:05Z",
+  "sha256": "0b4a8b55ffb22ef9b4244b0262798eb1e8c673822b7a0029aef242abf6bfabaa",
+  "bytes": 175304,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2021-09.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/a0f658c2-efe6-4c86-97d0-767dad4cd359.html",
+  "retrieved_at": "2026-10-16T18:10:07Z",
+  "sha256": "b68e139a26d59a6d48ca86e945febae619baeb547912f7a8a3cb2eeb879f1468",
+  "bytes": 122413,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2021-10.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/68b58189-a47f-4720-9fb6-9c51eed0132e.html",
+  "retrieved_at": "2026-10-16T18:10:08Z",
+  "sha256": "e8f3b773dc7527c5b8f057426c7665de563ab129d0c38ef2bf352a9085dccdec",
+  "bytes": 122401,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2021-11.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/306fdb5a-3663-4f63-acb1-1dbc3105d0f6.html",
+  "retrieved_at": "2026-10-16T18:10:10Z",
+  "sha256": "0f803fad1753346c3a4cb36e1f4635a23446539da2bdc56a8530f73f10b72dea",
+  "bytes": 122397,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2021-12.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/6991df50-515b-4526-86c8-282529d8353b.html",
+  "retrieved_at": "2026-10-16T18:10:11Z",
+  "sha256": "d9b2717a86d74f98f9af112bce6841e120e19ecfadb09fd12ee6609fba0b24ba",
+  "bytes": 122351,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2022-01.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/55a2762b-772f-4ec8-a3b1-48e187da15fa.html",
+  "retrieved_at": "2026-10-16T18:10:14Z",
+  "sha256": "b910804d184e01e47d147073e215c8f16d1777707c1b910ad4e5f166e7a9f581",
+  "bytes": 124253,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2022-02.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/b9f6b1de-9d82-4e98-aa69-5b641197e576.html",
+  "retrieved_at": "2026-10-16T18:10:15Z",
+  "sha256": "9be85cf8af385c19ce8ad47af1fb6479ba86fe514a402422236b59eb8f946a88",
+  "bytes": 132335,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2022-03.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/cf9508c7-0743-4255-814d-77e161902054.html",
+  "retrieved_at": "2026-10-16T18:10:16Z",
+  "sha256": "f27c112548d02fc57e47147e1e42b24629932f4c7b31ec1e5c65eb5d331da3fc",
+  "bytes": 124503,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2022-04.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/98e1943f-7d73-4243-b6ad-989a0142089e.html",
+  "retrieved_at": "2026-10-16T18:10:18Z",
+  "sha256": "b3c627e87de1f9b80524b3ebf3fa3ecbe49f71ba4090ab5b4441dccd06a5277b",
+  "bytes": 124554,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2022-05.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/23ca662b-3243-42bc-a0b7-e55d7fcd173e.html",
+  "retrieved_at": "2026-10-16T18:10:19Z",
+  "sha256": "eb29c8f6a9f239618951230cc10ad3b675a0a0fe81a35331e0bd2db73e0f0acc",
+  "bytes": 124556,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2022-06.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/cf3562f9-1dde-4449-b9a8-eef5fc6618d0.html",
+  "retrieved_at": "2026-10-16T18:10:21Z",
+  "sha256": "f582c2210e0c33d33bdc3f6a54c95cac92afb00901896cd0d68c40c68103743d",
+  "bytes": 124637,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2022-07.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/b15555bb-25f0-4953-9e3f-ab06e1e88ac5.html",
+  "retrieved_at": "2026-10-16T18:10:22Z",
+  "sha256": "c1b1a85430ea3e0ad5297c9f68d55141b3e3d13e1d0636132befe97045f46c0d",
+  "bytes": 124684,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2022-08.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/e731e685-829d-4c3c-96a1-1900595ba290.html",
+  "retrieved_at": "2026-10-16T18:10:23Z",
+  "sha256": "dbdb92a1be07c73d62d9101acd08ff3af5531567439b413e546b6fb49f04fc2f",
+  "bytes": 124689,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2022-09.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/eac86d87-6ffe-4b8c-bf67-0bbf6fa2ff4a.html",
+  "retrieved_at": "2026-10-16T18:10:25Z",
+  "sha256": "66ab41caf1bf3c004575d49a745d689eb2da6b9a9274a854d036dad5b20dc60b",
+  "bytes": 124686,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2022-10.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/cba2d9ed-3d67-4dcc-912b-c2eefde9283a.html",
+  "retrieved_at": "2026-10-16T18:10:26Z",
+  "sha256": "d2117b264126172307ece69fd0aa195bb5e065e50c3616cfcb2ff5bfef3843f1",
+  "bytes": 124769,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2022-11.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/3451ecd9-b853-49c3-8b98-0143fbfb179d.html",
+  "retrieved_at": "2026-10-16T18:10:28Z",
+  "sha256": "86bccd11210ccdef36fab55ba31b1dffd6f04fd1443394e77d086ac9dd4307c8",
+  "bytes": 89191,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2022-12.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/c5ecc8b6-d87f-4744-91bf-c2d08d1a60aa.html",
+  "retrieved_at": "2026-10-16T18:10:29Z",
+  "sha256": "c76b983f9749331bd91da2589e5c8a7d511c6f2cc0092e4b53f907cfe1cc7547",
+  "bytes": 89251,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2023-01.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/1b1b5fea-b83d-4128-96ae-2638b880fe3c.html",
+  "retrieved_at": "2026-10-16T18:10:32Z",
+  "sha256": "a0322cbbf4266f7f95bf37443dc40514f1a3ca836c5643c32f1feeaa2605bcfa",
+  "bytes": 119791,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2023-02.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/20c485ef-03ca-4dae-8dc1-ae26e14dadcf.html",
+  "retrieved_at": "2026-10-16T18:10:33Z",
+  "sha256": "8a189398dda30f9c67fc6cc91708369b726c714536d20203e824325fa8418c7f",
+  "bytes": 119843,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2023-03.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/b0447db0-f49f-4067-9400-34f240328507.html",
+  "retrieved_at": "2026-10-16T18:10:34Z",
+  "sha256": "b6e6d38e2c9d085af3bafa2cb754c835c35d22d2bb25d301e19a339261c1166d",
+  "bytes": 86842,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2023-04.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/ba0ced4c-6eca-4db9-9a7c-4aa77a07ed2a.html",
+  "retrieved_at": "2026-10-16T18:10:36Z",
+  "sha256": "6a0f27cf743051054ec57aa95a42f19623a6c8d977822c29b4ae4c1a2189cd76",
+  "bytes": 86850,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2023-05.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/93d234f4-9a35-4928-90cb-2c169d2cc278.html",
+  "retrieved_at": "2026-10-16T18:10:37Z",
+  "sha256": "8f788e6ca18452a296828f55a7d97346761d25d33ad58b4ad2353d1bcb4bc463",
+  "bytes": 86998,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2023-06.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/8f949cb3-0327-4a18-ad2b-0d805c7b5df7.html",
+  "retrieved_at": "2026-10-16T18:10:38Z",
+  "sha256": "4831877d161a45d15eb86206e61d164b10005e1d928e09c2573cbbecf7914f1a",
+  "bytes": 124581,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2023-07.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/a275e76b-4939-4cfe-b550-97a860e029d9.html",
+  "retrieved_at": "2026-10-16T18:10:40Z",
+  "sha256": "19f9ae6c8c7228d550d5e34ac8e49eb9c7301f3b7b7eafa8ed7a3ae5476c413b",
+  "bytes": 86967,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2023-08.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/52b9b0db-01f0-43f0-9c84-cc8a266fc4f6.html",
+  "retrieved_at": "2026-10-16T18:10:41Z",
+  "sha256": "b2591931647b973800b1b9986dd035cee2caa3e3f0dc15b315d0cf2124e7d66d",
+  "bytes": 124657,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2023-09.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/8a03b741-9ede-4e75-9060-c9923a0f7a60.html",
+  "retrieved_at": "2026-10-16T18:10:43Z",
+  "sha256": "220b04173f4a03a55c4a7ad7aa919bd97d9c306ebe6f7d299915d4c28fda29a1",
+  "bytes": 120444,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2023-10.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/7dc4f533-e8f1-4c15-83a9-e4d7d29061d6.html",
+  "retrieved_at": "2026-10-16T18:10:44Z",
+  "sha256": "3b4e6caeb5f9c7d4fb2d90b4c7ecab27a7e3a992ca09f8164e1b348d7f51114c",
+  "bytes": 124707,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2023-11.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/b0c9c729-a638-4e2f-8215-b4e33f3e2e28.html",
+  "retrieved_at": "2026-10-16T18:10:45Z",
+  "sha256": "ac871af01994b11605af215db7acec46b1d09f103522676d43823c59e79a27e7",
+  "bytes": 124675,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2023-12.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/18476168-7c4d-4601-a2ec-baff9b7ff40a.html",
+  "retrieved_at": "2026-10-16T18:10:47Z",
+  "sha256": "6c92d885eace480547688a4e082bbc4a0309f0c2697159152ad465b7ba8cadeb",
+  "bytes": 87007,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2024-01.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/9d881f39-b241-4c6a-98fb-998804075dba.html",
+  "retrieved_at": "2026-10-16T18:10:49Z",
+  "sha256": "33c67df1d9e94a7d4d039f9721c7c88941c1f38c77ca125aa61d15c62fda45d5",
+  "bytes": 124229,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2024-02.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/7e92d073-2f97-44ba-831e-544768817e6a.html",
+  "retrieved_at": "2026-10-16T18:10:51Z",
+  "sha256": "8813ea7a2909c42fea38cbaebd3f7bf2428cee83376b44fd69bcadf1f3855691",
+  "bytes": 124377,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2024-03.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/b16e111d-b122-48bb-8fed-90df30847001.html",
+  "retrieved_at": "2026-10-16T18:10:52Z",
+  "sha256": "23ff7aa20d0fbbcbcbe7b310b275532efa42e91b4dbd6240ac5d15900ae1d1b6",
+  "bytes": 86790,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2024-04.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/68c63cae-499c-4778-b70f-7274565da7db.html",
+  "retrieved_at": "2026-10-16T18:10:54Z",
+  "sha256": "ba5c9d247c795e1608e009c3d36b0b4cf545d42dc0097471405e391389173fa1",
+  "bytes": 86818,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2024-05.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/61decf8c-80f4-4baf-a74c-b1661fe45beb.html",
+  "retrieved_at": "2026-10-16T18:10:55Z",
+  "sha256": "ee83c614ec7c979f7e9047017d67c99b02f5e8f4ca4438abb1d0aa1f036d5b30",
+  "bytes": 86886,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2024-06.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/6999d3e6-b8ed-4c4d-bd16-a90f4154819a.html",
+  "retrieved_at": "2026-10-16T18:10:56Z",
+  "sha256": "a585a1a9cca7d0f4785a93f54f6ba294958cee51160d225834c9d036fde3ad8d",
+  "bytes": 124573,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2024-07.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/1f29afc4-09ab-49a2-84cf-cc5013edc9d1.html",
+  "retrieved_at": "2026-10-16T18:10:58Z",
+  "sha256": "3936a642f0bece344306f83bee2befb5e3e3eb3822e3fe41198c9cf79929feb4",
+  "bytes": 86905,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2024-08.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/e55bd98f-8787-41ad-8848-4ff36339f9fe.html",
+  "retrieved_at": "2026-10-16T18:11:00Z",
+  "sha256": "c225d850dec639f8b83ad34ae3c6f74c0b626df4f783306319c03d3d29e3929a",
+  "bytes": 86913,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2024-11.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/09fd8502-a552-4294-ad84-ee703f0430e5.html",
+  "retrieved_at": "2026-10-16T18:11:01Z",
+  "sha256": "d16df6b1d88102786dfe9e3b87c8da1ce8486d1670eb993851f0a7ffb41ae9c0",
+  "bytes": 120156,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2024-12.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/f0701344-a675-4206-adf0-eeb625630dee.html",
+  "retrieved_at": "2026-10-16T18:11:02Z",
+  "sha256": "6eca78be60a3c2a4772e4c987e822cf7e1dbfe7836b86a81ccca56a23d3cdac6",
+  "bytes": 124601,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2025-01.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/2788fd3a-8af4-4e87-b61f-fdba22f7c831.html",
+  "retrieved_at": "2026-10-16T18:11:09Z",
+  "sha256": "415725e121fb24290823770b6ad1547a8b9d8e3e434f5233156d0cbb7969001c",
+  "bytes": 251917,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2025-02.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/113e0622-eb9c-463a-8ca8-035e88f32f76.html",
+  "retrieved_at": "2026-10-16T18:11:11Z",
+  "sha256": "e80fec8e6ae40129d718493d4e569a20cf0e84815196026f9482454a6aa1c8d0",
+  "bytes": 251915,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2025-03.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/3341a51d-979f-400b-88a0-c55b58201b09.html",
+  "retrieved_at": "2026-10-16T18:11:12Z",
+  "sha256": "b9e146a5aa236ad0e75bd10a479b9589d69c91e825d2f5ec67172b4ce0e8fa71",
+  "bytes": 252065,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2025-04.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/0a3eb106-4465-4b6d-8b99-864289b0b088.html",
+  "retrieved_at": "2026-10-16T18:11:14Z",
+  "sha256": "f9b4a76f8c38b18f042caafe32b710559ae258648c011aa6010ba30900c9d71e",
+  "bytes": 252120,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2025-05.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/4654ed9a-040c-4575-9a7a-ac10a020bb2a.html",
+  "retrieved_at": "2026-10-16T18:11:15Z",
+  "sha256": "37a52d0c4d0f3eac2c31cfa59a0ebb4502513e717e018099d16fb8911e511442",
+  "bytes": 252154,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2025-06.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/546cbce8-9275-4842-9b53-ddc3a31892ae.html",
+  "retrieved_at": "2026-10-16T18:11:16Z",
+  "sha256": "2b4279c6632e37142e86f8367f03d6be91fb75820e5c3a16131473863f53429e",
+  "bytes": 252214,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2025-07.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/9b78753e-680d-46de-80fa-905c70151989.html",
+  "retrieved_at": "2026-10-16T18:11:18Z",
+  "sha256": "f6f561ad57f8b67d630aeaca1db7f66505a00286e40717f88f5f945f712a7cd6",
+  "bytes": 252233,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2025-08.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/27f7821a-8460-4854-b78f-a437948ca16d.html",
+  "retrieved_at": "2026-10-16T18:11:19Z",
+  "sha256": "4d257acd15b72662b98ec5429a111d7ed1ae101634be473065d6a0e519646de6",
+  "bytes": 252244,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2025-09.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/0bde2885-0bce-47fe-8d1a-2000a153ffcc.html",
+  "retrieved_at": "2026-10-16T18:11:21Z",
+  "sha256": "781de07c7e19c821a6691250ee7710049b2e397df2d17c571689ba2f34005d22",
+  "bytes": 252239,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2025-10.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/1cb2e30e-cdad-44ba-8eab-5b8d1a62e193.html",
+  "retrieved_at": "2026-10-16T18:11:22Z",
+  "sha256": "0124d5f8e6aba6ce409228d65c47d73a82966e66214d7bd93601dd6a8ed5d94d",
+  "bytes": 252263,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2025-11.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/875a01f9-11d8-41be-9da0-f2473de7f3ef.html",
+  "retrieved_at": "2026-10-16T18:11:23Z",
+  "sha256": "b9f1666ee9db9aad5f1c06f40f95cf2f1d78b5345d6f5df84bc639103bf0cbd1",
+  "bytes": 252267,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2025-12.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/c8c25c56-74ff-42fe-83de-272b15d79f45.html",
+  "retrieved_at": "2026-10-16T18:11:25Z",
+  "sha256": "90774942cdc99a4c1252aa51b480924591a723a6d2a649403ee026d6924a421a",
+  "bytes": 252280,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2026-01.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/93b3ac7a-57ec-41e5-9ecf-ac5b90e70ad3.html",
+  "retrieved_at": "2026-10-16T18:11:27Z",
+  "sha256": "60597df4ca1181e80abb0115144e622bdce919ffcf30ac8dc1cf79109f397e77",
+  "bytes": 103218,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2026-02.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/010f42a9-0e59-4a1e-a9c3-0445d4261b5c.html",
+  "retrieved_at": "2026-10-16T18:11:29Z",
+  "sha256": "16f8f28b44eb3c5dbfe5a32e9900ea3755fb04640b0828cc73f7cc6f33e841fd",
+  "bytes": 129069,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2026-03.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/5c7d3091-1ebb-4614-ab63-db474b16ad14.html",
+  "retrieved_at": "2026-10-16T18:11:30Z",
+  "sha256": "705c6f4f03a262dc42271c5def45a2452d3758d5806f60daf26d587f073b3dbe",
+  "bytes": 129124,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2026-04.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/8a5a4748-f96f-4252-8a68-cfd3e8e0dbc4.html",
+  "retrieved_at": "2026-10-16T18:11:32Z",
+  "sha256": "52885887606fbf029ce6056ee72cd2e1cdf531fd7daf1b701aebf12b7635412b",
+  "bytes": 255741,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2026-05.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/66af1275-fa63-4fcb-82f9-d2e9770a8e6b.html",
+  "retrieved_at": "2026-10-16T18:11:33Z",
+  "sha256": "4e7c403a5a03204240187bd3bea10ec49aa1cd54244881a529bb08aa795dd3ea",
+  "bytes": 128535,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2026-06.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/e8a76dfa-0cd3-44ba-ac42-239109c0c283.html",
+  "retrieved_at": "2026-10-16T18:11:34Z",
+  "sha256": "fe99c006eefd9f4790f0358840ffb1d46746bea741aa6203344f42d5f025bb9b",
+  "bytes": 124007,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2026-07.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/e50833c5-2b72-43c7-9b7a-46f8ed6bbb60.html",
+  "retrieved_at": "2026-10-16T18:11:36Z",
+  "sha256": "6a786ff3007b0b7fca67c2b52e526429e11a518436fe09ffdfaef8fb7f1c0516",
+  "bytes": 124052,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
+ "gacc/t14_2026-08.html": {
+  "source_url": "http://english.customs.gov.cn/Statics/4b78370a-cd59-4e25-b483-5ef203143664.html",
+  "retrieved_at": "2026-10-16T18:11:37Z",
+  "sha256": "36bf056f1be9a74b4c995c8aaa5eb2888feae3d8110f07b6264e8e40491770c7",
+  "bytes": 124072,
+  "redistributed": false,
+  "note": "GACC table (14), major import commodities"
+ },
  "safe/central_parity_2013.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
   "retrieved_at": "2026-10-16T15:26:39Z",

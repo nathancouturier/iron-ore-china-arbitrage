@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "data" / "raw"
 MANIFEST = RAW / "manifest.json"
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
-NON_REDISTRIBUTABLE = ("dce", "sina", "shfe", "eastmoney", "sgx", "safe", "other")
+NON_REDISTRIBUTABLE = ("dce", "sina", "shfe", "eastmoney", "sgx", "safe", "gacc", "other")
 
 _session: requests.Session | None = None
 

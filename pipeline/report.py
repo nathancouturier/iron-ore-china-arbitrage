@@ -283,6 +283,35 @@ def _footer(canvas, doc) -> None:
     canvas.restoreState()
 
 
+def imports_text(a: dict[str, Any]) -> str:
+    """The pre-registered imports test and its exploratory check, in words."""
+    t, x = a["imports_test"], a["imports_test_ex_2021_2022"]
+    r, rx = t["rows"][-1], x["rows"][-1]
+
+    def sig(q: dict[str, Any]) -> bool:
+        return q["ci_lo_pp"] > 0 or q["ci_hi_pp"] < 0
+
+    yrs = " and ".join(str(y) for y in x["exclude_years"])
+    head = (
+        f"Imports (pre-registered; China Customs monthly bulletins from 2018): a monthly margin "
+        f"{num(t['per_rmb_dmt'])} RMB/dmt higher precedes {signed(r['effect_pp'], 1)} percentage points of "
+        f"year-on-year import growth over the next {r['horizon_months']} months (95% interval "
+        f"{signed(r['ci_lo_pp'], 1)} to {signed(r['ci_hi_pp'], 1)}, Newey-West t {num(r['nw_t'], 1)}, {r['n_obs']} months). "
+    )
+    tail = (
+        f"without those years (an exploratory check) the slope is {signed(rx['effect_pp'], 1)} with an interval from "
+        f"{signed(rx['ci_lo_pp'], 1)} to {signed(rx['ci_hi_pp'], 1)}."
+    )
+    if sig(r) and not sig(rx):
+        return (
+            head
+            + f"The link rests on {yrs}, when policy pushed Dalian far below import parity while imports fell; "
+            + tail
+            + " The data do not separate an effect of the window on imports from the policy that moved both."
+        )
+    return head + tail[0].upper() + tail[1:]
+
+
 def build() -> Path:
     a = json.loads((DERIVED / "analysis.json").read_text())
     daily = pd.read_csv(DERIVED / "import_margin_daily.csv", parse_dates=["date"]).set_index("date")
@@ -392,7 +421,8 @@ def build() -> Path:
         f"Qingdao port prices, Dalian's 45-day price was {num(-pp['dce45_minus_port_range'][1])} to "
         f"{num(-pp['dce45_minus_port_range'][0])} RMB/dmt below the port price of 62% fines. Mills are squeezed: the "
         f"rebar futures margin was {signed(rebar.iloc[-1])} RMB/t on {day(str(rebar.index[-1])[:10])}, negative on "
-        f"{pct(ly_neg, 0)} of trading days in {ly}, and the pre-registered test finds "
+        + ("every trading day" if ly_neg == 1 else f"{pct(ly_neg, 0)} of trading days")
+        + f" of {ly}, and the pre-registered test finds "
         + (
             "no sign that low mill margins precede weaker ore."
             if no_sign
@@ -403,6 +433,17 @@ def build() -> Path:
         ListFlowable([ListItem(P(b), leftIndent=10) for b in bullets], bulletType="bullet", start="•", leftIndent=10)
     )
     story += [
+        KeepTogether(
+            [
+                _img(figs["bridge"]),
+                P(
+                    "Figure 1. Freight is modeled (hatched). FOB values are index-equivalent netbacks (CFR minus freight per "
+                    "dry tonne) and ignore brand premiums and discounts. Sources: SGX, Dalian Commodity Exchange via Sina, "
+                    "FRED; freight modeled from the Baltic Capesize Index and Brent.",
+                    "cap",
+                ),
+            ]
+        ),
         P("Data and conventions", "h"),
         P(
             "Seaborne price: IMF 62% Fe CFR China monthly average (FRED PIORECRUSDM) for the monthly baseline from "
@@ -421,17 +462,6 @@ def build() -> Path:
             f"and moisture {pct(PARAMS['moisture']['value'], 0)} (per dry = per wet / "
             f"{num(1 - PARAMS['moisture']['value'], 2)}). Rebar and hot-rolled coil from the Shanghai Futures Exchange; "
             "coke from Dalian."
-        ),
-        KeepTogether(
-            [
-                _img(figs["bridge"]),
-                P(
-                    "Figure 1. Freight is modeled (hatched). FOB values are index-equivalent netbacks (CFR minus freight per "
-                    "dry tonne) and ignore brand premiums and discounts. Sources: SGX, Dalian Commodity Exchange via Sina, "
-                    "FRED; freight modeled from the Baltic Capesize Index and Brent.",
-                    "cap",
-                ),
-            ]
         ),
         KeepTogether(
             [
@@ -482,6 +512,7 @@ def build() -> Path:
             f"{num(a['maturity_comparison']['most_active'], 1)} instead of {num(a['maturity_comparison']['45'], 1)} RMB/dmt, "
             "because the Dalian curve is usually backwardated."
         ),
+        P(imports_text(a)),
         P("Freight and origins", "h"),
         P(
             "Capesize route rates (C3 Tubarao to Qingdao, C5 West Australia to Qingdao) are paid data, so freight is "
@@ -554,7 +585,6 @@ def build() -> Path:
                 ),
             ]
         ),
-        P("Validation", "h"),
     ]
     mrows = mm_["rows"]
     sdic = [r for r in mrows if r["independent"]]
@@ -578,12 +608,20 @@ def build() -> Path:
          f"{num(TOLERANCE['freight_rmse_usd_t']['C5'], 1)} USD/t"],
     ]  # fmt: skip
     story += [
-        _table(val_rows, [55, 10, 82, 27], st),
-        P(
-            "Table 3. Tolerances were fixed before reconciling and are enforced by the test suite. The mill margin's "
-            "other-cost constant is the one parameter calibrated on published figures (Everbright Futures), so those rows "
-            "are not independent checks. Each anchor, with its link, is listed on the Method and data page.",
-            "cap",
+        KeepTogether(
+            [
+                P("Validation", "h"),
+                _table(val_rows, [55, 10, 82, 27], st),
+                P(
+                    "Table 3. Tolerances were fixed before reconciling and are enforced by the test suite. The mill "
+                    "margin's other-cost constant is calibrated on Everbright Futures, so those rows are not independent "
+                    f"checks; the {num(PARAMS['port_charges_rmb_wmt']['value'])} RMB/wmt port charge was set with the Ruida and "
+                    "Fastmarkets figures in view (they imply 30 to 35 and 31 to 40), so those two rows test the price, FX, VAT and "
+                    "moisture conventions more than the port charge. Each anchor, with its link, is listed on the Method "
+                    "and data page.",
+                    "cap",
+                ),
+            ]
         ),
         P("Limitations", "h"),
         P(
@@ -596,14 +634,15 @@ def build() -> Path:
             "depends on that lift, and against the World Bank series instead of the IMF one the 2026 spread averages "
             f"{signed(dsens['lift_world_bank']['lift_usd_dmt'], 2)} USD, which would put the margin at "
             f"{signed(dsens['lift_world_bank']['margin_rmb_dmt'])}. The third episode rests on an expiring contract. "
-            "Monthly China import volumes could not be retrieved, so the optional test of imports against the window was "
-            "not run."
+            "Import volumes come from the English China Customs bulletins, which start in 2018, and the imports test "
+            "cannot separate an effect of the window from the policy episodes of 2021 and 2022."
         ),
         P("Sources", "h"),
         P(
             "IMF Primary Commodity Prices via FRED (PIORECRUSDM, DEXCHUS, SOFR, DFF, DCOILBRENTEU); World Bank Pink Sheet; "
             "Dalian Commodity Exchange annual files and rules; Shanghai Futures Exchange daily files; Sina futures history; "
-            "SGX daily settlement files; Baltic Capesize Index via East Money; SAFE central parity; searoute; Natural Earth. "
+            "SGX daily settlement files; Baltic Capesize Index via East Money; SAFE central parity; China Customs (GACC) "
+            "monthly bulletins; searoute; Natural Earth. "
             "Validation: Ruida Futures daily reports, Fastmarkets, Everbright Futures, SDIC Essence Futures, Baltic "
             "Exchange route reports in the shipping press. Episode sources: NDRC, MIIT, World Bank Commodity Markets "
             f"Outlook, DCE notices. Full list with links and retrieval dates: {URL}#method. Code: {REPO}."

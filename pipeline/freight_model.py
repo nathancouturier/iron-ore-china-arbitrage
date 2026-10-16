@@ -11,7 +11,7 @@ built from public inputs and scored on dated public anchors:
 (b) statistical map: route rate = a + b x BCI + c x Brent, fitted by OLS on the
     route anchors; scored by leave-one-out cross-validation.
 
-Every output is labelled "modeled".
+Every output is labeled "modeled".
 """
 
 from __future__ import annotations

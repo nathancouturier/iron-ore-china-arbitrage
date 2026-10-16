@@ -12,6 +12,7 @@ const CC = {
   imf_minus_wb_mean: ['IMF minus World Bank, mean (USD/dmt)', us], imf_minus_wb_max_abs: ['IMF minus World Bank, largest gap (USD/dmt)', (v) => fmt(v, 2)],
   days: ['Days', (v) => fmt(v)], mean_diff: ['New York minus fixing, mean (CNY)', (v) => fmtSigned(v, 4)], max_abs_diff: ['Largest gap (CNY)', (v) => fmt(v, 4)],
   date: ['Date', String], published: ['Published', (v) => fmt(v)], east_money: ['East Money', (v) => fmt(v)], source: ['Source', String],
+  monthly_sum_mt: ['Sum of months (Mt)', (v) => fmt(v, 2)], year_total_mt: ['Year total (Mt)', (v) => fmt(v, 2)], diff_pct: ['Difference (%)', (v) => fmtSigned(v, 2)],
 };
 
 export async function render(root) {
@@ -47,8 +48,8 @@ export async function render(root) {
   const passed = tested.filter((r) => r.ok).length;
 
   root.append(
-    el('p', { class: 'takeaway' }, `Every figure comes from public data with a dated retrieval and a step in code; ${passed} of ${tested.length} independent checks against published figures pass their tolerance.`),
-    el('p', { class: 'subtake' }, 'Tolerances were fixed before reconciling and are enforced by the test suite. One parameter is calibrated on published figures: the 1,080 RMB/t of other costs in the mill margin, set from Everbright Futures\u2019 2026 margins, so those rows are not counted as independent checks. The import-cost check passes with the FX source matched to the broker\u2019s (PBoC central parity), not with the New York rate used for the headline figures. Conventions, formulas, sources, every anchor and the limitations sit behind the buttons below. Rebuild everything from a clean clone with one command (make all).'),
+    el('p', { class: 'takeaway' }, `Every figure comes from public data with a dated retrieval and a step in code; ${passed} of ${tested.length} checks against published figures pass their tolerance (calibration rows aside).`),
+    el('p', { class: 'subtake' }, 'Tolerances were fixed before reconciling and are enforced by the test suite. Two parameters lean on these sources. The 1,080 RMB/t of other costs in the mill margin is calibrated on Everbright Futures\u2019 2026 margins, so those rows are not counted as checks. The port-charge default of 30 RMB/wmt was set with the Ruida and Fastmarkets figures in view (they imply 30 to 35 and 31 to 40), so those two checks test the price, FX, VAT and moisture conventions more than the port charge. The import-cost check passes with the FX source matched to the broker\u2019s (PBoC central parity), not with the New York rate used for the headline figures. Conventions, formulas, sources, every anchor and the limitations sit behind the buttons below. Rebuild everything from a clean clone with one command (make all).'),
     el('div', { class: 'panel' },
       el('h3', { class: 'chart-title' }, 'Validation against published figures'),
       table('Validation summary', [
@@ -103,7 +104,7 @@ export async function render(root) {
         'Voyage freight       = (TCE x voyage days + bunker cost + port costs) / (cargo x (1 - commission))\n' +
         'Mill margin (RMB/t)  = steel - 1.6 x ore - 0.5 x coke - other costs'),
       el('h3', {}, 'Pipeline'),
-      el('p', {}, 'Stages: ingest (download with retries, cache, SHA-256 manifest), transform (contract panels, trading calendar, constant maturity, most-active series), validate (cross-source checks), model (margins, freight, statistics), export (one JSON per view, CSV downloads), report (research note PDF). Volume and open interest are normalised to single-sided lots (Chinese exchanges switched on 1 January 2020). FX, rates, Brent and BCI are carried forward at most five business days; Chinese holidays have no Dalian observation and are not filled.'),
+      el('p', {}, 'Stages: ingest (download with retries, cache, SHA-256 manifest), transform (contract panels, trading calendar, constant maturity, most-active series), validate (cross-source checks), model (margins, freight, statistics), export (one JSON per view, CSV downloads), report (research note PDF). Volume and open interest are normalized to single-sided lots (Chinese exchanges switched on 1 January 2020). FX, rates, Brent and BCI are carried forward at most five business days; Chinese holidays have no Dalian observation and are not filled.'),
       el('p', {}, 'Daily CFR proxy: SGX iron ore futures interpolated to the 45-day horizon between the two contracts whose month midpoints bracket it. The current-month contract is not used because it settles on the average of the month and so lags the market.'),
       el('p', {}, `SGX settlements for 2026 contract months are on Platts IODEX at 61% Fe; every 2026 contract month is lifted by one constant, the mean of the measured monthly spreads between the IMF 62% average and the SGX final settlement (${fmt(sgx.spread_2026_mean, 2)} USD/dmt over ${sgx.spread_2026_months} months, range ${fmt(sgx.spread_2026_min, 2)} to ${fmt(sgx.spread_2026_max, 2)}), so no day uses a monthly average published after it. Before 2026 the SGX final settlement averaged ${fmtSigned(sgx.pre2026_final_vs_bench_mean, 2)} USD/dmt against the IMF series (standard deviation ${fmt(sgx.pre2026_final_vs_bench_sd, 2)}).`),
       el('p', {}, 'Daily series and monthly baseline: the daily series compares forward with forward (SGX and Dalian at the same 45-day horizon), the trade a desk can hedge; the monthly baseline compares the spot index average with the 45-day Dalian price. In steep backwardation, as in 2021, the monthly baseline shows a deeper discount.'),
@@ -157,7 +158,7 @@ export async function render(root) {
         el('li', {}, 'Other quality items (silica, alumina, phosphorus) are not adjusted; for a 62% IODEX-spec cargo delivered against the 61% contract they would add about 7.5 RMB/t.'),
         el('li', {}, `The 2026 SGX basis lift adds about ${fmt(sgx.spread_2026_mean, 1)} USD/dmt (measured range ${fmt(sgx.spread_2026_min, 1)} to ${fmt(sgx.spread_2026_max, 1)} USD), about ${fmt(sgx.spread_2026_mean * d.daily_sensitivity.slope_rmb_per_usd)} RMB/dmt of landed cost, which is enough to decide whether the latest daily margin is inside the band or below it; measured against the World Bank series instead of the IMF one the spread averages ${fmtSigned(sgx.spread_2026_wb_mean, 2)} USD. See the Assumptions drawer on the Overview.`),
         el('li', {}, 'The mill-margin constant of 1,080 RMB/t is calibrated on Everbright Futures\u2019 2026 figures; published constants range from 950 to 1,250, which moves the latest rebar margin by more than 100 RMB/t either way.'),
-        el('li', {}, 'China import volumes by month (China Customs) could not be fetched from the build environment, so the optional test of imports against the window was not run.'),
+        el('li', {}, 'China import volumes come from the English pages of China Customs, which start in January 2018, so year-on-year import growth is available from January 2019; September and October 2024 and the latest month use the preliminary release. The test cannot separate an effect of the window on imports from the 2021 and 2022 policy episodes that moved both (Import window view).'),
       ),
     ]],
   ]));

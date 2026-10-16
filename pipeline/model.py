@@ -240,6 +240,10 @@ def run() -> dict[str, str]:
     }
 
     # Validation anchors
+    # China imports against the window (D041 to D043)
+    imports = pd.read_csv(DERIVED / "china_iron_ore_imports_monthly.csv", dtype={"start": str, "end": str})
+    out["imports_test"] = analysis.imports_test(m["margin_rmb_dmt"], imports)
+    out["imports_test_ex_2021_2022"] = analysis.imports_test(m["margin_rmb_dmt"], imports, exclude_years=(2021, 2022))
     out["anchors"] = anchors.reconcile_all(a)
 
     (DERIVED / "analysis.json").write_text(json.dumps(_clean(out), indent=1) + "\n", encoding="utf-8")

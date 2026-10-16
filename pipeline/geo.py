@@ -1,5 +1,5 @@
 """Land outline for the route map from Natural Earth (public domain) via the
-world-atlas 2.0.2 TopoJSON package (ISC licence), decoded to GeoJSON here."""
+world-atlas 2.0.2 TopoJSON package (ISC license), decoded to GeoJSON here."""
 
 from __future__ import annotations
 

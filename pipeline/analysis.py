@@ -130,3 +130,85 @@ def tornado(base: Assumptions | None = None, period: str | None = None) -> pd.Da
     out.attrs["period"] = str(p)
     out["span"] = out[["low", "high"]].abs().max(axis=1)
     return out.sort_values("span", ascending=False).reset_index(drop=True)
+
+
+def _coverage(imports: pd.DataFrame) -> list[tuple[frozenset[pd.Period], float]]:
+    return [
+        (frozenset(pd.period_range(s, e, freq="M")), float(v))
+        for s, e, v in zip(imports["start"], imports["end"], imports["imports_mt"], strict=True)
+    ]
+
+
+def window_sum(cover: list[tuple[frozenset[pd.Period], float]], months: list[pd.Period]) -> float:
+    """Imports over exactly ``months``. NaN when a month is missing or when a
+    published period (January and February 2020 together) straddles the edge."""
+    need = set(months)
+    total, got = 0.0, set()
+    for cov, v in cover:
+        if cov & need:
+            if not cov <= need:
+                return float("nan")
+            total += v
+            got |= cov
+    return total if got == need else float("nan")
+
+
+def import_growth(imports: pd.DataFrame, months: pd.PeriodIndex, h: int) -> pd.Series:
+    """Year-on-year log growth (percent) of imports over months t+1..t+h."""
+    cover = _coverage(imports)
+    out = {}
+    for t in months:
+        fwd = window_sum(cover, [t + k for k in range(1, h + 1)])
+        base = window_sum(cover, [t + k - 12 for k in range(1, h + 1)])
+        out[t] = 100.0 * (np.log(fwd) - np.log(base)) if fwd > 0 and base > 0 else np.nan
+    return pd.Series(out, dtype=float)
+
+
+def imports_test(
+    margin: pd.Series,
+    imports: pd.DataFrame,
+    horizons: tuple[int, ...] = (1, 2, 3),
+    per: float = 50.0,
+    lags: int = 12,
+    exclude_years: tuple[int, ...] = (),
+) -> dict[str, Any]:
+    """Pre-registered test (D042): does a higher monthly import margin precede
+    faster year-on-year import growth over the next one to three months? OLS
+    slope per ``per`` RMB/dmt, Newey-West standard errors with ``lags`` lags.
+    ``exclude_years`` drops signal months in those years (exploratory check, D043)."""
+    m = margin.dropna()
+    m.index = pd.PeriodIndex(m.index, freq="M")
+    rows, points = [], None
+    for h in horizons:
+        y = import_growth(imports, m.index, h)
+        d = pd.concat([m.rename("x"), y.rename("y")], axis=1).dropna()
+        d = d[~d.index.year.isin(exclude_years)]
+        x = np.column_stack([np.ones(len(d)), d["x"].to_numpy()])
+        fit = stats.ols(d["y"].to_numpy(), x)
+        se = stats.newey_west_se(x, fit.resid, lags)
+        b, s = float(fit.beta[1]), float(se[1])
+        rows.append(
+            {
+                "horizon_months": h,
+                "n_obs": len(d),
+                "effect_pp": b * per,
+                "ci_lo_pp": (b - 1.96 * s) * per,
+                "ci_hi_pp": (b + 1.96 * s) * per,
+                "nw_t": b / s,
+                "intercept_pp": float(fit.beta[0]),
+                "mean_growth_pct": float(d["y"].mean()),
+                "sample_start": str(d.index.min()),
+                "sample_end": str(d.index.max()),
+            }
+        )
+        if h == max(horizons):
+            points = pd.DataFrame(
+                {"month": d.index.astype(str), "margin_rmb_dmt": d["x"].to_numpy(), "growth_pct": d["y"].to_numpy()}
+            )
+    return {
+        "per_rmb_dmt": per,
+        "nw_lags": lags,
+        "exclude_years": list(exclude_years),
+        "rows": pd.DataFrame(rows),
+        "points": points,
+    }

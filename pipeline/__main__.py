@@ -40,13 +40,14 @@ def _record(results: dict[str, Any], name: str, fn, *args, **kwargs) -> None:
 
 
 def ingest(full: bool) -> dict[str, Any]:
-    from .ingest import dce, eastmoney, fred, safe, sgx, shfe, sina, worldbank  # noqa: PLC0415
+    from .ingest import dce, eastmoney, fred, gacc, safe, sgx, shfe, sina, worldbank  # noqa: PLC0415
 
     res: dict[str, Any] = {}
     _record(res, "fred", fred.run)
     _record(res, "worldbank", worldbank.run)
     _record(res, "eastmoney", eastmoney.run)
     _record(res, "safe", safe.run)
+    _record(res, "gacc", gacc.run, full=full)
     _record(res, "sina", sina.run, full=full)
     _record(res, "shfe", shfe.run, full=full)
     _record(res, "sgx", sgx.run, full=full)

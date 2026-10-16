@@ -96,6 +96,12 @@ DOWNLOAD_TEXT = {
         "Fe premium per 0.1% computed from the exchange rule for each half-year window, used to put 61% contracts "
         "on a 62% basis.",
     ),
+    "china_iron_ore_imports_monthly.csv": (
+        "China iron ore imports, monthly",
+        "Iron ores and concentrates, million tonnes, from the China Customs (GACC) English monthly bulletins, "
+        "with the table and URL of each month. January and February 2020 were published together; September "
+        "and October 2024 and the latest month come from the preliminary release.",
+    ),
     "anchors_freight_routes.csv": (
         "Validation anchors: published route rates",
         "Dated C3 and C5 assessments with the assessor, the publication that reported them, the URL and a quote.",
@@ -109,6 +115,26 @@ DOWNLOAD_TEXT = {
         "Dated Singapore HSFO and VLSFO prices used to map Brent to the bunker price.",
     ),
 }
+
+
+def imports_block(a: dict[str, Any]) -> dict[str, Any]:
+    """China Customs imports and the pre-registered imports test (D041 to D043)."""
+    imp = pd.read_csv(DERIVED / "china_iron_ore_imports_monthly.csv", dtype={"start": str, "end": str})
+    t, x = a["imports_test"], a["imports_test_ex_2021_2022"]
+    return {
+        "per_rmb_dmt": t["per_rmb_dmt"],
+        "nw_lags": t["nw_lags"],
+        "rows": t["rows"],
+        "rows_ex": x["rows"],
+        "exclude_years": x["exclude_years"],
+        "points": [[p["month"], _r(p["margin_rmb_dmt"], 1), _r(p["growth_pct"], 2)] for p in t["points"]],
+        "series": [
+            [r.start, r.end, int(r.months), _r(float(r.imports_mt), 2), "preliminary" in r.table]
+            for r in imp.itertuples(index=False)
+        ],
+        "first": str(imp["start"].min()),
+        "last": str(imp["end"].max()),
+    }
 
 
 def episode_events(daily: pd.DataFrame, a: dict[str, Any]) -> list[dict[str, Any]]:
@@ -139,6 +165,7 @@ def build_meta(a: dict[str, Any], daily: pd.DataFrame, monthly: pd.DataFrame) ->
     sgx = pd.read_csv(DERIVED / "sgx_fef_curve_daily.csv", usecols=["date"])
     baltic = pd.read_csv(DERIVED / "baltic_indices_daily.csv", usecols=["date"])
     cp = pd.read_csv(DERIVED / "usdcny_central_parity_daily.csv", usecols=["date"])
+    imports = pd.read_csv(DERIVED / "china_iron_ore_imports_monthly.csv", dtype={"end": str})
     fred = {
         s: pd.read_csv(ROOT / "data" / "raw" / "fred" / f"{s}.csv")
         for s in ["PIORECRUSDM", "DEXCHUS", "DCOILBRENTEU", "SOFR", "DFF"]
@@ -222,6 +249,13 @@ def build_meta(a: dict[str, Any], daily: pd.DataFrame, monthly: pd.DataFrame) ->
             "safe",
             "safe/",
             "https://www.safe.gov.cn/safe/rmbhlzjj/index.html",
+        ),
+        "gacc": src(
+            "China Customs (GACC) monthly iron ore imports",
+            str(imports["end"].max()),
+            "gacc",
+            "gacc/",
+            "http://english.customs.gov.cn/statics/report/monthly.html",
         ),
         "brent": src(
             "Brent crude (FRED DCOILBRENTEU)",
@@ -353,7 +387,7 @@ def run() -> dict[str, str]:
         ]
     ]
     mvals = daily["margin_rmb_dmt"].dropna()
-    step = band  # bin edges fall on -band and +band, so colours follow the window state exactly
+    step = band  # bin edges fall on -band and +band, so colors follow the window state exactly
     hist_edges = np.arange(np.floor(mvals.min() / step) * step, np.ceil(mvals.max() / step) * step + step / 2, step)
     counts, _ = np.histogram(mvals, bins=hist_edges)
     window = {
@@ -389,6 +423,7 @@ def run() -> dict[str, str]:
         "deviations_monthly": a["deviations_monthly"],
         "events": episode_events(daily, a),
         "curve_robustness": {k: v for k, v in a["curve_robustness"].items() if k != "daily_open_runs"},
+        "imports": imports_block(a),
     }
     sizes["window"] = _write("window", _clean(window))
 
@@ -595,6 +630,7 @@ def run() -> dict[str, str]:
         )
     for extra, src in [
         ("dce_x_schedule.csv", DERIVED / "dce_x_schedule.csv"),
+        ("china_iron_ore_imports_monthly.csv", DERIVED / "china_iron_ore_imports_monthly.csv"),
         ("anchors_freight_routes.csv", ROOT / "data" / "anchors" / "freight_routes.csv"),
         ("anchors_bci_tc_pairs.csv", ROOT / "data" / "anchors" / "bci_tc_pairs.csv"),
         ("anchors_bunker_prices.csv", ROOT / "data" / "anchors" / "bunker_prices.csv"),

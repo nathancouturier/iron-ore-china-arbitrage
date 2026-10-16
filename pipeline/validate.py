@@ -12,7 +12,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from .ingest import dce, eastmoney, fred, safe, sgx, shfe, sina, worldbank
+from .ingest import dce, eastmoney, fred, gacc, safe, sgx, shfe, sina, worldbank
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "derived" / "cross_checks.json"
@@ -146,7 +146,41 @@ def checks() -> list[dict]:
     out.append(
         {"title": "BCI spot checks", "text": "East Money BCI against index values quoted in the press.", "table": tab}
     )
+    out.append(gacc_check())
     return out
+
+
+GACC_TITLE = "China Customs imports: sum of the monthly bulletins against the year total"
+
+
+def gacc_check(previous: dict | None = None) -> dict:
+    """Months as first published (derived series) against the January to
+    December total of each cached December bulletin; years whose December
+    bulletin is not cached keep their row from ``previous``."""
+    imp = pd.read_csv(ROOT / "data" / "derived" / "china_iron_ore_imports_monthly.csv", dtype={"start": str})
+    rows = {r["year"]: r for r in (previous or {}).get("table", [])}
+    for y, total in gacc.year_totals().items():
+        s = float(imp.loc[imp["start"].str[:4] == str(y), "imports_mt"].sum())
+        diff = 100.0 * (s / total - 1.0)
+        if abs(diff) > 1.0:
+            raise ValidationError(f"China Customs {y}: months sum to {s:.2f} Mt against a year total of {total:.2f}")
+        rows[y] = {
+            "year": y,
+            "monthly_sum_mt": round(s, 2),
+            "year_total_mt": round(total, 2),
+            "diff_pct": round(diff, 3),
+        }
+    if not rows:
+        raise FileNotFoundError("no December bulletin cached")
+    return {
+        "title": GACC_TITLE,
+        "text": (
+            "Iron ores and concentrates, million tonnes. Monthly figures as first published (September and October "
+            "2024 from the preliminary release) against the January to December total in each December bulletin, "
+            "which carries later revisions."
+        ),
+        "table": [rows[y] for y in sorted(rows)],
+    }
 
 
 # Derived files in long form, keyed by more than the date
@@ -167,6 +201,14 @@ def schema_checks() -> None:
         key = LONG_FORM_KEYS.get(path.name, ["date"])
         if df.duplicated(subset=key).any():
             raise ValidationError(f"{path.name}: duplicate rows for key {key}")
+    imports = derived / "china_iron_ore_imports_monthly.csv"
+    if imports.exists():
+        df = pd.read_csv(imports, dtype={"start": str, "end": str})
+        months = [str(m) for s, e in zip(df["start"], df["end"], strict=True) for m in pd.period_range(s, e, freq="M")]
+        if len(months) != len(set(months)):
+            raise ValidationError(f"{imports.name}: overlapping periods")
+        if (df["imports_mt"] <= 0).any():
+            raise ValidationError(f"{imports.name}: non-positive imports")
 
 
 def run() -> dict[str, str]:
@@ -176,8 +218,18 @@ def run() -> dict[str, str]:
     schema_checks()
     try:
         res = checks()
-    except (FileNotFoundError, ValueError, KeyError) as exc:
-        return {"validate": f"cross-checks kept from last full rebuild ({type(exc).__name__})"}
+    except (FileNotFoundError, ValueError, KeyError, ImportError) as exc:
+        prev = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else []
+        old = next((c for c in prev if c["title"] == GACC_TITLE), None)
+        try:
+            g = gacc_check(old)
+        except (FileNotFoundError, KeyError):
+            return {"validate": f"cross-checks kept from last full rebuild ({type(exc).__name__})"}
+        res = [c for c in prev if c["title"] != GACC_TITLE] + [g]
+        OUT.write_text(json.dumps(res, indent=1, default=str) + "\n", encoding="utf-8")
+        return {
+            "validate": f"cross-checks kept from last full rebuild ({type(exc).__name__}); China Customs check updated"
+        }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(res, indent=1, default=str) + "\n", encoding="utf-8")
     return {"validate": f"{len(res)} cross-checks written"}

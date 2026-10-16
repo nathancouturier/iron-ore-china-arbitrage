@@ -1,6 +1,6 @@
 """Sea routes for the C3 and C5 voyages from the ``searoute`` package.
 
-searoute (Halili, MIT licence) finds the shortest path on a maritime network
+searoute (Halili, MIT license) finds the shortest path on a maritime network
 derived from Eurostat's MARNET. Distances are checked in the tests against
 published port-to-port distances. Output: ``data/derived/routes.json`` with the
 distance of each leg in nautical miles and a simplified geometry for the map.

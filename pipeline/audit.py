@@ -13,7 +13,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from .ingest import dce, eastmoney, fred, safe, sgx, shfe, sina, worldbank
+from .ingest import dce, eastmoney, fred, gacc, safe, sgx, shfe, sina, worldbank
 from .ingest.common import load_manifest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -167,6 +167,20 @@ def build() -> str:
             "safe/",
         )
     )
+    imp = gacc.read()
+    parts.append(
+        section(
+            "China Customs (GACC) monthly iron ore imports",
+            gacc.BASE + "/statics/report/monthly{year}.html, table (14); preliminary{year}.html, table (6)",
+            "Official statistics; raw pages not committed, derived series committed",
+            "Iron ores and concentrates, 10,000 tonnes as published (million tonnes in the derived series)",
+            imp,
+            "start",
+            "gacc/",
+            "January and February 2020 published together; September and October 2024 and the latest month "
+            "from the preliminary release",
+        )
+    )
     fef = sgx.read_fef()
     parts.append(
         section(
@@ -187,7 +201,8 @@ def build() -> str:
         for c in checks:
             parts += [f"### {c['title']}", "", c["text"], ""]
             if c.get("table"):
-                parts += [_md_table(pd.DataFrame(c["table"])), ""]
+                fmt = "{:.6g}" if c["title"].startswith("China Customs") else "{:.4g}"
+                parts += [_md_table(pd.DataFrame(c["table"]), fmt), ""]
     return "\n".join(parts) + "\n"
 
 

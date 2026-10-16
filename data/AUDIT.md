@@ -189,6 +189,22 @@ other third parties are re-fetched by the pipeline and not committed.
 | 2026-10-15 | 6.725 |
 | 2026-10-16 | 6.722 |
 
+### China Customs (GACC) monthly iron ore imports
+
+- Endpoint: http://english.customs.gov.cn/statics/report/monthly{year}.html, table (14); preliminary{year}.html, table (6)
+- Retrieved (UTC): 2026-10-16T18:08:57Z to 2026-10-16T18:11:40Z
+- Terms: Official statistics; raw pages not committed, derived series committed
+- Units: Iron ores and concentrates, 10,000 tonnes as published (million tonnes in the derived series)
+- Rows: 104; range 2018-01-01 to 2026-09-01
+- Notes: January and February 2020 published together; September and October 2024 and the latest month from the preliminary release
+
+| start | end | months | imports_mt | table | url |
+|---|---|---|---|---|---|
+| 2018-01 | 2018-01 | 1 | 100.3 | GACC table (14) | http://english.customs.gov.cn/Statics/b93a3883-f103-46f0-be4c-adebc309c292.html |
+| 2018-02 | 2018-02 | 1 | 84.27 | GACC table (14) | http://english.customs.gov.cn/Statics/1cb262a0-0b23-4a6c-8aa6-f9663727f909.html |
+| 2026-08 | 2026-08 | 1 | 108.5 | GACC table (14) | http://english.customs.gov.cn/Statics/4b78370a-cd59-4e25-b483-5ef203143664.html |
+| 2026-09 | 2026-09 | 1 | 109.8 | GACC preliminary table (6) | http://english.customs.gov.cn/Statics/6192bee0-d609-4238-94f9-9f901428b1ef.html |
+
 ### SGX iron ore futures (FEF) daily settlement
 
 - Endpoint: https://links.sgx.com/1.0.0/derivatives-daily/{file_id}/FUTURE.zip
@@ -306,6 +322,21 @@ East Money BCI against index values quoted in the press.
 
 | date | published | east_money | source |
 |---|---|---|---|
-| 2016-01-29 | 211 | 211 | Splash247: historic low of 211 on 29 January 2016 |
+| 2016-01-29 | 211 | 211 | Splash247: BCI 211 on 29 January 2016, then a record low |
 | 2026-07-03 | 4100 | 4100 | Hellenic Shipping News week 27 2026: BCI 4,100 |
+
+### China Customs imports: sum of the monthly bulletins against the year total
+
+Iron ores and concentrates, million tonnes. Monthly figures as first published (September and October 2024 from the preliminary release) against the January to December total in each December bulletin, which carries later revisions.
+
+| year | monthly_sum_mt | year_total_mt | diff_pct |
+|---|---|---|---|
+| 2018 | 1064.77 | 1064.47 | 0.028 |
+| 2019 | 1070.58 | 1068.95 | 0.152 |
+| 2020 | 1170.37 | 1170.1 | 0.023 |
+| 2021 | 1125.63 | 1124.32 | 0.117 |
+| 2022 | 1107.76 | 1106.86 | 0.081 |
+| 2023 | 1180.61 | 1179.06 | 0.131 |
+| 2024 | 1238.15 | 1236.55 | 0.129 |
+| 2025 | 1260.22 | 1258.71 | 0.12 |
 

@@ -5,7 +5,7 @@
 - Augmented Dickey-Fuller test with constant: lag order by AIC, MacKinnon (1994)
   approximate p-values and MacKinnon (2010) finite-sample critical values. The
   response-surface coefficients are copied from statsmodels 0.14.4
-  (statsmodels/tsa/adfvalues.py, BSD-3-Clause licence).
+  (statsmodels/tsa/adfvalues.py, BSD-3-Clause license).
 - Moving block bootstrap for a difference in means between two regimes.
 """
 

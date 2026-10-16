@@ -19,7 +19,7 @@ from ironarb.curve_build import constant_maturity_series
 from ironarb.dce_x import x_by_contract, x_table
 from ironarb.params import value
 
-from .ingest import dce, eastmoney, safe, sgx, shfe, sina
+from .ingest import dce, eastmoney, gacc, safe, sgx, shfe, sina
 
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / "data" / "cache"
@@ -47,7 +47,7 @@ def has_dce_history() -> bool:
 
 
 def futures_panel() -> pd.DataFrame:
-    """Merge official exchange files with Sina, normalised to single-sided lots."""
+    """Merge official exchange files with Sina, normalized to single-sided lots."""
     frames = []
     # DCE: official annual files to 2024 (when cached), Sina from 2025.
     if has_dce_history():
@@ -302,6 +302,27 @@ def central_parity_series() -> dict[str, str]:
     return {"central_parity": f"{len(cp)} days to {cp['date'].max().date()}"}
 
 
+def imports_series() -> dict[str, str]:
+    """China Customs monthly iron ore imports. Newly parsed periods replace the
+    snapshot (a final table replaces a preliminary value); older periods are kept."""
+    path = DERIVED / "china_iron_ore_imports_monthly.csv"
+    try:
+        new = gacc.read()
+    except (FileNotFoundError, ValueError):
+        return {"imports": "no raw files; snapshot kept"}
+    if path.exists():
+        old = pd.read_csv(path, dtype={"start": str, "end": str})
+        covered = {m for s, e in zip(new["start"], new["end"], strict=True) for m in _months(s, e)}
+        keep = old[[not (set(_months(s, e)) & covered) for s, e in zip(old["start"], old["end"], strict=True)]]
+        new = pd.concat([keep, new]).sort_values("start")
+    new.to_csv(path, index=False, float_format="%.3f")
+    return {"imports": f"{len(new)} periods to {new['end'].max()}"}
+
+
+def _months(start: str, end: str) -> list[str]:
+    return [str(p) for p in pd.period_range(start, end, freq="M")]
+
+
 def run() -> dict[str, str]:
     CACHE.mkdir(parents=True, exist_ok=True)
     DERIVED.mkdir(parents=True, exist_ok=True)
@@ -311,4 +332,5 @@ def run() -> dict[str, str]:
     status.update(sgx_series())
     status.update(baltic_series())
     status.update(central_parity_series())
+    status.update(imports_series())
     return status

@@ -34,7 +34,7 @@ export async function render(root, meta) {
 
   root.append(el('h2', { class: 'section-title' }, 'Terms'),
     el('ul', { class: 'plain' },
-      el('li', {}, 'Code: MIT licence, in the repository linked below.'),
+      el('li', {}, 'Code: MIT license, in the repository linked below.'),
       el('li', {}, 'FRED and IMF series are redistributed with attribution: Federal Reserve Bank of St. Louis (FRED) and International Monetary Fund, Primary Commodity Prices. World Bank Pink Sheet data are under CC BY 4.0.'),
       el('li', {}, 'Exchange prices (Dalian Commodity Exchange, Shanghai Futures Exchange, SGX) and Baltic Exchange indices belong to their owners. The files here are derived series computed from them; the pipeline re-fetches the inputs from the public endpoints.'),
       el('li', {}, 'Modeled freight is an estimate, not a Baltic Exchange or Platts assessment.'),

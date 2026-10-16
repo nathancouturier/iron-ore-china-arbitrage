@@ -117,6 +117,10 @@ export async function render(root, meta) {
     ],
   }));
 
+  // 5. China imports against the margin (pre-registered test)
+  const epi = ev.map((e, i) => (d.imports && d.imports.exclude_years.includes(Number(e.date.slice(0, 4))) ? i + 1 : 0)).filter(Boolean);
+  if (d.imports) root.append(el('div', { style: 'margin-top:16px' }, importsBlock(d.imports, d.stats_monthly.share_open === 0 ? d.stats_monthly : null, epi)));
+
   root.append(toggles('window', [
     ['Method', () => [
       el('h3', {}, 'Margin, maturity alignment and the band'),
@@ -125,6 +129,7 @@ export async function render(root, meta) {
       el('p', {}, 'The no-arbitrage band of ±25 RMB/dmt approximates the cost of using the exchange: delivery fee 0.5 RMB/t, warehouse storage 0.3 RMB/t per day (0.5 before 2021) for about a month, and the ship outbound fee cap of 12 RMB/t, about 21.5 to 27.5 RMB/t in total.'),
       el('p', {}, 'Episodes are the largest deviations of the margin from its average, one per period of at least six months.'),
       el('p', {}, 'Two comparisons answer slightly different questions. The daily series is the hedgeable one: a cargo priced on the index average around arrival, hedged on SGX, against Dalian at the same horizon. The monthly baseline follows the textbook framing: a cargo bought at the spot index, sold on Dalian 45 days later. In steep backwardation (2021) spot CFR sits well above the 45-day SGX price, so the monthly baseline shows a deeper discount.'),
+      el('p', {}, `Imports test, specified before it was computed: the year-on-year growth of China\u2019s iron ore imports over the next one to three months (log of the summed tonnes against the same months a year earlier, which removes seasonality and the Lunar New Year) regressed on the monthly import margin, with Newey-West standard errors (${d.imports ? d.imports.nw_lags : 12} lags). ${d.stats_monthly.share_open === 0 ? 'The monthly margin was never above the band, so the' : 'Open months are rare, so the'} margin enters as a continuous signal. January and February 2020 were published as one figure and are never split: a window that contains only one of them is dropped. The check that leaves out ${d.imports ? d.imports.exclude_years.join(' and ') : '2021 and 2022'} was added after seeing the result and is labeled exploratory.`),
     ]],
     ['Assumptions', () => [
       el('ul', {},
@@ -135,6 +140,13 @@ export async function render(root, meta) {
     ]],
     ['Data', () => [
       el('p', {}, 'Full daily and monthly series: ', el('a', { href: 'downloads/import_margin_daily.csv', download: '' }, 'daily CSV'), ', ', el('a', { href: 'downloads/import_margin_monthly.csv', download: '' }, 'monthly CSV'), '.'),
+      d.imports ? el('p', {}, 'China iron ore imports by month: ', el('a', { href: 'downloads/china_iron_ore_imports_monthly.csv', download: '' }, 'CSV with the bulletin URL of each month'), '.') : '',
+      d.imports ? table('China iron ore imports, million tonnes (China Customs)', [
+        { label: 'Period', get: (r) => (r[0] === r[1] ? fmtMonth(r[0]) : `${fmtMonth(r[0])} to ${fmtMonth(r[1])}`) },
+        { label: 'Imports', get: (r) => fmt(r[3], 2), num: true },
+        { label: 'Table', get: (r) => (r[4] ? 'Preliminary release' : 'Monthly bulletin') },
+      ], d.imports.series.slice().reverse()) : '',
+      d.imports ? importsTable('Imports test, every horizon: import growth per +50 RMB/dmt of margin', importsRows(d.imports), true) : '',
       table('Import margin, monthly baseline (RMB per dry tonne)', [
         { label: 'Month', key: 'm' }, { label: '45-day', get: (r) => fmt(r.a, 1), num: true }, { label: 'Most active', get: (r) => fmt(r.b, 1), num: true },
       ], d.monthly.months.map((m, i) => ({ m, a: d.monthly.margin[i], b: d.monthly.naive[i] })).reverse()),
@@ -163,6 +175,85 @@ function histBlock(d) {
       xAxis: { type: 'category', data: lows.map(String), name: 'RMB per dry tonne', nameLocation: 'middle', nameGap: 28, axisLabel: { color: C.steel, interval: 0, formatter: (v) => (Number(v) % tick === 0 ? fmt(Number(v)) : '') }, axisTick: { show: false }, axisLine: { lineStyle: { color: C.grid } } },
       yAxis: valueAxis('Trading days', { scale: false, nameGap: 36 }),
       series: [{ type: 'bar', data: d.histogram.counts.map((c, i) => ({ value: c, itemStyle: { color: e[i] >= d.band ? C.seawater : e[i + 1] <= -d.band ? C.hematite : C.steel, borderRadius: [3, 3, 0, 0] } })), barCategoryGap: '8%' }],
+    }));
+  });
+  return block;
+}
+
+function importsRows(im) {
+  const yrs = im.exclude_years.join(' and ');
+  return [
+    ...im.rows.map((x) => ({ ...x, sample: 'All months (pre-registered)' })),
+    ...im.rows_ex.map((x) => ({ ...x, sample: `Excluding ${yrs} (exploratory)` })),
+  ];
+}
+
+const ciText = (q) => `${fmtSigned(q.ci_lo_pp, 1)} to ${fmtSigned(q.ci_hi_pp, 1)}`;
+
+function importsTable(caption, rows, withHorizon) {
+  return table(caption, [
+    { label: 'Sample', key: 'sample' },
+    ...(withHorizon ? [{ label: 'Next months', get: (x) => fmt(x.horizon_months), num: true }] : []),
+    { label: 'Effect, pp', get: (x) => fmtSigned(x.effect_pp, 1), num: true },
+    { label: '95% interval', get: (x) => ciText(x), num: true },
+    { label: 'Newey-West t', get: (x) => fmt(x.nw_t, 2), num: true },
+    { label: 'Months', get: (x) => fmt(x.n_obs), num: true },
+  ], rows);
+}
+
+function importsBlock(im, monthlyNeverOpen, epi) {
+  const h = Math.max(...im.rows.map((r) => r.horizon_months));
+  const r = im.rows.find((x) => x.horizon_months === h);
+  const rx = im.rows_ex.find((x) => x.horizon_months === h);
+  const sig = (q) => q.ci_lo_pp > 0 || q.ci_hi_pp < 0;
+  const yrs = im.exclude_years.join(' and ');
+  const dir = r.effect_pp > 0 ? 'faster' : 'more slowly';
+  const title = !sig(r)
+    ? 'No sign that a narrower Dalian discount is followed by a change in import growth'
+    : sig(rx)
+      ? `China\u2019s imports grew ${dir} in the ${h} months after a narrower Dalian discount`
+      : `China\u2019s imports grew ${dir} after a narrower Dalian discount, but the link rests on ${yrs}`;
+  const prelim = im.series.filter((x) => x[4]).map((x) => fmtMonth(x[0]));
+  const prelimText = prelim.length ? `; ${prelim.length > 1 ? `${prelim.slice(0, -1).join(', ')} and ${prelim[prelim.length - 1]}` : prelim[0]} from the preliminary release` : '';
+  const ci = ciText;
+  const pts = im.points;
+  const { block, host } = chartBlock({
+    title,
+    sub: `Each point is a month, ${fmtMonth(pts[0][0])} to ${fmtMonth(pts[pts.length - 1][0])}: the monthly import margin (IMF 62% CFR against 45-day Dalian, RMB per dry tonne) against the year-on-year growth of China\u2019s iron ore imports over the next ${h} months, in percent. Red: months in ${yrs}. Line: least-squares fit on all months, the pre-registered test.`,
+    source: `Sources: China Customs (GACC) English monthly bulletins, ${fmtMonth(im.first)} to ${fmtMonth(im.last)}${prelimText}; IMF via FRED; Dalian Commodity Exchange.`,
+    summary: `Pre-registered: ${fmtSigned(r.effect_pp, 1)} percentage points of import growth per +${fmt(im.per_rmb_dmt)} RMB/dmt of margin, 95% interval ${ci(r)}, Newey-West t ${fmt(r.nw_t, 1)}, ${r.n_obs} months. Exploratory, excluding ${yrs}: ${fmtSigned(rx.effect_pp, 1)}, interval ${ci(rx)}, t ${fmt(rx.nw_t, 1)}, ${rx.n_obs} months.`,
+  });
+  block.append(
+    el('div', { style: 'margin-top:12px' }, importsTable(`Import growth over the next ${h} months per +${fmt(im.per_rmb_dmt)} RMB/dmt of margin (all horizons under Data)`, importsRows(im).filter((x) => x.horizon_months === h), false)),
+    el('p', { class: 'chart-sub' }, (sig(r) && !sig(rx)
+      ? `Reading: in ${yrs} policy pushed Dalian far below import parity${epi.length ? ` (${epi.length > 1 ? `episodes ${epi.slice(0, -1).join(', ')} and ${epi[epi.length - 1]}` : `episode ${epi[0]}`} above)` : ''} while imports fell; without those years the slope is ${fmtSigned(rx.effect_pp, 1)} with an interval from ${ci(rx)}. The data do not separate an effect of the window on imports from the policy that moved both.`
+      : `Excluding ${yrs}, the slope is ${fmtSigned(rx.effect_pp, 1)} with an interval from ${ci(rx)}.`)
+      + (monthlyNeverOpen ? ` The monthly margin was never above the band in ${fmt(monthlyNeverOpen.n)} months, so the event version of the test (an open window followed by more imports) cannot be run.` : '')),
+  );
+  requestAnimationFrame(() => {
+    const ex = new Set(im.exclude_years.map(String));
+    const a = r.intercept_pp;
+    const b = r.effect_pp / im.per_rmb_dmt;
+    const xs = pts.map((p) => p[1]);
+    const x0 = Math.min(...xs);
+    const x1 = Math.max(...xs);
+    const narrow = host.clientWidth < 520;
+    mount(host, base({
+      grid: { left: 56, right: 24, top: narrow ? 52 : 36, bottom: 48 },
+      legend: { top: 0, left: 0, data: ['Other months', yrs, 'Fit, all months'] },
+      tooltip: {
+        trigger: 'item',
+        formatter: (p) => (p.seriesType === 'scatter'
+          ? `${fmtMonth(p.value[2])}${ttRow(p.color, `${fmtSigned(p.value[1], 1)}%`, `imports, next ${h} months, year on year`)}${ttRow(p.color, `${fmtSigned(p.value[0])} RMB/dmt`, 'import margin in the month')}`
+          : `Fit, all months: ${fmtSigned(r.effect_pp, 1)} pp per +${fmt(im.per_rmb_dmt)} RMB/dmt`),
+      },
+      xAxis: { ...valueAxis('Import margin in the month, RMB per dry tonne', { scale: false, nameGap: 30, splitNumber: narrow ? 4 : 6 }), splitLine: { show: false } },
+      yAxis: valueAxis(narrow ? `Imports, next ${h} months, % y/y` : `Imports over the next ${h} months, % year on year`, { scale: false, nameGap: 40 }),
+      series: [
+        { type: 'scatter', name: 'Other months', data: pts.filter((p) => !ex.has(p[0].slice(0, 4))).map((p) => [p[1], p[2], p[0]]), symbolSize: 8, itemStyle: { color: C.topside, borderColor: '#ffffff', borderWidth: 1 } },
+        { type: 'scatter', name: yrs, data: pts.filter((p) => ex.has(p[0].slice(0, 4))).map((p) => [p[1], p[2], p[0]]), symbolSize: 8, itemStyle: { color: C.hematite, borderColor: '#ffffff', borderWidth: 1 } },
+        line('Fit, all months', [[x0, a + b * x0], [x1, a + b * x1]], C.steel, { symbol: 'none', lineStyle: { width: 2, color: C.steel } }),
+      ],
     }));
   });
   return block;

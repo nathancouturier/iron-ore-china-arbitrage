@@ -250,7 +250,7 @@ tbody tr:nth-child(odd) { background: var(--primer); }
   .chart--tall { height: 420px; }
   .chart--map { height: 200px; }
   .fields { grid-template-columns: minmax(0, 1fr); }
-  /* wide tables become one labelled block per row */
+  /* wide tables become one labeled block per row */
   .table-wrap--stack table, .table-wrap--stack tbody, .table-wrap--stack tr, .table-wrap--stack td { display: block; width: 100%; }
   .table-wrap--stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .table-wrap--stack caption { display: block; }

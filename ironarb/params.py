@@ -17,7 +17,7 @@ PARAMS: dict[str, Any] = {
         "value": 30.0,
         "sensitivity": [20.0, 40.0],
         "unit": "RMB per wet tonne",
-        "source": "Implied by Ruida Futures import-cost estimates (30 to 35) and Fastmarkets port-to-seaborne conversions (28 to 35); Mysteel uses 23, Huatai Futures 35",
+        "source": "Set with Ruida Futures import-cost estimates (implied 30 to 35) and Fastmarkets port-to-seaborne conversions (implied 31 to 40) in view; Mysteel uses 23, Huatai Futures 35",
     },
     "financing_spread_bp": {
         "value": 150.0,
