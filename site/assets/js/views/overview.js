@@ -1,5 +1,5 @@
 import { getJSON, el, chartBlock, toggles, staleNotice } from '../app.js';
-import { C, base, mount, fmt, fmtSigned, fmtPct, fmtDate, fmtMonth, reducedMotion, valueAxis, timeAxis, line, table, ttRow } from '../charts.js';
+import { C, base, mount, loadECharts, fmt, fmtSigned, fmtPct, fmtDate, fmtMonth, reducedMotion, valueAxis, timeAxis, line, table, ttRow } from '../charts.js';
 
 const stateWord = (s) => (s > 0 ? 'open' : s < 0 ? 'closed' : 'inside the band');
 
@@ -52,6 +52,7 @@ export async function render(root, meta) {
 
   const SHORT = ['FOB Australia', 'Freight C5, modeled', 'FOB Brazil', 'Freight C3, modeled', 'CFR Qingdao', `VAT ${fmt(b.vat_rate * 100)}%`, 'Port charges', 'Financing', 'Landed cost', 'Dalian 45-day'];
   const narrow = bridgeHost.clientWidth < 520;
+  await loadECharts();
   const cats = narrow ? SHORT : rows.map((r) => r.name);
   const anim = !reducedMotion();
   const chart = mount(bridgeHost, base({

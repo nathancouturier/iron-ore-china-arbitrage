@@ -139,6 +139,20 @@ function fitLegend(chart) {
   if (Number(opt.grid[0].top) !== want) chart.setOption({ grid: { top: want } });
 }
 
+/** Load the chart library once; views render their text first and await this before drawing. */
+let library;
+export function loadECharts() {
+  if (window.echarts) return Promise.resolve();
+  library ||= new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'assets/vendor/echarts-5.5.1/echarts.min.js';
+    s.onload = resolve;
+    s.onerror = () => reject(new Error('the chart library did not load'));
+    document.head.append(s);
+  });
+  return library;
+}
+
 const charts = new Set();
 export function mount(el, option) {
   const chart = echarts.init(el, null, { renderer: 'svg' });

@@ -1,5 +1,5 @@
 import { getJSON, el, chartBlock, toggles, staleNotice } from '../app.js';
-import { C, base, mount, fmt, fmtSigned, fmtDate, valueAxis, timeAxis, line, presets, zoom, table, ttRow } from '../charts.js';
+import { C, base, mount, loadECharts, fmt, fmtSigned, fmtDate, valueAxis, timeAxis, line, presets, zoom, table, ttRow } from '../charts.js';
 
 export async function render(root, meta) {
   const d = await getJSON('mill');
@@ -27,6 +27,7 @@ export async function render(root, meta) {
     cls: 'chart chart--tall',
   });
   root.append(b1);
+  await loadECharts();
   const c1 = mount(h1, base({
     grid: { left: 60, right: 20, top: 40, bottom: 36 },
     dataZoom: zoom(),

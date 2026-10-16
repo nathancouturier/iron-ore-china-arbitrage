@@ -11,6 +11,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css">
+<link rel="preload" href="assets/vendor/echarts-5.5.1/echarts.min.js" as="script">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -32,13 +33,13 @@
   </div>
 </nav>
 <main id="main" tabindex="-1">
-  <section class="view" id="view-overview" role="tabpanel" aria-labelledby="tab-overview" hidden></section>
-  <section class="view" id="view-window" role="tabpanel" aria-labelledby="tab-window" hidden></section>
-  <section class="view" id="view-freight" role="tabpanel" aria-labelledby="tab-freight" hidden></section>
-  <section class="view" id="view-mill" role="tabpanel" aria-labelledby="tab-mill" hidden></section>
-  <section class="view" id="view-calculator" role="tabpanel" aria-labelledby="tab-calculator" hidden></section>
-  <section class="view" id="view-method" role="tabpanel" aria-labelledby="tab-method" hidden></section>
-  <section class="view" id="view-downloads" role="tabpanel" aria-labelledby="tab-downloads" hidden></section>
+  <section class="view" id="view-overview" role="tabpanel" aria-labelledby="tab-overview" hidden><h2 class="sr-only">Overview</h2></section>
+  <section class="view" id="view-window" role="tabpanel" aria-labelledby="tab-window" hidden><h2 class="sr-only">Import window</h2></section>
+  <section class="view" id="view-freight" role="tabpanel" aria-labelledby="tab-freight" hidden><h2 class="sr-only">Freight and origins</h2></section>
+  <section class="view" id="view-mill" role="tabpanel" aria-labelledby="tab-mill" hidden><h2 class="sr-only">Mill margin</h2></section>
+  <section class="view" id="view-calculator" role="tabpanel" aria-labelledby="tab-calculator" hidden><h2 class="sr-only">Calculator</h2></section>
+  <section class="view" id="view-method" role="tabpanel" aria-labelledby="tab-method" hidden><h2 class="sr-only">Method and data</h2></section>
+  <section class="view" id="view-downloads" role="tabpanel" aria-labelledby="tab-downloads" hidden><h2 class="sr-only">Downloads</h2></section>
   <noscript><p class="noscript">This page draws its charts with JavaScript. The underlying data are available as CSV files in the <a href="downloads/">downloads folder</a>.</p></noscript>
 </main>
 <footer class="footer">
@@ -48,7 +49,6 @@
     <p id="footer-updated">Last update</p>
   </div>
 </footer>
-<script src="assets/vendor/echarts-5.5.1/echarts.min.js" defer></script>
 <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>

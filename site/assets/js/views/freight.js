@@ -1,5 +1,5 @@
 import { getJSON, el, chartBlock, toggles, staleNotice } from '../app.js';
-import { C, base, mount, fmt, fmtSigned, fmtPct, fmtDate, fmtMonth, valueAxis, timeAxis, line, modeled, presets, zoom, table, ttRow } from '../charts.js';
+import { C, base, mount, loadECharts, fmt, fmtSigned, fmtPct, fmtDate, fmtMonth, valueAxis, timeAxis, line, modeled, presets, zoom, table, ttRow } from '../charts.js';
 
 const ROUTE = {
   C5: { color: () => C.pilbara, leg: 'port_hedland-qingdao', name: 'C5 West Australia to Qingdao', origin: 'Australia' },
@@ -34,6 +34,7 @@ export async function render(root, meta) {
       `Route rates are paid data, so freight here is modeled from the Baltic Capesize Index and Brent and checked against ${ev.C3.voyage.n + ev.C5.voyage.n} published route assessments. Since 2014 the Brazilian netback has trailed the Australian one by ${fmt(gapMean, 1)} USD/dmt on average.`),
   );
 
+  await loadECharts();
   root.append(mapBlock(d, c5Last, c3Last, lastWeek));
   root.append(freightBlock(d));
   const g = el('div', { class: 'grid grid--two', style: 'margin-top:16px' });

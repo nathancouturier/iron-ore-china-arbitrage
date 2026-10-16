@@ -1,5 +1,5 @@
 import { getJSON, el, chartBlock, toggles } from '../app.js';
-import { C, base, mount, fmt, fmtSigned, fmtPct, fmtDate, valueAxis, ttRow } from '../charts.js';
+import { C, base, mount, loadECharts, fmt, fmtSigned, fmtPct, fmtDate, valueAxis, ttRow } from '../charts.js';
 import { calculate, vatRate } from '../engine.js';
 
 const FIELDS = [
@@ -48,6 +48,7 @@ export async function render(root) {
     cls: 'chart',
   });
   root.append(el('div', { class: 'calc' }, form, el('div', {}, out, el('div', { style: 'margin-top:16px' }, block))));
+  await loadECharts();
   const chart = mount(host, base({ animation: false }));
 
   const read = () => {

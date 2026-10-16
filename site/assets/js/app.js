@@ -1,5 +1,5 @@
 // App shell: hash routing between views, lazy data loading, shared UI pieces.
-import { readTokens, fmtDate, resizeAll } from './charts.js';
+import { readTokens, fmtDate, resizeAll, loadECharts } from './charts.js';
 
 const VIEWS = ['overview', 'window', 'freight', 'mill', 'calculator', 'method', 'downloads'];
 const loaders = {
@@ -115,15 +115,19 @@ async function show(view) {
       await mod.render(sec, meta);
     } catch (err) {
       rendered.delete(view);
-      sec.replaceChildren(el('p', { class: 'stale' }, `This view could not load its data (${err.message}).`));
+      sec.replaceChildren(sec.querySelector('h2'), el('p', { class: 'stale' }, `This view could not load its data (${err.message}).`));
       console.error(err);
     }
   }
   requestAnimationFrame(resizeAll);
 }
 
+let first = true;
 function route() {
   const view = (location.hash || '#overview').slice(1);
+  // a new view starts at its top, not at the scroll position of the last one
+  if (!first) window.scrollTo(0, 0);
+  first = false;
   show(view);
 }
 
@@ -146,6 +150,7 @@ function keyboardTabs() {
 }
 
 async function init() {
+  loadECharts().catch(() => {});
   readTokens();
   keyboardTabs();
   try {
