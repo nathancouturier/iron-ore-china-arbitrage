@@ -97,7 +97,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--full", action="store_true", help="re-fetch every source from the start of its history")
     args = ap.parse_args(argv)
     stages = (
-        ["ingest", "transform", "validate", "model", "export", "report", "audit"]
+        ["ingest", "transform", "validate", "model", "report", "export", "audit"]
         if args.stage == "all"
         else [args.stage]
     )

@@ -9,3 +9,4 @@ matplotlib==3.10.3
 searoute==1.6.0
 networkx==3.5
 geojson==3.2.0
+pypdf==6.17.0
