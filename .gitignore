@@ -1,0 +1,19 @@
+# Working notes and local agent configuration (not part of the project)
+.work/
+.claude/
+CLAUDE.md
+
+# Local caches
+data/cache/
+.cache/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+node_modules/
+*.egg-info/
+build/
+dist/
+.DS_Store
