@@ -1,10 +1,16 @@
 name: Build research note
 
-# Manual trigger: rebuild the research note PDF from the committed data and
-# commit it to the branch the workflow runs on. The weekly refresh does the same
-# on main.
+# Rebuild the research note PDF from the committed data and commit it to the
+# branch the workflow runs on: on demand, or when a working branch changes the
+# note or the analysis it reads. The weekly refresh does the same on main.
 on:
   workflow_dispatch:
+  push:
+    branches-ignore: [main]
+    paths:
+      - pipeline/report.py
+      - data/derived/analysis.json
+      - .github/workflows/note.yml
 
 permissions:
   contents: write
