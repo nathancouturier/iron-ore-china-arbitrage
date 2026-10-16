@@ -76,13 +76,32 @@ PARAMS: dict[str, Any] = {
 
 
 # Voyage definitions. Distances (nautical miles) come from the searoute package
-# (pipeline/routes.py); vessel figures from the Baltic standard Capesize
-# description (BCI182, from 2 January 2026): 14 knots on 52 t laden, 44 t ballast.
+# (pipeline/routes.py). Vessel figures: the eco point of the Baltic standard
+# Capesize table (Circular 21/24: 12 knots on 36 t laden, 29 t ballast), which
+# reproduces the Platts round-voyage durations (West Australia under 40 days,
+# Brazil about 90 days); the full-speed description (BCI182: 14 knots on 52 t
+# laden, 44 t ballast) is the sensitivity.
 VESSEL: dict[str, Any] = {
-    "laden_speed_kn": {"value": 14.0, "eco": 12.0, "source": "Baltic BCI182 description; eco 12 kn (Circular 21/24)"},
-    "ballast_speed_kn": {"value": 14.0, "eco": 12.0, "source": "Baltic BCI182 description; eco 12 kn (Circular 21/24)"},
-    "laden_fuel_t_day": {"value": 52.0, "eco": 36.0, "source": "Baltic BCI182 description; eco 36 t at 12 kn"},
-    "ballast_fuel_t_day": {"value": 44.0, "eco": 29.0, "source": "Baltic BCI182 description; eco 29 t at 12 kn"},
+    "laden_speed_kn": {
+        "value": 12.0,
+        "alt": 14.0,
+        "source": "Baltic Circular 21/24 eco table; 14 kn in the BCI182 description",
+    },
+    "ballast_speed_kn": {
+        "value": 12.0,
+        "alt": 14.0,
+        "source": "Baltic Circular 21/24 eco table; 14 kn in the BCI182 description",
+    },
+    "laden_fuel_t_day": {
+        "value": 36.0,
+        "alt": 52.0,
+        "source": "Baltic Circular 21/24 eco table; 52 t in the BCI182 description",
+    },
+    "ballast_fuel_t_day": {
+        "value": 29.0,
+        "alt": 44.0,
+        "source": "Baltic Circular 21/24 eco table; 44 t in the BCI182 description",
+    },
     "port_fuel_t_day": {"value": 5.0, "source": "Assumption: auxiliary consumption in port"},
     "cargo_t": {"value": 170_000.0, "source": "Baltic C3 (Circular 44/24) and C5: 170,000 mt 10% MOLOO"},
     "commission": {"value": 0.05, "source": "Baltic voyage routes: 5% total commission"},
@@ -92,9 +111,21 @@ VESSEL: dict[str, Any] = {
     },
 }
 ROUTES: dict[str, dict[str, Any]] = {
-    "C5": {"label": "West Australia (Port Hedland) to Qingdao", "load": "port_hedland", "load_days": 2.5},
-    "C3": {"label": "Tubarao to Qingdao", "load": "tubarao", "load_days": 3.0},
+    "C5": {
+        "label": "West Australia (Port Hedland) to Qingdao",
+        "load": "port_hedland",
+        "load_days": 2.5,
+        "port_costs_usd": 250_000.0,
+    },
+    "C3": {"label": "Tubarao to Qingdao", "load": "tubarao", "load_days": 3.0, "port_costs_usd": 250_000.0},
 }
+PORT_COSTS_NOTE = (
+    "No public port disbursement figure was found for Port Hedland, Tubarao or Qingdao; 250,000 USD per round "
+    "voyage (load plus discharge) is an explicit assumption, sensitivity 50% to 150% (about 1.5 USD per tonne)."
+)
+LOAD_DAYS_NOTE = (
+    "Load port time: Baltic 'scale load' with 6 h turn time; 2.5 days at Port Hedland and 3 days at Tubarao assumed."
+)
 
 
 def value(name: str) -> Any:

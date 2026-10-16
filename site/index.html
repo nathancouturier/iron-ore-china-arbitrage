@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iron ore into China: delivered cost and the import window</title>
+<meta name="description" content="When does it pay to bring seaborne iron ore into China? Delivered cost of 62% Fe fines from Australia and Brazil against Dalian futures, with freight, VAT, port charges and the steel mill margin. Data, method and validation.">
+<meta name="author" content="Nathan Couturier">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#16212b">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hull">
+  <div class="hull__inner">
+    <h1 class="hull__title">Iron ore into China: delivered cost and the import window</h1>
+    <p class="hull__asof" id="asof">Loading data</p>
+  </div>
+</header>
+<nav class="hatches" aria-label="Views">
+  <div class="hatches__inner" role="tablist" id="tabs">
+    <a role="tab" href="#overview" id="tab-overview" aria-controls="view-overview">Overview</a>
+    <a role="tab" href="#window" id="tab-window" aria-controls="view-window">Import window</a>
+    <a role="tab" href="#freight" id="tab-freight" aria-controls="view-freight">Freight and origins</a>
+    <a role="tab" href="#mill" id="tab-mill" aria-controls="view-mill">Mill margin</a>
+    <a role="tab" href="#calculator" id="tab-calculator" aria-controls="view-calculator">Calculator</a>
+    <a role="tab" href="#method" id="tab-method" aria-controls="view-method">Method and data</a>
+    <a role="tab" href="#downloads" id="tab-downloads" aria-controls="view-downloads">Downloads</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+  <section class="view" id="view-overview" role="tabpanel" aria-labelledby="tab-overview" hidden></section>
+  <section class="view" id="view-window" role="tabpanel" aria-labelledby="tab-window" hidden></section>
+  <section class="view" id="view-freight" role="tabpanel" aria-labelledby="tab-freight" hidden></section>
+  <section class="view" id="view-mill" role="tabpanel" aria-labelledby="tab-mill" hidden></section>
+  <section class="view" id="view-calculator" role="tabpanel" aria-labelledby="tab-calculator" hidden></section>
+  <section class="view" id="view-method" role="tabpanel" aria-labelledby="tab-method" hidden></section>
+  <section class="view" id="view-downloads" role="tabpanel" aria-labelledby="tab-downloads" hidden></section>
+  <noscript><p class="noscript">This page draws its charts with JavaScript. The underlying data are available as CSV files in the <a href="downloads/">downloads folder</a>.</p></noscript>
+</main>
+<footer class="footer">
+  <div class="footer__inner">
+    <p><a href="https://nathancouturier.github.io">Nathan Couturier</a></p>
+    <p>Data: IMF via FRED, World Bank, Dalian Commodity Exchange, Shanghai Futures Exchange, SGX, Baltic Exchange indices via East Money, SAFE, Federal Reserve. <a href="#method">Sources and terms</a></p>
+    <p id="footer-updated">Last update</p>
+  </div>
+</footer>
+<script src="assets/vendor/echarts-5.5.1/echarts.min.js" defer></script>
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

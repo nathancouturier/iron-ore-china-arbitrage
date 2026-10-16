@@ -209,5 +209,7 @@ def daily_margin(a: Assumptions | None = None) -> pd.DataFrame:
     df = df.dropna(subset=["cfr62_sgx_usd_dmt", f"dce_i_cm{a.cm_target}_rmb_dmt", "usdcny", "usd_rate_pct"])
     res = compute_margin(df, "cfr62_sgx_usd_dmt", a, build_voyages(a))
     res["basis_flag"] = df["basis_flag"]
+    res["basis_adj_usd_dmt"] = df["basis_adj_usd_dmt"]
+    res["sgx_prompt_usd_dmt"] = df["sgx_prompt_usd_dmt"]
     res.attrs = df.attrs
     return res

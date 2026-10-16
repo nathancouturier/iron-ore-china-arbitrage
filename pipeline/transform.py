@@ -201,7 +201,25 @@ def recompute_start(panel: pd.DataFrame) -> pd.Timestamp | None:
     return first + pd.DateOffset(months=13)
 
 
+def mill_anchor_prices(panel: pd.DataFrame) -> None:
+    """Closing prices of the contracts quoted by the broker anchors, kept as a
+    small committed extract so the anchor tests run without raw files."""
+    path = DERIVED / "mill_anchor_prices.csv"
+    an = pd.read_csv(ROOT / "data" / "anchors" / "mill_margin.csv", parse_dates=["date"])
+    keys = {
+        (c, d)
+        for _, r in an.iterrows()
+        for c in (r["rb_contract"], r["i_contract"], r["j_contract"])
+        for d in [r["date"]]
+    }
+    sub = panel[[(c, d) in keys for c, d in zip(panel["contract"], panel["date"], strict=True)]]
+    sub = sub[["date", "contract", "close", "settle", "source"]].sort_values(["date", "contract"])
+    if len(sub) == len(keys) or not path.exists():
+        sub.to_csv(path, index=False)
+
+
 def futures_series(panel: pd.DataFrame, cutoff: pd.Timestamp | None) -> dict[str, str]:
+    mill_anchor_prices(panel)
     curve, iron = iron_ore_curve(panel)
     iron.to_csv(CACHE / "iron_ore_contracts.csv.gz", index=False)
     curve = merge_snapshot(curve, DERIVED / "dce_iron_ore_curve_daily.csv", cutoff)

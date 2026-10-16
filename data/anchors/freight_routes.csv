@@ -1,0 +1,184 @@
+date,route,value_usd_wmt,assessor,reported_by,date_flag,url,quote
+2016-01-28,C3,5.325,Baltic Exchange,Baltic (via Splash247),C,https://splash247.com/?p=40977,C3 all-time low 5.325 on 28 Jan 2016 (caller-verified seed)
+2016-02-02,C3,5.473,Baltic Exchange,Baltic (via Splash247),C,https://splash247.com/?p=40977,C3 5.473 (caller-verified seed)
+2021-07-02,C3,25.81,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-capesize-market-ends-the-week-in-negative-territory/,the Brazil to China (C3) fell $1.885 over the week to close out at $25.81
+2021-07-02,C5,11.055,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-capesize-market-ends-the-week-in-negative-territory/,The C5 market lost $0.895 over the week to end at $11.055.
+2021-07-09,C3,26.875,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-capesize-market-turns-the-tide/,"The Brazil to China C3 was a steady gainer throughout the week, now at $26.875"
+2021-07-16,C3,24.985,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-loses-steam/,Brazil to China C3 lowered $1.89 over the week to settle at $24.985
+2021-07-16,C5,10.841,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-loses-steam/,C5 route closed out Friday up 25 cents to $10.841
+2021-08-13,C3,32.025,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-rates-rallying-again/,"C3 Brazil to China run jumping from $30,195 at one point to $32,025 on Friday"
+2021-08-13,C5,14.677,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-rates-rallying-again/,"C5 west Australia to Qingdao went below $14,000 in mid of the week but climbed back to $14,677"
+2021-08-18,C3,34.0,Platts,Platts (S&P Global),D,https://www.hellenicshippingnews.com/dry-bulk-capesize-brazil-to-china-rate-at-decade-high-as-ship-supply-tightens/,from Tubarao to Qingdao was assessed Aug. 18 at $34/wmt
+2021-08-18,C5,15.4,Platts,Platts (S&P Global),D,https://www.hellenicshippingnews.com/dry-bulk-capesize-brazil-to-china-rate-at-decade-high-as-ship-supply-tightens/,The freight rate for iron ore from Port Hedland to Qingdao was assessed Aug. 18 at $15.40/wmt
+2021-08-20,C3,36.125,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-reach-new-highs-2/,surged the C3 Tubarao to Qingdao run to $36.125
+2021-08-20,C5,15.823,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-reach-new-highs-2/,The west Australia to Qingdao voyage route climbed to $15.823 on Friday
+2021-08-27,C3,35.77,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-ends-the-week-on-a-high/,C3 Tubarao to Qingdao run recorded $35.77 on voyage basis
+2021-09-10,C3,31.8,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-stage-strong-comeback/,"the Brazil to China C3 couldn’t quite mange the same, posting at $31.80"
+2021-09-10,C5,14.155,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-stage-strong-comeback/,The West Australia to China C5 ended the week well above where it began rising to $14.155
+2021-09-13,C3,35.0,Platts,Platts (S&P Global),D,https://www.hellenicshippingnews.com/typhoon-chanthu-triggers-biggest-jump-in-capesize-tce/,"from Tubarao to Qingdao was assessed at $35/wmt Sept. 13, a $3/wmt rise from Sept. 10"
+2021-09-17,C5,16.773,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-reach-new-year-high-levels/,The week closed on positive notes with C5 paid up to $16.773
+2021-09-24,C5,19.082,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-segment-keeps-on-rallying/,"The West Australia to China C5 leapt up $3,759 at the beginning of the week to $20,145 before regressing on Friday to $19,082"
+2021-10-22,C5,14.264,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-comes-under-pressure/,came off from the peak on Wednesday at $16.732 to $14.264 on Friday
+2021-11-05,C3,24.66,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-still-under-pressure/,The Brazil to China C3 continued its slide throughout the week closing at $24.66
+2021-11-05,C5,10.85,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-still-under-pressure/,closed up +0.309 for the weekend at $10.85
+2021-11-12,C5,12.923,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-offers-some-kind-of-revival/,West Australia to China C5 closed down -0.091 at $12.923
+2021-11-19,C3,26.09,Baltic Exchange,Baltic (quoted by Banchero Costa),W,https://www.hellenicshippingnews.com/dry-bulk-market-looking-for-a-clear-direction/,"The baltic index of the C3 route from Tubarao to Qingdao fell further after last week’s improvement, closing at $26.09/mt"
+2021-11-19,C5,12.56,Baltic Exchange,Baltic (quoted by Banchero Costa),W,https://www.hellenicshippingnews.com/dry-bulk-market-looking-for-a-clear-direction/,closing on Friday at $12.56/mt
+2021-11-26,C3,27.785,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-a-mixed-bag-this-week/,the C3 lifted $1.61 to settle at $27.785
+2021-11-26,C5,12.164,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-a-mixed-bag-this-week/,The Pacific West Australia to China C5 closed the week at $12.164
+2021-12-03,C3,29.14,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-class-is-gradually-recovering/,C3 closed the week at $29.14
+2021-12-03,C5,13.036,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-class-is-gradually-recovering/,C5 was marked at $13.036 on Friday
+2021-12-10,C5,13.732,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-segment-latest-rally-seems-to-have-peaked/,The West Australia to China C5 closed out at $13.732
+2022-01-07,C3,21.965,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-enters-2022-with-positive-momentum-from-the-iron-ore-market/,The Brazil to China C3 settled for the week at $21.965
+2022-01-07,C5,9.632,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-enters-2022-with-positive-momentum-from-the-iron-ore-market/,the C5 route settled up +.459 Friday to close at $9.632
+2022-01-14,C3,19.175,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-retreats-at-the-start-of-2022/,the route settle down to $19.175
+2022-01-14,C5,7.014,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-retreats-at-the-start-of-2022/,The West Australia to Qingdao C5 closed the week at $7.014
+2022-01-28,C5,7.523,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-find-bottom/,as the C5 closed at $7.523
+2022-02-04,C3,20.26,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-trade-sideways/,Brazil to China C3 which settled at $20.26
+2022-02-04,C5,7.164,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-trade-sideways/,"West Australia to China C5, which closed at $7.164"
+2022-02-11,C3,23.485,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-on-higher-ground-as-china-returns-to-market/,while the Brazil to China C3 at $23.485
+2022-02-11,C5,8.559,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-on-higher-ground-as-china-returns-to-market/,the West Australia to China C5 closed at $8.559
+2022-02-25,C3,21.695,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-suffer-from-ukraine-development/,rates were also seen to soften to $21.695 by close of week
+2022-02-25,C5,8.8,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-suffer-from-ukraine-development/,West Australia to China C5 closed the last day of the week down -1.505 to $8.80
+2022-03-18,C3,28.14,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-cools-down-after-recent-surge/,push up the Tubarao to Qingdao C3 towards the end of the week with it now marking at $28.14
+2022-03-25,C3,26.35,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-capesize-market-facing-volatile-bunker-prices/,the Brazil to China C3 dipped 1.79 to $26.35
+2022-03-25,C5,11.641,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-capesize-market-facing-volatile-bunker-prices/,The West Australia to China C5 lowered 0.595 over the week to $11.641
+2022-04-08,C3,24.775,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-not-very-active/,"the C3 Brazil to Qingdao trade, declined over a dollar and is currently at $24.775"
+2022-04-08,C5,9.236,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-not-very-active/,The C5 West Australia to Qingdao run climbed back to $9.236 on Friday
+2022-04-29,C3,25.457,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-on-positive-territory/,The C3 Brazil to Qingdao run settled at $25.457 on Friday
+2022-05-13,C3,34.64,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-jumps-across-the-board/,the C3 Brazil to China route at $34.64
+2022-05-13,C5,15.077,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-jumps-across-the-board/,The C5 West Australia to China route now sits at $15.077
+2022-05-27,C3,31.675,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-face-headwinds/,"Tubarao to Qingdao C3 route, which now stands at $31.675"
+2022-05-27,C5,11.741,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-face-headwinds/,it opened the week at $15.05 to close at $11.741
+2022-06-10,C3,31.37,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-soften-this-week/,Brazil to China C3 and West Australia to China C5 settled at $31.37 and $12.495 respectively
+2022-06-10,C5,12.495,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-soften-this-week/,settled at $31.37 and $12.495 respectively
+2022-06-24,C3,29.911,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-stall-as-sentiment-softens-across-the-board/,putting pressure on the C3 and C17 which settled at $29.911 and $21.933
+2022-07-01,C3,30.4,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-softness-across-the-board/,The Brazil to China C3 market closed the week down -0.106 at $30.40
+2022-07-01,C5,11.535,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-softness-across-the-board/,West Australia to China C5 closed at $11.535
+2022-07-22,C3,32.111,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-end-week-on-a-positive-note/,settled at $32.111 for iron ore from Tubarao to Qingdao
+2022-08-05,C3,22.111,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-had-a-forgettable-week/,"Brazil to China C3 closed at $22.111, down -3.839 over the week"
+2022-08-12,C5,8.085,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-recovery-still-elusive-for-the-capesize-market/,"The C5 route fixed in the $8’s throughout the week, closing out at $8.085"
+2022-08-26,C5,7.625,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/bulk-report-week-34-2/,the West Australia to China C5 settled at $7.625 to end the week
+2022-09-02,C5,8.885,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-continue-to-struggle/,West Australia to China C5 lift to settle at $8.885
+2022-09-23,C5,10.24,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-keep-rebounding/,The West Australia to China C5 now priced at $10.24
+2022-09-30,C5,8.035,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-improved-this-week/,the C5 dropped -2.205 week on week to settle at $8.035
+2022-10-07,C3,24.667,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-edge-higher-this-week/,The C3 rose 0.128 on Friday to close at $24.667
+2022-10-07,C5,9.06,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-edge-higher-this-week/,The West Australia to Qingdao C5 route closed at $9.06
+2022-10-28,C3,19.95,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-need-cargo-influx-to-recover/,The C3 now stands at $19.95
+2022-10-28,C5,8.64,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-need-cargo-influx-to-recover/,the C5 declined slowly to $8.64
+2022-11-25,C3,19.006,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-segment-supported-by-demand-in-the-atlantic-region/,closed up at $19.006
+2022-11-25,C5,8.98,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-segment-supported-by-demand-in-the-atlantic-region/,The C5 route now prices at $8.98
+2022-12-07,C3,19.19,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/e/r/49780.pdf,
+2022-12-07,C5,8.78,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/e/r/49780.pdf,
+2023-01-13,C3,17.708,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-endure-significant-losses/,The Brazil to Qingdao trade closed the week at $17.708
+2023-01-18,C3,17.77,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/t/o/52909.pdf,
+2023-01-18,C5,6.895,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/t/o/52909.pdf,
+2023-01-27,C3,16.883,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-down-more-than-50-in-the-space-of-10-days/,settling at $16.883 and $6.30 respectively on Friday
+2023-01-27,C5,6.3,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-down-more-than-50-in-the-space-of-10-days/,settling at $16.883 and $6.30 respectively on Friday
+2023-02-17,C3,16.11,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/5/7/54620.pdf,
+2023-02-17,C5,6.062,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/5/7/54620.pdf,
+2023-02-22,C3,16.3,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/c/b/54876.pdf,
+2023-02-22,C5,6.295,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/c/b/54876.pdf,
+2023-02-27,C3,17.12,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/k/e/55167.pdf,
+2023-02-27,C5,7.07,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/k/e/55167.pdf,
+2023-03-31,C5,7.9,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-march-was-a-great-month-for-capesizes/,the West Australia to Qingdao run dropped from $8.41 to $7.90
+2023-04-11,C5,8.0,Platts,Platts (S&P Global),D,https://www.hellenicshippingnews.com/cyclone-in-western-australia-weighs-on-capesize-freight-rates-threatens-cargo-loadings/,"from Port Hedland to Qingdao at $8/wmt April 11, down 50 cents/wmt from April 10"
+2023-04-28,C3,22.728,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-a-positive-week-for-capesizes/,to $22.728 and $9.043 respectively
+2023-04-28,C5,9.043,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-a-positive-week-for-capesizes/,to $22.728 and $9.043 respectively
+2023-09-06,C3,18.81,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/h/5/66714.pdf,
+2023-09-06,C5,7.88,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/h/5/66714.pdf,
+2023-10-06,C3,26.378,Baltic Exchange,Baltic,D,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-keep-going-strong/,The Brazil to Qingdao run declined from 26.378 last Friday to $25.733
+2023-10-13,C3,25.733,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-keep-going-strong/,The Brazil to Qingdao run declined from 26.378 last Friday to $25.733
+2023-10-20,C3,25.772,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-is-on-a-roll/,A Tubarao to Qingdao run was paying $25.772
+2023-10-20,C5,10.7,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-is-on-a-roll/,settling the West Australia to Qingdao run at $10.70
+2023-11-17,C3,22.589,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-on-a-roll-2/,"an upward climb in the C3 index, which gained over $2 to close at $22.589"
+2023-11-27,C3,26.84,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/5/6/70171.pdf,
+2023-11-27,C5,11.5,not stated (Ruida Futures report),Ruida Futures,D,https://www.rdqh.com/upload/files/base/5/6/70171.pdf,
+2024-02-16,C5,9.7,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-on-the-rise-4/,"the C5 index increased by 0.65, reaching $9.70 today to end the week on a positive note"
+2024-02-22,C3,25.65,Baltic Exchange,Baltic,D,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-rates-strengthen/,"resulting in a 1.73 increase on the C3 index from Tuesday to Thursday, which published at $25.65"
+2024-02-23,C3,26.18,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-rates-strengthen/,today the C3 index has risen by 0.53 to $26.180
+2024-03-01,C3,28.767,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-keep-momentum-high/,the C3 index which has risen by 0.872 to $28.767
+2024-03-01,C5,13.645,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-keep-momentum-high/,the C5 index today edging up by 0.875 to 13.645
+2024-03-08,C5,14.4,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-on-an-upside/,with the C5 index ending the week at $14.40
+2024-05-17,C3,25.094,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-under-pressure/,"causing the index to rise by 0.314, reaching $25.094"
+2024-05-17,C5,10.656,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-under-pressure/,"The C5 index rose by 0.521, closing at $10.656"
+2024-06-07,C3,25.765,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-segment-slightly-higher/,"resulting in the C3 index consistently rising, closing the week at $25.765"
+2024-06-07,C5,11.245,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-segment-slightly-higher/,"The C5 index saw incremental gains throughout the week, ending at $11.245"
+2024-06-13,C3,26.55,Baltic Exchange,Baltic,D,https://www.hellenicshippingnews.com/dry-bulk-market-move-higher-last-week-but-capesizes-lost-ground/,"the C3 index, with the latter soaring by $1.42 to reach $26.55"
+2024-06-28,C5,11.165,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-index-rises-higher/,the C5 index seeing a slight adjustment of 0.165 to end the week at $11.165
+2024-07-05,C5,10.28,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-ends-week-in-correcting-mode/,a significant drop in the C5 index to $10.28 on Friday
+2024-07-19,C5,9.725,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-on-correction-mode/,which pushed C5 to $9.725 in the end
+2024-07-26,C3,24.69,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-segment-experiencing-downtrend/,The C3 index dropped from $25.97 on Monday to $24.69 by Friday
+2024-08-02,C5,9.82,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-ends-week-on-a-positive-note-despite-overall-losses/,resulting in the C5 index finishing the week at $9.820
+2024-08-09,C3,24.695,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-have-a-positive-week/,by Friday settled at $24.695
+2024-08-30,C3,28.0,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-strong-recovery-for-capesizes/,"the C3 index showed consistent growth, fuelled by strong demand on the South Brazil and West Africa to China markets, ending at $28.00"
+2024-10-04,C3,27.095,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-weakened-last-week/,with the C3 index dropping from $28.17 on Monday to end the week at $27.095
+2024-10-04,C5,10.73,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-weakened-last-week/,The C5 index fell from $11.656 to $10.73 by Friday
+2024-10-11,C5,10.025,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-rates-lower-last-week/,ending the week after a couple of stronger fixtures at $10.025
+2024-10-18,C3,22.1,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-shipping-capesize-market-softened-last-week/,C3 rates correcting downward from the low $25s to $22.1 by weeks end
+2024-10-18,C5,8.965,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-shipping-capesize-market-softened-last-week/,The C5 route rates dropped from $10.25 to end the week at $8.965
+2024-11-01,C5,8.6,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-on-correction-mode-2/,"The C5 index oscillated slightly, ending the week at $8.60"
+2024-11-08,C3,22.145,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-see-steady-improvement/,lift the C3 index from $20.380 on Monday to $22.145 by weeks end
+2024-11-08,C5,9.78,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-see-steady-improvement/,The C5 index climbed from $8.820 on Monday to settle at $9.78 by Friday
+2024-11-29,C3,20.05,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-faces-headwinds/,"The C3 index saw steady declines, dropping from $23.090 on Monday to end the week at $20.050"
+2024-12-06,C3,17.48,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-faced-a-difficult-week/,The C3 index fell from $19.19 to end the week at $17.48
+2024-12-06,C5,7.415,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-faced-a-difficult-week/,the C5 index dropping from $8.705 on Monday to end the week at $7.415
+2024-12-13,C3,16.23,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-faces-another-difficult-week/,The C3 index fell from $17.56 on Monday to $16.230 by weeks end
+2024-12-13,C5,6.99,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-faces-another-difficult-week/,The C5 index started the week at $7.42 but dropped to $6.990 by weeks end
+2024-12-20,C3,16.95,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-showing-signs-of-optimism/,"This was reflected in the C3 index, which climbed to $16.950"
+2024-12-20,C5,6.385,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-showing-signs-of-optimism/,with the C5 index dropping steadily from $7.34 on Monday to end the week at $6.385
+2025-01-10,C3,18.155,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-shipping-capesize-market-begins-2025-in-turbulence/,The C3 index rose from $17.64 to $18.155 over the week
+2025-01-10,C5,6.245,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-shipping-capesize-market-begins-2025-in-turbulence/,causing the C5 index to decline from $6.84 on Monday to $6.245 by Friday
+2025-02-21,C5,6.485,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-shipping-capesize-market-maintains-rising-momentum/,"The C5 route gradually strengthened, reaching $6.485 by week’s end"
+2025-02-28,C3,19.875,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-in-strong-momentum/,Rates on the C3 index climbed from $18.31 to $19.875 by the end of the week
+2025-02-28,C5,9.885,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-in-strong-momentum/,The C5 index rose from $6.65 on Monday to $9.885 by Friday
+2025-03-21,C3,24.485,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-sector-corrected-last-week/,"The C3 route ended the week by increasing $0.405, reaching $24.485"
+2025-03-21,C5,9.35,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-sector-corrected-last-week/,The C5 route was marked at $9.35
+2025-04-04,C3,21.815,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-sentiment-turning-bearish/,with the C3 index ending the week at $21.815
+2025-04-04,C5,8.78,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-sentiment-turning-bearish/,"as the week closed, market activity softened, partly due to holidays in Hong Kong and China, with C5 dipping to $8.78"
+2025-04-25,C3,19.755,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-march-to-higher-ground/,resulting in the C3 index climbing from $18.685 to $19.755
+2025-04-25,C5,7.815,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-march-to-higher-ground/,with the C5 index rising from $7.085 to $7.815
+2025-05-09,C3,18.215,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-stayed-in-negative-territory-last-week/,"leading the C3 route to close the week at $18,215"
+2025-05-16,C3,19.405,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-step-on-higher-ground/,with the route closing at $19.405
+2025-05-16,C5,8.195,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-step-on-higher-ground/,with the index closing at $8.195
+2025-07-25,C3,24.745,Baltic Exchange,Baltic,WI,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-post-strong-rebound/,pushed the Brazil to China route to $24.745 for end August laycan
+2025-07-25,C5,10.285,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-post-strong-rebound/,easing slightly to $10.285 on Friday
+2025-08-01,C5,10.67,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-endure-hard-week-of-downside/,eventually rebounded to $10.67 by the weekend
+2025-09-12,C3,23.59,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-move-to-higher-ground/,"However, closing at $23.59 is a softer level."
+2025-09-12,C5,10.245,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-move-to-higher-ground/,the C5 index climbed to mid $10s but gradually dropped to $10.245
+2025-09-26,C3,25.935,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesize-market-keeps-firming/,the C3 index slipped back to $25.935 by Friday
+2025-12-24,C3,23.62,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/january-snapshot-capesize-ballasters-demand/,"Between 24 Dec 2025 and 20 Jan 2026, ballaster counts increased from 246 to 282 vessels, reaching a peak during the period between these two observation points, while C3 declined from $23.62/mt to $20.93/mt"
+2026-01-20,C3,20.93,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/january-snapshot-capesize-ballasters-demand/,while C3 declined from $23.62/mt to $20.93/mt
+2026-02-13,C3,23.923,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-shipping-capesizes-found-support-towards-the-end-of-the-week/,eased to $23.923 by Friday
+2026-02-13,C5,9.272,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-shipping-capesizes-found-support-towards-the-end-of-the-week/,The C5 West Australia to Qingdao route lifted mid-week to $9.378 before soft landing at $9.272 by the close.
+2026-03-16,C5,13.475,Baltic Exchange,Baltic,D,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-end-the-week-on-a-high-note/,sliding from $13.475 on Monday to $11.71 on Friday
+2026-03-20,C5,11.71,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-capesizes-end-the-week-on-a-high-note/,sliding from $13.475 on Monday to $11.71 on Friday
+2026-04-29,C3,33.12,Baltic Exchange,Baltic (via Signal Group table),U,https://www.hellenicshippingnews.com/firmer-sentiment-ballasters-dropping-below-12m-avg-ballasters-vs-baltic-rates/,C3 / Tubarao to Qingdao / 33.12 $/MT / Day: +0.09 / Week: -0.28 / Year: +13.27
+2026-04-29,C5,13.2,Baltic Exchange,Baltic (via Signal Group table),U,https://www.hellenicshippingnews.com/firmer-sentiment-ballasters-dropping-below-12m-avg-ballasters-vs-baltic-rates/,C5 / West Australia to Qingdao / 13.20 $/MT / Day: +0.17 / Week: -0.32 / Year: +5.13
+2026-05-08,C3,36.91,Baltic Exchange,Baltic (via Signal Group table),U,https://www.hellenicshippingnews.com/dry-bulk-vessel-crossings-in-the-strait-falling-to-zero/,C3 / Tubarao to Qingdao / 36.91 $/MT / Day: +1.18 / Week: +3.74 / Year: +17.75
+2026-05-08,C5,15.72,Baltic Exchange,Baltic (via Signal Group table),U,https://www.hellenicshippingnews.com/dry-bulk-vessel-crossings-in-the-strait-falling-to-zero/,C5 / West Australia to Qingdao / 15.72 $/MT / Day: +0.0 / Week: +2.28 / Year: +7.92
+2026-07-03,C3,30.11,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/weekly-dry-market-monitor-week-27-2026/,"Iron ore routes remained firm, with C3 at $30.11/mt and C5 at $12.25/mt"
+2026-07-03,C5,12.25,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/weekly-dry-market-monitor-week-27-2026/,"Iron ore routes remained firm, with C3 at $30.11/mt and C5 at $12.25/mt"
+2026-07-10,C3,33.0,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/dry-bulk-market-weekly-monitor-panamax-spot-comparison-p2a_82-vs-p5tc-vs-p6_82/,"Iron ore routes firmed further, with C3 (Tubarao-Qingdao) at $33.00/mt and C5 (West Australia-Qingdao) at $13.32/mt"
+2026-07-10,C5,13.32,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/dry-bulk-market-weekly-monitor-panamax-spot-comparison-p2a_82-vs-p5tc-vs-p6_82/,C5 (West Australia-Qingdao) at $13.32/mt
+2026-07-17,C3,32.72,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/weekly-dry-market-monitor-port-hedland-average-waiting-time-iron-ore-congestion-meets-labour-action/,with C3 (Tubarao-Qingdao) at $32.72/mt (-$0.28 WoW) and C5 (West Australia-Qingdao) at $11.81/mt (-$1.51 WoW)
+2026-07-17,C5,11.81,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/weekly-dry-market-monitor-port-hedland-average-waiting-time-iron-ore-congestion-meets-labour-action/,C5 (West Australia-Qingdao) at $11.81/mt
+2026-07-24,C3,34.68,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/capesize-vessel-age-share-of-tonne-mile-demand-iron-ore-vs-bauxite/,"In the week to 24 July, iron-ore rates rose: C3 (Tubarao-Qingdao) up $1.96 to $34.68/mt and C5 (West Australia-Qingdao) up $1.05 to $12.86/mt"
+2026-07-24,C5,12.86,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/capesize-vessel-age-share-of-tonne-mile-demand-iron-ore-vs-bauxite/,C5 (West Australia-Qingdao) up $1.05 to $12.86/mt
+2026-08-03,C3,34.81,Baltic Exchange,Baltic (via Signal Group),I (re-dated to match the BCI in the same report),https://www.hellenicshippingnews.com/strait-of-hormuz-a-renewed-blockade-impairs-dry-bulk-crossings/,C3 (Tubarao-Qingdao) firmed more modestly to $34.81/mt (+$0.45 WoW)
+2026-08-03,C5,14.45,Baltic Exchange,Baltic (via Signal Group),I (re-dated to match the BCI in the same report),https://www.hellenicshippingnews.com/strait-of-hormuz-a-renewed-blockade-impairs-dry-bulk-crossings/,"C5 (West Australia-Qingdao) jumped to $14.45/mt (+$1.82 WoW, about +14%)"
+2026-08-06,C3,35.57,Baltic Exchange,Baltic (via Signal Group),U,https://www.hellenicshippingnews.com/chinese-buying-builds-the-next-u-s-soybean-export-programme/,C3 (Tubarao-Qingdao) firmed to $35.57/mt (+$0.76 WoW)
+2026-08-06,C5,16.23,Baltic Exchange,Baltic (via Signal Group),U,https://www.hellenicshippingnews.com/chinese-buying-builds-the-next-u-s-soybean-export-programme/,"C5 (West Australia-Qingdao) rose to $16.23/mt (+$1.79 WoW, about +12%)"
+2026-08-28,C3,38.36,Baltic Exchange,Baltic (via Signal Group),I,https://www.hellenicshippingnews.com/black-sea-disruption-redirects-russian-wheat-towards-the-baltic/,"C3 (Tubarao-Qingdao) rose to $38.36/mt (+$2.58 WoW) and C5 (West Australia-Qingdao) to $16.18/mt (+$1.59 WoW, about +11%)"
+2026-08-28,C5,16.18,Baltic Exchange,Baltic (via Signal Group),I,https://www.hellenicshippingnews.com/black-sea-disruption-redirects-russian-wheat-towards-the-baltic/,C5 (West Australia-Qingdao) to $16.18/mt
+2026-09-04,C3,41.55,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/capesize-in-focus-c3-at-a-multi-year-high-as-ordering-accelerates/,"freight climbed by $3.19 week on week, or around 8%, to a multi-year high of $41.55/mt on 4 September"
+2026-09-04,C5,18.21,Baltic Exchange,Baltic (via Signal Group),I,https://www.hellenicshippingnews.com/capesize-in-focus-c3-at-a-multi-year-high-as-ordering-accelerates/,while C5 (West Australia-Qingdao) added $2.03 WoW to $18.21/mt
+2026-09-11,C3,42.12,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/panamax-in-focus-pacific-routes-gain-as-the-index-eases-and-china-bound-thermal-coal-flows-weaken/,C3 (Tubarao-Qingdao) firmed $0.65 to $42.12/mt
+2026-09-11,C5,17.85,Baltic Exchange,Baltic (via Signal Group),D,https://www.hellenicshippingnews.com/panamax-in-focus-pacific-routes-gain-as-the-index-eases-and-china-bound-thermal-coal-flows-weaken/,C5 (West Australia-Qingdao) eased $1.11 to $17.85/mt
+2026-09-18,C3,42.96,Baltic Exchange,Baltic (via Signal Group),I,https://www.hellenicshippingnews.com/grain-in-focus-us-soybean-sailings-to-china-recover-through-september/,Among the voyage routes C3 (Tubarao-Qingdao) firmed $0.83 to $42.96/mt
+2026-09-18,C5,16.58,Baltic Exchange,Baltic (via Signal Group),I,https://www.hellenicshippingnews.com/grain-in-focus-us-soybean-sailings-to-china-recover-through-september/,C5 (West Australia-Qingdao) eased $1.27 to $16.58/mt
+2026-09-25,C5,15.625,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-market-trending-higher-again/,The C5 index slipped from $16.685 to $15.625 on Friday
+2026-10-02,C3,37.65,Baltic Exchange,Baltic (via Signal Group),W,https://www.hellenicshippingnews.com/coal-in-focus-chinas-2027-28-us-coal-commitment/,with C3 (Tubarao-Qingdao) down $4.75 to $37.65/mt and C5 (West Australia-Qingdao) down $1.20 to $14.43/mt
+2026-10-02,C5,14.43,Baltic Exchange,Baltic (via Signal Group),W,https://www.hellenicshippingnews.com/coal-in-focus-chinas-2027-28-us-coal-commitment/,C5 (West Australia-Qingdao) down $1.20 to $14.43/mt
+2026-10-09,C3,33.29,Baltic Exchange,Baltic (via Signal Group),I,https://www.hellenicshippingnews.com/black-sea-steel-flows-weaken-as-shipping-risks-rise/,"C3 closed at $33.29/mt, down $4.36, reflecting the weaker Atlantic balance"
+2026-10-09,C5,14.24,Baltic Exchange,Baltic (via Signal Group),I,https://www.hellenicshippingnews.com/black-sea-steel-flows-weaken-as-shipping-risks-rise/,"The Pacific held: C10_182 -$1,171 to $37,675/day and C5 -$0.19 to $14.24/mt"
