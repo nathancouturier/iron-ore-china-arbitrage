@@ -627,7 +627,8 @@ def build() -> Path:
                     "Table 3. Tolerances are enforced by the test suite. The mill "
                     "margin's other-cost constant is calibrated on Everbright Futures, so those rows are not independent "
                     f"checks; the {num(PARAMS['port_charges_rmb_wmt']['value'])} RMB/wmt port charge was set with the Ruida and "
-                    "Fastmarkets figures in view (they imply 30 to 35 and 31 to 40), so those two rows test the price, FX, VAT and "
+                    "Fastmarkets figures in view (Ruida's imply an adder of 30 to 35 RMB/t over goods and VAT, "
+                    "Fastmarkets' a port charge of 31 to 40 RMB/wmt), so those two rows test the price, FX, VAT and "
                     "moisture conventions more than the port charge. The freight model's time charter and bunker maps "
                     "are fitted on separate public pairs, never on route rates, so the C3 and C5 rows are out of sample. "
                     "Each anchor, with its link, is listed on the Method and data page.",
@@ -657,8 +658,9 @@ def build() -> Path:
             "SGX daily settlement files; Baltic Capesize Index via East Money; SAFE central parity; China Customs (GACC) "
             "monthly bulletins; searoute; Natural Earth. "
             "Validation: Ruida Futures daily reports, Fastmarkets, Everbright Futures, SDIC Essence Futures, Baltic "
-            "Exchange route reports in the shipping press. Episode sources: NDRC, MIIT, World Bank Commodity Markets "
-            f"Outlook, DCE notices. Full list with links and retrieval dates: {URL}#method. Code: {REPO}."
+            "Exchange route reports in the shipping press, Platts route assessments. Episode sources: NDRC, MIIT, World Bank Commodity Markets "
+            f"Outlook, DCE notices. Data sources with links and retrieval dates, and every validation anchor with its link: "
+            f"{URL}#method. Code: {REPO}."
         ),
     ]
 

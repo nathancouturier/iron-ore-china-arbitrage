@@ -225,7 +225,7 @@ other third parties are re-fetched by the pipeline and not committed.
 
 ### DCE official files against Sina (I, J, JM), liquid contract-days
 
-Share of contract-days with identical settlement and close, by product and year, and the median ratio of Sina to DCE open interest. DCE annual files report double-sided open interest; Sina switches to single-sided from 2020 (ratio 0.5). Sina stores missing settlements as 0 (most of February to July 2020), hence the lower 2020 settlement agreement. Pipeline: DCE files to 2024-12-31, Sina from 2025-01-01.
+Share of contract-days with identical settlement and close, by product and year, and the median ratio of Sina to DCE open interest. DCE annual files report double-sided open interest; Sina switches to single-sided from 2020 (ratio 0.5). Sina stores missing settlements as 0 (most of February to July 2020); those days are left out, hence fewer 2020 contract-days. Settlement agreement is lowest in 2018 and 2019; from 2020 settlements match on every liquid contract-day. Pipeline: DCE files to 2024-12-31, Sina from 2025-01-01.
 
 | product | year | rows | settle_identical | close_identical | oi_ratio_sina_to_dce |
 |---|---|---|---|---|---|
@@ -278,7 +278,7 @@ Same comparison for rebar and hot-rolled coil. SHFE files report open interest a
 
 ### Monthly 62% CFR: SGX final settlement, IMF (FRED) and World Bank Pink Sheet
 
-USD per dry tonne. SGX iron ore futures settle on the monthly average of the index: TSI 62% Fe for contract months to December 2025, Platts IODEX (61% Fe basis from 2 January 2026) from January 2026, so the 2026 rows measure the 62/61 basis spread.
+USD per dry tonne. SGX iron ore futures settle on the monthly average of the index: TSI 62% Fe for contract months to December 2025, Platts IODEX (61% Fe basis from 2 January 2026) from January 2026, so the 2026 rows combine the 62/61 basis spread with the usual gap between the settlement index and the IMF and World Bank series (compare 2025 with 2026).
 
 | year | months | sgx_minus_imf_mean | sgx_minus_wb_mean | imf_minus_wb_mean | imf_minus_wb_max_abs |
 |---|---|---|---|---|---|
@@ -320,10 +320,10 @@ CNY per USD; DEXCHUS minus central parity on common days.
 
 East Money BCI against index values quoted in the press.
 
-| date | published | east_money | source |
-|---|---|---|---|
-| 2016-01-29 | 211 | 211 | Splash247: BCI 211 on 29 January 2016, then a record low |
-| 2026-07-03 | 4100 | 4100 | Hellenic Shipping News week 27 2026: BCI 4,100 |
+| date | published | east_money | source | url |
+|---|---|---|---|---|
+| 2016-01-29 | 211 | 211 | Splash247: BCI 211 on 29 January 2016, then a record low | https://splash247.com/?p=40977 |
+| 2026-07-03 | 4100 | 4100 | Hellenic Shipping News week 27 2026: BCI 4,100 | https://www.hellenicshippingnews.com/?p=1140060 |
 
 ### China Customs imports: sum of the monthly bulletins against the year total
 

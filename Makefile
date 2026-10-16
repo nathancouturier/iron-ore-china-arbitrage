@@ -1,5 +1,5 @@
-# One-command rebuild. `make all` refreshes recent data and rebuilds every output;
-# `make full` re-fetches every source from the start of its history.
+# One-command rebuild. `make all` refreshes recent data and rebuilds the models, site and note
+# (cross-source checks and the data audit keep their last full run); `make full` re-fetches every source.
 PY ?= python
 NODE ?= node
 

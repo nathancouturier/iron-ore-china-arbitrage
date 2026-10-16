@@ -424,6 +424,7 @@ def run() -> dict[str, str]:
         "stats_daily": {k: v for k, v in a["window_daily"].items() if k != "runs"},
         "stats_monthly": {k: v for k, v in a["window_monthly"].items() if k != "runs"},
         "band_sensitivity": a["band_sensitivity"],
+        "band_history": a["band_history"],
         "histogram": {"edges": hist_edges.tolist(), "counts": counts.tolist()},
         "convergence_monthly": a["convergence_monthly"],
         "convergence_daily": a["convergence_daily"],

@@ -56,8 +56,8 @@ def checks() -> list[dict]:
                 "Share of contract-days with identical settlement and close, by product and year, and the median "
                 "ratio of Sina to DCE open interest. DCE annual files report double-sided open interest; Sina "
                 "switches to single-sided from 2020 (ratio 0.5). Sina stores missing settlements as 0 (most of "
-                "February to July 2020); those days are left out, hence fewer 2020 contract-days. Agreement is "
-                "lowest in 2018 and 2019. Pipeline: DCE files to 2024-12-31, Sina from 2025-01-01."
+                "February to July 2020); those days are left out, hence fewer 2020 contract-days. Settlement "
+                "agreement is lowest in 2018 and 2019; from 2020 settlements match on every liquid contract-day. Pipeline: DCE files to 2024-12-31, Sina from 2025-01-01."
             ),
             "table": rows,
         }
@@ -134,12 +134,22 @@ def checks() -> list[dict]:
     # 5. BCI spot checks against published values
     bci = eastmoney.read("bci").set_index("date")["value"]
     spots = [
-        ("2016-01-29", 211, "Splash247: BCI 211 on 29 January 2016, then a record low"),
-        ("2026-07-03", 4100, "Hellenic Shipping News week 27 2026: BCI 4,100"),
+        (
+            "2016-01-29",
+            211,
+            "Splash247: BCI 211 on 29 January 2016, then a record low",
+            "https://splash247.com/?p=40977",
+        ),
+        (
+            "2026-07-03",
+            4100,
+            "Hellenic Shipping News week 27 2026: BCI 4,100",
+            "https://www.hellenicshippingnews.com/?p=1140060",
+        ),
     ]
     tab = [
-        {"date": d, "published": v, "east_money": int(bci.get(pd.Timestamp(d), -9999)), "source": s}
-        for d, v, s in spots
+        {"date": d, "published": v, "east_money": int(bci.get(pd.Timestamp(d), -9999)), "source": s, "url": u}
+        for d, v, s, u in spots
     ]
     for r in tab:
         if r["published"] != r["east_money"]:

@@ -161,8 +161,9 @@ def run() -> dict[str, str]:
     m.reset_index().to_csv(DERIVED / "import_margin_monthly.csv", index=False, float_format="%.4f")
 
     d = daily_margin(a)
+    lifted = d.index[d["basis_adj_usd_dmt"] > 0]
     out["sgx_basis"] = {
-        "info": d.attrs["sgx_info"],
+        "info": {**d.attrs["sgx_info"], "first_lifted_day": str(lifted.min().date()) if len(lifted) else None},
         "months": d.attrs["sgx_basis"]
         .reset_index()
         .assign(cmonth=lambda x: x["index"].astype(str))
@@ -193,6 +194,15 @@ def run() -> dict[str, str]:
     out["band_sensitivity"] = {
         str(b): {k: v for k, v in analysis.window_stats(d["margin_rmb_dmt"], b).items() if k.startswith("share")}
         for b in [15.0, 25.0, 35.0]
+    }
+    # exchange costs before the 15 June 2021 fee cut were about 40 to 60 RMB/t (decision log D047)
+    mm_ = d["margin_rmb_dmt"].dropna()
+    out["band_history"] = {
+        str(early): {
+            "share_open": float((mm_ > np.where(mm_.index < pd.Timestamp("2021-06-15"), early, a.band)).mean()),
+            "share_closed": float((mm_ < -np.where(mm_.index < pd.Timestamp("2021-06-15"), early, a.band)).mean()),
+        }
+        for early in (40.5, 59.5)
     }
     out["deviations_monthly"] = analysis.largest_deviations(m["margin_rmb_dmt"])
     out["deviations_daily"] = analysis.largest_deviations(d["margin_rmb_dmt"], min_gap=120)

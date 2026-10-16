@@ -181,9 +181,10 @@ def sgx_proxy(curve: pd.DataFrame, cfr_m: pd.DataFrame, target_days: int) -> Sgx
     # final settlement of each month's contract (its last day as the current month)
     m0 = c[c["months_ahead"] == 0].set_index("date").sort_index()
     finals = m0.groupby("cmonth")["settle_usd_dmt"].last()
-    complete = m0.groupby("cmonth").apply(
-        lambda g: g.index.max() >= g.index.max().to_period("M").end_time.normalize() - pd.offsets.BDay(1)
-    )
+    # a contract month is complete once the data run past its last day (its final
+    # settlement is then in), whatever holiday fell at the end of the month
+    last_day = c["date"].max()
+    complete = pd.Series({cm: cm.end_time < last_day for cm in finals.index})
     bench = cfr_m["cfr62_imf_usd_dmt"]
     basis = pd.DataFrame(
         {"sgx_final_usd_dmt": finals, "bench62_usd_dmt": bench, "wb62_usd_dmt": cfr_m["cfr62_wb_usd_dmt"]}

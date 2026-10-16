@@ -16,7 +16,7 @@
     40.0
    ],
    "unit": "RMB per wet tonne",
-   "source": "Set with Ruida Futures import-cost estimates (implied 30 to 35) and Fastmarkets port-to-seaborne conversions (implied 31 to 40) in view; Mysteel uses 23, Huatai Futures 35"
+   "source": "Set with Ruida Futures import-cost estimates (implied adder of 30 to 35 RMB/t over goods and VAT) and Fastmarkets port-to-seaborne conversions (implied port charge of 31 to 40 RMB/wmt) in view; Mysteel uses 23, Huatai Futures 35"
   },
   "financing_spread_bp": {
    "value": 150.0,
@@ -3214,15 +3214,16 @@
  "sgx_basis": {
   "info": {
    "target_days": 45,
-   "pre2026_final_vs_bench_mean": -0.37392725813020905,
-   "pre2026_final_vs_bench_sd": 1.765949757023457,
+   "pre2026_final_vs_bench_mean": -0.3865785266624206,
+   "pre2026_final_vs_bench_sd": 1.755000430498209,
    "spread_2026_mean": 2.4470319432120413,
    "spread_2026_months": 7,
    "spread_2026_min": 1.1972727272727042,
    "spread_2026_max": 3.5956521739129954,
    "spread_2026_wb_mean": -0.15555555555555778,
-   "pre2026_months": 119,
-   "spread_2026_realtime_max_diff": 0.8044561856363093
+   "pre2026_months": 121,
+   "spread_2026_realtime_max_diff": 0.8044561856363093,
+   "first_lifted_day": "2025-11-03"
   },
   "months": [
    {
@@ -3499,9 +3500,9 @@
     "sgx_final_usd_dmt": 69.7,
     "bench62_usd_dmt": 71.31818181818181,
     "wb62_usd_dmt": 70.4,
-    "month_complete": false,
-    "spread_usd_dmt": null,
-    "spread_wb_usd_dmt": null,
+    "month_complete": true,
+    "spread_usd_dmt": 1.6181818181818102,
+    "spread_wb_usd_dmt": 0.7000000000000028,
     "iodex61": false,
     "cmonth": "2018-03"
    },
@@ -4219,9 +4220,9 @@
     "sgx_final_usd_dmt": 109.53,
     "bench62_usd_dmt": 110.1904761904762,
     "wb62_usd_dmt": 109.8,
-    "month_complete": false,
-    "spread_usd_dmt": null,
-    "spread_wb_usd_dmt": null,
+    "month_complete": true,
+    "spread_usd_dmt": 0.6604761904762029,
+    "spread_wb_usd_dmt": 0.269999999999996,
     "iodex61": false,
     "cmonth": "2024-03"
    },
@@ -5983,6 +5984,16 @@
    "share_open": 0.0030745580322828594,
    "share_inside": 0.26594926979246736,
    "share_closed": 0.7309761721752498
+  }
+ },
+ "band_history": {
+  "40.5": {
+   "share_open": 0.0023059185242121443,
+   "share_closed": 0.7298232129131438
+  },
+  "59.5": {
+   "share_open": 0.0,
+   "share_closed": 0.6410453497309762
   }
  },
  "deviations_monthly": [
