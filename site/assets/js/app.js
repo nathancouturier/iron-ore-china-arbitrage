@@ -156,7 +156,7 @@ async function init() {
   try {
     const meta = await getJSON('meta');
     document.getElementById('asof').textContent =
-      `Dalian and SGX data to ${fmtDate(meta.asof.daily)}; monthly IMF benchmark to ${fmtDate(meta.asof.monthly)}. Updated ${fmtDate(meta.build_date)}.`;
+      `Daily margin to ${fmtDate(meta.asof.daily)}; Dalian and Shanghai futures to ${fmtDate(meta.asof.futures)}; monthly IMF benchmark to ${fmtDate(meta.asof.monthly)}. Updated ${fmtDate(meta.build_date)}.`;
     document.getElementById('footer-updated').textContent = `Last update ${fmtDate(meta.build_date)} (version ${meta.version})`;
   } catch (e) {
     document.getElementById('asof').textContent = 'Data could not be loaded.';

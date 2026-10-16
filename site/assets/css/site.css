@@ -234,6 +234,7 @@ tbody tr:nth-child(odd) { background: var(--primer); }
   .grid--bridge, .grid--two, .calc { grid-template-columns: minmax(0, 1fr); }
   .hatches__inner { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   #tab-freight { grid-column: span 2; }
+  .calc > div:last-child { order: -1; } /* results above the inputs on narrow screens */
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 560px) {
@@ -258,6 +259,7 @@ tbody tr:nth-child(odd) { background: var(--primer); }
   .table-wrap--stack td { display: grid; grid-template-columns: minmax(0, 40%) minmax(0, 1fr); gap: 8px; padding: 2px 0; text-align: left; white-space: normal; }
   .table-wrap--stack td.num { text-align: left; white-space: normal; }
   .table-wrap--stack td::before { content: attr(data-label); color: var(--steel); font-weight: 600; }
+  .formula { white-space: pre-wrap; overflow-wrap: anywhere; }
   .stats { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {

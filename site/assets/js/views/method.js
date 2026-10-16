@@ -1,6 +1,19 @@
 import { getJSON, el, toggles } from '../app.js';
 import { fmt, fmtSigned, fmtPct, fmtDate, table } from '../charts.js';
 
+// Cross-check columns: plain label and format
+const pc = (v) => fmtPct(v, 1);
+const us = (v) => fmtSigned(v, 2);
+const CC = {
+  product: ['Product', String], year: ['Year', String], rows: ['Contract-days', (v) => fmt(v)],
+  settle_identical: ['Settlement identical', pc], close_identical: ['Close identical', pc],
+  oi_ratio_sina_to_dce: ['Open interest, Sina / exchange', (v) => fmt(v, 2)], oi_ratio_sina_to_shfe: ['Open interest, Sina / exchange', (v) => fmt(v, 2)],
+  months: ['Months', (v) => fmt(v)], sgx_minus_imf_mean: ['SGX minus IMF, mean (USD/dmt)', us], sgx_minus_wb_mean: ['SGX minus World Bank, mean (USD/dmt)', us],
+  imf_minus_wb_mean: ['IMF minus World Bank, mean (USD/dmt)', us], imf_minus_wb_max_abs: ['IMF minus World Bank, largest gap (USD/dmt)', (v) => fmt(v, 2)],
+  days: ['Days', (v) => fmt(v)], mean_diff: ['New York minus fixing, mean (CNY)', (v) => fmtSigned(v, 4)], max_abs_diff: ['Largest gap (CNY)', (v) => fmt(v, 4)],
+  date: ['Date', String], published: ['Published', (v) => fmt(v)], east_money: ['East Money', (v) => fmt(v)], source: ['Source', String],
+};
+
 export async function render(root) {
   const d = await getJSON('method');
   const A = d.anchors;
@@ -15,23 +28,27 @@ export async function render(root) {
   const ccRows = ccI.reduce((t, r) => t + r.rows, 0);
   const ccSame = ccRows ? ccI.reduce((t, r) => t + r.rows * r.settle_identical, 0) / ccRows : null;
   const bci = check('BCI');
+  const sdic = mmA.rows.filter((x) => x.independent);
+  const ebr = mmA.rows.filter((x) => !x.independent);
+  const sgxMonths = check('Monthly').filter((r) => r.year < 2026).reduce((t, r) => t + r.months, 0);
 
   const rows = [
-    { c: 'Import cost, Ruida Futures estimates', n: ic.rows.length, r: `max error ${fmt(ic.max_abs_error_ours_central_parity, 1)} RMB/t with the PBoC central parity (${fmt(ic.max_abs_error_ours, 1)} with the New York rate)`, t: `${fmt(T.import_cost_rmb_t)} RMB/t`, ok: ic.max_abs_error_ours_central_parity < T.import_cost_rmb_t },
+    { c: 'Import cost, Ruida Futures estimates, with the FX source matched to theirs (PBoC central parity)', n: ic.rows.length, r: `max error ${fmt(ic.max_abs_error_ours_central_parity, 1)} RMB/t; with the New York rate used for the headline figures it is ${fmt(ic.max_abs_error_ours, 1)}`, t: `${fmt(T.import_cost_rmb_t)} RMB/t`, ok: ic.max_abs_error_ours_central_parity < T.import_cost_rmb_t },
     { c: 'Port price, Fastmarkets fot Qingdao converted to USD/dmt', n: pp.rows.length, r: `max error ${fmt(pp.max_abs_error_usd, 2)} USD/dmt`, t: `${fmt(T.port_price_usd_dmt)} USD/dmt`, ok: pp.max_abs_error_usd < T.port_price_usd_dmt },
-    { c: 'Rebar mill margin, broker reports', n: mmA.rows.length, r: `max error ${fmt(mmA.max_abs_error, 1)} RMB/t`, t: `${fmt(T.mill_margin_rmb_t)} RMB/t`, ok: mmA.max_abs_error < T.mill_margin_rmb_t },
+    { c: 'Rebar mill margin, SDIC Essence Futures (independent: its own formula and constant)', n: sdic.length, r: `error ${sdic.map((x) => fmtSigned(x.error_rmb_t, 2)).join(', ')} RMB/t`, t: `${fmt(T.mill_margin_rmb_t)} RMB/t`, ok: Math.max(...sdic.map((x) => Math.abs(x.error_rmb_t))) < T.mill_margin_rmb_t },
+    { c: 'Rebar mill margin, Everbright Futures 2026 (the 1,080 constant is calibrated on these, so they check prices and contract choice only)', n: ebr.length, r: `max error ${fmt(Math.max(...ebr.map((x) => Math.abs(x.error_rmb_t))), 1)} RMB/t`, t: 'calibration', ok: null },
     { c: 'C3 freight, voyage model, out of sample', n: fe.C3.voyage.n, r: `RMSE ${fmt(fe.C3.voyage.rmse, 2)}, MAE ${fmt(fe.C3.voyage.mae, 2)} USD/t`, t: `RMSE ${fmt(T.freight_rmse_usd_t.C3, 1)} USD/t`, ok: fe.C3.voyage.rmse < T.freight_rmse_usd_t.C3 },
     { c: 'C5 freight, voyage model, out of sample', n: fe.C5.voyage.n, r: `RMSE ${fmt(fe.C5.voyage.rmse, 2)}, MAE ${fmt(fe.C5.voyage.mae, 2)} USD/t`, t: `RMSE ${fmt(T.freight_rmse_usd_t.C5, 1)} USD/t`, ok: fe.C5.voyage.rmse < T.freight_rmse_usd_t.C5 },
     { c: 'BCI values quoted in the press', n: bci.length, r: `${bci.filter((b) => b.published === b.east_money).length} of ${bci.length} identical`, t: 'exact', ok: bci.every((b) => b.published === b.east_money) },
     { c: 'Dalian iron ore settlements, exchange files against Sina', n: ccRows, r: `${fmtPct(ccSame, 1)} of liquid contract-days identical`, t: 'cross-check', ok: null },
-    { c: 'SGX final settlement against the IMF 62% average, to 2025', n: null, r: `mean ${fmtSigned(sgx.pre2026_final_vs_bench_mean, 2)} USD/dmt, standard deviation ${fmt(sgx.pre2026_final_vs_bench_sd, 2)}`, t: 'cross-check', ok: null },
+    { c: 'SGX final settlement against the IMF 62% average, months to December 2025', n: sgxMonths, r: `mean ${fmtSigned(sgx.pre2026_final_vs_bench_mean, 2)} USD/dmt, standard deviation ${fmt(sgx.pre2026_final_vs_bench_sd, 2)}`, t: 'cross-check', ok: null },
   ];
   const tested = rows.filter((r) => r.ok !== null);
   const passed = tested.filter((r) => r.ok).length;
 
   root.append(
-    el('p', { class: 'takeaway' }, `Every figure comes from public data with a dated retrieval and a step in code; ${passed} of ${tested.length} checks against published figures pass their tolerance.`),
-    el('p', { class: 'subtake' }, 'Tolerances were fixed before reconciling and are enforced by the test suite; no parameter was tuned to meet them. Conventions, formulas, sources, every anchor and the limitations sit behind the buttons below. Rebuild everything from a clean clone with one command (make all).'),
+    el('p', { class: 'takeaway' }, `Every figure comes from public data with a dated retrieval and a step in code; ${passed} of ${tested.length} independent checks against published figures pass their tolerance.`),
+    el('p', { class: 'subtake' }, 'Tolerances were fixed before reconciling and are enforced by the test suite. One parameter is calibrated on published figures: the 1,080 RMB/t of other costs in the mill margin, set from Everbright Futures\u2019 2026 margins, so those rows are not counted as independent checks. The import-cost check passes with the FX source matched to the broker\u2019s (PBoC central parity), not with the New York rate used for the headline figures. Conventions, formulas, sources, every anchor and the limitations sit behind the buttons below. Rebuild everything from a clean clone with one command (make all).'),
     el('div', { class: 'panel' },
       el('h3', { class: 'chart-title' }, 'Validation against published figures'),
       table('Validation summary', [
@@ -39,7 +56,7 @@ export async function render(root) {
         { label: 'Result', key: 'r' }, { label: 'Tolerance', key: 't' },
         { label: 'Status', get: (r) => (r.ok === null ? 'reported' : r.ok ? 'pass' : 'fail') },
       ], rows),
-      el('p', { class: 'source' }, 'Sources: anchor files in data/anchors with URLs and quotes; computed by pipeline/anchors.py and pipeline/freight_model.py, enforced by tests/test_anchors.py.'),
+      el('p', { class: 'source' }, `Sources: Ruida Futures daily reports (2022 to 2023), Fastmarkets (2019 to 2022), SDIC Essence and Everbright Futures (2022, 2026), Baltic Exchange route assessments reported in the shipping press, Platts and Ruida Futures (2016 to 2026), against this site's data to ${fmtDate(d.daily_sensitivity.date)}. Every anchor, with its link and a quote, is under Validation detail and in the downloads.`),
     ),
   );
 
@@ -88,7 +105,8 @@ export async function render(root) {
       el('h3', {}, 'Pipeline'),
       el('p', {}, 'Stages: ingest (download with retries, cache, SHA-256 manifest), transform (contract panels, trading calendar, constant maturity, most-active series), validate (cross-source checks), model (margins, freight, statistics), export (one JSON per view, CSV downloads), report (research note PDF). Volume and open interest are normalised to single-sided lots (Chinese exchanges switched on 1 January 2020). FX, rates, Brent and BCI are carried forward at most five business days; Chinese holidays have no Dalian observation and are not filled.'),
       el('p', {}, 'Daily CFR proxy: SGX iron ore futures interpolated to the 45-day horizon between the two contracts whose month midpoints bracket it. The current-month contract is not used because it settles on the average of the month and so lags the market.'),
-      el('p', {}, `SGX settlements for 2026 contract months are on Platts IODEX at 61% Fe; they are lifted by the measured monthly spread to the IMF 62% average (mean ${fmt(sgx.spread_2026_mean, 2)} USD/dmt over ${sgx.spread_2026_months} months, range ${fmt(sgx.spread_2026_min, 2)} to ${fmt(sgx.spread_2026_max, 2)}). Before 2026 the SGX final settlement averaged ${fmtSigned(sgx.pre2026_final_vs_bench_mean, 2)} USD/dmt against the IMF series (standard deviation ${fmt(sgx.pre2026_final_vs_bench_sd, 2)}).`),
+      el('p', {}, `SGX settlements for 2026 contract months are on Platts IODEX at 61% Fe; every 2026 contract month is lifted by one constant, the mean of the measured monthly spreads between the IMF 62% average and the SGX final settlement (${fmt(sgx.spread_2026_mean, 2)} USD/dmt over ${sgx.spread_2026_months} months, range ${fmt(sgx.spread_2026_min, 2)} to ${fmt(sgx.spread_2026_max, 2)}), so no day uses a monthly average published after it. Before 2026 the SGX final settlement averaged ${fmtSigned(sgx.pre2026_final_vs_bench_mean, 2)} USD/dmt against the IMF series (standard deviation ${fmt(sgx.pre2026_final_vs_bench_sd, 2)}).`),
+      el('p', {}, 'Daily series and monthly baseline: the daily series compares forward with forward (SGX and Dalian at the same 45-day horizon), the trade a desk can hedge; the monthly baseline compares the spot index average with the 45-day Dalian price. In steep backwardation, as in 2021, the monthly baseline shows a deeper discount.'),
       el('p', {}, `Constant-maturity robustness: excluding Dalian contracts in their delivery month moves the mean daily margin by ${fmtSigned(d.curve_robustness.daily_mean_diff, 2)} RMB/dmt and the share of open days from the default to ${fmtPct(d.curve_robustness.daily.share_open, 2)}; it removes the open run of 3 to 10 May 2016, which leaned on the expiring May contract.`),
     ]],
     ['Sources', () => [
@@ -115,7 +133,7 @@ export async function render(root) {
       table('Mill margin: broker figures against ours (RMB per tonne)', [
         { label: 'Date', key: 'date', href: 'url' }, { label: 'Publisher', key: 'publisher' }, { label: 'Contracts', key: 'contracts' },
         { label: 'Published', get: (r) => fmtSigned(r.published_rmb_t, 1), num: true }, { label: 'Ours', get: (r) => fmtSigned(r.ours_rmb_t, 1), num: true },
-        { label: 'Error', get: (r) => fmtSigned(r.error_rmb_t, 1), num: true }, { label: 'Formula', key: 'formula' },
+        { label: 'Error', get: (r) => fmtSigned(r.error_rmb_t, 2), num: true }, { label: 'Formula', key: 'formula' },
       ], mmA.rows),
       table('Freight: modeled route rates against published assessments (USD per wet tonne)', [
         { label: 'Date', key: 'date', href: 'url' }, { label: 'Route', key: 'route' }, { label: 'Assessor', key: 'assessor' },
@@ -127,7 +145,7 @@ export async function render(root) {
     ]],
     ['Cross-checks', () => d.cross_checks.map((c) => el('div', { style: 'margin-bottom:12px' },
       el('h4', {}, c.title), el('p', {}, c.text),
-      c.table && c.table.length ? table(c.title, Object.keys(c.table[0]).map((k) => ({ label: k.replaceAll('_', ' '), key: k })), c.table) : null))],
+      c.table && c.table.length ? table(c.title, Object.keys(c.table[0]).map((k) => ({ label: (CC[k] || [k])[0], get: (r) => (CC[k] ? CC[k][1](r[k]) : r[k]), num: typeof c.table[0][k] === 'number' && k !== 'year' })), c.table) : null))],
     ['Limitations', () => [
       el('h3', {}, 'Limitations'),
       el('ul', {},
@@ -137,7 +155,8 @@ export async function render(root) {
         el('li', {}, 'The monthly baseline compares averages; actual cargoes are priced on index averages around loading or arrival, with brand premiums and discounts.'),
         el('li', {}, `Port charges are a single assumption (${fmt(d.params.port_charges_rmb_wmt.value)} RMB/wmt); no official North China port tariff was found.`),
         el('li', {}, 'Other quality items (silica, alumina, phosphorus) are not adjusted; for a 62% IODEX-spec cargo delivered against the 61% contract they would add about 7.5 RMB/t.'),
-        el('li', {}, `The 2026 SGX basis lift adds about ${fmt(sgx.spread_2026_mean, 1)} USD/dmt with a measured range of ${fmt(sgx.spread_2026_min, 1)} to ${fmt(sgx.spread_2026_max, 1)} USD.`),
+        el('li', {}, `The 2026 SGX basis lift adds about ${fmt(sgx.spread_2026_mean, 1)} USD/dmt (measured range ${fmt(sgx.spread_2026_min, 1)} to ${fmt(sgx.spread_2026_max, 1)} USD), about ${fmt(sgx.spread_2026_mean * d.daily_sensitivity.slope_rmb_per_usd)} RMB/dmt of landed cost, which is enough to decide whether the latest daily margin is inside the band or below it; measured against the World Bank series instead of the IMF one the spread averages ${fmtSigned(sgx.spread_2026_wb_mean, 2)} USD. See the Assumptions drawer on the Overview.`),
+        el('li', {}, 'The mill-margin constant of 1,080 RMB/t is calibrated on Everbright Futures\u2019 2026 figures; published constants range from 950 to 1,250, which moves the latest rebar margin by more than 100 RMB/t either way.'),
         el('li', {}, 'China import volumes by month (China Customs) could not be fetched from the build environment, so the optional test of imports against the window was not run.'),
       ),
     ]],

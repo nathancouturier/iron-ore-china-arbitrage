@@ -6,6 +6,17 @@ const ROUTE = {
   C3: { color: () => C.seawater, leg: 'tubarao-qingdao', name: 'C3 Tubarao to Qingdao', origin: 'Brazil' },
 };
 
+const VESSEL_LABELS = {
+  laden_speed_kn: (x) => `Laden speed: ${fmt(x)} knots`,
+  ballast_speed_kn: (x) => `Ballast speed: ${fmt(x)} knots`,
+  laden_fuel_t_day: (x) => `Fuel at sea, laden: ${fmt(x)} t per day`,
+  ballast_fuel_t_day: (x) => `Fuel at sea, ballast: ${fmt(x)} t per day`,
+  port_fuel_t_day: (x) => `Fuel in port: ${fmt(x)} t per day`,
+  cargo_t: (x) => `Cargo: ${fmt(x)} t`,
+  commission: (x) => `Total commission: ${fmtPct(x, 0)}`,
+  discharge_days: (x) => `Discharge time: ${fmt(x, 2)} days`,
+};
+
 const mean = (xs) => {
   const v = xs.filter((x) => x !== null && x !== undefined);
   return v.length ? v.reduce((s, x) => s + x, 0) / v.length : null;
@@ -25,13 +36,14 @@ export async function render(root, meta) {
   const gapMean = mean(gap);
   const [lastWeek, c5Last] = lastValid(d.weekly.c5);
   const c3Last = lastValid(d.weekly.c3)[1];
+  const L = d.latest_daily;
 
   root.append(
     staleNotice(meta, ['baltic', 'brent', 'fred']) || '',
     el('p', { class: 'takeaway' },
-      `In ${fmtMonth(lm)} freight took ${fmtPct(m.share_c5[n - 1], 0)} of the CFR price from West Australia and ${fmtPct(m.share_c3[n - 1], 0)} from Brazil; the longer haul left Brazil's index-equivalent netback ${fmt(gap[n - 1], 1)} USD/dmt below Australia's.`),
+      `On ${fmtDate(L.date)} modeled freight was ${fmtPct(L.share_c5, 1)} of the CFR price from West Australia and ${fmtPct(L.share_c3, 1)} from Brazil; the longer haul left Brazil's index-equivalent netback ${fmt(L.netback_gap_usd_dmt, 1)} USD/dmt below Australia's.`),
     el('p', { class: 'subtake' },
-      `Route rates are paid data, so freight here is modeled from the Baltic Capesize Index and Brent and checked against ${ev.C3.voyage.n + ev.C5.voyage.n} published route assessments. Since 2014 the Brazilian netback has trailed the Australian one by ${fmt(gapMean, 1)} USD/dmt on average.`),
+      `Route rates are paid data, so freight here is modeled from the Baltic Capesize Index and Brent and checked against ${ev.C3.voyage.n + ev.C5.voyage.n} of ${d.anchor_rows} dated published route assessments (the other ${d.anchor_rows - ev.C3.voyage.n - ev.C5.voyage.n} fall in a Chinese New Year gap in the BCI feed). Since 2014 the Brazilian netback has trailed the Australian one by ${fmt(gapMean, 1)} USD/dmt on average (monthly).`),
   );
 
   await loadECharts();
@@ -78,7 +90,7 @@ function mapBlock(d, c5Last, c3Last, lastWeek) {
         map: 'land',
         roam: false,
         silent: true,
-        boundingCoords: [[-50, 42], [128, -38]],
+        boundingCoords: [[-50, 42], [136, -38]],
         left: 4, right: 4, top: 4, bottom: 4,
         itemStyle: { areaColor: C.plate_strong, borderColor: C.plate_strong, borderWidth: 0.5 },
         emphasis: { disabled: true },
@@ -105,7 +117,7 @@ function routeFact(code, d, latest, date) {
     el('p', { class: 'fact__label' }, el('span', { class: 'swatch', style: `border-color:${ROUTE[code].color()}` }), ROUTE[code].name),
     el('p', { class: 'fact__value' }, fmt(latest, 2), el('span', { class: 'fact__unit' }, 'USD/wmt, modeled')),
     el('p', { class: 'fact__note' },
-      `Week to ${fmtDate(date)}. ${fmt(leg.nm)} nm; ${fmt(v.laden_days, 1)} days laden, ${fmt(v.total_days, 1)}-day round voyage. Model error on ${e.n} published rates: RMSE ${fmt(e.rmse, 2)} USD/t.`),
+      `Week to ${fmtDate(date)}. ${fmt(leg.nm)} nm; ${fmt(v.laden_days, 1)} days laden, ${fmt(v.total_days, 1)}-day round voyage. Model error on ${e.n} published rates: RMSE ${fmt(e.rmse, 2)} USD/t. Last ${d.recent_error[code].n} published rates (${fmtDate(d.recent_error[code].first)} to ${fmtDate(d.recent_error[code].last)}): mean error ${fmtSigned(d.recent_error[code].mean_error, 2)} USD/t${Math.abs(d.recent_error[code].mean_error) > e.rmse ? ', so the model runs ' + (d.recent_error[code].mean_error > 0 ? 'high' : 'low') + ' at the moment' : ''}.`),
   );
 }
 
@@ -168,10 +180,12 @@ function diffBlock(d) {
   const xs = pts.map((p) => p[0]);
   const x0 = Math.min(...xs);
   const x1 = Math.max(...xs);
+  const pub = d.published_pairs;
+  const resid = mean(pub.map((q) => q[1] - (s.a + s.b * q[0])));
   const { block, host } = chartBlock({
-    title: `The Brazil haul costs about ${fmt(s.b * 1000, 1)} USD/t more for every 1,000 BCI points`,
-    sub: 'C3 minus C5 modeled freight, USD per wet tonne, against the Baltic Capesize Index (points), weekly since 2014. Line: least squares fit on daily data.',
-    source: 'Sources: modeled freight (this site), Baltic Capesize Index via East Money. Modeled.',
+    title: `In the voyage model the Brazil haul costs about ${fmt(s.b * 1000, 1)} USD/t more per 1,000 BCI points; published pairs sit ${fmt(Math.abs(resid), 1)} USD/t ${resid >= 0 ? 'above' : 'below'} that line on average`,
+    sub: `C3 minus C5 freight, USD per wet tonne, against the Baltic Capesize Index (points). Grey: modeled, weekly since 2014 (a property of the model, which is built from the BCI). Dark: ${pub.length} dates with both published C3 and C5 rates. Line: least squares fit on the modeled daily series.`,
+    source: `Sources: modeled freight (this site), published C3 and C5 assessments (data/anchors), Baltic Capesize Index via East Money. Modeled series to ${fmtDate(w.diff[w.diff.length - 1][0])}.`,
     summary: `C3 minus C5 = ${fmt(s.a, 2)} + ${fmt(s.b, 5)} x BCI; correlation ${fmt(s.corr, 2)}; mean ${fmt(s.mean, 2)}, range ${fmt(s.min, 2)} to ${fmt(s.max, 2)} USD/wmt over ${fmt(s.n)} days.`,
   });
   requestAnimationFrame(() => {
@@ -181,13 +195,14 @@ function diffBlock(d) {
       tooltip: {
         trigger: 'item',
         formatter: (p) => (p.seriesType === 'scatter'
-          ? `${fmtDate(p.value[2])}${ttRow(C.topside, `${fmt(p.value[1], 2)} USD/wmt`, `C3 minus C5 at BCI ${fmt(p.value[0])}`, true)}`
+          ? `${fmtDate(p.value[2])}${ttRow(p.seriesName === 'Published' ? C.topside : C.steel, `${fmt(p.value[1], 2)} USD/wmt`, `C3 minus C5 at BCI ${fmt(p.value[0])}, ${p.seriesName.toLowerCase()}`, p.seriesName !== 'Published')}`
           : `Fit: ${fmt(s.a, 2)} + ${fmt(s.b * 1000, 2)} per 1,000 BCI points`),
       },
       xAxis: { ...valueAxis('Baltic Capesize Index, points', { scale: false, nameGap: 30, min: 0, max: (v) => Math.ceil(v.max / 2000) * 2000 }), splitLine: { show: false } },
       yAxis: valueAxis('USD per wet tonne', { scale: false, nameGap: 36 }),
       series: [
-        { type: 'scatter', data: pts, symbolSize: 5, itemStyle: { color: 'rgba(22, 33, 43, 0.35)' } },
+        { type: 'scatter', name: 'Modeled', data: pts, symbolSize: 5, itemStyle: { color: 'rgba(70, 83, 94, 0.30)' } },
+        { type: 'scatter', name: 'Published', data: pub, symbolSize: 8, z: 4, itemStyle: { color: C.topside, borderColor: '#ffffff', borderWidth: 1 } },
         line('Fit', [[x0, s.a + s.b * x0], [x1, s.a + s.b * x1]], C.hematite, { lineStyle: { width: 2, color: C.hematite } }),
       ],
     }));
@@ -211,11 +226,11 @@ function shareBlock(d) {
   const avg = (y, k) => mean(byYear[y][k]);
   const topBoth = years.every((y) => y === ly || (avg(y, 'c5') < avg(ly, 'c5') && avg(y, 'c3') < avg(ly, 'c3')));
   const title = topBoth
-    ? `Freight takes a larger share of the CFR price in ${ly} than in any year since ${years[0]}: ${fmtPct(avg(ly, 'c5'), 1)} from Australia, ${fmtPct(avg(ly, 'c3'), 1)} from Brazil`
+    ? `Averaged over ${ly} so far, freight takes ${fmtPct(avg(ly, 'c5'), 1)} of the CFR price from Australia and ${fmtPct(avg(ly, 'c3'), 1)} from Brazil, the highest annual averages since ${years[0]}`
     : `Freight takes ${fmtPct(mean(m.share_c5), 0)} of the CFR price from Australia and ${fmtPct(mean(m.share_c3), 0)} from Brazil on average`;
   const { block, host } = chartBlock({
     title,
-    sub: 'Modeled freight per dry tonne as a share of the 62% Fe CFR China monthly average, percent.',
+    sub: `Modeled freight per dry tonne as a share of the 62% Fe CFR China monthly average, percent, monthly. Single months peak higher (Brazil ${fmtPct(Math.max(...m.share_c3.filter((v) => v !== null)), 0)} in ${fmtMonth(m.months[m.share_c3.indexOf(Math.max(...m.share_c3.filter((v) => v !== null)))])}); the title compares calendar-year averages.`,
     source: `Sources: IMF via FRED (CFR), modeled freight (this site). Modeled, data to ${fmtMonth(m.months[m.months.length - 1])}.`,
     summary: years.map((y) => `${y}: Australia ${fmtPct(avg(y, 'c5'), 1)}, Brazil ${fmtPct(avg(y, 'c3'), 1)}`).join('; '),
   });
@@ -298,7 +313,7 @@ function drawers(d) {
     ['Assumptions', () => [
       el('h3', {}, 'Vessel and voyage'),
       el('ul', {},
-        ...Object.entries(vs).map(([k, v]) => el('li', {}, `${k.replaceAll('_', ' ')}: ${fmt(v.value, k === 'commission' ? 2 : k === 'discharge_days' ? 2 : 0)}${v.alt !== undefined ? ` (sensitivity ${fmt(v.alt)})` : ''}. ${v.source}.`)),
+        ...Object.entries(vs).map(([k, v]) => el('li', {}, `${VESSEL_LABELS[k] ? VESSEL_LABELS[k](v.value) : k}${v.alt !== undefined ? ` (sensitivity ${VESSEL_LABELS[k](v.alt).split(': ')[1]})` : ''}. ${v.source}.`)),
         el('li', {}, d.port_costs_note),
         el('li', {}, d.load_days_note),
       ),
@@ -310,6 +325,7 @@ function drawers(d) {
       ),
     ]],
     ['Data', () => [
+      el('p', {}, 'Full series: ', el('a', { href: 'downloads/freight_modeled_daily.csv', download: '' }, 'modeled freight, daily CSV'), '; ', el('a', { href: 'downloads/anchors_freight_routes.csv', download: '' }, 'published route rates with links and quotes, CSV'), '.'),
       table('Out-of-sample errors, USD per tonne', [
         { label: 'Route', key: 'r' }, { label: 'Model', key: 'm' }, { label: 'n', key: 'n', num: true },
         { label: 'MAE', get: (x) => fmt(x.mae, 2), num: true }, { label: 'RMSE', get: (x) => fmt(x.rmse, 2), num: true },

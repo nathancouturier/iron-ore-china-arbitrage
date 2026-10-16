@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 
 from ironarb.params import PARAMS, ROUTES, VESSEL
+from ironarb.voyage import financing_days
 
 from . import analysis, anchors, freight_model, inputs, mill_model
 from .margin_model import Assumptions, build_voyages, daily_margin, monthly_margin
@@ -39,6 +40,37 @@ def _clean(obj: Any) -> Any:
     if isinstance(obj, pd.Series):
         return _clean(obj.to_dict())
     return obj
+
+
+def daily_sensitivity(d: pd.DataFrame, a: Assumptions, info: dict[str, Any]) -> dict[str, Any]:
+    """Latest daily margin under other values of the 2026 61%-to-62% basis lift,
+    and the moves in CFR or Dalian that would change the window state."""
+    last = d.dropna(subset=["margin_rmb_dmt"]).iloc[-1]
+    days = financing_days(build_voyages(a)[a.route], a.extra_days)
+    # RMB of landed cost per USD/dmt of CFR: goods with VAT plus financing
+    slope = float(last["usdcny"] * (1 + last["vat_rate"]))
+    slope += float(last["usdcny"] * (last["usd_rate_pct"] + a.spread_bp / 100) / 100 * days / 360)
+    margin = float(last["margin_rmb_dmt"])
+    lift = float(last.get("basis_adj_usd_dmt", 0.0))
+
+    def at(lift_usd: float) -> dict[str, Any]:
+        mg = margin - (lift_usd - lift) * slope
+        return {"lift_usd_dmt": lift_usd, "margin_rmb_dmt": mg, "state": int(np.sign(mg)) if abs(mg) > a.band else 0}
+
+    return {
+        "date": str(d.dropna(subset=["margin_rmb_dmt"]).index[-1].date()),
+        "margin_rmb_dmt": margin,
+        "slope_rmb_per_usd": slope,
+        "lift": at(lift),
+        "no_lift": at(0.0),
+        "lift_min": at(info["spread_2026_min"]),
+        "lift_max": at(info["spread_2026_max"]),
+        "lift_world_bank": at(info["spread_2026_wb_mean"]),
+        # CFR change (USD/dmt) that brings the margin to the band edge (-band) and to the open threshold (+band)
+        "cfr_change_to_band_usd": (margin + a.band) / slope if margin < -a.band else 0.0,
+        "cfr_change_to_open_usd": (margin - a.band) / slope,
+        "dalian_change_to_open_rmb": a.band - margin,
+    }
 
 
 def run() -> dict[str, str]:
@@ -149,6 +181,9 @@ def run() -> dict[str, str]:
     d.drop(columns=[c for c in d.columns if c.startswith("financing_days")]).reset_index().to_csv(
         DERIVED / "import_margin_daily.csv", index=False, float_format="%.4f"
     )
+
+    # Sensitivity of the latest daily margin to the 2026 basis lift, and break-evens
+    out["daily_sensitivity"] = daily_sensitivity(d, a, out["sgx_basis"]["info"])
 
     # Analysis on the margin
     out["window_monthly"] = analysis.window_stats(m["margin_rmb_dmt"], a.band)

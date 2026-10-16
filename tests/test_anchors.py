@@ -28,7 +28,7 @@ def freight_eval():
 
 def test_bci_published_lows_and_highs():
     bci = inputs.baltic_daily()["bci_pts"]
-    assert bci.loc["2016-01-29"] == 211  # Splash247: historic low of 211 on 29 January 2016
+    assert bci.loc["2016-01-29"] == 211  # Splash247: 211 on 29 January 2016, then a record low
     assert bci.loc["2016-02-02"] == 217  # same article: BCI 217
     assert bci.loc["2026-07-03"] == 4100  # Hellenic Shipping News, week 27 2026
 

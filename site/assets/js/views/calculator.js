@@ -21,7 +21,7 @@ export async function render(root) {
   const state = { ...d.defaults, route: 'C5', ...d.routes.C5 };
   root.append(
     el('p', { class: 'takeaway' }, 'Change any input to see the landed cost and the import margin move, with the same formulas the study uses.'),
-    el('p', { class: 'subtake' }, `Defaults are the latest values in the data (${fmtDate(d.defaults.date)}). The calculator runs in your browser; a parity test checks it against the Python engine to 1e-9.`),
+    el('p', { class: 'subtake' }, `Defaults are the latest values in the data (${fmtDate(d.defaults.date)}). The calculator runs in your browser; an automated test checks that it gives the same results as the study's Python code to nine decimal places.`),
   );
 
   const form = el('form', { class: 'panel', onsubmit: (e) => e.preventDefault(), 'aria-label': 'Calculator inputs' });
@@ -41,9 +41,9 @@ export async function render(root) {
 
   const out = el('div', { class: 'ledger', 'aria-live': 'polite' });
   const { block, host } = chartBlock({
-    title: 'Landed cost against the Dalian price',
-    sub: 'RMB per dry tonne, from your inputs.',
-    source: 'Computed in the browser with site/assets/js/engine.js.',
+    title: 'Landed cost against the Dalian price, from your inputs',
+    sub: 'RMB per dry tonne.',
+    source: `Computed in your browser from the inputs; defaults from SGX, Dalian Commodity Exchange, FRED and modeled freight on ${fmtDate(d.defaults.date)}.`,
     summary: 'Updates as inputs change.',
     cls: 'chart',
   });
@@ -58,6 +58,7 @@ export async function render(root) {
     read();
     const r = calculate(state);
     const st = r.state > 0 ? ['Window open', 'open'] : r.state < 0 ? ['Window closed', 'closed'] : ['Inside the band', 'inside'];
+    block.querySelector('.chart-title').textContent = `With these inputs the landed cost is ${fmt(Math.abs(r.marginRmb), 1)} RMB/dmt ${r.marginRmb < 0 ? 'above' : 'below'} the Dalian price: ${st[0].toLowerCase()}`;
     out.replaceChildren(
       factEl('Landed cost, VAT included', `${fmt(r.landedRmb, 1)}`, 'RMB/dmt', `Goods ${fmt(r.goodsRmb, 1)}, VAT ${fmt(r.vatRmb, 1)}, port ${fmt(r.portRmb, 1)}, financing ${fmt(r.financingRmb, 2)}`),
       factEl('Import margin, Dalian minus landed', fmtSigned(r.marginRmb, 1), 'RMB/dmt', null, st),
@@ -71,7 +72,7 @@ export async function render(root) {
       grid: { left: 12, right: 64, top: 8, bottom: 40, containLabel: true },
       legend: { show: false },
       tooltip: { trigger: 'item', formatter: (p) => ttRow(rows[p.dataIndex][3], `${fmt(rows[p.dataIndex][2], 1)} RMB/dmt`, rows[p.dataIndex][0]) },
-      xAxis: valueAxis('RMB per dry tonne', { scale: false, min: 0, nameGap: 28 }),
+      xAxis: valueAxis('RMB per dry tonne', { scale: false, min: 0, nameGap: 28, splitNumber: host.clientWidth < 520 ? 3 : 5, axisLabel: { hideOverlap: true } }),
       yAxis: { type: 'category', inverse: true, data: rows.map((x) => x[0]), axisLine: { show: false }, axisTick: { show: false }, axisLabel: { color: C.topside, fontFamily: C.font } },
       series: [
         { type: 'bar', stack: 'b', data: rows.map((x) => x[1]), itemStyle: { color: 'transparent' }, silent: true, tooltip: { show: false }, barMaxWidth: 22 },

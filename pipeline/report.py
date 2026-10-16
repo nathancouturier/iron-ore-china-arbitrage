@@ -303,6 +303,9 @@ def build() -> Path:
     cd, cm = a["convergence_daily"], a["convergence_monthly"]
     fe = a["freight"]["evaluation"]
     sens = a["freight"]["sensitivity"]
+    dsens = a["daily_sensitivity"]
+    an_ = anchors[anchors["route"] == "C3"].dropna(subset=["voyage_model"]).sort_values("date").tail(5)
+    rec_c3 = float((an_["voyage_model"] - an_["value_usd_wmt"]).mean())
     tr = {r["horizon_days"]: r for r in a["mill_test_rebar"]}
     th = {r["horizon_days"]: r for r in a["mill_test_hrc"]}
     pp = a["anchors"]["port_price"]
@@ -358,21 +361,25 @@ def build() -> Path:
         P("Question", "h"),
         P(
             "When does it pay to bring a cargo of seaborne iron ore into China, from where, and who captures the "
-            "margin between the mine and the blast furnace? The note builds the delivered cost of a 62% Fe cargo step "
-            "by step (FOB netback, Capesize freight, CFR Qingdao, USD/CNY, import VAT, port charges and voyage "
-            "financing) and compares it with the Dalian futures price for the matching delivery, then asks whether "
-            "Chinese steel mill margins support the ore price."
+            "margin between the mine and the blast furnace? The note traces the delivered cost of a 62% Fe cargo along "
+            "the voyage: the index-equivalent FOB netback (the CFR index price minus modeled Capesize freight), CFR "
+            "Qingdao, then USD/CNY, import VAT, port charges and voyage financing to the landed cost, which it compares "
+            "with the Dalian futures price for the matching delivery; then it asks whether Chinese steel mill margins "
+            "support the ore price."
         ),
         P("Answer", "h"),
     ]
     bullets = [
-        f"On {day(ld)} a 62% Fe cargo from West Australia landed in Qingdao at {num(last['landed_rmb_dmt'])} RMB per "
-        f"dry tonne, VAT included, against {num(last['dce62_rmb_dmt'])} for 45-day Dalian delivery: a margin of "
-        f"{signed(last['margin_rmb_dmt'])} RMB/dmt, so the window is {state}.",
+        f"On {day(ld)} a 62% Fe cargo from West Australia bought for delivery to Qingdao in about 45 days cost "
+        f"{num(last['landed_rmb_dmt'])} RMB per dry tonne landed, VAT included, against {num(last['dce62_rmb_dmt'])} for 45-day Dalian delivery: a margin of "
+        f"{signed(last['margin_rmb_dmt'])} RMB/dmt, so the window is {state}. The call is close: without the "
+        f"{num(dsens['lift']['lift_usd_dmt'], 2)} USD/dmt lift that puts 2026 SGX prices on a 62% Fe basis the margin would be "
+        f"{signed(dsens['no_lift']['margin_rmb_dmt'])}, and a CFR price {num(-dsens['cfr_change_to_band_usd'], 1)} USD lower "
+        "would bring it inside the band.",
         f"The window has almost never been open. On the daily series (from December 2015) the margin exceeded the "
         f"{num(band)} RMB/dmt cost of using the exchange on {pct(wd['share_open'])} of trading days and never for more than "
         f"{max(r['length'] for r in wd['runs'] if r['state'] == 1)} days in a row; on the monthly baseline it was "
-        f"below the band in {pct(wm['share_closed'], 0)} of {wm['n']} months, by {num(-wm['mean'])} RMB/dmt on average "
+        f"below the band in {pct(wm['share_closed'], 0)} of {wm['n']} months and averaged {signed(wm['mean'])} RMB/dmt "
         f"({pct(-share_m)} of landed cost).",
         f"Gaps fade slowly: the half-life is {num(cm['half_life'], 1)} months on monthly data (95% interval "
         f"{num(cm['boot_half_life_lo'], 1)} to {num(cm['boot_half_life_hi'], 1)}), but a unit root cannot be rejected "
@@ -401,8 +408,10 @@ def build() -> Path:
             "Seaborne price: IMF 62% Fe CFR China monthly average (FRED PIORECRUSDM) for the monthly baseline from "
             "January 2014; SGX iron ore futures interpolated to a 45-day horizon for the daily series from December 2015 "
             "(the current-month contract is not used because it settles on the month's average). SGX contracts from "
-            "January 2026 settle on Platts IODEX at 61% Fe and are lifted to 62% by the measured monthly spread "
-            f"(mean {num(a['sgx_basis']['info']['spread_2026_mean'], 2)} USD/dmt). Dalian: every iron ore contract from "
+            "January 2026 settle on Platts IODEX at 61% Fe and are lifted to 62% by one constant, the mean measured monthly "
+            f"spread to the IMF 62% average ({num(a['sgx_basis']['info']['spread_2026_mean'], 2)} USD/dmt). The daily series "
+            "compares forward with forward (the hedgeable trade); the monthly baseline compares the spot index with 45-day "
+            "Dalian and shows a deeper discount in steep backwardation. Dalian: every iron ore contract from "
             "the exchange's annual files (2013 to 2024) and Sina (2025 onward), expressed on a 62% Fe basis (standard grade "
             "61% from I2205, plus 10 x X with " + x_text + "), interpolated to a constant 45-day "
             f"maturity across contracts with at least {num(PARAMS['cm_min_oi_lots']['value'])} lots of open interest. "
@@ -464,7 +473,9 @@ def build() -> Path:
             "Sensitivity of the latest monthly margin "
             f"({month(a['tornado']['period'])}, {num(-a['tornado']['base_distance'], 1)} RMB/dmt below the open threshold): "
             + "; ".join(
-                f"{r['assumption']} {signed(r['low'], 1)} / {signed(r['high'], 1)}" for r in a["tornado"]["rows"][:5]
+                f"{r['assumption']} {signed(r['low'], 1)}"
+                + (f" / {signed(r['high'], 1)}" if r["high"] is not None else "")
+                for r in a["tornado"]["rows"][:5]
             )
             + ". No single assumption in its range opens the window. Against the most-active contract (about "
             f"{num(ma_dte)} days to expiry on average) the mean monthly margin would be "
@@ -483,7 +494,7 @@ def build() -> Path:
             f"{num(fe['C5']['voyage']['rmse'], 2)} USD/t on C5 (n = {fe['C5']['voyage']['n']}) and "
             f"{num(fe['C3']['voyage']['rmse'], 2)} on C3 (n = {fe['C3']['voyage']['n']}); a regression on the BCI and Brent "
             f"scores {num(fe['C5']['stat_loo']['rmse'], 2)} and {num(fe['C3']['stat_loo']['rmse'], 2)} out of sample. "
-            f"The C3 minus C5 spread rises by about {num(sens['c3_minus_c5_vs_bci']['b'] * 1000, 1)} USD/t per 1,000 BCI "
+            f"In the voyage model the C3 minus C5 spread rises by about {num(sens['c3_minus_c5_vs_bci']['b'] * 1000, 1)} USD/t per 1,000 BCI "
             f"points (correlation {num(sens['c3_minus_c5_vs_bci']['corr'], 2)}). In {lm[:4]} freight takes "
             f"{pct(year_share.loc[lm[:4], 'freight_share_cfr_c5'])} of CFR from Australia and "
             f"{pct(year_share.loc[lm[:4], 'freight_share_cfr_c3'])} from Brazil"
@@ -545,15 +556,22 @@ def build() -> Path:
         ),
         P("Validation", "h"),
     ]
+    mrows = mm_["rows"]
+    sdic = [r for r in mrows if r["independent"]]
+    ebr = [r for r in mrows if not r["independent"]]
+    sdic_err = max((r["error_rmb_t"] for r in sdic), key=abs)
+    ebr_err = max(abs(r["error_rmb_t"]) for r in ebr)
     val_rows = [
         ["Check", "n", "Result", "Tolerance"],
-        ["Import cost, Ruida Futures estimates", str(len(ic["rows"])),
-         f"max error {num(ic['max_abs_error_ours_central_parity'], 1)} RMB/t with the PBoC central parity "
-         f"({num(ic['max_abs_error_ours'], 1)} with the New York rate)", f"{num(TOLERANCE['import_cost_rmb_t'])} RMB/t"],
+        ["Import cost, Ruida Futures estimates, FX matched to theirs (PBoC central parity)", str(len(ic["rows"])),
+         f"max error {num(ic['max_abs_error_ours_central_parity'], 1)} RMB/t "
+         f"({num(ic['max_abs_error_ours'], 1)} with the New York rate used for the headline)", f"{num(TOLERANCE['import_cost_rmb_t'])} RMB/t"],
         ["Fastmarkets Qingdao port price to USD/dmt", str(len(pp["rows"])), f"max error {num(pp['max_abs_error_usd'], 2)} USD/dmt",
          f"{num(TOLERANCE['port_price_usd_dmt'])} USD/dmt"],
-        ["Rebar margin, broker reports", str(len(mm_["rows"])), f"max error {num(mm_['max_abs_error'], 1)} RMB/t",
+        ["Rebar margin, SDIC Essence Futures (independent)", str(len(sdic)), f"error {signed(sdic_err, 2)} RMB/t",
          f"{num(TOLERANCE['mill_margin_rmb_t'])} RMB/t"],
+        ["Rebar margin, Everbright Futures 2026 (constant calibrated on these)", str(len(ebr)),
+         f"max error {num(ebr_err, 1)} RMB/t; checks prices and contracts only", "calibration"],
         ["C3 freight, voyage model", str(fe["C3"]["voyage"]["n"]), f"RMSE {num(fe['C3']['voyage']['rmse'], 2)} USD/t",
          f"{num(TOLERANCE['freight_rmse_usd_t']['C3'], 1)} USD/t"],
         ["C5 freight, voyage model", str(fe["C5"]["voyage"]["n"]), f"RMSE {num(fe['C5']['voyage']['rmse'], 2)} USD/t",
@@ -562,18 +580,24 @@ def build() -> Path:
     story += [
         _table(val_rows, [55, 10, 82, 27], st),
         P(
-            "Table 3. Tolerances were fixed before reconciling and are enforced by the test suite; no parameter was tuned "
-            "to meet them. Each anchor, with its link, is listed on the Method and data page.",
+            "Table 3. Tolerances were fixed before reconciling and are enforced by the test suite. The mill margin's "
+            "other-cost constant is the one parameter calibrated on published figures (Everbright Futures), so those rows "
+            "are not independent checks. Each anchor, with its link, is listed on the Method and data page.",
             "cap",
         ),
         P("Limitations", "h"),
         P(
             "The margin is an expected margin, not a riskless arbitrage: price, basis, grade and currency risk remain while "
             "the cargo is at sea. Dalian prices the cheapest deliverable brand with fixed quality discounts, so part of the "
-            "persistent discount is a brand and grade effect. Freight is modeled, with the errors shown above, and the "
-            "published anchors cluster in 2021 to 2026. Port charges are a single assumption. The daily series depends on "
-            "SGX futures as a proxy for the spot index, lifted from a 61% to a 62% basis in 2026. Monthly China import "
-            "volumes could not be retrieved, so the optional test of imports against the window was not run."
+            "persistent discount is a brand and grade effect. Freight is modeled, with the errors shown above; the "
+            "published anchors cluster in 2021 to 2026 and the model has run above the most recent C3 rates "
+            f"(mean error {signed(rec_c3, 1)} USD/t on the last five). Port charges are a single assumption. The daily "
+            "series uses SGX futures, lifted from a 61% to a 62% basis in 2026 by one constant; the latest window call "
+            "depends on that lift, and against the World Bank series instead of the IMF one the 2026 spread averages "
+            f"{signed(dsens['lift_world_bank']['lift_usd_dmt'], 2)} USD, which would put the margin at "
+            f"{signed(dsens['lift_world_bank']['margin_rmb_dmt'])}. The third episode rests on an expiring contract. "
+            "Monthly China import volumes could not be retrieved, so the optional test of imports against the window was "
+            "not run."
         ),
         P("Sources", "h"),
         P(

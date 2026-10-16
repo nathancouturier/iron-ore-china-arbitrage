@@ -14,7 +14,7 @@ import pandas as pd
 from ironarb.params import LOAD_DAYS_NOTE, PARAMS, PORT_COSTS_NOTE, ROUTES, VESSEL
 from ironarb.vat import SCHEDULE
 
-from . import geo
+from . import geo, inputs
 from .anchors import TOLERANCE
 from .ingest.common import load_manifest
 
@@ -162,14 +162,14 @@ def build_meta(a: dict[str, Any], daily: pd.DataFrame, monthly: pd.DataFrame) ->
     sources = {
         "imf": src(
             "IMF iron ore 62% Fe CFR China (FRED PIORECRUSDM)",
-            last_fred("PIORECRUSDM"),
+            last_fred("PIORECRUSDM")[:7],
             "fred",
             "fred/PIORECRUSDM",
             "https://fred.stlouisfed.org/series/PIORECRUSDM",
         ),
         "worldbank": src(
             "World Bank Pink Sheet, iron ore",
-            str(monthly.index[-1]),
+            str(inputs.cfr_monthly()["cfr62_wb_usd_dmt"].dropna().index[-1])[:7],
             "worldbank",
             "worldbank/",
             "https://www.worldbank.org/en/research/commodity-markets",
@@ -243,7 +243,12 @@ def build_meta(a: dict[str, Any], daily: pd.DataFrame, monthly: pd.DataFrame) ->
         "build_time": datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "build_date": datetime.now(UTC).date().isoformat(),
         "ingest_mode": status.get("ingest_mode", "full"),
-        "asof": {"daily": str(daily.index[-1])[:10], "monthly": str(monthly.index[-1])},
+        "asof": {
+            "daily": str(daily.index[-1])[:10],
+            "futures": str(curve["date"].iloc[-1])[:10],
+            "monthly": str(monthly.index[-1]),
+            "fx_observation": last_fred("DEXCHUS"),
+        },
         "sources": sources,
     }
 
@@ -299,6 +304,7 @@ def run() -> dict[str, str]:
         "basis_adj_usd_dmt": _r(float(last.get("basis_adj_usd_dmt", 0.0))),
         "sgx_cm_raw_usd_dmt": _r(float(last["cfr62_usd_dmt"] - last.get("basis_adj_usd_dmt", 0.0))),
         "sgx_contracts": str(last.get("sgx_contracts", "")),
+        "fx_observation": meta["asof"]["fx_observation"],
     }
     recent = daily[daily.index >= daily.index[-1] - pd.DateOffset(months=12)]
     overview = {
@@ -330,6 +336,7 @@ def run() -> dict[str, str]:
         "sgx_basis": a["sgx_basis"]["info"],
         "params": {k: v["value"] for k, v in PARAMS.items()},
         "x_latest": _r(float(curve["dce_i_ma_grade_adj_rmb"].dropna().iloc[-1]), 1),
+        "sensitivity": a["daily_sensitivity"],
     }
     sizes["overview"] = _write("overview", _clean(overview))
 
@@ -345,8 +352,10 @@ def run() -> dict[str, str]:
             "usdcny",
         ]
     ]
-    hist_edges = np.arange(-560, 101, 20)
-    counts, _ = np.histogram(daily["margin_rmb_dmt"].dropna(), bins=hist_edges)
+    mvals = daily["margin_rmb_dmt"].dropna()
+    step = band  # bin edges fall on -band and +band, so colours follow the window state exactly
+    hist_edges = np.arange(np.floor(mvals.min() / step) * step, np.ceil(mvals.max() / step) * step + step / 2, step)
+    counts, _ = np.histogram(mvals, bins=hist_edges)
     window = {
         "daily": {
             "margin": series(dm, "margin_rmb_dmt", 1),
@@ -356,6 +365,14 @@ def run() -> dict[str, str]:
             "months": list(monthly.index),
             "margin": [_r(v, 1) for v in monthly["margin_rmb_dmt"]],
             "naive": [_r(v, 1) for v in monthly["margin_naive_rmb_dmt"]],
+            # average of the daily (forward against forward) margin in the same month
+            "daily_avg": [
+                _r(v, 1)
+                for v in daily["margin_rmb_dmt"]
+                .groupby(daily.index.to_period("M").astype(str))
+                .mean()
+                .reindex(monthly.index)
+            ],
         },
         "band": band,
         "stats_daily": {k: v for k, v in a["window_daily"].items() if k != "runs"},
@@ -428,6 +445,35 @@ def run() -> dict[str, str]:
         "moisture": moist,
         "vessel": {k: v for k, v in VESSEL.items()},
     }
+    an = pd.DataFrame(a["freight"]["anchors"])
+    an["date"] = an["date"].astype(str).str[:10]
+    an["error"] = an["voyage_model"] - an["value_usd_wmt"]
+    recent_err = {}
+    for route in ["C3", "C5"]:
+        r = an[an["route"] == route].dropna(subset=["voyage_model"]).sort_values("date").tail(5)
+        recent_err[route] = {
+            "n": len(r),
+            "first": r["date"].iloc[0],
+            "last": r["date"].iloc[-1],
+            "mean_error": float(r["error"].mean()),
+            "errors": [float(e) for e in r["error"]],
+        }
+    pv = an.pivot_table(index="date", columns="route", values="value_usd_wmt", aggfunc="first")
+    bci_at = an.groupby("date")["bci_pts"].first()
+    pv = pv.dropna(subset=["C3", "C5"]).join(bci_at).dropna(subset=["bci_pts"])
+    freight_out["recent_error"] = recent_err
+    freight_out["published_pairs"] = [
+        [float(b), _r(float(c3 - c5), 3), d]
+        for d, c3, c5, b in zip(pv.index, pv["C3"], pv["C5"], pv["bci_pts"], strict=True)
+    ]
+    freight_out["latest_daily"] = {
+        "date": ld,
+        "cfr_usd_dmt": _r(cfr),
+        "share_c5": _r(c5_dmt / cfr, 4),
+        "share_c3": _r(c3_dmt / cfr, 4),
+        "netback_gap_usd_dmt": _r(c3_dmt - c5_dmt),
+    }
+    freight_out["anchor_rows"] = len(pd.read_csv(ROOT / "data" / "anchors" / "freight_routes.csv"))
     sizes["freight"] = _write("freight", _clean(freight_out))
 
     # Mill margin -----------------------------------------------------------------
@@ -447,6 +493,8 @@ def run() -> dict[str, str]:
             "other": [_r(v, 1) for v in mmm["other_cost_rmb_t"]],
             "rebar": [_r(v, 1) for v in mmm["rb_ma_rmb_t"]],
             "margin": [_r(v, 1) for v in mmm["rebar_margin_ma_rmb_t"]],
+            "hrc": [_r(v, 1) for v in mmm["hc_ma_rmb_t"]],
+            "margin_hrc": [_r(v, 1) for v in mmm["hrc_margin_ma_rmb_t"]],
         },
         "test_rebar": a["mill_test_rebar"],
         "test_hrc": a["mill_test_hrc"],
@@ -468,20 +516,20 @@ def run() -> dict[str, str]:
     calc = {
         "defaults": {
             "date": ld,
-            "cfrUsdDmt": bridge["cfr_usd_dmt"],
-            "usdcny": bridge["usdcny"],
+            "cfrUsdDmt": _r(cfr, 4),
+            "usdcny": _r(fx, 4),
             "vat": bridge["vat_rate"],
             "portRmbWmt": p["port_charges_rmb_wmt"]["value"],
             "moisture": moist,
             "usdRatePct": _r(float(last["usd_rate_pct"]), 3),
             "spreadBp": p["financing_spread_bp"]["value"],
-            "dce62RmbDmt": bridge["dce62_rmb"],
+            "dce62RmbDmt": _r(float(last["dce62_rmb_dmt"]), 4),
             "band": band,
         },
         "routes": {
             code: {
                 "label": label,
-                "freightUsdWmt": bridge[f"freight_{code.lower()}_usd_wmt"],
+                "freightUsdWmt": _r(float(last[f"{code.lower()}_model_usd_wmt"]), 4),
                 "financingDays": _r(
                     float(a["freight"]["voyages"][code]["laden_days"] + p["financing_extra_days"]["value"]), 2
                 ),
@@ -509,6 +557,7 @@ def run() -> dict[str, str]:
         "bunker_calibration": a["freight"]["bunker_calibration"],
         "cross_checks": checks,
         "tolerance": TOLERANCE,
+        "daily_sensitivity": a["daily_sensitivity"],
         "curve_robustness": {k: v for k, v in a["curve_robustness"].items() if k != "daily_open_runs"},
         "sgx_basis": a["sgx_basis"],
         "cm_methods": curve.groupby(curve.index.year)["cm45_method"]

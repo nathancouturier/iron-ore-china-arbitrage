@@ -112,19 +112,21 @@ def tornado(base: Assumptions | None = None, period: str | None = None) -> pd.Da
         ("Moisture for port charges (6% / 10%)", {"moisture": 0.06}, {"moisture": 0.10}),
         ("Financing spread (50 / 300 bp)", {"spread_bp": 50.0}, {"spread_bp": 300.0}),
         ("Maturity target (30 / 90 days)", {"cm_target": 30}, {"cm_target": 90}),
-        ("Maturity target (60 days)", {"cm_target": 60}, {"cm_target": 60}),
-        ("FX source (PBoC central parity)", {"fx_source": "central_parity"}, {"fx_source": "central_parity"}),
-        ("Route financing (Brazil, C3)", {"route": "C3"}, {"route": "C3"}),
+        ("FX source (PBoC central parity)", {"fx_source": "central_parity"}, None),
+        ("Route financing (Brazil, C3)", {"route": "C3"}, None),
         ("No-arbitrage band (15 / 35 RMB/dmt)", {"band": 15.0}, {"band": 35.0}),
     ]
     rows = []
     for label, lo, hi in cases:
-        a_lo, a_hi = replace(base, **lo), replace(base, **hi)
+        a_lo = replace(base, **lo)
         v_lo = float(monthly_margin(a_lo).loc[p, "margin_rmb_dmt"]) - a_lo.band
-        v_hi = float(monthly_margin(a_hi).loc[p, "margin_rmb_dmt"]) - a_hi.band
+        v_hi = float("nan")
+        if hi is not None:  # a single alternative has one bar, not a low and a high
+            a_hi = replace(base, **hi)
+            v_hi = float(monthly_margin(a_hi).loc[p, "margin_rmb_dmt"]) - a_hi.band
         rows.append({"assumption": label, "low": v_lo - m0, "high": v_hi - m0})
     out = pd.DataFrame(rows)
     out.attrs["base_distance"] = m0
     out.attrs["period"] = str(p)
-    out["span"] = (out["high"] - out["low"]).abs().combine((out[["low", "high"]].abs()).max(axis=1), max)
+    out["span"] = out[["low", "high"]].abs().max(axis=1)
     return out.sort_values("span", ascending=False).reset_index(drop=True)

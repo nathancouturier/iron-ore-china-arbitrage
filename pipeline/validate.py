@@ -133,7 +133,7 @@ def checks() -> list[dict]:
     # 5. BCI spot checks against published values
     bci = eastmoney.read("bci").set_index("date")["value"]
     spots = [
-        ("2016-01-29", 211, "Splash247: historic low of 211 on 29 January 2016"),
+        ("2016-01-29", 211, "Splash247: BCI 211 on 29 January 2016, then a record low"),
         ("2026-07-03", 4100, "Hellenic Shipping News week 27 2026: BCI 4,100"),
     ]
     tab = [

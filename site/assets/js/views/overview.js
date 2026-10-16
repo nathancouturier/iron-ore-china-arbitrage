@@ -11,12 +11,21 @@ export async function render(root, meta) {
   const fx = b.usdcny;
   const state = f.margin.state;
   const verb = b.margin_rmb < 0 ? 'more than' : 'less than';
-  const take = `On ${fmtDate(b.date)} a 62% Fe cargo landed in Qingdao cost ${fmt(b.landed_rmb)} RMB per dry tonne, ${fmt(Math.abs(b.margin_rmb))} RMB ${verb} Dalian pays for 45-day delivery: the import window is ${stateWord(state)}.`;
+  const sens = d.sensitivity;
+  const take = `On ${fmtDate(b.date)} a 62% Fe cargo bought for delivery to Qingdao in about 45 days cost ${fmt(b.landed_rmb)} RMB per dry tonne landed, ${fmt(Math.abs(b.margin_rmb))} RMB ${verb} Dalian pays for 45-day delivery: the import window is ${stateWord(state)}.`;
+  const liftNote = sens.lift.lift_usd_dmt
+    ? ` Without the 2026 lift of SGX prices from a 61% to a 62% Fe basis (${fmt(sens.lift.lift_usd_dmt, 2)} USD/dmt) the margin would be ${fmtSigned(sens.no_lift.margin_rmb_dmt)}, ${stateWord(sens.no_lift.state)}.`
+    : '';
+  const edge = (state < 0
+    ? `The margin is ${fmt(-d.band - b.margin_rmb)} RMB/dmt beyond the band: a CFR price ${fmt(-sens.cfr_change_to_band_usd, 1)} USD/dmt lower would bring it inside, and ${fmt(-sens.cfr_change_to_open_usd, 1)} USD lower (or Dalian ${fmt(sens.dalian_change_to_open_rmb)} RMB higher) would open the window.`
+    : state === 0
+      ? `A CFR price ${fmt(-sens.cfr_change_to_open_usd, 1)} USD/dmt lower (or Dalian ${fmt(sens.dalian_change_to_open_rmb)} RMB higher) would open the window.`
+      : '') + liftNote;
   root.append(
     staleNotice(meta, ['dce', 'sgx', 'baltic', 'fx']) || '',
     el('p', { class: 'takeaway' }, take),
     el('p', { class: 'subtake' },
-      `Since 2016 the Dalian price has been below the delivered cost of seaborne ore on ${fmtPct(d.share_closed_daily, 0)} of trading days, by more than the ${fmt(d.band)} RMB/dmt cost of using the exchange. The margin is an expected margin, not a riskless arbitrage: price, basis, grade and currency risk remain while the cargo is at sea.`),
+      `${edge} Since 2016 the Dalian price has been below the delivered cost of seaborne ore on ${fmtPct(d.share_closed_daily, 0)} of trading days, by more than the ${fmt(d.band)} RMB/dmt cost of using the exchange. The margin is an expected margin, not a riskless arbitrage: price, basis, grade and currency risk remain while the cargo is at sea.`),
   );
 
   // Bridge, in voyage order: mine, sea, port, mill.
@@ -34,7 +43,7 @@ export async function render(root, meta) {
   ];
   const { block: bridgeBlock, host: bridgeHost } = chartBlock({
     title: `Delivered cost exceeds the Dalian price by ${fmt(Math.abs(b.margin_rmb))} RMB per dry tonne`,
-    sub: `Cost bridge on ${fmtDate(b.date)}, RMB per dry tonne (USD converted at ${fmt(fx, 4)} CNY per USD). Freight is modeled.`,
+    sub: `Cost bridge on ${fmtDate(b.date)}, RMB per dry tonne (USD converted at ${fmt(fx, 4)} CNY per USD, the New York noon rate of ${fmtDate(b.fx_observation)}${b.fx_observation < b.date ? ', carried forward' : ''}). Freight is modeled.`,
     source: `Sources: SGX iron ore futures (45-day horizon, 62% basis), Dalian Commodity Exchange via Sina, FRED (USD/CNY, SOFR), modeled freight from the Baltic Capesize Index and Brent. Data to ${fmtDate(b.date)}.`,
     summary: rows.map((r) => `${r.name}: ${fmt(r.v)} RMB/dmt`).join('; ') + `. Dalian minus landed cost: ${fmtSigned(b.margin_rmb)} RMB/dmt.`,
     cls: 'chart chart--tall',
@@ -42,7 +51,7 @@ export async function render(root, meta) {
   const ledger = el('div', { class: 'ledger' },
     fact('Import margin, Dalian 45-day minus landed cost', fmtSigned(f.margin.value), 'RMB/dmt',
       [el('span', { class: `state state--${state > 0 ? 'open' : state < 0 ? 'closed' : 'inside'}` }, state > 0 ? 'Window open' : state < 0 ? 'Window closed' : 'Inside the band'),
-        el('br'), `${fmtDate(f.margin.date)}, against a band of ±${fmt(d.band)} RMB/dmt. Monthly baseline ${fmtSigned(f.margin_monthly.value)} in ${fmtMonth(f.margin_monthly.month)}.`]),
+        el('br'), `${fmtDate(f.margin.date)}, against a band of ±${fmt(d.band)} RMB/dmt; ${fmtSigned(sens.no_lift.margin_rmb_dmt)} without the 2026 basis lift. Monthly baseline ${fmtSigned(f.margin_monthly.value)} in ${fmtMonth(f.margin_monthly.month)}.`]),
     fact('Freight share of delivered cost, Australia', fmtPct(f.freight_share.value, 1), '',
       [`modeled C5 freight with its VAT, ${fmtDate(f.freight_share.date)}; ${fmtPct(f.freight_share.share_of_cfr, 1)} of the CFR price`]),
     fact('Rebar mill margin, futures-implied', fmtSigned(f.rebar_margin.value), 'RMB/t',
@@ -101,7 +110,9 @@ export async function render(root, meta) {
   const rv = d.recent.filter((p) => p[1] !== null).map((p) => p[1]);
   const below = rv.filter((v) => v < -d.band).length;
   const above = rv.filter((v) => v > d.band).length;
-  const recentTitle = above === 0
+  const recentTitle = below === rv.length
+    ? `The margin stayed below the no-arbitrage band on every one of the last ${rv.length} trading days`
+    : above === 0
     ? `The margin stayed below the no-arbitrage band on ${below} of the last ${rv.length} trading days and never rose above it`
     : `The margin was below the no-arbitrage band on ${below} and above it on ${above} of the last ${rv.length} trading days`;
   const { block: recentBlock, host: recentHost } = chartBlock({
@@ -139,7 +150,9 @@ export async function render(root, meta) {
         el('li', {}, `Port charges ${fmt(P.port_charges_rmb_wmt)} RMB per wet tonne, moisture ${fmtPct(P.moisture, 0)} (sensitivity 6% to 10%).`),
         el('li', {}, `Financing: SOFR plus ${fmt(P.financing_spread_bp)} bp on the CFR value for the laden voyage plus ${fmt(P.financing_extra_days)} days.`),
         el('li', {}, `Dalian: ${fmt(P.cm_target_days)}-day constant maturity, interpolated between contracts with at least ${fmt(P.cm_min_oi_lots)} lots of open interest; 61% Fe contracts lifted by 10 × X = ${fmt(d.x_latest)} RMB/t.`),
-        el('li', {}, `2026 SGX settlements are on Platts IODEX at 61% Fe; the CFR figure adds ${fmt(b.basis_adj_usd_dmt, 2)} USD/dmt, the mean 2026 gap between the IMF 62% benchmark and SGX final settlements (range ${fmt(d.sgx_basis.spread_2026_min, 2)} to ${fmt(d.sgx_basis.spread_2026_max, 2)} USD).`),
+        el('li', {}, `2026 SGX settlements are on Platts IODEX at 61% Fe; the CFR figure adds ${fmt(b.basis_adj_usd_dmt, 2)} USD/dmt, the mean gap between the IMF 62% monthly average and the SGX final settlement over the ${d.sgx_basis.spread_2026_months} measured 2026 months (range ${fmt(d.sgx_basis.spread_2026_min, 2)} to ${fmt(d.sgx_basis.spread_2026_max, 2)} USD). One constant is used for every 2026 contract month, so no day uses a monthly average published after it.`),
+        el('li', {}, `The window call depends on that lift. On ${fmtDate(sens.date)} the margin would be ${fmtSigned(sens.lift_min.margin_rmb_dmt)} at the smallest measured spread, ${fmtSigned(sens.lift_max.margin_rmb_dmt)} at the largest and ${fmtSigned(sens.no_lift.margin_rmb_dmt)} with no lift (${stateWord(sens.no_lift.state)}). Measured against the World Bank series instead of the IMF one, the 2026 spread averages ${fmtSigned(sens.lift_world_bank.lift_usd_dmt, 2)} USD and the margin would be ${fmtSigned(sens.lift_world_bank.margin_rmb_dmt)}; the World Bank series has run 1.6 to 3.5 USD below the IMF series since 2024, a gap not explained here, so the IMF series is used.`),
+        el('li', {}, `Break-evens on ${fmtDate(sens.date)}: each 1 USD/dmt on CFR moves the landed cost by ${fmt(sens.slope_rmb_per_usd, 2)} RMB/dmt; CFR ${fmt(-sens.cfr_change_to_band_usd, 2)} USD lower brings the margin inside the band, ${fmt(-sens.cfr_change_to_open_usd, 2)} USD lower opens the window, as would Dalian ${fmt(sens.dalian_change_to_open_rmb, 1)} RMB higher.`),
         el('li', {}, 'Freight is modeled from the Baltic Capesize Index and Brent; see the Freight and origins view for its errors.'),
       ),
     ]],

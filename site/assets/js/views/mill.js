@@ -1,5 +1,5 @@
 import { getJSON, el, chartBlock, toggles, staleNotice } from '../app.js';
-import { C, base, mount, loadECharts, fmt, fmtSigned, fmtDate, valueAxis, timeAxis, line, presets, zoom, table, ttRow } from '../charts.js';
+import { C, base, mount, loadECharts, fmt, fmtSigned, fmtDate, fmtMonth, valueAxis, timeAxis, line, presets, zoom, table, ttRow } from '../charts.js';
 
 export async function render(root, meta) {
   const d = await getJSON('mill');
@@ -49,7 +49,7 @@ export async function render(root, meta) {
   const { block: b2, host: h2 } = chartBlock({
     title: `Ore and coke take ${fmt(share * 100)}% of the rebar price on average; after a fixed ${fmt(d.params.mill_other_costs_rebar.value)} RMB/t of other costs, the margin is what is left`,
     sub: 'Monthly averages, RMB per tonne of steel: stacked cost components (1.6 x iron ore, 0.5 x coke, other costs) against the rebar price. The gap between the line and the stack is the margin.',
-    source: 'Sources: SHFE, DCE, Sina; computed by the pipeline.',
+    source: `Sources: Shanghai Futures Exchange daily files, Dalian Commodity Exchange annual files, Sina. Monthly averages, ${fmtMonth(m.months[0])} to ${fmtMonth(m.months[m.months.length - 1])}.`,
     summary: `Latest month ${m.months[m.months.length - 1]}: ore ${fmt(m.ore[m.ore.length - 1])}, coke ${fmt(m.coke[m.coke.length - 1])}, other ${fmt(m.other[m.other.length - 1])}, rebar ${fmt(m.rebar[m.rebar.length - 1])} RMB/t.`,
     cls: 'chart chart--tall',
   });
@@ -73,7 +73,7 @@ export async function render(root, meta) {
   const { block: b3, host: h3 } = chartBlock({
     title: 'Low mill margins did not precede weaker iron ore',
     sub: 'Pre-registered test. Difference in the forward change of the Dalian 45-day iron ore price (percentage points) between days when the margin is in the bottom decile of its previous 756 trading days and all other days. Bars: 95% moving block bootstrap intervals.',
-    source: 'Sources: computed by the pipeline (pipeline/mill_model.py); design fixed in the decision log before the result was computed.',
+    source: `Sources: the rebar and HRC margins above and the Dalian 45-day price; signal days ${fmtDate(tr[0].sample_start)} to ${fmtDate(tr[0].sample_end)}. Test design written down before the result was computed.`,
     summary: tr.map((r) => `${r.horizon_days} days: ${fmtSigned(r.effect_pct, 2)} (${fmtSigned(r.ci_lo_pct, 2)} to ${fmtSigned(r.ci_hi_pct, 2)}), Newey-West t ${fmt(r.nw_t, 2)}`).join('; '),
   });
   root.append(el('div', { class: 'grid grid--two', style: 'margin-top:16px' }, b3, testTable(d)));
@@ -113,9 +113,11 @@ export async function render(root, meta) {
       ),
     ]],
     ['Data', () => [table('Rebar and HRC margins, monthly averages (RMB per tonne)', [
-      { label: 'Month', key: 'm' }, { label: 'Rebar price', get: (r) => fmt(r.rb), num: true }, { label: '1.6 x ore', get: (r) => fmt(r.o), num: true },
-      { label: '0.5 x coke', get: (r) => fmt(r.c), num: true }, { label: 'Rebar margin', get: (r) => fmtSigned(r.mg), num: true },
-    ], m.months.map((x, i) => ({ m: x, rb: m.rebar[i], o: m.ore[i], c: m.coke[i], mg: m.margin[i] })).reverse())]],
+      { label: 'Month', key: 'm' }, { label: 'Rebar price', get: (r) => fmt(r.rb), num: true }, { label: 'HRC price', get: (r) => fmt(r.hc), num: true },
+      { label: '1.6 x ore', get: (r) => fmt(r.o), num: true }, { label: '0.5 x coke', get: (r) => fmt(r.c), num: true },
+      { label: 'Rebar margin', get: (r) => fmtSigned(r.mg), num: true }, { label: 'HRC margin', get: (r) => fmtSigned(r.mh), num: true },
+    ], m.months.map((x, i) => ({ m: fmtMonth(x), rb: m.rebar[i], hc: m.hrc[i], o: m.ore[i], c: m.coke[i], mg: m.margin[i], mh: m.margin_hrc[i] })).reverse()),
+      el('p', {}, el('a', { href: 'downloads/mill_margin_daily.csv', download: '' }, 'Daily series as CSV'), '.')]],
   ]));
 }
 

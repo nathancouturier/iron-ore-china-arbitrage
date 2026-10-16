@@ -143,19 +143,20 @@ def contract_midpoint(month: pd.Period) -> pd.Timestamp:
 
 
 def _lift_by_month(basis: pd.DataFrame, months: list[pd.Period]) -> tuple[dict, dict]:
-    """62% basis lift (USD/dmt) and its flag for each contract month."""
+    """62% basis lift (USD/dmt) and its flag for each contract month: one
+    constant, the mean measured 2026 spread, for every contract month from
+    January 2026. A month's own spread is not used for that month, because it
+    is only known after the month's IMF average is published (no look-ahead
+    within the month; the level of the mean is the one assumption, shown as a
+    sensitivity)."""
     measured = basis.loc[basis["iodex61"], "spread_usd_dmt"].dropna()
     mean_spread = float(measured.mean()) if len(measured) else float("nan")
     lift, flag = {}, {}
     for m in months:
         if m < IODEX_61_FROM:
             lift[m], flag[m] = 0.0, "62_basis"
-            continue
-        sp = basis["spread_usd_dmt"].get(m, np.nan)
-        if np.isnan(sp):
-            lift[m], flag[m] = mean_spread, "61_basis_lifted_mean_spread"
         else:
-            lift[m], flag[m] = float(sp), "61_basis_lifted_same_month_spread"
+            lift[m], flag[m] = mean_spread, "61_basis_lifted_mean_spread"
     return lift, flag
 
 
@@ -184,14 +185,17 @@ def sgx_proxy(curve: pd.DataFrame, cfr_m: pd.DataFrame, target_days: int) -> Sgx
         lambda g: g.index.max() >= g.index.max().to_period("M").end_time.normalize() - pd.offsets.BDay(1)
     )
     bench = cfr_m["cfr62_imf_usd_dmt"]
-    basis = pd.DataFrame({"sgx_final_usd_dmt": finals, "bench62_usd_dmt": bench}).dropna(subset=["sgx_final_usd_dmt"])
+    basis = pd.DataFrame(
+        {"sgx_final_usd_dmt": finals, "bench62_usd_dmt": bench, "wb62_usd_dmt": cfr_m["cfr62_wb_usd_dmt"]}
+    ).dropna(subset=["sgx_final_usd_dmt"])
     basis["month_complete"] = complete
     basis["spread_usd_dmt"] = (basis["bench62_usd_dmt"] - basis["sgx_final_usd_dmt"]).where(basis["month_complete"])
+    basis["spread_wb_usd_dmt"] = (basis["wb62_usd_dmt"] - basis["sgx_final_usd_dmt"]).where(basis["month_complete"])
     basis["iodex61"] = basis.index >= IODEX_61_FROM
     lift, flag = _lift_by_month(basis, sorted(c["cmonth"].unique()))
 
     fwd = c[c["months_ahead"] >= 1].copy()
-    fwd["days"] = (fwd["cmonth"].map(contract_midpoint) - fwd["date"]).dt.days.astype(float)
+    fwd["days"] = (fwd["cmonth"].map(contract_midpoint) - fwd["date"]).dt.total_seconds() / 86400.0
     fwd["lift"] = fwd["cmonth"].map(lift)
     fwd["flag"] = fwd["cmonth"].map(flag)
     rows = []
@@ -241,6 +245,7 @@ def sgx_proxy(curve: pd.DataFrame, cfr_m: pd.DataFrame, target_days: int) -> Sgx
         "spread_2026_months": len(measured),
         "spread_2026_min": float(measured.min()) if len(measured) else float("nan"),
         "spread_2026_max": float(measured.max()) if len(measured) else float("nan"),
+        "spread_2026_wb_mean": float(basis.loc[basis["iodex61"], "spread_wb_usd_dmt"].dropna().mean()),
     }
     return SgxProxy(daily, basis, info)
 

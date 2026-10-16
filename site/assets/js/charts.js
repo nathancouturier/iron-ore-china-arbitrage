@@ -210,7 +210,7 @@ export const zoom = () => [{ type: 'inside', xAxisIndex: 0, filterMode: 'none', 
 /** Build a table from column definitions and rows (used behind the Data buttons). */
 export function table(caption, columns, rows, maxRows = null) {
   const wrap = document.createElement('div');
-  wrap.className = columns.length > 3 ? 'table-wrap table-wrap--stack' : 'table-wrap';
+  wrap.className = columns.length >= 3 ? 'table-wrap table-wrap--stack' : 'table-wrap';
   const t = document.createElement('table');
   const cap = document.createElement('caption');
   cap.textContent = caption;

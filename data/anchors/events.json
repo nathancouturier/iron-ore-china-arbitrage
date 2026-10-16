@@ -49,7 +49,7 @@
   "date": "2016-05-09",
   "month": "2016-05",
   "short": "May 2016: futures rally",
-  "text": "Dalian traded above import parity from 3 to 10 May 2016 after a futures rally that led the exchange to raise iron ore fees twice (to 0.9, then 1.8 per 10,000 of turnover) and the minimum margin to 8%. The reading leans on the expiring May contract.",
+  "text": "Dalian's 45-day price sat above import parity from 3 to 10 May 2016, but the reading comes from the expiring May contract (I1605, 7 days to expiry, about 3,400 lots open against 489,000 in September), which settled about 107 RMB above September; without delivery-month contracts the run disappears. The exchange had raised iron ore fees twice (to 0.9, then 1.8 per 10,000 of turnover) and the minimum margin to 8% during the April futures rally.",
   "sources": [
    {
     "name": "DCE notice, 21 April 2016 (fees)",
