@@ -63,13 +63,32 @@ def _retrieved(prefix: str) -> str | None:
     return max(stamps)[:10] if stamps else None
 
 
+def episode_events(daily: pd.DataFrame, a: dict[str, Any]) -> list[dict[str, Any]]:
+    """Sourced explanations (data/anchors/events.json) for the largest episodes,
+    with the margin on the day taken from the daily series. Every computed
+    episode must have an entry, so a refresh that moves an episode fails loudly
+    instead of showing an unexplained point."""
+    events = json.loads((ROOT / "data" / "anchors" / "events.json").read_text())
+    by_date = {e["date"]: e for e in events}
+    out = []
+    for rank, dev in enumerate(a["deviations_daily"], start=1):
+        day = str(dev["period"])[:10]
+        if day not in by_date:
+            raise ValueError(f"episode {day} has no sourced explanation in data/anchors/events.json")
+        e = dict(by_date[day])
+        e["value"] = _r(float(daily.loc[pd.Timestamp(day), "margin_rmb_dmt"]), 1)
+        e["rank"] = rank
+        out.append(e)
+    return out
+
+
 def build_meta(a: dict[str, Any], daily: pd.DataFrame, monthly: pd.DataFrame) -> dict[str, Any]:
     status_path = DERIVED / "source_status.json"
     status = json.loads(status_path.read_text()) if status_path.exists() else {}
     ing = status.get("ingest", {})
     curve = pd.read_csv(DERIVED / "dce_iron_ore_curve_daily.csv", usecols=["date"])
     mill = pd.read_csv(DERIVED / "mill_margin_daily.csv", usecols=["date"])
-    sgx = pd.read_csv(DERIVED / "sgx_fef_prompt_daily.csv", usecols=["date"])
+    sgx = pd.read_csv(DERIVED / "sgx_fef_curve_daily.csv", usecols=["date"])
     baltic = pd.read_csv(DERIVED / "baltic_indices_daily.csv", usecols=["date"])
     cp = pd.read_csv(DERIVED / "usdcny_central_parity_daily.csv", usecols=["date"])
     fred = {
@@ -230,7 +249,8 @@ def run() -> dict[str, str]:
         "margin_naive_rmb": _r(float(last["margin_naive_rmb_dmt"])),
         "basis_flag": str(last.get("basis_flag", "")),
         "basis_adj_usd_dmt": _r(float(last.get("basis_adj_usd_dmt", 0.0))),
-        "sgx_prompt_usd_dmt": _r(float(last.get("sgx_prompt_usd_dmt", float("nan")))),
+        "sgx_cm_raw_usd_dmt": _r(float(last["cfr62_usd_dmt"] - last.get("basis_adj_usd_dmt", 0.0))),
+        "sgx_contracts": str(last.get("sgx_contracts", "")),
     }
     recent = daily[daily.index >= daily.index[-1] - pd.DateOffset(months=12)]
     overview = {
@@ -299,9 +319,8 @@ def run() -> dict[str, str]:
         "fx_effect": a["fx_source_effect"],
         "deviations_daily": a["deviations_daily"],
         "deviations_monthly": a["deviations_monthly"],
-        "events": json.loads((ROOT / "data" / "anchors" / "events.json").read_text())
-        if (ROOT / "data" / "anchors" / "events.json").exists()
-        else [],
+        "events": episode_events(daily, a),
+        "curve_robustness": {k: v for k, v in a["curve_robustness"].items() if k != "daily_open_runs"},
     }
     sizes["window"] = _write("window", _clean(window))
 

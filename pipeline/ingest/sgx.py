@@ -123,7 +123,7 @@ def run(full: bool = False) -> dict[str, str]:
     if index:
         start = max(int(k) for k in index) + 1
     else:
-        snap = RAW.parent / "derived" / "sgx_fef_prompt_daily.csv"
+        snap = RAW.parent / "derived" / "sgx_fef_curve_daily.csv"
         start = FIRST_ID
         if snap.exists() and not full:
             ids = pd.read_csv(snap, usecols=["file_id"])["file_id"]

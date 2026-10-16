@@ -28,6 +28,7 @@ DCE_LAST_OFFICIAL = pd.Timestamp("2024-12-31")
 SINGLE_SIDED_FROM = pd.Timestamp("2020-01-01")
 # Statutory holidays fixed by law that fall after the data end (used only to
 # estimate expiries of contracts that have not expired yet).
+SGX_MONTHS_AHEAD = 4  # current month plus the next four contract months
 FUTURE_HOLIDAYS = ["2027-01-01", "2027-05-01", "2027-10-01"]
 FIRST_DATE = pd.Timestamp("2013-10-18")  # first day of DCE iron ore trading
 
@@ -125,6 +126,18 @@ def iron_ore_curve(panel: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     )
     wide = cm.pivot(index="date", columns="target_days", values="value")
     wide.columns = [f"dce_i_cm{int(t)}_rmb_dmt" for t in wide.columns]
+    # Robustness variant (not the default): contracts in their delivery month
+    # excluded, so the curve never leans on an expiring contract (decision log D032).
+    in_delivery_month = iron["date"].dt.to_period("M") >= iron["expiry"].dt.to_period("M")
+    cmx = constant_maturity_series(
+        iron[~in_delivery_month],
+        [45],
+        min_oi=value("cm_min_oi_lots"),
+        min_share=0.0,
+        min_days=value("cm_min_days"),
+        max_extrap_gap=value("cm_max_extrapolation_days"),
+    )
+    wide["dce_i_cm45_exdm_rmb_dmt"] = cmx.set_index("date")["value"]
     meth = cm.pivot(index="date", columns="target_days", values="method")
     meth.columns = [f"cm{int(t)}_method" for t in meth.columns]
     c45 = cm[cm["target_days"] == 45].set_index("date")[["near", "far", "near_days", "far_days"]]
@@ -244,21 +257,24 @@ def futures_series(panel: pd.DataFrame, cutoff: pd.Timestamp | None) -> dict[str
 
 
 def sgx_series() -> dict[str, str]:
-    """Daily SGX iron ore settlements for the prompt (current) month and the
-    final settlement of each month, merged with the committed snapshot."""
-    path = DERIVED / "sgx_fef_prompt_daily.csv"
+    """Daily SGX iron ore settlements for the current month and the next four
+    contract months (long form), merged with the committed snapshot. The daily
+    CFR proxy is built from these in ``pipeline.margin_model``."""
+    path = DERIVED / "sgx_fef_curve_daily.csv"
     if not (sgx.DIR / "zip").exists():
         return {"sgx": "no raw files; snapshot kept"}
     f = sgx.read_fef().dropna(subset=["settle"])
-    f["dmonth"] = f["date"].dt.strftime("%Y-%m")
-    prompt = f[f["month"] == f["dmonth"]][["date", "month", "settle", "volume", "oi", "file_id"]]
-    prompt = prompt.rename(
-        columns={"month": "contract_month", "settle": "sgx_prompt_usd_dmt", "volume": "volume_lots", "oi": "oi_lots"}
+    ahead = pd.PeriodIndex(f["month"], freq="M") - pd.PeriodIndex(f["date"].dt.strftime("%Y-%m"), freq="M")
+    f["months_ahead"] = [x.n for x in ahead]
+    f = f[f["months_ahead"].between(0, SGX_MONTHS_AHEAD)]
+    curve = f[["date", "month", "months_ahead", "settle", "volume", "oi", "file_id"]].rename(
+        columns={"month": "contract_month", "settle": "settle_usd_dmt", "volume": "volume_lots", "oi": "oi_lots"}
     )
     cutoff = None if f["date"].min() <= pd.Timestamp("2016-01-05") else f["date"].min()
-    prompt = merge_snapshot(prompt.sort_values("date"), path, cutoff)
-    prompt.to_csv(path, index=False)
-    return {"sgx": f"{len(prompt)} days to {prompt['date'].max().date()}"}
+    curve = merge_snapshot(curve.sort_values(["date", "months_ahead"]), path, cutoff)
+    curve = curve.sort_values(["date", "months_ahead"]).reset_index(drop=True)
+    curve.to_csv(path, index=False)
+    return {"sgx": f"{curve['date'].nunique()} days to {curve['date'].max().date()}"}
 
 
 def baltic_series() -> dict[str, str]:

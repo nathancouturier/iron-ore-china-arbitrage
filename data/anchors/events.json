@@ -1,0 +1,74 @@
+[
+ {
+  "date": "2021-07-15",
+  "month": "2021-07",
+  "short": "Jul 2021: steel output cuts",
+  "text": "China ordered 2021 crude steel output to fall year on year. Dalian priced the cuts while seaborne 62% stayed above 200 USD/dmt; the World Bank attributes the 2021Q3 fall in iron ore prices to them.",
+  "sources": [
+   {
+    "name": "NDRC and MIIT, 1 April 2021",
+    "url": "https://www.ndrc.gov.cn/xwdt/xwfb/202104/t20210401_1271593.html",
+    "quote": "确保实现2021年全国粗钢产量同比下降 (ensure that national crude steel output in 2021 falls year on year)",
+    "retrieved": "2026-10-16"
+   },
+   {
+    "name": "World Bank, Commodity Markets Outlook, October 2021, p. 9",
+    "url": "https://openknowledge.worldbank.org/handle/10986/36350",
+    "quote": "The sharp fall in iron ore prices was largely due to China's reduction in steel production in order to meet zero-growth targets for the year.",
+    "retrieved": "2026-10-16"
+   }
+  ]
+ },
+ {
+  "date": "2022-03-07",
+  "month": "2022-02",
+  "short": "Feb to Mar 2022: price curbs",
+  "text": "Chinese regulators warned against iron ore speculation and port hoarding in February 2022, weighing on Dalian, while seaborne prices rose on supply losses in Australia and Brazil and the war in Ukraine.",
+  "sources": [
+   {
+    "name": "NDRC price department, February 2022",
+    "url": "https://www.ndrc.gov.cn/fzggw/jgsj/jgs/sjdt/202202/t20220228_1317700.html",
+    "quote": "近期价格过快上涨，存在炒作成分 (the recent rise was too fast and contains speculation); domestic stocks at multi-year highs",
+    "retrieved": "2026-10-16"
+   },
+   {
+    "name": "NDRC and SAMR meeting with port operators, February 2022",
+    "url": "https://www.ndrc.gov.cn/fzggw/jgsj/jgs/sjdt/202202/t20220228_1317889.html",
+    "quote": "研究大幅缩短贸易企业铁矿石免费堆存期、提高港口囤积成本 (sharply shorten free port storage for traders and raise the cost of hoarding)",
+    "retrieved": "2026-10-16"
+   },
+   {
+    "name": "World Bank, Commodity Markets Outlook, April 2022, p. 53",
+    "url": "https://openknowledge.worldbank.org/handle/10986/37223",
+    "quote": "Iron ore prices surged 27 percent in 2022Q1 (q/q) ... labor shortages in Australia have disrupted production, while heavy rains and flooding significantly curbed output and exports from Brazil",
+    "retrieved": "2026-10-16"
+   }
+  ]
+ },
+ {
+  "date": "2016-05-09",
+  "month": "2016-05",
+  "short": "May 2016: futures rally",
+  "text": "Dalian traded above import parity from 3 to 10 May 2016 after a futures rally that led the exchange to raise iron ore fees twice (to 0.9, then 1.8 per 10,000 of turnover) and the minimum margin to 8%. The reading leans on the expiring May contract.",
+  "sources": [
+   {
+    "name": "DCE notice, 21 April 2016 (fees)",
+    "url": "http://www.dce.com.cn/dalianshangpin/ywfw/jystz/ywtz/5510960/index.html",
+    "quote": "自2016年4月25日起我所铁矿石和聚丙烯品种手续费标准调整为成交金额的万分之0.9 (from 25 April 2016 iron ore fees are 0.9 per 10,000 of turnover)",
+    "retrieved": "2026-10-16"
+   },
+   {
+    "name": "DCE notice, 25 April 2016 (fees)",
+    "url": "http://www.dce.com.cn/dalianshangpin/ywfw/jystz/ywtz/5512822/index.html",
+    "quote": "铁矿石和聚丙烯品种手续费标准由成交金额的万分之0.9调整为成交金额的万分之1.8 (from 26 April, 0.9 raised to 1.8 per 10,000)",
+    "retrieved": "2026-10-16"
+   },
+   {
+    "name": "DCE notice, 21 April 2016 (margins)",
+    "url": "http://www.dce.com.cn/dalianshangpin/ywfw/jystz/ywtz/5500693/index.html",
+    "quote": "铁矿石品种最低交易保证金标准调整至8% (iron ore minimum margin raised to 8%, from settlement on 25 April 2016)",
+    "retrieved": "2026-10-16"
+   }
+  ]
+ }
+]

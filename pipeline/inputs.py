@@ -66,9 +66,10 @@ def cfr_monthly() -> pd.DataFrame:
     return pd.concat([imf, wb], axis=1)
 
 
-def sgx_prompt() -> pd.DataFrame:
-    """SGX prompt-month settlements (derived snapshot, see pipeline/transform.py)."""
-    return pd.read_csv(DERIVED / "sgx_fef_prompt_daily.csv", parse_dates=["date"])
+def sgx_curve() -> pd.DataFrame:
+    """SGX iron ore settlements, current month plus four (derived snapshot, see
+    pipeline/transform.py)."""
+    return pd.read_csv(DERIVED / "sgx_fef_curve_daily.csv", parse_dates=["date"])
 
 
 def dce_curve() -> pd.DataFrame:

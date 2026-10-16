@@ -34,7 +34,7 @@ export async function render(root, meta) {
   const { block: bridgeBlock, host: bridgeHost } = chartBlock({
     title: `Delivered cost exceeds the Dalian price by ${fmt(Math.abs(b.margin_rmb))} RMB per dry tonne`,
     sub: `Cost bridge on ${fmtDate(b.date)}, RMB per dry tonne (USD converted at ${fmt(fx, 4)} CNY per USD). Freight is modeled.`,
-    source: `Sources: SGX iron ore futures (prompt month, 62% basis), Dalian Commodity Exchange via Sina, FRED (USD/CNY, SOFR), modeled freight from the Baltic Capesize Index and Brent. Data to ${fmtDate(b.date)}.`,
+    source: `Sources: SGX iron ore futures (45-day horizon, 62% basis), Dalian Commodity Exchange via Sina, FRED (USD/CNY, SOFR), modeled freight from the Baltic Capesize Index and Brent. Data to ${fmtDate(b.date)}.`,
     summary: rows.map((r) => `${r.name}: ${fmt(r.v)} RMB/dmt`).join('; ') + `. Dalian minus landed cost: ${fmtSigned(b.margin_rmb)} RMB/dmt.`,
     cls: 'chart chart--tall',
   });
@@ -119,7 +119,7 @@ export async function render(root, meta) {
   root.append(toggles('overview', [
     ['Method', () => [
       el('h3', {}, 'How the bridge is built'),
-      el('p', {}, 'The bridge starts from the 62% Fe CFR China benchmark (the SGX prompt-month iron ore future on the day, lifted to a 62% basis in 2026), converts it at the day’s USD/CNY, adds 13% import VAT on the CFR value (import duty on iron ore is zero), port charges converted from a wet to a dry basis, and the interest on the cargo while it is at sea. That landed cost is compared with the Dalian price for delivery 45 days ahead, expressed on a 62% Fe basis.'),
+      el('p', {}, 'The bridge starts from the 62% Fe CFR China benchmark (SGX iron ore futures interpolated to the same 45-day horizon as Dalian, lifted to a 62% basis for contract months from January 2026), converts it at the day’s USD/CNY, adds 13% import VAT on the CFR value (import duty on iron ore is zero), port charges converted from a wet to a dry basis, and the interest on the cargo while it is at sea. That landed cost is compared with the Dalian price for delivery 45 days ahead, expressed on a 62% Fe basis.'),
       el('p', {}, 'FOB values are index-equivalent netbacks: the CFR benchmark minus modeled freight, converted from per wet tonne to per dry tonne. Real Australian and Brazilian products trade at premiums or discounts to the 62% index (Pilbara Blend is 61.5% Fe, Brazilian fines are higher grade), which this view ignores.'),
       el('p', {}, 'A positive margin would mean onshore buyers pay more than the delivered cost of seaborne ore. Even then it is an expected margin: the cargo is priced weeks before it can be sold, and Dalian or SGX hedges reduce but do not remove price, basis, grade and currency risk.'),
     ]],

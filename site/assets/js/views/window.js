@@ -20,7 +20,7 @@ export async function render(root, meta) {
   const { block: b1, host: h1 } = chartBlock({
     title: 'Dalian has priced 45-day iron ore below the delivered cost of a 62% cargo for a decade',
     sub: `Import margin: Dalian 45-day 62% equivalent minus landed cost, RMB per dry tonne, daily. Shaded: ±${fmt(d.band)} RMB/dmt no-arbitrage band.`,
-    source: `Sources: SGX (prompt-month CFR proxy), Dalian Commodity Exchange, FRED, SAFE; computed by the pipeline. Data to ${fmtDate(last[0])}.`,
+    source: `Sources: SGX iron ore futures (45-day CFR proxy), Dalian Commodity Exchange, FRED; computed by the pipeline. Data to ${fmtDate(last[0])}.`,
     summary: `Mean ${fmtSigned(s.mean)}; median ${fmtSigned(s.median)}; 5th to 95th percentile ${fmtSigned(s.p05)} to ${fmtSigned(s.p95)}; minimum ${fmtSigned(s.min)} on ${fmtDate(s.min_at)}; maximum ${fmtSigned(s.max)} on ${fmtDate(s.max_at)}.`,
     cls: 'chart chart--tall',
   });
@@ -45,7 +45,9 @@ export async function render(root, meta) {
   }));
   presets(b1, c1, last[0], d.daily.margin[0][0]);
   if (ev.length) {
-    b1.append(el('ol', { class: 'events' }, ...ev.map((e) => el('li', {}, el('strong', {}, `${fmtDate(e.date)}: `), `${e.text} `, e.url ? el('a', { href: e.url }, e.source) : e.source))));
+    b1.append(el('ol', { class: 'events' }, ...ev.map((e) => el('li', {},
+      el('strong', {}, `${fmtDate(e.date)}, ${fmtSigned(e.value)} RMB/dmt. `), `${e.text} Sources: `,
+      ...e.sources.flatMap((src, i) => [i ? '; ' : '', el('a', { href: src.url }, src.name)]), '.'))));
   }
 
   // 2. Naive against maturity-aligned
@@ -105,7 +107,7 @@ export async function render(root, meta) {
   root.append(toggles('window', [
     ['Method', () => [
       el('h3', {}, 'Margin, maturity alignment and the band'),
-      el('p', {}, 'Margin = Dalian 62% equivalent at a constant 45-day maturity minus the landed cost of 62% Fe fines (CFR x USD/CNY x (1 + VAT) + port charges + financing). The daily series uses the SGX prompt-month iron ore future as the CFR proxy (from December 2015); the monthly baseline uses the IMF 62% Fe CFR China monthly average (FRED PIORECRUSDM) against the monthly average of the daily Dalian 45-day price (from January 2014).'),
+      el('p', {}, 'Margin = Dalian 62% equivalent at a constant 45-day maturity minus the landed cost of 62% Fe fines (CFR x USD/CNY x (1 + VAT) + port charges + financing). The daily series uses SGX iron ore futures as the CFR proxy (from December 2015), interpolated to the same 45-day horizon between the two contracts whose month midpoints bracket it; the current-month contract is left out because it settles on the month's average and so lags the market; the monthly baseline uses the IMF 62% Fe CFR China monthly average (FRED PIORECRUSDM) against the monthly average of the daily Dalian 45-day price (from January 2014).'),
       el('p', {}, 'The constant-maturity price interpolates linearly in calendar days to expiry between the two contracts that bracket 45 days, using only contracts with at least 1,700 lots of open interest (one Capesize cargo) and more than five days to expiry. When no eligible contract expires before 45 days, the price is extrapolated along the slope of the two nearest eligible contracts. Before 2018 most liquidity sat in the January, May and September contracts, so extrapolation was needed on about two thirds of days; since 2019 the 45-day point is interpolated on most days.'),
       el('p', {}, 'The no-arbitrage band of ±25 RMB/dmt approximates the cost of using the exchange: delivery fee 0.5 RMB/t, warehouse storage 0.3 RMB/t per day (0.5 before 2021) for about a month, and the ship outbound fee cap of 12 RMB/t, about 21.5 to 27.5 RMB/t in total.'),
       el('p', {}, 'Episodes are the largest deviations of the margin from its average, one per period of at least six months.'),

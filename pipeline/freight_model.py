@@ -186,7 +186,10 @@ def voyage_model_daily(cal: Calibration, a: Assumptions | None = None) -> pd.Dat
     bci = inputs.bci_daily()
     brent = inputs.brent_daily()
     idx = bci.index.intersection(brent.index)
-    idx = idx[idx >= pd.Timestamp("2014-01-01")]
+    # holidays are bridged by the carry-forward in inputs, but no modeled day
+    # goes past the last published BCI
+    last_bci = inputs.baltic_daily()["bci_pts"].dropna().index.max()
+    idx = idx[(idx >= pd.Timestamp("2014-01-01")) & (idx <= last_bci)]
     df = pd.DataFrame({"bci_pts": bci.reindex(idx), "brent_usd_bbl": brent.reindex(idx)})
     df["tce_proxy_usd_day"] = tce_proxy(df["bci_pts"], cal)
     df["bunker_proxy_usd_t"] = bunker_proxy(df["brent_usd_bbl"], cal)

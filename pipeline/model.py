@@ -100,6 +100,9 @@ def run() -> dict[str, str]:
     d["fob_australia_usd_dmt"] = d["cfr62_usd_dmt"] - d["c5_model_usd_dmt"]
     d["fob_brazil_usd_dmt"] = d["cfr62_usd_dmt"] - d["c3_model_usd_dmt"]
     d["freight_share_landed_c5"] = d["c5_model_usd_dmt"] * d["usdcny"] * (1 + d["vat_rate"]) / d["landed_rmb_dmt"]
+    # robustness: Dalian curve without contracts in their delivery month (decision log D032)
+    curve = inputs.dce_curve()
+    d["margin_exdm_rmb_dmt"] = curve["dce_i_cm45_exdm_rmb_dmt"].reindex(d.index) - d["landed_rmb_dmt"]
     d.index.name = "date"
     d.drop(columns=[c for c in d.columns if c.startswith("financing_days")]).reset_index().to_csv(
         DERIVED / "import_margin_daily.csv", index=False, float_format="%.4f"
@@ -116,6 +119,19 @@ def run() -> dict[str, str]:
     }
     out["deviations_monthly"] = analysis.largest_deviations(m["margin_rmb_dmt"])
     out["deviations_daily"] = analysis.largest_deviations(d["margin_rmb_dmt"], min_gap=120)
+    exdm_m = curve["dce_i_cm45_exdm_rmb_dmt"].groupby(curve.index.to_period("M")).mean()
+    exdm_m.index = exdm_m.index.astype(str)
+    m_exdm = (exdm_m.reindex(m.index) - m["landed_rmb_dmt"]).dropna()
+    rob_d = analysis.window_stats(d["margin_exdm_rmb_dmt"].dropna(), a.band)
+    rob_m = analysis.window_stats(m_exdm, a.band)
+    out["curve_robustness"] = {
+        "variant": "Dalian 45-day curve with contracts in their delivery month excluded",
+        "daily": {k: v for k, v in rob_d.items() if k != "runs"},
+        "monthly": {k: v for k, v in rob_m.items() if k != "runs"},
+        "daily_mean_diff": float((d["margin_exdm_rmb_dmt"] - d["margin_rmb_dmt"]).mean()),
+        "monthly_mean_diff": float((m_exdm - m["margin_rmb_dmt"].reindex(m_exdm.index)).mean()),
+        "daily_open_runs": rob_d["runs"][rob_d["runs"]["state"] == 1].astype({"start": str, "end": str}),
+    }
     out["convergence_monthly"] = analysis.convergence(m["margin_rmb_dmt"])
     out["convergence_daily"] = analysis.convergence(d["margin_rmb_dmt"])
     t = analysis.tornado(a)

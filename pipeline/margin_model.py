@@ -2,7 +2,8 @@
 
 Monthly baseline: IMF 62% Fe CFR China monthly average (FRED PIORECRUSDM)
 against the monthly average of the daily 45-day constant-maturity Dalian price.
-Daily series: SGX prompt-month iron ore futures settlement as the CFR proxy.
+Daily series: SGX iron ore futures interpolated to the same constant maturity
+as Dalian (45 days by default) as the CFR proxy.
 """
 
 from __future__ import annotations
@@ -133,8 +134,40 @@ class SgxProxy:
 IODEX_61_FROM = pd.Period("2026-01", "M")
 
 
-def sgx_prompt(prompt: pd.DataFrame, cfr_m: pd.DataFrame) -> SgxProxy:
-    """Prompt-month (current calendar month) SGX settlement as a daily 62% CFR proxy.
+def contract_midpoint(month: pd.Period) -> pd.Timestamp:
+    """Middle of a contract month: an SGX monthly contract settles on the average
+    of the daily index over the month, so its price is read as the forward for
+    the middle of that month."""
+    start = month.start_time.normalize()
+    return start + pd.Timedelta(days=(month.days_in_month - 1) / 2)
+
+
+def _lift_by_month(basis: pd.DataFrame, months: list[pd.Period]) -> tuple[dict, dict]:
+    """62% basis lift (USD/dmt) and its flag for each contract month."""
+    measured = basis.loc[basis["iodex61"], "spread_usd_dmt"].dropna()
+    mean_spread = float(measured.mean()) if len(measured) else float("nan")
+    lift, flag = {}, {}
+    for m in months:
+        if m < IODEX_61_FROM:
+            lift[m], flag[m] = 0.0, "62_basis"
+            continue
+        sp = basis["spread_usd_dmt"].get(m, np.nan)
+        if np.isnan(sp):
+            lift[m], flag[m] = mean_spread, "61_basis_lifted_mean_spread"
+        else:
+            lift[m], flag[m] = float(sp), "61_basis_lifted_same_month_spread"
+    return lift, flag
+
+
+def sgx_proxy(curve: pd.DataFrame, cfr_m: pd.DataFrame, target_days: int) -> SgxProxy:
+    """Daily 62% CFR proxy from SGX iron ore futures at a constant maturity.
+
+    The current-month contract is not used: it settles on the average of the
+    month's daily index, so during the month it mixes fixings already known with
+    the forward and lags the market (on 30 September 2024 it settled at 93.83, the
+    September average, while the October contract settled at 109.45). The proxy interpolates
+    linearly, on calendar days, between the two contracts (one to four months
+    ahead) whose month midpoints bracket the target maturity; flat outside.
 
     Contracts for months before January 2026 settle on a 62% Fe index. From
     January 2026 they settle on Platts IODEX, which is on a 61% Fe basis; those
@@ -142,10 +175,12 @@ def sgx_prompt(prompt: pd.DataFrame, cfr_m: pd.DataFrame) -> SgxProxy:
     the IMF 62% monthly average and the contract's final settlement; months the
     IMF has not yet published use the mean of the measured 2026 spreads.
     """
-    p = prompt.dropna(subset=["sgx_prompt_usd_dmt"]).copy().set_index("date").sort_index()
-    p["dmonth"] = p.index.to_period("M")
-    finals = p.groupby("dmonth")["sgx_prompt_usd_dmt"].last()
-    complete = p.groupby("dmonth").apply(
+    c = curve.dropna(subset=["settle_usd_dmt"]).copy()
+    c["cmonth"] = pd.PeriodIndex(c["contract_month"], freq="M")
+    # final settlement of each month's contract (its last day as the current month)
+    m0 = c[c["months_ahead"] == 0].set_index("date").sort_index()
+    finals = m0.groupby("cmonth")["settle_usd_dmt"].last()
+    complete = m0.groupby("cmonth").apply(
         lambda g: g.index.max() >= g.index.max().to_period("M").end_time.normalize() - pd.offsets.BDay(1)
     )
     bench = cfr_m["cfr62_imf_usd_dmt"]
@@ -153,31 +188,51 @@ def sgx_prompt(prompt: pd.DataFrame, cfr_m: pd.DataFrame) -> SgxProxy:
     basis["month_complete"] = complete
     basis["spread_usd_dmt"] = (basis["bench62_usd_dmt"] - basis["sgx_final_usd_dmt"]).where(basis["month_complete"])
     basis["iodex61"] = basis.index >= IODEX_61_FROM
-    measured = basis.loc[basis["iodex61"], "spread_usd_dmt"].dropna()
-    mean_spread = float(measured.mean()) if len(measured) else float("nan")
-    adj = pd.Series(0.0, index=p.index)
-    flag = pd.Series("62_basis", index=p.index)
-    for m, grp in p.groupby("dmonth"):
-        if m < IODEX_61_FROM:
+    lift, flag = _lift_by_month(basis, sorted(c["cmonth"].unique()))
+
+    fwd = c[c["months_ahead"] >= 1].copy()
+    fwd["days"] = (fwd["cmonth"].map(contract_midpoint) - fwd["date"]).dt.days.astype(float)
+    fwd["lift"] = fwd["cmonth"].map(lift)
+    fwd["flag"] = fwd["cmonth"].map(flag)
+    rows = []
+    for date, g in fwd.groupby("date", sort=True):
+        g = g.sort_values("days")
+        days = g["days"].to_numpy()
+        if len(g) == 0:
             continue
-        sp = basis["spread_usd_dmt"].get(m, np.nan)
-        if np.isnan(sp):
-            sp = mean_spread
-            flag.loc[grp.index] = "61_basis_lifted_mean_spread"
+        if target_days <= days[0] or len(g) == 1:
+            i = j = 0 if target_days <= days[0] else len(g) - 1
+            w = 1.0
+        elif target_days >= days[-1]:
+            i = j = len(g) - 1
+            w = 1.0
         else:
-            flag.loc[grp.index] = "61_basis_lifted_same_month_spread"
-        adj.loc[grp.index] = sp
-    daily = pd.DataFrame(
-        {
-            "sgx_prompt_usd_dmt": p["sgx_prompt_usd_dmt"],
-            "sgx_contract_month": p["contract_month"],
-            "basis_adj_usd_dmt": adj,
-            "cfr62_sgx_usd_dmt": p["sgx_prompt_usd_dmt"] + adj,
-            "basis_flag": flag,
-        }
-    )
+            j = int(np.searchsorted(days, target_days))
+            i = j - 1
+            w = (days[j] - target_days) / (days[j] - days[i])
+        gi, gj = g.iloc[i], g.iloc[j]
+        raw = w * gi["settle_usd_dmt"] + (1 - w) * gj["settle_usd_dmt"]
+        adj = w * gi["lift"] + (1 - w) * gj["lift"]
+        flags = {gi["flag"], gj["flag"]}
+        fl = next((f for f in ["61_basis_lifted_mean_spread", "61_basis_lifted_same_month_spread"] if f in flags), "62_basis")
+        m1 = g[g["months_ahead"] == 1]
+        rows.append(
+            {
+                "date": date,
+                "sgx_cm_raw_usd_dmt": raw,
+                "basis_adj_usd_dmt": adj,
+                "cfr62_sgx_usd_dmt": raw + adj,
+                "sgx_m1_usd_dmt": float(m1["settle_usd_dmt"].iloc[0]) if len(m1) else np.nan,
+                "sgx_contracts": f"{gi['contract_month']}/{gj['contract_month']}",
+                "sgx_weight_near": w,
+                "basis_flag": fl,
+            }
+        )
+    daily = pd.DataFrame(rows).set_index("date")
     pre = basis.loc[~basis["iodex61"]].dropna()
+    measured = basis.loc[basis["iodex61"], "spread_usd_dmt"].dropna()
     info = {
+        "target_days": target_days,
         "pre2026_final_vs_bench_mean": float((pre["sgx_final_usd_dmt"] - pre["bench62_usd_dmt"]).mean()),
         "pre2026_final_vs_bench_sd": float((pre["sgx_final_usd_dmt"] - pre["bench62_usd_dmt"]).std()),
         "spread_2026_mean": float(measured.mean()) if len(measured) else float("nan"),
@@ -188,11 +243,11 @@ def sgx_prompt(prompt: pd.DataFrame, cfr_m: pd.DataFrame) -> SgxProxy:
     return SgxProxy(daily, basis, info)
 
 
-def daily_inputs() -> pd.DataFrame:
+def daily_inputs(target_days: int = PARAMS["cm_target_days"]["value"]) -> pd.DataFrame:
     curve = inputs.dce_curve()
     cfr_m = inputs.cfr_monthly()
     cfr_m.index = cfr_m.index.to_period("M")
-    proxy = sgx_prompt(inputs.sgx_prompt(), cfr_m)
+    proxy = sgx_proxy(inputs.sgx_curve(), cfr_m, target_days)
     df = curve[
         [c for c in curve.columns if c.startswith("dce_i_cm") and c.endswith("rmb_dmt")] + ["dce_i_ma62_rmb_dmt"]
     ]
@@ -205,11 +260,12 @@ def daily_inputs() -> pd.DataFrame:
 
 def daily_margin(a: Assumptions | None = None) -> pd.DataFrame:
     a = a or Assumptions()
-    df = daily_inputs()
+    df = daily_inputs(a.cm_target)
     df = df.dropna(subset=["cfr62_sgx_usd_dmt", f"dce_i_cm{a.cm_target}_rmb_dmt", "usdcny", "usd_rate_pct"])
     res = compute_margin(df, "cfr62_sgx_usd_dmt", a, build_voyages(a))
     res["basis_flag"] = df["basis_flag"]
     res["basis_adj_usd_dmt"] = df["basis_adj_usd_dmt"]
-    res["sgx_prompt_usd_dmt"] = df["sgx_prompt_usd_dmt"]
+    res["sgx_m1_usd_dmt"] = df["sgx_m1_usd_dmt"]
+    res["sgx_contracts"] = df["sgx_contracts"]
     res.attrs = df.attrs
     return res
