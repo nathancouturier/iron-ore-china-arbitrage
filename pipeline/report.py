@@ -188,17 +188,17 @@ def fig_freight(freight: pd.DataFrame, anchors: pd.DataFrame, monthly: pd.DataFr
         a1.fill_between(w.index, w[f"{k}_model_usd_wmt_lo"], w[f"{k}_model_usd_wmt_hi"], color=color, alpha=0.15, lw=0)
         a1.plot(w.index, w[f"{k}_model_usd_wmt"], color=color, lw=0.9, ls=(0, (4, 2)), label=f"{label}, modeled")
         pts = anchors[anchors["route"] == k.upper()]
-        a1.scatter(pts["date"], pts["value_usd_wmt"], s=9, color=color, edgecolor="white", lw=0.4, zorder=4)
+        a1.scatter(pts["date"], pts["value_usd_wmt"], s=13, facecolor="white", edgecolor=color, lw=0.9, zorder=4)
     a1.set_ylabel("USD per wet tonne")
     a1.set_title("Modeled freight (dashed, 80% band) and published rates (dots)")
     a1.legend(loc="upper left")
     idx = pd.PeriodIndex(monthly.index, freq="M").to_timestamp()
-    gap = monthly["fob_australia_usd_dmt"] - monthly["fob_brazil_usd_dmt"]
-    a2.plot(idx, monthly["freight_share_cfr_c3"] * 100, color=SEAWATER, lw=0.9, ls=(0, (4, 2)), label="C3, % of CFR")
-    a2.plot(idx, monthly["freight_share_cfr_c5"] * 100, color=PILBARA, lw=0.9, ls=(0, (4, 2)), label="C5, % of CFR")
-    a2.plot(idx, gap, color=TOPSIDE, lw=0.9, label="Netback gap, USD/dmt")
-    a2.set_title("Freight share of CFR and the netback gap")
-    a2.set_ylabel("Percent; USD per dry tonne")
+    a2.plot(idx, monthly["freight_share_cfr_c3"] * 100, color=SEAWATER, lw=0.9, ls=(0, (4, 2)), label="C3 Tubarao")
+    a2.plot(
+        idx, monthly["freight_share_cfr_c5"] * 100, color=PILBARA, lw=0.9, ls=(0, (4, 2)), label="C5 West Australia"
+    )
+    a2.set_title("Modeled freight as a share of CFR")
+    a2.set_ylabel("Percent of the CFR price")
     a2.legend(loc="upper left")
     fig.tight_layout(w_pad=2.0)
     return _save(fig, "freight")
@@ -424,9 +424,9 @@ def build() -> Path:
                 ),
             ]
         ),
-        P("The import window", "h"),
         KeepTogether(
             [
+                P("The import window", "h"),
                 _img(figs["margin"]),
                 P(
                     f"Figure 2. Shaded: the no-arbitrage band of ±{num(band)} RMB/dmt (delivery fee, about a month of "
@@ -493,9 +493,9 @@ def build() -> Path:
             [
                 _img(figs["freight"]),
                 P(
-                    "Figure 3. Left: modeled C3 and C5 with 80% error bands and the published assessments used to score "
-                    "them (Baltic Exchange via shipping press, Platts, Ruida Futures). Right: modeled freight as a share of "
-                    "the CFR price and the Australia minus Brazil netback gap. Sources: East Money (BCI), FRED, IMF.",
+                    "Figure 3. Left: modeled C3 and C5 with 80% error bands (dashed) and the published assessments used to "
+                    "score them (circles: Baltic Exchange via the shipping press, Platts, Ruida Futures). Right: modeled "
+                    "freight per dry tonne as a share of the 62% CFR price. Sources: East Money (BCI), FRED, IMF.",
                     "cap",
                 ),
             ]

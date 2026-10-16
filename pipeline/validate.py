@@ -149,13 +149,24 @@ def checks() -> list[dict]:
     return out
 
 
+# Derived files in long form, keyed by more than the date
+LONG_FORM_KEYS = {
+    "sgx_fef_curve_daily.csv": ["date", "months_ahead"],
+    "mill_anchor_prices.csv": ["date", "contract"],
+}
+
+
 def schema_checks() -> None:
-    """Hard checks on derived files: unit-tagged columns, no duplicate dates."""
+    """Hard checks on derived files: one row per key (the date, or the date and
+    contract for long-form files)."""
     derived = ROOT / "data" / "derived"
     for path in derived.glob("*.csv"):
         df = pd.read_csv(path)
-        if "date" in df.columns and df["date"].duplicated().any():
-            raise ValidationError(f"{path.name}: duplicate dates")
+        if "date" not in df.columns:
+            continue
+        key = LONG_FORM_KEYS.get(path.name, ["date"])
+        if df.duplicated(subset=key).any():
+            raise ValidationError(f"{path.name}: duplicate rows for key {key}")
 
 
 def run() -> dict[str, str]:
