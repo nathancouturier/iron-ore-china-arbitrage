@@ -1,1 +1,87 @@
-# iron-ore-china-arbitrage
+# Iron ore into China: delivered cost and the import window
+
+**Live site: https://nathancouturier.github.io/iron-ore-china-arbitrage/**
+Research note (PDF): [`Iron-Ore-China-Import-Arbitrage-Research-Note.pdf`](site/downloads/Iron-Ore-China-Import-Arbitrage-Research-Note.pdf)
+
+![Overview: delivered cost bridge for a 62% Fe cargo against the Dalian price](docs/overview.png)
+
+## The question
+
+China takes about three quarters of the world's seaborne iron ore (1,258.71 Mt of imports in 2025 and 1,236.55 Mt in 2024, China Customs). The project answers one practical question: **when does it pay to bring a cargo of seaborne iron ore into China, from where, and who captures the margin between the mine and the blast furnace?**
+
+It builds the delivered cost of a 62% Fe cargo step by step (FOB netback in Australia or Brazil, Capesize freight on C5 or C3, CFR Qingdao, USD/CNY, import VAT, port charges and voyage financing) and compares the landed cost with the Dalian futures price for the matching delivery. Downstream, the futures-implied steel mill margin shows whether mills can keep paying for that ore.
+
+## The answer (data to 15 October 2026)
+
+- **The window is closed, and it almost always has been.** On 15 Oct 2026 a West Australian cargo landed in Qingdao at 733 RMB per dry tonne, VAT included, against 692 for 45-day Dalian delivery (margin −41 RMB/dmt). Since December 2015 the margin cleared the 25 RMB/dmt cost of using the exchange on 0.9% of trading days, never for more than six days in a row; on the monthly baseline (January 2014 to July 2026) it sat below the band in 97% of months, by 80 RMB/dmt on average, 9.7% of landed cost.
+- **The discount sits in the futures, not in the physical market.** On five dated Fastmarkets Qingdao port prices, Dalian's 45-day price was 72 to 374 RMB/dmt below the port price of 62% fines, while our landed cost reproduces Fastmarkets' own port-to-seaborne conversion within 1.5 USD/dmt. Freight takes 8.9% of the CFR price from West Australia and 21.2% from Brazil on average since 2014 (12.6% and 31.7% in 2026, the highest annual shares in the sample), so Brazil's index-equivalent netback trails Australia's by 11.9 USD/dmt on average and by 21.4 in July 2026.
+- **Mills are squeezed, but that has not pushed ore down.** The rebar futures margin was −68 RMB/t on 16 Oct 2026 and negative on every trading day of 2026. The pre-registered test finds no sign that a bottom-decile mill margin precedes weaker Dalian ore: +5.9 percentage points over three months (95% interval −1.0 to +13.1), the opposite sign to the hypothesis.
+
+The import margin is an expected margin, not a riskless arbitrage: price, basis, grade and currency risk remain while the cargo is at sea, and Dalian or SGX hedges reduce but do not remove them.
+
+## Method
+
+| Step | Convention |
+|---|---|
+| Seaborne price | 62% Fe CFR China, USD per dry tonne. Monthly baseline: IMF via FRED `PIORECRUSDM`. Daily series: SGX iron ore futures interpolated to a 45-day horizon (the current-month contract is excluded because it settles on the month's average); 2026 contracts settle on Platts IODEX at 61% Fe and are lifted to 62% by the measured monthly spread. |
+| Freight | Modeled C3 and C5 (route rates are paid data): a voyage model fed by the Baltic Capesize Index (calibrated to the time charter average by regime on 62 dated public pairs) and Brent (bunker price calibrated before and after IMO 2020), at the Baltic eco speed of 12 knots over searoute distances. Converted to dry tonnes with 8% moisture. |
+| Landed cost | CFR x USD/CNY x (1 + VAT) + port charges / (1 − moisture) + financing x USD/CNY. VAT 17%, 16% from 1 May 2018, 13% from 1 April 2019; duty zero. Port charges 30 RMB per wet tonne. Financing at SOFR (fed funds before April 2018) plus 150 bp for the laden voyage plus 10 days. |
+| Dalian | Every iron ore contract, on a 62% Fe basis (standard grade 61% from I2205, plus 10 x X with X computed from the exchange rule: 1.5 RMB per 0.1% Fe in every period), interpolated to a constant 45-day maturity across contracts with at least 1,700 lots of open interest. 30, 60, 90 days and the most-active contract shown for comparison. |
+| Margin and band | Margin = Dalian 45-day 62% equivalent minus landed cost. Window open above +25 RMB/dmt (delivery fee, about a month of storage and the vessel outbound fee cap). |
+| Statistics | AR(1) half-life with a recursive residual bootstrap, ADF test, sensitivity tornado; mill test with a moving block bootstrap and Newey-West errors, design fixed before computing. All in numpy (`ironarb/stats.py`). |
+| Mill margin | Rebar (or HRC) − 1.6 x iron ore − 0.5 x coke − 1,080 RMB/t of other costs (HRC 150 more), a broker convention checked against SDIC Essence and Everbright Futures. |
+
+Key results: monthly half-life 5.0 months (95% interval 2.3 to 8.2) but the ADF test cannot reject a unit root (p = 0.16), so the evidence for convergence on monthly data is weak; on daily data the half-life is 23 trading days (ADF p = 0.010). Three largest episodes, with primary sources: March 2022 (−366 RMB/dmt; NDRC curbs on iron ore speculation while seaborne supply tightened), July 2021 (−344; China's 2021 crude steel output cut), May 2016 (+59; a futures rally that led Dalian to raise iron ore fees and margins).
+
+## Validation
+
+| Check | n | Result | Tolerance |
+|---|---|---|---|
+| Ruida Futures import-cost estimates | 8 | max error 6.3 RMB/t with the PBoC central parity (22.2 with the New York rate) | 15 RMB/t |
+| Fastmarkets Qingdao port price converted to USD/dmt | 5 | max error 1.51 USD/dmt | 2 USD/dmt |
+| Broker rebar margins (SDIC Essence, Everbright) | 6 | max error 4.4 RMB/t | 5 RMB/t |
+| C3 freight, voyage model, out of sample | 90 | RMSE 2.04, MAE 1.54 USD/t | RMSE 3.0 |
+| C5 freight, voyage model, out of sample | 91 | RMSE 1.04, MAE 0.85 USD/t | RMSE 1.5 |
+| BCI values quoted in the press | 2 | identical | exact |
+
+Tolerances were fixed before reconciling and are enforced by `tests/test_anchors.py`; no parameter was tuned to meet them. Cross-source checks: Dalian settlements identical between the exchange files and Sina on 99.5% of liquid contract-days; SGX final settlements average −0.37 USD/dmt against the IMF monthly average before 2026 (standard deviation 1.77). Every anchor, with its URL, is on the Method and data page.
+
+## Data sources and limits
+
+| Series | Source | Notes |
+|---|---|---|
+| 62% Fe CFR China, monthly | IMF via FRED `PIORECRUSDM`; World Bank Pink Sheet | Cross-checked; the IMF series runs 1.6 to 3.5 USD above the World Bank in the annual means of 2024 to 2026 |
+| Iron ore futures, daily | SGX daily settlement files (links.sgx.com) | 62% index to Dec 2025, Platts IODEX 61% from Jan 2026 |
+| Dalian I, J; SHFE RB, HC | Exchange annual and daily files; Sina per-contract history | Volume and open interest normalised to single-sided lots |
+| Baltic Capesize Index, BDI | East Money (Baltic Exchange index values) | Route rates C3 and C5 are not public; they are modeled |
+| USD/CNY, Brent, SOFR, fed funds | FRED `DEXCHUS`, `DCOILBRENTEU`, `SOFR`, `DFF` | PBoC central parity from SAFE as an alternative |
+| Validation anchors | Ruida Futures, Fastmarkets, broker reports, Baltic route reports in the shipping press | Cited with links in `data/anchors`; reports themselves are not committed |
+
+Limits: freight is modeled and its public anchors cluster in 2021 to 2026; Dalian prices the cheapest deliverable brand with fixed quality discounts, so part of the discount is a grade and brand effect; port charges are a single assumption; monthly China import volumes could not be retrieved (China Customs blocks scripted access), so the optional imports test was not run. Some hosts could not be reached from the build environment and were replaced by the alternatives above: splash247.com, parts of fastmarkets.com, hellenicshippingnews.com (part of the time), rba.gov.au, sea-distances.org, balticexchange.com data pages, Mysteel, 100ppi (JavaScript challenge) and the China Customs statistics pages.
+
+## Rebuild
+
+Requires Python 3.11 or later (built with 3.13), `fonts-liberation`, and Node 22 for the JavaScript parity test.
+
+```
+python -m pip install -r requirements-dev.txt
+make all        # fetch recent data, rebuild every output, then test, lint and check the site
+make full       # re-fetch every source from the start (needs Playwright for the Dalian annual files)
+make serve      # http://localhost:8000
+```
+
+Stages run in order: `ingest`, `transform`, `validate`, `model`, `report`, `export`, `audit` (`python -m pipeline <stage>`). Exchange history that cannot be redistributed is kept as derived snapshots in `data/derived`, so a clean clone rebuilds without the raw exchange files. GitHub Actions run the tests, lint and site check on every push, and a weekly workflow refreshes the data, commits the derived series and deploys the site.
+
+```
+ironarb/     pricing engine: units, VAT, Dalian grade rules, constant maturity, voyage model, margins, statistics
+pipeline/    ingest, transform, validate, model, report, export, audit
+site/        static site (HTML, CSS, JavaScript modules, vendored ECharts), data JSON and CSV downloads
+data/        raw data that may be redistributed, derived series, validation anchors, data/AUDIT.md
+tests/       pytest: formulas, VAT boundaries, grade switch, constant maturity, voyage model, anchors, JS parity
+```
+
+## Licence and data terms
+
+Code: MIT (see `LICENSE`). FRED and IMF series are redistributed with attribution to the Federal Reserve Bank of St. Louis and the International Monetary Fund; World Bank data are CC BY 4.0. Exchange prices (Dalian Commodity Exchange, Shanghai Futures Exchange, SGX) and Baltic Exchange indices belong to their owners: only derived series are published, and the pipeline re-fetches the inputs from public endpoints. Modeled freight is an estimate, not a Baltic Exchange or Platts assessment.
+
+Nathan Couturier, [nathancouturier.github.io](https://nathancouturier.github.io)
