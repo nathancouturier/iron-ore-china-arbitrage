@@ -16,10 +16,10 @@ import pandas as pd
 from ironarb import dce as dce_rules
 from ironarb.curve import most_active
 from ironarb.curve_build import constant_maturity_series
-from ironarb.dce_x import x_by_contract
+from ironarb.dce_x import x_by_contract, x_table
 from ironarb.params import value
 
-from .ingest import dce, shfe, sina
+from .ingest import dce, eastmoney, safe, sgx, shfe, sina
 
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / "data" / "cache"
@@ -29,6 +29,7 @@ SINGLE_SIDED_FROM = pd.Timestamp("2020-01-01")
 # Statutory holidays fixed by law that fall after the data end (used only to
 # estimate expiries of contracts that have not expired yet).
 FUTURE_HOLIDAYS = ["2027-01-01", "2027-05-01", "2027-10-01"]
+FIRST_DATE = pd.Timestamp("2013-10-18")  # first day of DCE iron ore trading
 
 
 def _sina_single_sided(df: pd.DataFrame) -> pd.DataFrame:
@@ -40,14 +41,19 @@ def _sina_single_sided(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def has_dce_history() -> bool:
+    return (dce.DIR / "index.json").exists()
+
+
 def futures_panel() -> pd.DataFrame:
     """Merge official exchange files with Sina, normalised to single-sided lots."""
     frames = []
-    # DCE: official annual files to 2024, Sina from 2025.
-    off = dce.read_panel(("I", "J", "JM"))
-    off = off.astype({"volume": float, "oi": float, "settle": float, "close": float})
-    off = off.assign(volume=off["volume"] / 2.0, oi=off["oi"] / 2.0, source="dce_official")
-    frames.append(off[["product", "contract", "date", "settle", "close", "volume", "oi", "source"]])
+    # DCE: official annual files to 2024 (when cached), Sina from 2025.
+    if has_dce_history():
+        off = dce.read_panel(("I", "J", "JM"))
+        off = off.astype({"volume": float, "oi": float, "settle": float, "close": float})
+        off = off.assign(volume=off["volume"] / 2.0, oi=off["oi"] / 2.0, source="dce_official")
+        frames.append(off[["product", "contract", "date", "settle", "close", "volume", "oi", "source"]])
     sn = _sina_single_sided(sina.read_all(("I", "J", "JM", "RB", "HC")))
     dce_recent = sn[sn["product"].isin(["I", "J", "JM"]) & (sn["date"] > DCE_LAST_OFFICIAL)]
     frames.append(dce_recent.assign(source="sina"))
@@ -84,8 +90,17 @@ def add_expiry(panel: pd.DataFrame, calendar: pd.DatetimeIndex) -> pd.DataFrame:
 
 
 def x_schedule(iron: pd.DataFrame) -> dict[str, float]:
-    """X (RMB per 0.1% Fe) for each 61% Fe contract. See ``ironarb.dce_x``."""
-    return x_by_contract(iron)
+    """X (RMB per 0.1% Fe) for each 61% Fe contract (see ``ironarb.dce_x``).
+
+    Values that cannot be recomputed from the available history (incremental
+    refresh) are taken from the committed table ``dce_x_by_contract.csv``."""
+    xmap = x_by_contract(iron)
+    snap = DERIVED / "dce_x_by_contract.csv"
+    if snap.exists():
+        old = pd.read_csv(snap).set_index("contract")["x_rmb_per_0_1pct"].to_dict()
+        for k, v in old.items():
+            xmap.setdefault(k, float(v))
+    return xmap
 
 
 def iron_ore_curve(panel: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -166,22 +181,100 @@ def same_month_prices(panel: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
-def run() -> dict[str, str]:
-    CACHE.mkdir(parents=True, exist_ok=True)
-    DERIVED.mkdir(parents=True, exist_ok=True)
-    panel = futures_panel()
-    panel.to_csv(CACHE / "futures_panel.csv.gz", index=False)
+def merge_snapshot(new: pd.DataFrame, path: Path, recompute_from: pd.Timestamp | None) -> pd.DataFrame:
+    """Keep committed rows before ``recompute_from`` and replace the rest with
+    freshly computed rows. ``recompute_from=None`` replaces everything."""
+    if recompute_from is None or not path.exists():
+        return new
+    old = pd.read_csv(path, parse_dates=["date"])
+    keep = old[old["date"] < recompute_from]
+    fresh = new[new["date"] >= recompute_from]
+    return pd.concat([keep, fresh], ignore_index=True).sort_values("date").reset_index(drop=True)
+
+
+def recompute_start(panel: pd.DataFrame) -> pd.Timestamp | None:
+    """Full history when the DCE annual files are cached; otherwise only dates
+    for which every listed contract is in the refreshed set (about 12 months)."""
+    if has_dce_history():
+        return None
+    first = panel.loc[panel["product"] == "I", "date"].min()
+    return first + pd.DateOffset(months=13)
+
+
+def futures_series(panel: pd.DataFrame, cutoff: pd.Timestamp | None) -> dict[str, str]:
     curve, iron = iron_ore_curve(panel)
     iron.to_csv(CACHE / "iron_ore_contracts.csv.gz", index=False)
+    curve = merge_snapshot(curve, DERIVED / "dce_iron_ore_curve_daily.csv", cutoff)
     curve.to_csv(DERIVED / "dce_iron_ore_curve_daily.csv", index=False, float_format="%.4f")
+    xt = pd.DataFrame(sorted(x_schedule(iron).items()), columns=["contract", "x_rmb_per_0_1pct"])
+    xt.to_csv(DERIVED / "dce_x_by_contract.csv", index=False)
+    if has_dce_history():
+        x_table(iron).to_csv(DERIVED / "dce_x_schedule.csv", index=False)
     mill = None
     for p in ["RB", "HC", "I", "J", "JM"]:
         ma = most_active_prices(panel, p)
         mill = ma if mill is None else mill.merge(ma, on="date", how="outer")
     mill = mill.merge(same_month_prices(panel), on="date", how="left")
-    mill.sort_values("date").to_csv(DERIVED / "futures_mill_daily.csv", index=False, float_format="%.4f")
+    mill = mill[mill["date"] >= FIRST_DATE]
+    mill = merge_snapshot(mill.sort_values("date"), DERIVED / "futures_mill_daily.csv", cutoff)
+    mill.to_csv(DERIVED / "futures_mill_daily.csv", index=False, float_format="%.4f")
     return {
-        "panel_rows": str(len(panel)),
         "curve_days": str(len(curve)),
         "curve_range": f"{curve['date'].min().date()} to {curve['date'].max().date()}",
+        "mode": "full" if cutoff is None else f"incremental from {cutoff.date()}",
     }
+
+
+def sgx_series() -> dict[str, str]:
+    """Daily SGX iron ore settlements for the prompt (current) month and the
+    final settlement of each month, merged with the committed snapshot."""
+    path = DERIVED / "sgx_fef_prompt_daily.csv"
+    if not (sgx.DIR / "zip").exists():
+        return {"sgx": "no raw files; snapshot kept"}
+    f = sgx.read_fef().dropna(subset=["settle"])
+    f["dmonth"] = f["date"].dt.strftime("%Y-%m")
+    prompt = f[f["month"] == f["dmonth"]][["date", "month", "settle", "volume", "oi", "file_id"]]
+    prompt = prompt.rename(
+        columns={"month": "contract_month", "settle": "sgx_prompt_usd_dmt", "volume": "volume_lots", "oi": "oi_lots"}
+    )
+    cutoff = None if f["date"].min() <= pd.Timestamp("2016-01-05") else f["date"].min()
+    prompt = merge_snapshot(prompt.sort_values("date"), path, cutoff)
+    prompt.to_csv(path, index=False)
+    return {"sgx": f"{len(prompt)} days to {prompt['date'].max().date()}"}
+
+
+def baltic_series() -> dict[str, str]:
+    path = DERIVED / "baltic_indices_daily.csv"
+    try:
+        bci = eastmoney.read("bci").rename(columns={"value": "bci_pts"})
+        bdi = eastmoney.read("bdi").rename(columns={"value": "bdi_pts"})
+    except FileNotFoundError:
+        return {"baltic": "no raw files; snapshot kept"}
+    df = bdi.merge(bci, on="date", how="outer").sort_values("date")
+    df = df[df["date"] >= pd.Timestamp("2008-01-01")]
+    df.to_csv(path, index=False)
+    return {"baltic": f"{len(df)} days to {df['date'].max().date()}"}
+
+
+def central_parity_series() -> dict[str, str]:
+    path = DERIVED / "usdcny_central_parity_daily.csv"
+    try:
+        cp = safe.read()
+    except (FileNotFoundError, ValueError):
+        return {"central_parity": "no raw files; snapshot kept"}
+    cutoff = None if cp["date"].min() <= pd.Timestamp("2013-01-31") else cp["date"].min()
+    cp = merge_snapshot(cp, path, cutoff)
+    cp.to_csv(path, index=False, float_format="%.4f")
+    return {"central_parity": f"{len(cp)} days to {cp['date'].max().date()}"}
+
+
+def run() -> dict[str, str]:
+    CACHE.mkdir(parents=True, exist_ok=True)
+    DERIVED.mkdir(parents=True, exist_ok=True)
+    panel = futures_panel()
+    panel.to_csv(CACHE / "futures_panel.csv.gz", index=False)
+    status = futures_series(panel, recompute_start(panel))
+    status.update(sgx_series())
+    status.update(baltic_series())
+    status.update(central_parity_series())
+    return status

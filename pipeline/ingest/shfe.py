@@ -111,7 +111,10 @@ def read_panel() -> pd.DataFrame:
     return df
 
 
-def run(start: date = date(2013, 10, 18), end: date | None = None) -> dict[str, str]:
+def run(start: date = date(2013, 10, 18), end: date | None = None, full: bool = True) -> dict[str, str]:
+    """``full`` fetches every trading day from ``start``; otherwise the last 45 days."""
     end = end or date.today()
+    if not full:
+        start = max(start, end - timedelta(days=45))
     counts = fetch_range(start, end)
     return {"shfe": ", ".join(f"{k} {v}" for k, v in counts.items())}

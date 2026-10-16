@@ -133,45 +133,46 @@ class SgxProxy:
 IODEX_61_FROM = pd.Period("2026-01", "M")
 
 
-def sgx_prompt(fef: pd.DataFrame, cfr_m: pd.DataFrame) -> SgxProxy:
-    """Prompt-month (current calendar month) FEF settlement as a daily 62% CFR proxy.
+def sgx_prompt(prompt: pd.DataFrame, cfr_m: pd.DataFrame) -> SgxProxy:
+    """Prompt-month (current calendar month) SGX settlement as a daily 62% CFR proxy.
 
     Contracts for months before January 2026 settle on a 62% Fe index. From
     January 2026 they settle on Platts IODEX, which is on a 61% Fe basis; those
     settlements are lifted to a 62% basis by the measured monthly spread between
-    the 62% benchmark (IMF, else World Bank) and the contract's final settlement.
+    the IMF 62% monthly average and the contract's final settlement; months the
+    IMF has not yet published use the mean of the measured 2026 spreads.
     """
-    f = fef.dropna(subset=["settle"]).copy()
-    f["dmonth"] = f["date"].dt.to_period("M")
-    f["cmonth"] = pd.PeriodIndex(f["month"], freq="M")
-    prompt = f[f["cmonth"] == f["dmonth"]].set_index("date").sort_index()
-    finals = prompt.groupby("cmonth").tail(1).set_index("cmonth")["settle"]
-    bench = cfr_m["cfr62_imf_usd_dmt"].combine_first(cfr_m["cfr62_wb_usd_dmt"])
-    bench.index = bench.index.to_period("M") if not isinstance(bench.index, pd.PeriodIndex) else bench.index
+    p = prompt.dropna(subset=["sgx_prompt_usd_dmt"]).copy().set_index("date").sort_index()
+    p["dmonth"] = p.index.to_period("M")
+    finals = p.groupby("dmonth")["sgx_prompt_usd_dmt"].last()
+    complete = p.groupby("dmonth").apply(
+        lambda g: g.index.max() >= g.index.max().to_period("M").end_time.normalize() - pd.offsets.BDay(1)
+    )
+    bench = cfr_m["cfr62_imf_usd_dmt"]
     basis = pd.DataFrame({"sgx_final_usd_dmt": finals, "bench62_usd_dmt": bench}).dropna(subset=["sgx_final_usd_dmt"])
-    basis["spread_usd_dmt"] = basis["bench62_usd_dmt"] - basis["sgx_final_usd_dmt"]
+    basis["month_complete"] = complete
+    basis["spread_usd_dmt"] = (basis["bench62_usd_dmt"] - basis["sgx_final_usd_dmt"]).where(basis["month_complete"])
     basis["iodex61"] = basis.index >= IODEX_61_FROM
-    s61 = basis.loc[basis["iodex61"], "spread_usd_dmt"]
-    measured = s61.dropna()
-    latest_spread = float(measured.iloc[-1]) if len(measured) else float("nan")
-    adj = pd.Series(0.0, index=prompt.index)
-    flag = pd.Series("62_basis", index=prompt.index)
-    for m, grp in prompt.groupby("dmonth"):
+    measured = basis.loc[basis["iodex61"], "spread_usd_dmt"].dropna()
+    mean_spread = float(measured.mean()) if len(measured) else float("nan")
+    adj = pd.Series(0.0, index=p.index)
+    flag = pd.Series("62_basis", index=p.index)
+    for m, grp in p.groupby("dmonth"):
         if m < IODEX_61_FROM:
             continue
         sp = basis["spread_usd_dmt"].get(m, np.nan)
         if np.isnan(sp):
-            sp = latest_spread
-            flag.loc[grp.index] = "61_basis_lifted_latest_spread"
+            sp = mean_spread
+            flag.loc[grp.index] = "61_basis_lifted_mean_spread"
         else:
             flag.loc[grp.index] = "61_basis_lifted_same_month_spread"
         adj.loc[grp.index] = sp
     daily = pd.DataFrame(
         {
-            "sgx_prompt_usd_dmt": prompt["settle"],
-            "sgx_contract_month": prompt["month"],
+            "sgx_prompt_usd_dmt": p["sgx_prompt_usd_dmt"],
+            "sgx_contract_month": p["contract_month"],
             "basis_adj_usd_dmt": adj,
-            "cfr62_sgx_usd_dmt": prompt["settle"] + adj,
+            "cfr62_sgx_usd_dmt": p["sgx_prompt_usd_dmt"] + adj,
             "basis_flag": flag,
         }
     )
@@ -180,7 +181,9 @@ def sgx_prompt(fef: pd.DataFrame, cfr_m: pd.DataFrame) -> SgxProxy:
         "pre2026_final_vs_bench_mean": float((pre["sgx_final_usd_dmt"] - pre["bench62_usd_dmt"]).mean()),
         "pre2026_final_vs_bench_sd": float((pre["sgx_final_usd_dmt"] - pre["bench62_usd_dmt"]).std()),
         "spread_2026_mean": float(measured.mean()) if len(measured) else float("nan"),
-        "latest_spread": latest_spread,
+        "spread_2026_months": len(measured),
+        "spread_2026_min": float(measured.min()) if len(measured) else float("nan"),
+        "spread_2026_max": float(measured.max()) if len(measured) else float("nan"),
     }
     return SgxProxy(daily, basis, info)
 
@@ -189,7 +192,7 @@ def daily_inputs() -> pd.DataFrame:
     curve = inputs.dce_curve()
     cfr_m = inputs.cfr_monthly()
     cfr_m.index = cfr_m.index.to_period("M")
-    proxy = sgx_prompt(inputs.sgx_fef(), cfr_m)
+    proxy = sgx_prompt(inputs.sgx_prompt(), cfr_m)
     df = curve[
         [c for c in curve.columns if c.startswith("dce_i_cm") and c.endswith("rmb_dmt")] + ["dce_i_ma62_rmb_dmt"]
     ]

@@ -116,8 +116,17 @@ def read_fef() -> pd.DataFrame:
     return out.drop_duplicates(["date", "month"], keep="last").sort_values(["date", "month"])
 
 
-def run() -> dict[str, str]:
+def run(full: bool = False) -> dict[str, str]:
+    """Fetch new archives. Without a local index (fresh clone), start just before
+    the last file id recorded in the committed derived snapshot."""
     index = _index()
-    start = max([int(k) for k in index] + [FIRST_ID - 1]) + 1 if index else FIRST_ID
+    if index:
+        start = max(int(k) for k in index) + 1
+    else:
+        snap = RAW.parent / "derived" / "sgx_fef_prompt_daily.csv"
+        start = FIRST_ID
+        if snap.exists() and not full:
+            ids = pd.read_csv(snap, usecols=["file_id"])["file_id"]
+            start = int(ids.max()) - 5
     counts = fetch_ids(start)
     return {"sgx": ", ".join(f"{k} {v}" for k, v in counts.items())}

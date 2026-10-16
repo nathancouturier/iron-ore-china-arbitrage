@@ -163,3 +163,30 @@ def write_bytes(path: Path, data: bytes) -> None:
 def manifest_entry(path: Path) -> dict[str, Any] | None:
     rel = path.resolve().relative_to(RAW).as_posix()
     return load_manifest().get(rel)
+
+
+def reconcile(folder: Path, pattern: str, url_for) -> int:
+    """Register cached files under ``folder`` that have no manifest entry (for
+    example after an interrupted or parallel download). Retrieval time is taken
+    from the file's modification time."""
+    manifest = load_manifest()
+    added = 0
+    for path in sorted(folder.glob(pattern)):
+        rel = path.resolve().relative_to(RAW).as_posix()
+        if rel in manifest:
+            continue
+        data = path.read_bytes()
+        stamp = (
+            datetime.fromtimestamp(path.stat().st_mtime, UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+        )
+        manifest[rel] = {
+            "source_url": url_for(path),
+            "retrieved_at": stamp,
+            "sha256": sha256_bytes(data),
+            "bytes": len(data),
+            "redistributed": rel.split("/")[0] not in NON_REDISTRIBUTABLE,
+        }
+        added += 1
+    if added:
+        save_manifest(manifest)
+    return added

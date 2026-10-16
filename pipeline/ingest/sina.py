@@ -109,11 +109,14 @@ def read_continuous(code: str) -> pd.DataFrame:
     return df[["date", "close", "settle", "volume", "oi"]]
 
 
-def run(today: date | None = None) -> dict[str, str]:
+def run(today: date | None = None, full: bool = True) -> dict[str, str]:
+    """``full`` fetches every contract from May 2019; otherwise contracts whose
+    delivery month is within the last 14 months or later."""
     today = today or date.today()
     codes: list[str] = []
+    recent = (today.year - (1 if today.month > 2 else 2), (today.month - 2 - 1) % 12 + 1)
     for product, start in FIRST_CONTRACT.items():
-        codes += contract_codes(product, start, today)
+        codes += contract_codes(product, start if full else max(start, recent), today)
     codes += CONTINUOUS
     status = fetch_contracts(codes, today)
     n_ok = sum(1 for v in status.values() if v.startswith("ok") or v == "cached")

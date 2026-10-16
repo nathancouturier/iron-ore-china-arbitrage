@@ -15,7 +15,7 @@ import pandas as pd
 from .ingest import dce, eastmoney, fred, safe, sgx, shfe, sina, worldbank
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "data" / "cache" / "cross_checks.json"
+OUT = ROOT / "data" / "derived" / "cross_checks.json"
 
 
 class ValidationError(RuntimeError):
@@ -159,8 +159,14 @@ def schema_checks() -> None:
 
 
 def run() -> dict[str, str]:
-    res = checks()
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(res, indent=1, default=str), encoding="utf-8")
+    """Cross-source checks need the raw exchange files, which only a full
+    rebuild has; otherwise the committed results are kept and only the schema
+    checks run."""
     schema_checks()
+    try:
+        res = checks()
+    except (FileNotFoundError, ValueError, KeyError) as exc:
+        return {"validate": f"cross-checks kept from last full rebuild ({type(exc).__name__})"}
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(json.dumps(res, indent=1, default=str) + "\n", encoding="utf-8")
     return {"validate": f"{len(res)} cross-checks written"}

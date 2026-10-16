@@ -15,7 +15,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from .ingest import eastmoney, fred, safe, sgx, worldbank
+from .ingest import fred, worldbank
 
 ROOT = Path(__file__).resolve().parents[1]
 DERIVED = ROOT / "data" / "derived"
@@ -24,8 +24,10 @@ SOFR_START = pd.Timestamp("2018-04-02")
 
 
 def _daily(s: pd.Series, name: str) -> pd.Series:
+    """Business-day series, carried forward at most FFILL_LIMIT days (also past
+    the last observation, so a publication lag of up to a week is bridged)."""
     s = s.dropna().sort_index()
-    idx = pd.bdate_range(s.index.min(), s.index.max())
+    idx = pd.bdate_range(s.index.min(), s.index.max() + pd.offsets.BDay(FFILL_LIMIT))
     return s.reindex(idx).ffill(limit=FFILL_LIMIT).rename(name)
 
 
@@ -35,8 +37,8 @@ def fx_daily() -> pd.Series:
 
 
 def central_parity_daily() -> pd.Series:
-    df = safe.read().set_index("date")["usdcny_cp"]
-    return _daily(df, "usdcny_cp")
+    df = pd.read_csv(DERIVED / "usdcny_central_parity_daily.csv", parse_dates=["date"]).set_index("date")
+    return _daily(df["usdcny_cp"], "usdcny_cp")
 
 
 def usd_rate_daily() -> pd.Series:
@@ -50,8 +52,12 @@ def brent_daily() -> pd.Series:
     return _daily(fred.read("DCOILBRENTEU").set_index("date")["value"], "brent_usd_bbl")
 
 
+def baltic_daily() -> pd.DataFrame:
+    return pd.read_csv(DERIVED / "baltic_indices_daily.csv", parse_dates=["date"]).set_index("date")
+
+
 def bci_daily() -> pd.Series:
-    return _daily(eastmoney.read("bci").set_index("date")["value"].astype(float), "bci_pts")
+    return _daily(baltic_daily()["bci_pts"].astype(float), "bci_pts")
 
 
 def cfr_monthly() -> pd.DataFrame:
@@ -60,11 +66,9 @@ def cfr_monthly() -> pd.DataFrame:
     return pd.concat([imf, wb], axis=1)
 
 
-def sgx_fef() -> pd.DataFrame:
-    cache = ROOT / "data" / "cache" / "sgx_fef.csv.gz"
-    df = sgx.read_fef()
-    df.to_csv(cache, index=False)
-    return df
+def sgx_prompt() -> pd.DataFrame:
+    """SGX prompt-month settlements (derived snapshot, see pipeline/transform.py)."""
+    return pd.read_csv(DERIVED / "sgx_fef_prompt_daily.csv", parse_dates=["date"])
 
 
 def dce_curve() -> pd.DataFrame:

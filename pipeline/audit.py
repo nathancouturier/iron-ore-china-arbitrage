@@ -180,7 +180,7 @@ def build() -> str:
             f"{fef['date'].nunique()} trading days",
         )
     )
-    checks_path = CACHE / "cross_checks.json"
+    checks_path = ROOT / "data" / "derived" / "cross_checks.json"
     if checks_path.exists():
         checks = json.loads(checks_path.read_text())
         parts += ["## Cross-source checks", ""]
@@ -192,5 +192,11 @@ def build() -> str:
 
 
 def run() -> dict[str, str]:
-    OUT.write_text(build(), encoding="utf-8")
+    """The audit describes the raw files, so it is regenerated only when they are
+    all cached (a full rebuild); otherwise the committed audit is kept."""
+    try:
+        text = build()
+    except (FileNotFoundError, ValueError, KeyError) as exc:
+        return {"audit": f"kept from last full rebuild ({type(exc).__name__})"}
+    OUT.write_text(text, encoding="utf-8")
     return {"audit": f"written {OUT.relative_to(ROOT)}"}
