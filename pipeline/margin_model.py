@@ -246,6 +246,12 @@ def sgx_proxy(curve: pd.DataFrame, cfr_m: pd.DataFrame, target_days: int) -> Sgx
         "spread_2026_min": float(measured.min()) if len(measured) else float("nan"),
         "spread_2026_max": float(measured.max()) if len(measured) else float("nan"),
         "spread_2026_wb_mean": float(basis.loc[basis["iodex61"], "spread_wb_usd_dmt"].dropna().mean()),
+        "pre2026_months": len(pre),
+        # the constant uses every measured month; against the mean of the months
+        # published before each later month it differs by at most this much
+        "spread_2026_realtime_max_diff": float(
+            max((abs(measured.iloc[:k].mean() - measured.mean()) for k in range(1, len(measured))), default=0.0)
+        ),
     }
     return SgxProxy(daily, basis, info)
 

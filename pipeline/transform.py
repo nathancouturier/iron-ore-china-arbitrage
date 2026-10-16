@@ -267,11 +267,11 @@ def sgx_series() -> dict[str, str]:
     ahead = pd.PeriodIndex(f["month"], freq="M") - pd.PeriodIndex(f["date"].dt.strftime("%Y-%m"), freq="M")
     f["months_ahead"] = [x.n for x in ahead]
     f = f[f["months_ahead"].between(0, SGX_MONTHS_AHEAD)]
-    curve = f[["date", "month", "months_ahead", "settle", "volume", "oi", "file_id"]].rename(
-        columns={"month": "contract_month", "settle": "settle_usd_dmt", "volume": "volume_lots", "oi": "oi_lots"}
-    )
+    # settlements only: volume and open interest are not used and not republished
+    cols = ["date", "contract_month", "months_ahead", "settle_usd_dmt", "file_id"]
+    curve = f.rename(columns={"month": "contract_month", "settle": "settle_usd_dmt"})[cols]
     cutoff = None if f["date"].min() <= pd.Timestamp("2016-01-05") else f["date"].min()
-    curve = merge_snapshot(curve.sort_values(["date", "months_ahead"]), path, cutoff)
+    curve = merge_snapshot(curve.sort_values(["date", "months_ahead"]), path, cutoff)[cols]
     curve = curve.sort_values(["date", "months_ahead"]).reset_index(drop=True)
     curve.to_csv(path, index=False)
     return {"sgx": f"{curve['date'].nunique()} days to {curve['date'].max().date()}"}

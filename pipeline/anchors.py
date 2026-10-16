@@ -88,9 +88,10 @@ def import_cost(a: Assumptions) -> dict[str, Any]:
     }
 
 
-def port_price(a: Assumptions) -> dict[str, Any]:
+def port_price(a: Assumptions, landed: pd.Series | None = None) -> dict[str, Any]:
     """Fastmarkets 62% fines fot Qingdao (RMB per wet tonne, VAT and port fees
-    included) converted to USD per dry tonne with our conventions."""
+    included) converted to USD per dry tonne with our conventions. With the daily
+    landed cost (RMB/dmt), also the port price minus the landed cost that day."""
     df = pd.read_csv(ANCHORS / "fastmarkets_port.csv", parse_dates=["date"])
     fx = inputs.fx_daily()
     dce45 = inputs.dce_curve()[f"dce_i_cm{a.cm_target}_rmb_dmt"].dropna()
@@ -118,6 +119,7 @@ def port_price(a: Assumptions) -> dict[str, Any]:
                 "port_rmb_dmt": p_dmt,
                 "dce45_rmb_dmt": dce_d,
                 "dce45_minus_port_rmb_dmt": dce_d - p_dmt,
+                "port_minus_landed_rmb_dmt": p_dmt - _asof(landed, d) if landed is not None else None,
                 "url": r["url"],
             }
         )
@@ -133,6 +135,11 @@ def port_price(a: Assumptions) -> dict[str, Any]:
             float(t["dce45_minus_port_rmb_dmt"].min()),
             float(t["dce45_minus_port_rmb_dmt"].max()),
         ],
+        "port_minus_landed_range": (
+            [float(t["port_minus_landed_rmb_dmt"].min()), float(t["port_minus_landed_rmb_dmt"].max())]
+            if landed is not None
+            else None
+        ),
     }
 
 
@@ -176,5 +183,5 @@ def mill_margin() -> dict[str, Any]:
     }
 
 
-def reconcile_all(a: Assumptions) -> dict[str, Any]:
-    return {"import_cost": import_cost(a), "port_price": port_price(a), "mill_margin": mill_margin()}
+def reconcile_all(a: Assumptions, landed: pd.Series | None = None) -> dict[str, Any]:
+    return {"import_cost": import_cost(a), "port_price": port_price(a, landed), "mill_margin": mill_margin()}

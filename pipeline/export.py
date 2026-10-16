@@ -102,6 +102,18 @@ DOWNLOAD_TEXT = {
         "with the table and URL of each month. January and February 2020 were published together; September "
         "and October 2024 and the latest month come from the preliminary release.",
     ),
+    "anchors_import_cost.csv": (
+        "Validation anchors: Ruida Futures import cost",
+        "Dated Ruida Futures daily reports: Platts 62% index, estimated import cost, route freight and BDI, with the URL.",
+    ),
+    "anchors_port_price.csv": (
+        "Validation anchors: Fastmarkets Qingdao port price",
+        "Dated Fastmarkets 62% Fe fines port prices in RMB per wet tonne with the implied USD per dry tonne, with the URL.",
+    ),
+    "anchors_mill_margin.csv": (
+        "Validation anchors: broker rebar margins",
+        "Dated broker rebar futures margins with the publisher's formula where stated, the contracts and the URL.",
+    ),
     "anchors_freight_routes.csv": (
         "Validation anchors: published route rates",
         "Dated C3 and C5 assessments with the assessor, the publication that reported them, the URL and a quote.",
@@ -631,6 +643,9 @@ def run() -> dict[str, str]:
     for extra, src in [
         ("dce_x_schedule.csv", DERIVED / "dce_x_schedule.csv"),
         ("china_iron_ore_imports_monthly.csv", DERIVED / "china_iron_ore_imports_monthly.csv"),
+        ("anchors_import_cost.csv", ROOT / "data" / "anchors" / "ruida_reports.csv"),
+        ("anchors_port_price.csv", ROOT / "data" / "anchors" / "fastmarkets_port.csv"),
+        ("anchors_mill_margin.csv", ROOT / "data" / "anchors" / "mill_margin.csv"),
         ("anchors_freight_routes.csv", ROOT / "data" / "anchors" / "freight_routes.csv"),
         ("anchors_bci_tc_pairs.csv", ROOT / "data" / "anchors" / "bci_tc_pairs.csv"),
         ("anchors_bunker_prices.csv", ROOT / "data" / "anchors" / "bunker_prices.csv"),

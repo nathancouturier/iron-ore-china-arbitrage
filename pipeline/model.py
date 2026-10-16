@@ -244,7 +244,7 @@ def run() -> dict[str, str]:
     imports = pd.read_csv(DERIVED / "china_iron_ore_imports_monthly.csv", dtype={"start": str, "end": str})
     out["imports_test"] = analysis.imports_test(m["margin_rmb_dmt"], imports)
     out["imports_test_ex_2021_2022"] = analysis.imports_test(m["margin_rmb_dmt"], imports, exclude_years=(2021, 2022))
-    out["anchors"] = anchors.reconcile_all(a)
+    out["anchors"] = anchors.reconcile_all(a, d["landed_rmb_dmt"].dropna())
 
     (DERIVED / "analysis.json").write_text(json.dumps(_clean(out), indent=1) + "\n", encoding="utf-8")
     return {"model": "analysis.json and derived series written"}

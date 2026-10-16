@@ -56,8 +56,8 @@ def checks() -> list[dict]:
                 "Share of contract-days with identical settlement and close, by product and year, and the median "
                 "ratio of Sina to DCE open interest. DCE annual files report double-sided open interest; Sina "
                 "switches to single-sided from 2020 (ratio 0.5). Sina stores missing settlements as 0 (most of "
-                "February to July 2020), hence the lower 2020 settlement agreement. Pipeline: DCE files to "
-                "2024-12-31, Sina from 2025-01-01."
+                "February to July 2020); those days are left out, hence fewer 2020 contract-days. Agreement is "
+                "lowest in 2018 and 2019. Pipeline: DCE files to 2024-12-31, Sina from 2025-01-01."
             ),
             "table": rows,
         }
@@ -104,7 +104,8 @@ def checks() -> list[dict]:
             "text": (
                 "USD per dry tonne. SGX iron ore futures settle on the monthly average of the index: TSI 62% Fe "
                 "for contract months to December 2025, Platts IODEX (61% Fe basis from 2 January 2026) from "
-                "January 2026, so the 2026 rows measure the 62/61 basis spread."
+                "January 2026, so the 2026 rows combine the 62/61 basis spread with the usual gap between the "
+                "settlement index and the IMF and World Bank series (compare 2025 with 2026)."
             ),
             "table": tab,
         }

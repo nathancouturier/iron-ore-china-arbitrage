@@ -190,7 +190,7 @@ def fig_freight(freight: pd.DataFrame, anchors: pd.DataFrame, monthly: pd.DataFr
         pts = anchors[anchors["route"] == k.upper()]
         a1.scatter(pts["date"], pts["value_usd_wmt"], s=13, facecolor="white", edgecolor=color, lw=0.9, zorder=4)
     a1.set_ylabel("USD per wet tonne")
-    a1.set_title("Modeled freight (dashed, 80% band) and published rates (dots)")
+    a1.set_title("Modeled freight (dashed, 80% band) and published rates (circles)")
     a1.legend(loc="upper left")
     idx = pd.PeriodIndex(monthly.index, freq="M").to_timestamp()
     a2.plot(idx, monthly["freight_share_cfr_c3"] * 100, color=SEAWATER, lw=0.9, ls=(0, (4, 2)), label="C3 Tubarao")
@@ -417,9 +417,11 @@ def build() -> Path:
         f"Freight takes {pct(monthly['freight_share_cfr_c5'].mean())} of the CFR price from West Australia and "
         f"{pct(monthly['freight_share_cfr_c3'].mean())} from Brazil on average since 2014; Brazil's index-equivalent "
         f"netback trails Australia's by {num(gap.mean(), 1)} USD/dmt on average and by {num(gap.iloc[-1], 1)} in {month(lm)}.",
-        f"The physical market tracks import parity; the discount sits in Dalian. On {len(pp['rows'])} dated Fastmarkets "
-        f"Qingdao port prices, Dalian's 45-day price was {num(-pp['dce45_minus_port_range'][1])} to "
-        f"{num(-pp['dce45_minus_port_range'][0])} RMB/dmt below the port price of 62% fines. Mills are squeezed: the "
+        f"Most of the discount sits in Dalian. On {len(pp['rows'])} dated Fastmarkets Qingdao port prices "
+        f"({pp['rows'][0]['date'][:4]} to {pp['rows'][-1]['date'][:4]}), Dalian's 45-day price was "
+        f"{num(-pp['dce45_minus_port_range'][1])} to {num(-pp['dce45_minus_port_range'][0])} RMB/dmt below the port "
+        f"price of 62% fines, while the port price minus the landed cost ranged from "
+        f"{signed(pp['port_minus_landed_range'][0])} to {signed(pp['port_minus_landed_range'][1])} RMB/dmt. Mills are squeezed: the "
         f"rebar futures margin was {signed(rebar.iloc[-1])} RMB/t on {day(str(rebar.index[-1])[:10])}, negative on "
         + ("every trading day" if ly_neg == 1 else f"{pct(ly_neg, 0)} of trading days")
         + f" of {ly}, and the pre-registered test finds "
@@ -469,8 +471,9 @@ def build() -> Path:
                 _img(figs["margin"]),
                 P(
                     f"Figure 2. Shaded: the no-arbitrage band of ±{num(band)} RMB/dmt (delivery fee, about a month of "
-                    "warehouse storage and the vessel outbound fee cap). Numbered: the three largest deviations from the "
-                    "mean. Sources: SGX, Dalian Commodity Exchange, FRED; computed by the pipeline.",
+                    "warehouse storage and the vessel outbound fee cap at the fees in force since mid-2021; they were "
+                    "higher before). Numbered: the three largest deviations from the mean, at least 120 trading days "
+                    "apart. Sources: SGX, Dalian Commodity Exchange, FRED; computed by the pipeline.",
                     "cap",
                 ),
             ]
@@ -492,7 +495,8 @@ def build() -> Path:
         _table(win_rows, [52, 61, 61], st),
         P("Table 1. Import margin statistics. Open: above +25 RMB/dmt; closed: below −25.", "cap"),
         P(
-            "The three largest episodes have documented causes. "
+            "The two largest deviations have documented policy causes; the third is an artifact of an expiring "
+            "contract. "
             + " ".join(
                 f"({i}) {day(e['date'])}, {signed(float(daily.loc[pd.Timestamp(e['date']), 'margin_rmb_dmt']))} RMB/dmt: "
                 f"{e['text']} [{'; '.join(s['name'] for s in e['sources'])}]"
@@ -535,7 +539,7 @@ def build() -> Path:
             [
                 _img(figs["freight"]),
                 P(
-                    "Figure 3. Left: modeled C3 and C5 with 80% error bands (dashed) and the published assessments used to "
+                    "Figure 3. Left: modeled C3 and C5 (dashed lines) with shaded 80% error bands and the published assessments used to "
                     "score them (circles: Baltic Exchange via the shipping press, Platts, Ruida Futures). Right: modeled "
                     "freight per dry tonne as a share of the 62% CFR price. Sources: East Money (BCI), FRED, IMF.",
                     "cap",
@@ -593,7 +597,7 @@ def build() -> Path:
     ebr_err = max(abs(r["error_rmb_t"]) for r in ebr)
     val_rows = [
         ["Check", "n", "Result", "Tolerance"],
-        ["Import cost, Ruida Futures estimates, FX matched to theirs (PBoC central parity)", str(len(ic["rows"])),
+        ["Import cost, Ruida Futures estimates, FX that best fits theirs (PBoC central parity)", str(len(ic["rows"])),
          f"max error {num(ic['max_abs_error_ours_central_parity'], 1)} RMB/t "
          f"({num(ic['max_abs_error_ours'], 1)} with the New York rate used for the headline)", f"{num(TOLERANCE['import_cost_rmb_t'])} RMB/t"],
         ["Fastmarkets Qingdao port price to USD/dmt", str(len(pp["rows"])), f"max error {num(pp['max_abs_error_usd'], 2)} USD/dmt",
@@ -613,12 +617,13 @@ def build() -> Path:
                 P("Validation", "h"),
                 _table(val_rows, [55, 10, 82, 27], st),
                 P(
-                    "Table 3. Tolerances were fixed before reconciling and are enforced by the test suite. The mill "
+                    "Table 3. Tolerances are enforced by the test suite. The mill "
                     "margin's other-cost constant is calibrated on Everbright Futures, so those rows are not independent "
                     f"checks; the {num(PARAMS['port_charges_rmb_wmt']['value'])} RMB/wmt port charge was set with the Ruida and "
                     "Fastmarkets figures in view (they imply 30 to 35 and 31 to 40), so those two rows test the price, FX, VAT and "
-                    "moisture conventions more than the port charge. Each anchor, with its link, is listed on the Method "
-                    "and data page.",
+                    "moisture conventions more than the port charge. The freight model's time charter and bunker maps "
+                    "are fitted on separate public pairs, never on route rates, so the C3 and C5 rows are out of sample. "
+                    "Each anchor, with its link, is listed on the Method and data page.",
                     "cap",
                 ),
             ]
@@ -639,7 +644,8 @@ def build() -> Path:
         ),
         P("Sources", "h"),
         P(
-            "IMF Primary Commodity Prices via FRED (PIORECRUSDM, DEXCHUS, SOFR, DFF, DCOILBRENTEU); World Bank Pink Sheet; "
+            "FRED: IMF iron ore (PIORECRUSDM), Federal Reserve USD/CNY (DEXCHUS), New York Fed SOFR, effective federal "
+            "funds rate (DFF), EIA Brent (DCOILBRENTEU); World Bank Pink Sheet; "
             "Dalian Commodity Exchange annual files and rules; Shanghai Futures Exchange daily files; Sina futures history; "
             "SGX daily settlement files; Baltic Capesize Index via East Money; SAFE central parity; China Customs (GACC) "
             "monthly bulletins; searoute; Natural Earth. "

@@ -2,13 +2,13 @@
 name = "iron-ore-china-arbitrage"
 version = "1.0.0"
 description = "Delivered cost of seaborne iron ore into China against Dalian futures: data pipeline, engine, site and research note."
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 authors = [{ name = "Nathan Couturier" }]
 license = { text = "MIT" }
 
 [tool.ruff]
 line-length = 120
-target-version = "py311"
+target-version = "py312"
 extend-exclude = ["data", "site", ".venv"]
 
 [tool.ruff.lint]

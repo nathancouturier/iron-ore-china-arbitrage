@@ -13,7 +13,7 @@ export async function render(root, meta) {
   const series = d.files.filter((f) => !f.file.startsWith('anchors_'));
   const anchors = d.files.filter((f) => f.file.startsWith('anchors_'));
   root.append(
-    el('p', { class: 'takeaway' }, 'Every series behind the charts, as CSV, with units in the column names.'),
+    el('p', { class: 'takeaway' }, 'The series behind the time-series charts, as CSV, with the unit in each numeric column name.'),
     el('p', { class: 'subtake' },
       `Column suffixes give the unit: _usd_dmt is USD per dry metric tonne, _usd_wmt per wet tonne, _rmb_dmt RMB per dry tonne, _rmb_t RMB per tonne, _pts index points, _pct percent. Built ${fmtDate(meta.build_date)}, version ${meta.version}.`),
   );
@@ -29,14 +29,14 @@ export async function render(root, meta) {
 
   root.append(el('h2', { class: 'section-title' }, 'Derived series'), list(series));
   root.append(el('h2', { class: 'section-title' }, 'Validation and calibration points'),
-    el('p', { class: 'subtake' }, 'Published figures used to test and calibrate the freight model, each with its date, source URL and a short quote.'),
+    el('p', { class: 'subtake' }, 'Published figures used to test the landed cost, the mill margin and the freight model, and to calibrate the freight model, each with its date and source URL; route rates and time charter pairs also carry a short quote.'),
     list(anchors));
 
   root.append(el('h2', { class: 'section-title' }, 'Terms'),
     el('ul', { class: 'plain' },
       el('li', {}, 'Code: MIT license, in the repository linked below.'),
       el('li', {}, 'FRED and IMF series are redistributed with attribution: Federal Reserve Bank of St. Louis (FRED) and International Monetary Fund, Primary Commodity Prices. World Bank Pink Sheet data are under CC BY 4.0.'),
-      el('li', {}, 'Exchange prices (Dalian Commodity Exchange, Shanghai Futures Exchange, SGX) and Baltic Exchange indices belong to their owners. The files here are derived series computed from them; the pipeline re-fetches the inputs from the public endpoints.'),
+      el('li', {}, 'Exchange prices (Dalian Commodity Exchange, Shanghai Futures Exchange, SGX) and Baltic Exchange indices belong to their owners. Most files here are derived series computed from them; some columns repeat inputs for reference (the BCI, the SGX front-month settlement and most-active futures prices), and the validation files repeat the published figures they test against, with links. The pipeline re-fetches the inputs from the public endpoints.'),
       el('li', {}, 'Modeled freight is an estimate, not a Baltic Exchange or Platts assessment.'),
     ),
     el('p', {}, 'Source code and rebuild instructions: ', el('a', { href: 'https://github.com/nathancouturier/iron-ore-china-arbitrage' }, 'github.com/nathancouturier/iron-ore-china-arbitrage'), '.'),

@@ -64,7 +64,7 @@
     35.0
    ],
    "unit": "RMB per dry tonne",
-   "source": "DCE delivery fee 0.5 + storage 0.3/day x 30 days + ship outbound fee cap 12 = 21.5 RMB/t (27.5 at the pre-2021 storage fee of 0.5/day)"
+   "source": "DCE delivery fee 0.5 + storage 0.3/day x 30 days + ship outbound fee cap 12 (since 15 June 2021) = 21.5 RMB/t; before then the ship outbound cap was 25 to 44 and storage 0.5/day (to January 2021), about 40 to 60 RMB/t"
   },
   "mill_ore_coef": {
    "value": 1.6,
@@ -3220,7 +3220,9 @@
    "spread_2026_months": 7,
    "spread_2026_min": 1.1972727272727042,
    "spread_2026_max": 3.5956521739129954,
-   "spread_2026_wb_mean": -0.15555555555555778
+   "spread_2026_wb_mean": -0.15555555555555778,
+   "pre2026_months": 119,
+   "spread_2026_realtime_max_diff": 0.8044561856363093
   },
   "months": [
    {
@@ -7333,6 +7335,7 @@
      "port_rmb_dmt": 961.9565217391304,
      "dce45_rmb_dmt": 890.3571,
      "dce45_minus_port_rmb_dmt": -71.59942173913043,
+     "port_minus_landed_rmb_dmt": 73.74211036225915,
      "url": "https://fastmarkets.com/?p=25814"
     },
     {
@@ -7346,6 +7349,7 @@
      "port_rmb_dmt": 1242.391304347826,
      "dce45_rmb_dmt": 1110.5,
      "dce45_minus_port_rmb_dmt": -131.891304347826,
+     "port_minus_landed_rmb_dmt": 7.382394783723612,
      "url": "https://www.fastmarkets.com/insights/iron-ore-daily-lump-prices-rise-amid-tight-supplies/"
     },
     {
@@ -7359,6 +7363,7 @@
      "port_rmb_dmt": 1580.4347826086955,
      "dce45_rmb_dmt": 1206.5405,
      "dce45_minus_port_rmb_dmt": -373.89428260869545,
+     "port_minus_landed_rmb_dmt": 81.08285490108506,
      "url": "https://www.fastmarkets.com/insights/iron-ore-daily-index-for-63-fe-lump-premium-hits-record-high/"
     },
     {
@@ -7372,6 +7377,7 @@
      "port_rmb_dmt": 1006.5217391304348,
      "dce45_rmb_dmt": 769.9531,
      "dce45_minus_port_rmb_dmt": -236.5686391304348,
+     "port_minus_landed_rmb_dmt": -9.70094569976618,
      "url": "https://www.fastmarkets.com/insights/iron-ore-daily-prices-continue-to-rise-on-active-port-trading/"
     },
     {
@@ -7385,6 +7391,7 @@
      "port_rmb_dmt": 944.5652173913043,
      "dce45_rmb_dmt": 695.7571,
      "dce45_minus_port_rmb_dmt": -248.80811739130422,
+     "port_minus_landed_rmb_dmt": -87.75571804728816,
      "url": "https://fastmarkets.com/insights/correction-to-fastmarkets-iron-ore-62-port-stock-indices"
     }
    ],
@@ -7396,6 +7403,10 @@
    "dce45_minus_port_range": [
     -373.89428260869545,
     -71.59942173913043
+   ],
+   "port_minus_landed_range": [
+    -87.75571804728816,
+    81.08285490108506
    ]
   },
   "mill_margin": {

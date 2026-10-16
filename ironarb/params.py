@@ -51,7 +51,7 @@ PARAMS: dict[str, Any] = {
         "value": 25.0,
         "sensitivity": [15.0, 35.0],
         "unit": "RMB per dry tonne",
-        "source": "DCE delivery fee 0.5 + storage 0.3/day x 30 days + ship outbound fee cap 12 = 21.5 RMB/t (27.5 at the pre-2021 storage fee of 0.5/day)",
+        "source": "DCE delivery fee 0.5 + storage 0.3/day x 30 days + ship outbound fee cap 12 (since 15 June 2021) = 21.5 RMB/t; before then the ship outbound cap was 25 to 44 and storage 0.5/day (to January 2021), about 40 to 60 RMB/t",
     },
     "mill_ore_coef": {"value": 1.6, "unit": "t ore per t steel", "source": "Chinese broker convention"},
     "mill_coke_coef": {"value": 0.5, "unit": "t coke per t steel", "source": "Chinese broker convention"},
