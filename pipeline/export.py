@@ -11,10 +11,11 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from ironarb.params import PARAMS, VESSEL
+from ironarb.params import LOAD_DAYS_NOTE, PARAMS, PORT_COSTS_NOTE, ROUTES, VESSEL
 from ironarb.vat import SCHEDULE
 
 from . import geo
+from .anchors import TOLERANCE
 from .ingest.common import load_manifest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -61,6 +62,53 @@ def _retrieved(prefix: str) -> str | None:
     m = load_manifest()
     stamps = [v["retrieved_at"] for k, v in m.items() if k.startswith(prefix)]
     return max(stamps)[:10] if stamps else None
+
+
+DOWNLOAD_TEXT = {
+    "import_margin_daily.csv": (
+        "Import margin, daily",
+        "Landed cost of 62% fines (C5 and C3 voyages) and the Dalian 45-day 62% equivalent, with every bridge "
+        "component, the margin against the most-active contract, modeled freight with bands and netbacks. "
+        "CFR proxy: SGX iron ore futures at a 45-day horizon.",
+    ),
+    "import_margin_monthly.csv": (
+        "Import margin, monthly baseline",
+        "Same chain on the IMF 62% Fe CFR China monthly average against the monthly average of the daily Dalian "
+        "45-day price, with World Bank CFR for comparison, freight shares and netbacks.",
+    ),
+    "freight_modeled_daily.csv": (
+        "Modeled Capesize freight, daily",
+        "C3 and C5 voyage model and regression estimates with 80% error bands, the BCI, Brent, the time charter "
+        "and bunker proxies. Modeled series, not published route rates.",
+    ),
+    "mill_margin_daily.csv": (
+        "Steel mill futures margin, daily",
+        "Rebar and HRC futures margins (most-active and same-delivery-month contracts) with the ore, coke and "
+        "other-cost components.",
+    ),
+    "dce_iron_ore_curve_daily.csv": (
+        "Dalian iron ore curve, daily",
+        "Constant-maturity 30, 45, 60 and 90-day prices on a 62% Fe basis with the method and contracts used, "
+        "the most-active contract and total open interest.",
+    ),
+    "dce_x_schedule.csv": (
+        "Dalian grade premium X",
+        "Fe premium per 0.1% computed from the exchange rule for each half-year window, used to put 61% contracts "
+        "on a 62% basis.",
+    ),
+    "anchors_freight_routes.csv": (
+        "Validation anchors: published route rates",
+        "Dated C3 and C5 assessments with the assessor, the publication that reported them, the URL and a quote.",
+    ),
+    "anchors_bci_tc_pairs.csv": (
+        "Calibration pairs: BCI and time charter",
+        "Dated pairs of BCI points and the Capesize time charter average used to calibrate the TCE proxy.",
+    ),
+    "anchors_bunker_prices.csv": (
+        "Calibration points: bunker prices",
+        "Dated Singapore HSFO and VLSFO prices used to map Brent to the bunker price.",
+    ),
+}
 
 
 def episode_events(daily: pd.DataFrame, a: dict[str, Any]) -> list[dict[str, Any]]:
@@ -280,6 +328,8 @@ def run() -> dict[str, str]:
         "recent": series(recent, "margin_rmb_dmt"),
         "share_closed_daily": a["window_daily"]["share_closed"],
         "sgx_basis": a["sgx_basis"]["info"],
+        "params": {k: v["value"] for k, v in PARAMS.items()},
+        "x_latest": _r(float(curve["dce_i_ma_grade_adj_rmb"].dropna().iloc[-1]), 1),
     }
     sizes["overview"] = _write("overview", _clean(overview))
 
@@ -316,6 +366,7 @@ def run() -> dict[str, str]:
         "convergence_daily": a["convergence_daily"],
         "tornado": a["tornado"],
         "maturity": a["maturity_comparison"],
+        "ma_dte_mean": _r(float(curve.loc[curve.index >= pd.Timestamp("2014-01-01"), "dce_i_ma_dte_days"].mean()), 0),
         "fx_effect": a["fx_source_effect"],
         "deviations_daily": a["deviations_daily"],
         "deviations_monthly": a["deviations_monthly"],
@@ -333,6 +384,10 @@ def run() -> dict[str, str]:
         "routes": routes,
         "land": geo.land_geojson(),
         "voyages": a["freight"]["voyages"],
+        "sensitivity": a["freight"]["sensitivity"],
+        "routes_meta": {k: {"label": r["label"], "load": r["load"]} for k, r in ROUTES.items()},
+        "port_costs_note": PORT_COSTS_NOTE,
+        "load_days_note": LOAD_DAYS_NOTE,
         "primary": a["freight"]["primary"],
         "evaluation": a["freight"]["evaluation"],
         "anchors": a["freight"]["anchors"],
@@ -363,6 +418,10 @@ def run() -> dict[str, str]:
             "cfr": [_r(v) for v in fm["cfr62_usd_dmt"]],
             "fob_australia": [_r(v) for v in fm["fob_australia_usd_dmt"]],
             "fob_brazil": [_r(v) for v in fm["fob_brazil_usd_dmt"]],
+            "fob_australia_lo": [_r(v) for v in fm["fob_australia_usd_dmt_lo"]],
+            "fob_australia_hi": [_r(v) for v in fm["fob_australia_usd_dmt_hi"]],
+            "fob_brazil_lo": [_r(v) for v in fm["fob_brazil_usd_dmt_lo"]],
+            "fob_brazil_hi": [_r(v) for v in fm["fob_brazil_usd_dmt_hi"]],
             "share_c5": [_r(v, 4) for v in fm["freight_share_cfr_c5"]],
             "share_c3": [_r(v, 4) for v in fm["freight_share_cfr_c3"]],
         },
@@ -427,7 +486,7 @@ def run() -> dict[str, str]:
                     float(a["freight"]["voyages"][code]["laden_days"] + p["financing_extra_days"]["value"]), 2
                 ),
             }
-            for code, label in [("C5", "West Australia to Qingdao (C5)"), ("C3", "Tubarao to Qingdao (C3)")]
+            for code, label in [("C5", "C5 West Australia"), ("C3", "C3 Tubarao, Brazil")]
         },
         "vat_schedule": [[d.isoformat(), r] for d, r in SCHEDULE],
         "params": p,
@@ -449,6 +508,8 @@ def run() -> dict[str, str]:
         "tc_calibration": a["freight"]["tc_calibration"],
         "bunker_calibration": a["freight"]["bunker_calibration"],
         "cross_checks": checks,
+        "tolerance": TOLERANCE,
+        "curve_robustness": {k: v for k, v in a["curve_robustness"].items() if k != "daily_open_runs"},
         "sgx_basis": a["sgx_basis"],
         "cm_methods": curve.groupby(curve.index.year)["cm45_method"]
         .value_counts()
@@ -471,15 +532,35 @@ def run() -> dict[str, str]:
     listing = []
     for name, df in files.items():
         df.to_csv(DL / name, float_format="%.4f")
-        listing.append({"file": name, "rows": len(df), "columns": len(df.columns), "bytes": (DL / name).stat().st_size})
-    for extra in ["dce_x_schedule.csv"]:
-        src = DERIVED / extra
+        listing.append(
+            {
+                "file": name,
+                "title": DOWNLOAD_TEXT[name][0],
+                "description": DOWNLOAD_TEXT[name][1],
+                "rows": len(df),
+                "columns": list(df.columns),
+                "first": str(df.index[0])[:10],
+                "last": str(df.index[-1])[:10],
+                "bytes": (DL / name).stat().st_size,
+            }
+        )
+    for extra, src in [
+        ("dce_x_schedule.csv", DERIVED / "dce_x_schedule.csv"),
+        ("anchors_freight_routes.csv", ROOT / "data" / "anchors" / "freight_routes.csv"),
+        ("anchors_bci_tc_pairs.csv", ROOT / "data" / "anchors" / "bci_tc_pairs.csv"),
+        ("anchors_bunker_prices.csv", ROOT / "data" / "anchors" / "bunker_prices.csv"),
+    ]:
         (DL / extra).write_bytes(src.read_bytes())
+        df = pd.read_csv(src)
         listing.append(
             {
                 "file": extra,
-                "rows": len(pd.read_csv(src)),
-                "columns": len(pd.read_csv(src).columns),
+                "title": DOWNLOAD_TEXT[extra][0],
+                "description": DOWNLOAD_TEXT[extra][1],
+                "rows": len(df),
+                "columns": list(df.columns),
+                "first": None,
+                "last": None,
                 "bytes": src.stat().st_size,
             }
         )

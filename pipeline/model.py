@@ -12,7 +12,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from ironarb.params import PARAMS
+from ironarb.params import PARAMS, ROUTES, VESSEL
 
 from . import analysis, anchors, freight_model, inputs, mill_model
 from .margin_model import Assumptions, build_voyages, daily_margin, monthly_margin
@@ -36,6 +36,8 @@ def _clean(obj: Any) -> Any:
         return str(obj.date() if isinstance(obj, pd.Timestamp) else obj)
     if isinstance(obj, pd.DataFrame):
         return _clean(obj.to_dict(orient="records"))
+    if isinstance(obj, pd.Series):
+        return _clean(obj.to_dict())
     return obj
 
 
@@ -58,12 +60,48 @@ def run() -> dict[str, str]:
         freight[f"{k}_model_usd_wmt_hi"] = freight[f"{col}_hi"]
     freight.index.name = "date"
     freight.reset_index().to_csv(DERIVED / "freight_modeled_daily.csv", index=False, float_format="%.4f")
+
+    # Sensitivity of the voyage model: full-speed vessel description and port costs
+    a_fast = replace(a, vessel={k: v.get("alt", v["value"]) for k, v in VESSEL.items()})
+    fast = freight_model.voyage_model_daily(cal, a_fast)
+    ev_fast = freight_model.evaluate(cal, fast)
+    last_day = fdaily.index[-1]
+    port_sens = {}
+    for share in (0.5, 1.5):
+        a_pc = replace(a, port_costs_usd={k: r["port_costs_usd"] * share for k, r in ROUTES.items()})
+        port_sens[str(share)] = freight_model.voyage_model_daily(cal, a_pc).loc[
+            last_day, ["c3_voyage_usd_wmt", "c5_voyage_usd_wmt"]
+        ]
+    diff = (freight["c3_model_usd_wmt"] - freight["c5_model_usd_wmt"]).dropna()
+    bci = freight["bci_pts"].reindex(diff.index)
+    fit = freight_model.fit_linear(bci.to_numpy(), diff.to_numpy())
+    freight_sens = {
+        "date": str(last_day.date()),
+        "base": fdaily.loc[last_day, ["c3_voyage_usd_wmt", "c5_voyage_usd_wmt"]],
+        "speed_14kn": {
+            "latest": fast.loc[last_day, ["c3_voyage_usd_wmt", "c5_voyage_usd_wmt"]],
+            "evaluation": {r: ev_fast[r]["voyage"] for r in ["C3", "C5"]},
+            "total_days": {k: v.total_days for k, v in build_voyages(a_fast).items()},
+        },
+        "port_costs": port_sens,
+        "c3_minus_c5_vs_bci": {
+            "a": fit.a,
+            "b": fit.b,
+            "r2": fit.r2,
+            "corr": float(np.corrcoef(bci, diff)[0, 1]),
+            "n": fit.n,
+            "mean": float(diff.mean()),
+            "min": float(diff.min()),
+            "max": float(diff.max()),
+        },
+    }
     out["freight"] = {
         "primary": primary,
         "evaluation": {r: ev[r] for r in ["C3", "C5"]},
         "anchors": ev["rows"],
         "tc_calibration": {k: asdict(v) for k, v in cal.tc.items()},
         "bunker_calibration": {k: asdict(v) for k, v in cal.bunker.items()},
+        "sensitivity": freight_sens,
         "voyages": {
             k: {**asdict(v), "laden_days": v.laden_days, "total_days": v.total_days}
             for k, v in build_voyages(a).items()
@@ -72,13 +110,17 @@ def run() -> dict[str, str]:
 
     # Import margin, monthly baseline and daily
     m = monthly_margin(a)
-    fm = freight[[c for c in freight.columns if c.endswith("_model_usd_wmt")]].copy()
+    fm = freight[[c for c in freight.columns if "_model_usd_wmt" in c]].copy()
     fm_m = fm.groupby(fm.index.to_period("M")).mean()
     m = m.join(fm_m)
     moist = a.moisture
     for k in ["c3", "c5"]:
+        origin = "brazil" if k == "c3" else "australia"
         m[f"{k}_model_usd_dmt"] = m[f"{k}_model_usd_wmt"] / (1 - moist)
-        m[f"fob_{'brazil' if k == 'c3' else 'australia'}_usd_dmt"] = m["cfr62_usd_dmt"] - m[f"{k}_model_usd_dmt"]
+        m[f"fob_{origin}_usd_dmt"] = m["cfr62_usd_dmt"] - m[f"{k}_model_usd_dmt"]
+        # netback band from the freight band (high freight gives the low netback)
+        m[f"fob_{origin}_usd_dmt_lo"] = m["cfr62_usd_dmt"] - m[f"{k}_model_usd_wmt_hi"] / (1 - moist)
+        m[f"fob_{origin}_usd_dmt_hi"] = m["cfr62_usd_dmt"] - m[f"{k}_model_usd_wmt_lo"] / (1 - moist)
     m["freight_share_cfr_c5"] = m["c5_model_usd_dmt"] / m["cfr62_usd_dmt"]
     m["freight_share_cfr_c3"] = m["c3_model_usd_dmt"] / m["cfr62_usd_dmt"]
     m["freight_share_landed_c5"] = m["c5_model_usd_dmt"] * m["usdcny"] * (1 + m["vat_rate"]) / m["landed_rmb_dmt"]

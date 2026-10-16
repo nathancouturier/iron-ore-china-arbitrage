@@ -20,6 +20,13 @@ from .margin_model import Assumptions, build_voyages
 
 ROOT = Path(__file__).resolve().parents[1]
 ANCHORS = ROOT / "data" / "anchors"
+# Tolerances, fixed before reconciling and enforced by tests/test_anchors.py.
+TOLERANCE = {
+    "import_cost_rmb_t": 15.0,  # Ruida estimates, with the FX source matched
+    "port_price_usd_dmt": 2.0,  # Fastmarkets port-stock conversion
+    "mill_margin_rmb_t": 5.0,  # broker rebar margins
+    "freight_rmse_usd_t": {"C3": 3.0, "C5": 1.5},  # about 10% of typical rates
+}
 
 
 def _asof(s: pd.Series, d: pd.Timestamp) -> float:
@@ -77,7 +84,7 @@ def import_cost(a: Assumptions) -> dict[str, Any]:
         "max_abs_error_ours_central_parity": float(t["error_central_parity_rmb"].abs().max()),
         "mean_error_ours": float(t["error_rmb"].mean()),
         "max_abs_error_reconstructed": float(t["reconstructed_error_rmb"].abs().max()),
-        "tolerance_rmb": 15.0,
+        "tolerance_rmb": TOLERANCE["import_cost_rmb_t"],
     }
 
 
@@ -86,12 +93,14 @@ def port_price(a: Assumptions) -> dict[str, Any]:
     included) converted to USD per dry tonne with our conventions."""
     df = pd.read_csv(ANCHORS / "fastmarkets_port.csv", parse_dates=["date"])
     fx = inputs.fx_daily()
+    dce45 = inputs.dce_curve()[f"dce_i_cm{a.cm_target}_rmb_dmt"].dropna()
     rows = []
     for _, r in df.iterrows():
         d = r["date"]
         fx_d = _asof(fx, d)
         v = vat.vat_rate(d)
         p_dmt = r["port_62_fot_qingdao_rmb_wmt"] / (1 - a.moisture)
+        dce_d = _asof(dce45, d)
         port_dmt = a.port_rmb_wmt / (1 - a.moisture)
         ours = (p_dmt - port_dmt) / (fx_d * (1 + v))
         # port charge (RMB/wmt, our convention) that would close the gap exactly
@@ -105,6 +114,10 @@ def port_price(a: Assumptions) -> dict[str, Any]:
                 "error_usd_dmt": ours - r["implied_usd_dmt"],
                 "usdcny": fx_d,
                 "implied_port_charge_rmb_wmt": implied_port,
+                # physical against futures: Dalian 45-day 62% equivalent minus the port price, both per dry tonne
+                "port_rmb_dmt": p_dmt,
+                "dce45_rmb_dmt": dce_d,
+                "dce45_minus_port_rmb_dmt": dce_d - p_dmt,
                 "url": r["url"],
             }
         )
@@ -115,6 +128,10 @@ def port_price(a: Assumptions) -> dict[str, Any]:
         "implied_port_range": [
             float(t["implied_port_charge_rmb_wmt"].min()),
             float(t["implied_port_charge_rmb_wmt"].max()),
+        ],
+        "dce45_minus_port_range": [
+            float(t["dce45_minus_port_rmb_dmt"].min()),
+            float(t["dce45_minus_port_rmb_dmt"].max()),
         ],
     }
 
@@ -152,7 +169,11 @@ def mill_margin() -> dict[str, Any]:
             }
         )
     t = pd.DataFrame(rows)
-    return {"rows": t, "max_abs_error": float(t["error_rmb_t"].abs().max()), "tolerance_rmb_t": 5.0}
+    return {
+        "rows": t,
+        "max_abs_error": float(t["error_rmb_t"].abs().max()),
+        "tolerance_rmb_t": TOLERANCE["mill_margin_rmb_t"],
+    }
 
 
 def reconcile_all(a: Assumptions) -> dict[str, Any]:

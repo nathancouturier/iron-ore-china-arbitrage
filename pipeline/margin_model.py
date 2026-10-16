@@ -195,8 +195,8 @@ def sgx_proxy(curve: pd.DataFrame, cfr_m: pd.DataFrame, target_days: int) -> Sgx
     fwd["lift"] = fwd["cmonth"].map(lift)
     fwd["flag"] = fwd["cmonth"].map(flag)
     rows = []
-    for date, g in fwd.groupby("date", sort=True):
-        g = g.sort_values("days")
+    for date, day in fwd.groupby("date", sort=True):
+        g = day.sort_values("days")
         days = g["days"].to_numpy()
         if len(g) == 0:
             continue
@@ -214,7 +214,9 @@ def sgx_proxy(curve: pd.DataFrame, cfr_m: pd.DataFrame, target_days: int) -> Sgx
         raw = w * gi["settle_usd_dmt"] + (1 - w) * gj["settle_usd_dmt"]
         adj = w * gi["lift"] + (1 - w) * gj["lift"]
         flags = {gi["flag"], gj["flag"]}
-        fl = next((f for f in ["61_basis_lifted_mean_spread", "61_basis_lifted_same_month_spread"] if f in flags), "62_basis")
+        fl = next(
+            (f for f in ["61_basis_lifted_mean_spread", "61_basis_lifted_same_month_spread"] if f in flags), "62_basis"
+        )
         m1 = g[g["months_ahead"] == 1]
         rows.append(
             {

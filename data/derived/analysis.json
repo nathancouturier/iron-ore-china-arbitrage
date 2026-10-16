@@ -25,12 +25,12 @@
     300.0
    ],
    "unit": "basis points over the USD reference rate",
-   "source": "Brief default; trade finance spread over SOFR (effective fed funds before April 2018)"
+   "source": "Assumed trade finance spread over SOFR (effective fed funds before April 2018); sensitivity 50 to 300 bp"
   },
   "financing_extra_days": {
    "value": 10.0,
    "unit": "days added to the laden voyage",
-   "source": "Brief default (discharge, customs clearance and payment terms)"
+   "source": "Assumed time for discharge, customs clearance and payment after arrival"
   },
   "cm_target_days": {
    "value": 45,
@@ -163,7 +163,7 @@
     "reported_by": "Baltic (via Splash247)",
     "date_flag": "C",
     "url": "https://splash247.com/?p=40977",
-    "quote": "C3 all-time low 5.325 on 28 Jan 2016 (caller-verified seed)",
+    "quote": "Splash247, early February 2016: C3 all-time low of 5.325 on 28 January 2016 (article not reachable from the build environment; figure not re-read)",
     "bci_pts": 216.0,
     "brent_usd_bbl": 33.01,
     "c3_voyage_usd_wmt": 5.573233013971291,
@@ -179,7 +179,7 @@
     "reported_by": "Baltic (via Splash247)",
     "date_flag": "C",
     "url": "https://splash247.com/?p=40977",
-    "quote": "C3 5.473 (caller-verified seed)",
+    "quote": "Splash247, early February 2016: C3 at 5.473 with the BCI at 217 (article not reachable from the build environment; figure not re-read)",
     "bci_pts": 217.0,
     "brent_usd_bbl": 30.98,
     "c3_voyage_usd_wmt": 5.361701210490109,
@@ -3117,6 +3117,63 @@
     "extra": {}
    }
   },
+  "sensitivity": {
+   "date": "2026-10-16",
+   "base": {
+    "c3_voyage_usd_wmt": 33.1293744063193,
+    "c5_voyage_usd_wmt": 12.860558800895417
+   },
+   "speed_14kn": {
+    "latest": {
+     "c3_voyage_usd_wmt": 35.21163157717834,
+     "c5_voyage_usd_wmt": 13.520690919631512
+    },
+    "evaluation": {
+     "C3": {
+      "n": 90,
+      "mae": 1.4316052678401263,
+      "rmse": 1.9605209437838527,
+      "bias": 0.9577737820538775,
+      "mape": 0.0564836795757814,
+      "rel_q10": -0.029093240463979653,
+      "rel_q90": 0.10657830527597424
+     },
+     "C5": {
+      "n": 91,
+      "mae": 0.7912918731548549,
+      "rmse": 0.9999320447311484,
+      "bias": -0.12393244770551666,
+      "mape": 0.070627991685887,
+      "rel_q10": -0.10708985678780403,
+      "rel_q90": 0.10544879047657219
+     }
+    },
+    "total_days": {
+     "C5": 30.182738095238097,
+     "C3": 75.9577380952381
+    }
+   },
+   "port_costs": {
+    "0.5": {
+     "c3_voyage_usd_wmt": 32.35538059826977,
+     "c5_voyage_usd_wmt": 12.086564992845881
+    },
+    "1.5": {
+     "c3_voyage_usd_wmt": 33.90336821436884,
+     "c5_voyage_usd_wmt": 13.634552608944954
+    }
+   },
+   "c3_minus_c5_vs_bci": {
+    "a": 3.8027889678206597,
+    "b": 0.0033351810579411263,
+    "r2": 0.8281814701172385,
+    "corr": 0.9100447626997473,
+    "n": 3324,
+    "mean": 11.186474471153028,
+    "min": 1.5360610663019258,
+    "max": 35.52327721411615
+   }
+  },
   "voyages": {
    "C5": {
     "name": "C5",
@@ -4229,6 +4286,8 @@
   "median": -69.3612587755938,
   "sd": 59.58930463643697,
   "p05": -175.0268750667995,
+  "p25": -89.41464471314782,
+  "p75": -48.748738980712034,
   "p95": -27.453372771471066,
   "min": -408.85679373995595,
   "min_at": "2021-07",
@@ -4293,6 +4352,8 @@
   "median": -57.09626526745123,
   "sd": 63.24346507251087,
   "p05": -222.2230902027068,
+  "p25": -75.00888790336417,
+  "p75": -31.69851081007849,
   "p95": 0.7972113601769768,
   "min": -366.2186449521355,
   "min_at": "2022-03-07 00:00:00",
@@ -5688,6 +5749,8 @@
    "median": -56.973117311468485,
    "sd": 62.893815027178874,
    "p05": -222.2230902027068,
+   "p25": -75.00888790336417,
+   "p75": -31.869401209071953,
    "p95": -0.11411291128637213,
    "min": -366.2186449521355,
    "min_at": "2022-03-07 00:00:00",
@@ -5708,6 +5771,8 @@
    "median": -69.3612587755938,
    "sd": 59.370118194277275,
    "p05": -175.0268750667995,
+   "p25": -89.009285596832,
+   "p75": -50.364523292569686,
    "p95": -28.482100018439894,
    "min": -408.85679373995595,
    "min_at": "2021-07",
@@ -6139,6 +6204,9 @@
      "error_usd_dmt": 0.17923694658574618,
      "usdcny": 6.8927,
      "implied_port_charge_rmb_wmt": 31.284349391200067,
+     "port_rmb_dmt": 961.9565217391304,
+     "dce45_rmb_dmt": 890.3571,
+     "dce45_minus_port_rmb_dmt": -71.59942173913043,
      "url": "https://fastmarkets.com/?p=25814"
     },
     {
@@ -6149,6 +6217,9 @@
      "error_usd_dmt": 0.6245843186355842,
      "usdcny": 6.4617,
      "implied_port_charge_rmb_wmt": 34.19569720079994,
+     "port_rmb_dmt": 1242.391304347826,
+     "dce45_rmb_dmt": 1110.5,
+     "dce45_minus_port_rmb_dmt": -131.891304347826,
      "url": "https://www.fastmarkets.com/insights/iron-ore-daily-lump-prices-rise-amid-tight-supplies/"
     },
     {
@@ -6159,6 +6230,9 @@
      "error_usd_dmt": 1.5070373563873432,
      "usdcny": 6.3865,
      "implied_port_charge_rmb_wmt": 40.00583196200023,
+     "port_rmb_dmt": 1580.4347826086955,
+     "dce45_rmb_dmt": 1206.5405,
+     "dce45_minus_port_rmb_dmt": -373.89428260869545,
      "url": "https://www.fastmarkets.com/insights/iron-ore-daily-index-for-63-fe-lump-premium-hits-record-high/"
     },
     {
@@ -6169,6 +6243,9 @@
      "error_usd_dmt": 0.5780429860730862,
      "usdcny": 6.4435,
      "implied_port_charge_rmb_wmt": 33.87211493199993,
+     "port_rmb_dmt": 1006.5217391304348,
+     "dce45_rmb_dmt": 769.9531,
+     "dce45_minus_port_rmb_dmt": -236.5686391304348,
      "url": "https://www.fastmarkets.com/insights/iron-ore-daily-prices-continue-to-rise-on-active-port-trading/"
     },
     {
@@ -6179,6 +6256,9 @@
      "error_usd_dmt": 0.6134245593976999,
      "usdcny": 6.3251,
      "implied_port_charge_rmb_wmt": 34.03361855920002,
+     "port_rmb_dmt": 944.5652173913043,
+     "dce45_rmb_dmt": 695.7571,
+     "dce45_minus_port_rmb_dmt": -248.80811739130422,
      "url": "https://fastmarkets.com/insights/correction-to-fastmarkets-iron-ore-62-port-stock-indices"
     }
    ],
@@ -6186,6 +6266,10 @@
    "implied_port_range": [
     31.284349391200067,
     40.00583196200023
+   ],
+   "dce45_minus_port_range": [
+    -373.89428260869545,
+    -71.59942173913043
    ]
   },
   "mill_margin": {

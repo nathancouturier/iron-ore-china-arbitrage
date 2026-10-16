@@ -23,12 +23,12 @@ PARAMS: dict[str, Any] = {
         "value": 150.0,
         "sensitivity": [50.0, 300.0],
         "unit": "basis points over the USD reference rate",
-        "source": "Brief default; trade finance spread over SOFR (effective fed funds before April 2018)",
+        "source": "Assumed trade finance spread over SOFR (effective fed funds before April 2018); sensitivity 50 to 300 bp",
     },
     "financing_extra_days": {
         "value": 10.0,
         "unit": "days added to the laden voyage",
-        "source": "Brief default (discharge, customs clearance and payment terms)",
+        "source": "Assumed time for discharge, customs clearance and payment after arrival",
     },
     "cm_target_days": {
         "value": 45,

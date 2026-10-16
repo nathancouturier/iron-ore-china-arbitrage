@@ -59,7 +59,7 @@ def test_bunker_maps_have_expected_shape(freight_eval):
     assert vlsfo(80.0) > hsfo(80.0)
 
 
-@pytest.mark.parametrize(("route", "max_rmse"), [("C3", 3.0), ("C5", 1.5)])
+@pytest.mark.parametrize(("route", "max_rmse"), list(anchors.TOLERANCE["freight_rmse_usd_t"].items()))
 def test_freight_models_out_of_sample(freight_eval, route, max_rmse):
     """Tolerance: RMSE under 3.0 USD/t for C3 and 1.5 for C5 (about 10% of typical rates)."""
     _, ev = freight_eval
@@ -83,7 +83,7 @@ def test_ruida_import_cost_within_15_rmb(assumptions):
     FX source matches theirs (PBoC central parity of the report day)."""
     r = anchors.import_cost(assumptions)
     assert len(r["rows"]) == 8
-    assert r["max_abs_error_ours_central_parity"] < 15.0
+    assert r["max_abs_error_ours_central_parity"] < anchors.TOLERANCE["import_cost_rmb_t"]
     assert r["max_abs_error_reconstructed"] < 5.0
     # their adder sits in the range of published port charges (23 to 40 RMB/t)
     lo, hi = r["inferred"]["adder_range"]
@@ -92,7 +92,7 @@ def test_ruida_import_cost_within_15_rmb(assumptions):
 
 def test_fastmarkets_port_price_conversion(assumptions):
     r = anchors.port_price(assumptions)
-    assert r["max_abs_error_usd"] < 2.0
+    assert r["max_abs_error_usd"] < anchors.TOLERANCE["port_price_usd_dmt"]
     lo, hi = r["implied_port_range"]
     assert 20.0 <= lo and hi <= 45.0
 
@@ -102,7 +102,7 @@ def test_broker_mill_margins():
     rows = r["rows"]
     sdic = rows[rows["independent"]]
     assert abs(sdic["error_rmb_t"]).max() < 1.0  # SDIC Essence Futures, 1 June 2022: 211.4
-    assert r["max_abs_error"] < 5.0  # Everbright Futures 2026 dailies
+    assert r["max_abs_error"] < anchors.TOLERANCE["mill_margin_rmb_t"]  # Everbright Futures 2026 dailies
     # closing prices printed in the broker reports equal ours
     eb = rows[~rows["independent"]]
     assert (eb["our_closes"] == eb["published_closes"]).all()

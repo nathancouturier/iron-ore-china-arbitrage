@@ -45,7 +45,10 @@ def land_geojson(bbox: tuple[float, float, float, float] = (-75.0, -50.0, 160.0,
             rings = [_ring(r, arcs) for r in poly]
             xs = [p[0] for p in rings[0]]
             ys = [p[1] for p in rings[0]]
-            if max(xs) < bbox[0] or min(xs) > bbox[2] or max(ys) < bbox[1] or min(ys) > bbox[3]:
+            # keep a polygon only if one of its points lies in the box (a bounding-box
+            # overlap test would keep antimeridian islands such as Fiji, whose rings
+            # run from -180 to 180 and draw a line across the map)
+            if not any(bbox[0] <= x <= bbox[2] and bbox[1] <= y <= bbox[3] for x, y in rings[0]):
                 continue
             if (max(xs) - min(xs)) * (max(ys) - min(ys)) < 0.5:
                 continue  # drop tiny islands to keep the file small

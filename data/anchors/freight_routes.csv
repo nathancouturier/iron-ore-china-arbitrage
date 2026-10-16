@@ -1,6 +1,6 @@
 date,route,value_usd_wmt,assessor,reported_by,date_flag,url,quote
-2016-01-28,C3,5.325,Baltic Exchange,Baltic (via Splash247),C,https://splash247.com/?p=40977,C3 all-time low 5.325 on 28 Jan 2016 (caller-verified seed)
-2016-02-02,C3,5.473,Baltic Exchange,Baltic (via Splash247),C,https://splash247.com/?p=40977,C3 5.473 (caller-verified seed)
+2016-01-28,C3,5.325,Baltic Exchange,Baltic (via Splash247),C,https://splash247.com/?p=40977,"Splash247, early February 2016: C3 all-time low of 5.325 on 28 January 2016 (article not reachable from the build environment; figure not re-read)"
+2016-02-02,C3,5.473,Baltic Exchange,Baltic (via Splash247),C,https://splash247.com/?p=40977,"Splash247, early February 2016: C3 at 5.473 with the BCI at 217 (article not reachable from the build environment; figure not re-read)"
 2021-07-02,C3,25.81,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-capesize-market-ends-the-week-in-negative-territory/,the Brazil to China (C3) fell $1.885 over the week to close out at $25.81
 2021-07-02,C5,11.055,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-capesize-market-ends-the-week-in-negative-territory/,The C5 market lost $0.895 over the week to end at $11.055.
 2021-07-09,C3,26.875,Baltic Exchange,Baltic,W,https://www.hellenicshippingnews.com/dry-bulk-capesize-market-turns-the-tide/,"The Brazil to China C3 was a steady gainer throughout the week, now at $26.875"

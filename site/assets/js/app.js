@@ -62,7 +62,7 @@ export function toggles(id, sections) {
   const drawers = el('div');
   const buttons = [];
   for (const [label, build] of sections) {
-    const did = `${id}-${label.toLowerCase()}`;
+    const did = `${id}-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
     const drawer = el('div', { class: 'drawer', id: did, hidden: true });
     let built = false;
     const b = el('button', { type: 'button', class: 'btn', 'aria-expanded': 'false', 'aria-controls': did }, label);

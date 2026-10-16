@@ -45,6 +45,8 @@ def window_stats(margin: pd.Series, band: float) -> dict[str, Any]:
         "median": float(m.median()),
         "sd": float(m.std()),
         "p05": float(m.quantile(0.05)),
+        "p25": float(m.quantile(0.25)),
+        "p75": float(m.quantile(0.75)),
         "p95": float(m.quantile(0.95)),
         "min": float(m.min()),
         "min_at": str(m.idxmin()),

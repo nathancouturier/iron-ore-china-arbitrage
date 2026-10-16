@@ -15,8 +15,12 @@ export async function render(root, meta) {
       `Pre-registered test: after the rebar margin falls into the bottom decile of its previous three years, Dalian ore did not weaken. Over the next three months it moved ${fmtSigned(h63.effect_pct, 1)} percentage points relative to other days (95% interval ${fmtSigned(h63.ci_lo_pct, 1)} to ${fmtSigned(h63.ci_hi_pct, 1)}), the opposite sign to the hypothesis and not distinguishable from zero.`),
   );
 
+  const ly = d.daily.rebar[d.daily.rebar.length - 1][0].slice(0, 4);
+  const lyv = d.daily.rebar.filter((p) => p[0].startsWith(ly) && p[1] !== null).map((p) => p[1]);
+  const lyNeg = lyv.filter((v) => v < 0).length;
+  const negText = lyNeg === lyv.length ? `negative on every trading day of ${ly}` : `negative on ${lyNeg} of ${lyv.length} trading days in ${ly}`;
   const { block: b1, host: h1 } = chartBlock({
-    title: 'Mill margins swing from boom to loss; they have been thin or negative since 2022',
+    title: `Mill margins swing from boom to loss; the rebar margin has been ${negText}`,
     sub: 'Futures-implied margin, RMB per tonne of steel, daily: rebar (RB) and hot-rolled coil (HC) minus 1.6 x iron ore minus 0.5 x coke minus other costs, most-active contracts.',
     source: `Sources: Shanghai Futures Exchange daily files, Dalian Commodity Exchange annual files, Sina; computed by the pipeline. Data to ${fmtDate(L.date)}.`,
     summary: `Latest rebar ${fmtSigned(L.rebar)} RMB/t, HRC ${fmtSigned(L.hrc)} RMB/t (${L.contracts.rb}, ${L.contracts.hc}, ${L.contracts.i}, ${L.contracts.j}).`,
@@ -39,8 +43,10 @@ export async function render(root, meta) {
   // Cost decomposition, monthly
   const m = d.monthly;
   const mdates = m.months.map((x) => `${x}-15`);
+  const shares = m.months.map((_, i) => (m.ore[i] + m.coke[i]) / m.rebar[i]).filter((v) => Number.isFinite(v));
+  const share = shares.reduce((a, b) => a + b, 0) / shares.length;
   const { block: b2, host: h2 } = chartBlock({
-    title: 'Iron ore is the largest cost in the convention, and its share rises when steel prices fall',
+    title: `Ore and coke take ${fmt(share * 100)}% of the rebar price on average; after a fixed ${fmt(d.params.mill_other_costs_rebar.value)} RMB/t of other costs, the margin is what is left`,
     sub: 'Monthly averages, RMB per tonne of steel: stacked cost components (1.6 x iron ore, 0.5 x coke, other costs) against the rebar price. The gap between the line and the stack is the margin.',
     source: 'Sources: SHFE, DCE, Sina; computed by the pipeline.',
     summary: `Latest month ${m.months[m.months.length - 1]}: ore ${fmt(m.ore[m.ore.length - 1])}, coke ${fmt(m.coke[m.coke.length - 1])}, other ${fmt(m.other[m.other.length - 1])}, rebar ${fmt(m.rebar[m.rebar.length - 1])} RMB/t.`,
@@ -74,11 +80,20 @@ export async function render(root, meta) {
   const cats = ['1 month (21 days)', '2 months (42 days)', '3 months (63 days)'];
   mount(h3, base({
     grid: { left: 12, right: 24, top: 36, bottom: 44, containLabel: true },
-    tooltip: { trigger: 'item', formatter: (p) => { const r = (p.seriesName.startsWith('Rebar') ? tr : th)[p.dataIndex]; return ttRow(p.color, `${fmtSigned(r.effect_pct, 2)} pp`, `${p.seriesName}, 95% interval ${fmtSigned(r.ci_lo_pct, 2)} to ${fmtSigned(r.ci_hi_pct, 2)}`); } },
+    tooltip: { trigger: 'item', formatter: (p) => { const r = (p.seriesName.startsWith('Rebar') ? tr : th)[p.dataIndex]; return `${cats[p.dataIndex]}${ttRow(p.color, `${fmtSigned(r.effect_pct, 2)} pp`, `${p.seriesName}, 95% interval ${fmtSigned(r.ci_lo_pct, 2)} to ${fmtSigned(r.ci_hi_pct, 2)}`)}`; } },
     legend: { top: 0, left: 0, data: ['Rebar margin (primary)', 'HRC margin (secondary)'] },
     xAxis: valueAxis('Percentage points', { scale: false, nameGap: 28 }),
     yAxis: { type: 'category', data: cats, inverse: true, axisLine: { show: false }, axisTick: { show: false }, axisLabel: { color: C.topside, fontFamily: C.font } },
-    series: [ciSeries('Rebar margin (primary)', tr, C.hematite, -0.15), ciSeries('HRC margin (secondary)', th, C.seawater, 0.15)].flat(),
+    series: [
+      { type: 'custom', name: 'zero', silent: true, tooltip: { show: false }, data: [[0]], encode: { x: 0 }, z: 1,
+        renderItem: (params, api) => {
+          const x = api.coord([0, 0])[0];
+          const cs = params.coordSys;
+          return { type: 'line', shape: { x1: x, y1: cs.y, x2: x, y2: cs.y + cs.height }, style: { stroke: C.topside, lineWidth: 1 } };
+        } },
+      ciSeries('Rebar margin (primary)', tr, C.hematite, -0.14),
+      ciSeries('HRC margin (secondary)', th, C.seawater, 0.14),
+    ],
   }));
 
   root.append(toggles('mill', [
@@ -104,18 +119,29 @@ export async function render(root, meta) {
 }
 
 function ciSeries(name, rows, color, offset) {
-  return [
-    { type: 'custom', name, renderItem: (params, api) => {
+  return {
+    type: 'custom', name, z: 2,
+    itemStyle: { color },
+    encode: { x: [1, 2, 3], y: 0, tooltip: [3, 1, 2] },
+    data: rows.map((r, i) => [i, r.ci_lo_pct, r.ci_hi_pct, r.effect_pct]),
+    renderItem: (params, api) => {
       const i = api.value(0);
+      const band = api.size([0, 1])[1];
       const lo = api.coord([api.value(1), i]);
       const hi = api.coord([api.value(2), i]);
-      const h = api.size([0, 1])[1];
-      const y = lo[1] + offset * h;
-      return { type: 'line', shape: { x1: lo[0], y1: y, x2: hi[0], y2: y }, style: { stroke: color, lineWidth: 2 } };
-    }, data: rows.map((r, i) => [i, r.ci_lo_pct, r.ci_hi_pct]), itemStyle: { color }, tooltip: { show: false }, z: 2 },
-    { type: 'scatter', name, data: rows.map((r, i) => [r.effect_pct, i]), symbolSize: 10, itemStyle: { color, borderColor: '#fff', borderWidth: 2 }, z: 3,
-      encode: { x: 0, y: 1 }, symbolOffset: [0, `${offset * 100}%`] },
-  ];
+      const pt = api.coord([api.value(3), i]);
+      const y = lo[1] + offset * band;
+      return {
+        type: 'group',
+        children: [
+          { type: 'line', shape: { x1: lo[0], y1: y, x2: hi[0], y2: y }, style: { stroke: color, lineWidth: 2 } },
+          { type: 'line', shape: { x1: lo[0], y1: y - 5, x2: lo[0], y2: y + 5 }, style: { stroke: color, lineWidth: 2 } },
+          { type: 'line', shape: { x1: hi[0], y1: y - 5, x2: hi[0], y2: y + 5 }, style: { stroke: color, lineWidth: 2 } },
+          { type: 'circle', shape: { cx: pt[0], cy: y, r: 6 }, style: { fill: color, stroke: '#ffffff', lineWidth: 2 } },
+        ],
+      };
+    },
+  };
 }
 
 function testTable(d) {

@@ -17,8 +17,9 @@ export const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: r
 const nf = (d) => new Intl.NumberFormat('en-GB', { minimumFractionDigits: d, maximumFractionDigits: d });
 export function fmt(v, d = 0) {
   if (v === null || v === undefined || Number.isNaN(v)) return 'n/a';
-  return nf(d).format(v);
+  return nf(d).format(v).replace('-', '−');
 }
+const axisNumber = (v) => fmt(v, Number.isInteger(v) ? 0 : Math.min(2, String(v).split('.')[1].length));
 export function fmtSigned(v, d = 0) {
   if (v === null || v === undefined || Number.isNaN(v)) return 'n/a';
   const s = nf(d).format(Math.abs(v));
@@ -80,6 +81,7 @@ export function timeAxis(name = '') {
 }
 
 export function valueAxis(name, extra = {}) {
+  const { axisLabel = {}, ...rest } = extra;
   return {
     type: 'value',
     name,
@@ -88,10 +90,10 @@ export function valueAxis(name, extra = {}) {
     nameTextStyle: { color: C.steel, fontFamily: C.font, fontSize: 12 },
     axisLine: { show: false },
     axisTick: { show: false },
-    axisLabel: { color: C.steel, fontFamily: C.font },
+    axisLabel: { color: C.steel, fontFamily: C.font, formatter: axisNumber, ...axisLabel },
     splitLine: { lineStyle: { color: C.grid, width: 1, type: 'solid' } },
     scale: true,
-    ...extra,
+    ...rest,
   };
 }
 
@@ -125,15 +127,33 @@ export function modeled(name, mid, lo, hi, color, stackId) {
   ];
 }
 
+/** Push the plot down when the legend wraps onto more lines (narrow screens). */
+function fitLegend(chart) {
+  const opt = chart.getOption();
+  if (!opt.legend || !opt.legend.length || opt.legend[0].show === false || !opt.grid || !opt.grid.length) return;
+  const model = chart.getModel().getComponent('legend');
+  const view = model && chart.getViewOfComponentModel(model);
+  if (!view) return;
+  if (chart.baseTop === undefined) chart.baseTop = Number(opt.grid[0].top) || 36;
+  const want = Math.max(chart.baseTop, Math.ceil(view.group.getBoundingRect().height + 24));
+  if (Number(opt.grid[0].top) !== want) chart.setOption({ grid: { top: want } });
+}
+
 const charts = new Set();
 export function mount(el, option) {
   const chart = echarts.init(el, null, { renderer: 'svg' });
   chart.setOption(option);
+  fitLegend(chart);
   charts.add(chart);
   return chart;
 }
-window.addEventListener('resize', () => charts.forEach((c) => c.resize()));
-export function resizeAll() { charts.forEach((c) => c.resize()); }
+export function resizeAll() {
+  charts.forEach((c) => {
+    c.resize();
+    fitLegend(c);
+  });
+}
+window.addEventListener('resize', resizeAll);
 
 /** Range presets (1Y, 3Y, 5Y, All) acting on a time-axis chart via dataZoom. */
 export function presets(container, chart, lastIso, firstIso, initial = 'All') {
@@ -176,7 +196,7 @@ export const zoom = () => [{ type: 'inside', xAxisIndex: 0, filterMode: 'none', 
 /** Build a table from column definitions and rows (used behind the Data buttons). */
 export function table(caption, columns, rows, maxRows = null) {
   const wrap = document.createElement('div');
-  wrap.className = 'table-wrap';
+  wrap.className = columns.length > 3 ? 'table-wrap table-wrap--stack' : 'table-wrap';
   const t = document.createElement('table');
   const cap = document.createElement('caption');
   cap.textContent = caption;
@@ -194,7 +214,8 @@ export function table(caption, columns, rows, maxRows = null) {
   t.append(thead);
   const tbody = document.createElement('tbody');
   const list = maxRows ? rows.slice(-maxRows) : rows;
-  for (const r of list) {
+  const LONG = 30;
+  list.forEach((r, i) => {
     const tr = document.createElement('tr');
     for (const c of columns) {
       const td = document.createElement('td');
@@ -208,12 +229,25 @@ export function table(caption, columns, rows, maxRows = null) {
         td.textContent = v === null || v === undefined ? '' : String(v);
       }
       if (c.num) td.className = 'num';
+      td.dataset.label = c.label;
       tr.append(td);
     }
+    if (list.length > LONG + 10 && i >= LONG) tr.hidden = true;
     tbody.append(tr);
-  }
+  });
   t.append(tbody);
   wrap.append(t);
+  if (list.length > LONG + 10) {
+    const more = document.createElement('button');
+    more.type = 'button';
+    more.className = 'btn';
+    more.textContent = `Show all ${list.length} rows`;
+    more.addEventListener('click', () => {
+      tbody.querySelectorAll('tr[hidden]').forEach((tr) => { tr.hidden = false; });
+      more.remove();
+    });
+    wrap.append(more);
+  }
   return wrap;
 }
 

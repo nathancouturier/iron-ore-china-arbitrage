@@ -1,11 +1,12 @@
 import { getJSON, el, chartBlock, toggles, staleNotice } from '../app.js';
-import { C, base, mount, fmt, fmtSigned, fmtPct, fmtDate, reducedMotion, valueAxis, timeAxis, line, table, ttRow } from '../charts.js';
+import { C, base, mount, fmt, fmtSigned, fmtPct, fmtDate, fmtMonth, reducedMotion, valueAxis, timeAxis, line, table, ttRow } from '../charts.js';
 
 const stateWord = (s) => (s > 0 ? 'open' : s < 0 ? 'closed' : 'inside the band');
 
 export async function render(root, meta) {
   const d = await getJSON('overview');
   const b = d.bridge;
+  const P = d.params;
   const f = d.facts;
   const fx = b.usdcny;
   const state = f.margin.state;
@@ -41,7 +42,7 @@ export async function render(root, meta) {
   const ledger = el('div', { class: 'ledger' },
     fact('Import margin, Dalian 45-day minus landed cost', fmtSigned(f.margin.value), 'RMB/dmt',
       [el('span', { class: `state state--${state > 0 ? 'open' : state < 0 ? 'closed' : 'inside'}` }, state > 0 ? 'Window open' : state < 0 ? 'Window closed' : 'Inside the band'),
-        ` band ±${fmt(d.band)} RMB/dmt, ${fmtDate(f.margin.date)}; monthly baseline ${fmtSigned(f.margin_monthly.value)} in ${f.margin_monthly.month}`]),
+        el('br'), `${fmtDate(f.margin.date)}, against a band of ±${fmt(d.band)} RMB/dmt. Monthly baseline ${fmtSigned(f.margin_monthly.value)} in ${fmtMonth(f.margin_monthly.month)}.`]),
     fact('Freight share of delivered cost, Australia', fmtPct(f.freight_share.value, 1), '',
       [`modeled C5 freight with its VAT, ${fmtDate(f.freight_share.date)}; ${fmtPct(f.freight_share.share_of_cfr, 1)} of the CFR price`]),
     fact('Rebar mill margin, futures-implied', fmtSigned(f.rebar_margin.value), 'RMB/t',
@@ -49,7 +50,9 @@ export async function render(root, meta) {
   );
   root.append(el('div', { class: 'grid grid--bridge' }, bridgeBlock, ledger));
 
-  const cats = rows.map((r) => r.name);
+  const SHORT = ['FOB Australia', 'Freight C5, modeled', 'FOB Brazil', 'Freight C3, modeled', 'CFR Qingdao', `VAT ${fmt(b.vat_rate * 100)}%`, 'Port charges', 'Financing', 'Landed cost', 'Dalian 45-day'];
+  const narrow = bridgeHost.clientWidth < 520;
+  const cats = narrow ? SHORT : rows.map((r) => r.name);
   const anim = !reducedMotion();
   const chart = mount(bridgeHost, base({
     animation: anim,
@@ -65,11 +68,11 @@ export async function render(root, meta) {
         return `${ttRow(r.color, `${fmt(r.v, 1)} RMB/dmt`, r.name, r.modeled)}${usd}`;
       },
     },
-    xAxis: valueAxis('RMB per dry tonne', { scale: false, min: 0, nameGap: 28 }),
+    xAxis: valueAxis('RMB per dry tonne', { scale: false, min: 0, nameGap: 28, splitNumber: narrow ? 3 : 5, axisLabel: { color: C.steel, fontFamily: C.font, hideOverlap: true } }),
     yAxis: {
       type: 'category', data: cats, inverse: true,
       axisLine: { show: false }, axisTick: { show: false },
-      axisLabel: { color: C.topside, fontFamily: C.font, fontSize: 12, width: 210, overflow: 'break' },
+      axisLabel: { color: C.topside, fontFamily: C.font, fontSize: 12, width: narrow ? 118 : 210, overflow: 'break' },
     },
     series: [
       { type: 'bar', stack: 'b', data: rows.map((r) => r.base), itemStyle: { color: 'transparent' }, silent: true, tooltip: { show: false }, barMaxWidth: 22 },
@@ -94,8 +97,14 @@ export async function render(root, meta) {
   chart.setOption({ aria: { enabled: true, decal: { show: false } } });
 
   // Margin against its band, last twelve months.
+  const rv = d.recent.filter((p) => p[1] !== null).map((p) => p[1]);
+  const below = rv.filter((v) => v < -d.band).length;
+  const above = rv.filter((v) => v > d.band).length;
+  const recentTitle = above === 0
+    ? `The margin stayed below the no-arbitrage band on ${below} of the last ${rv.length} trading days and never rose above it`
+    : `The margin was below the no-arbitrage band on ${below} and above it on ${above} of the last ${rv.length} trading days`;
   const { block: recentBlock, host: recentHost } = chartBlock({
-    title: 'The margin stayed below the no-arbitrage band for most of the last twelve months',
+    title: recentTitle,
     sub: `Dalian 45-day 62% equivalent minus landed cost, RMB per dry tonne, daily. Shaded: ±${fmt(d.band)} RMB/dmt band (exchange delivery, storage and outbound fees).`,
     source: `Sources: SGX, Dalian Commodity Exchange, FRED; computed by the pipeline. Data to ${fmtDate(b.date)}.`,
     summary: `Latest ${fmtSigned(b.margin_rmb)} RMB/dmt on ${fmtDate(b.date)}.`,
@@ -126,9 +135,9 @@ export async function render(root, meta) {
     ['Assumptions', () => [
       el('h3', {}, 'Assumptions behind these figures'),
       el('ul', {},
-        el('li', {}, `Port charges ${fmt(30)} RMB per wet tonne, moisture 8% (sensitivity 6% to 10%).`),
-        el('li', {}, 'Financing: SOFR plus 150 bp on the CFR value for the laden voyage plus 10 days.'),
-        el('li', {}, `Dalian: 45-day constant maturity, interpolated between contracts with at least 1,700 lots of open interest; 61% Fe contracts lifted by 10 × X = 15 RMB/t.`),
+        el('li', {}, `Port charges ${fmt(P.port_charges_rmb_wmt)} RMB per wet tonne, moisture ${fmtPct(P.moisture, 0)} (sensitivity 6% to 10%).`),
+        el('li', {}, `Financing: SOFR plus ${fmt(P.financing_spread_bp)} bp on the CFR value for the laden voyage plus ${fmt(P.financing_extra_days)} days.`),
+        el('li', {}, `Dalian: ${fmt(P.cm_target_days)}-day constant maturity, interpolated between contracts with at least ${fmt(P.cm_min_oi_lots)} lots of open interest; 61% Fe contracts lifted by 10 × X = ${fmt(d.x_latest)} RMB/t.`),
         el('li', {}, `2026 SGX settlements are on Platts IODEX at 61% Fe; the CFR figure adds ${fmt(b.basis_adj_usd_dmt, 2)} USD/dmt, the mean 2026 gap between the IMF 62% benchmark and SGX final settlements (range ${fmt(d.sgx_basis.spread_2026_min, 2)} to ${fmt(d.sgx_basis.spread_2026_max, 2)} USD).`),
         el('li', {}, 'Freight is modeled from the Baltic Capesize Index and Brent; see the Freight and origins view for its errors.'),
       ),
