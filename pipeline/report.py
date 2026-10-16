@@ -28,6 +28,7 @@ from reportlab.lib.units import inch, mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
+    CondPageBreak,
     Image,
     KeepTogether,
     ListFlowable,
@@ -190,7 +191,7 @@ def fig_freight(freight: pd.DataFrame, anchors: pd.DataFrame, monthly: pd.DataFr
         pts = anchors[anchors["route"] == k.upper()]
         a1.scatter(pts["date"], pts["value_usd_wmt"], s=13, facecolor="white", edgecolor=color, lw=0.9, zorder=4)
     a1.set_ylabel("USD per wet tonne")
-    a1.set_title("Modeled freight (dashed, 80% band) and published rates (circles)")
+    a1.set_title("Modeled freight and published rates (circles)")
     a1.legend(loc="upper left")
     idx = pd.PeriodIndex(monthly.index, freq="M").to_timestamp()
     a2.plot(idx, monthly["freight_share_cfr_c3"] * 100, color=SEAWATER, lw=0.9, ls=(0, (4, 2)), label="C3 Tubarao")
@@ -238,7 +239,13 @@ def _styles() -> dict[str, ParagraphStyle]:
         ),
         "meta": ParagraphStyle("meta", parent=body, fontSize=8.5, textColor=colors.HexColor(STEEL), spaceAfter=10),
         "h": ParagraphStyle(
-            "h", parent=body, fontName="LiberationSerif-Bold", fontSize=11, leading=14, spaceBefore=8, spaceAfter=3
+            "h",
+            parent=body,
+            fontName="LiberationSerif-Bold",
+            fontSize=11,
+            leading=14,
+            spaceBefore=8,
+            spaceAfter=3,
         ),
         "body": body,
         "cap": ParagraphStyle("cap", parent=body, fontSize=7.8, leading=10, textColor=colors.HexColor(STEEL)),
@@ -668,6 +675,12 @@ def build() -> Path:
         subject="Research note: seaborne iron ore delivered cost against Dalian futures",
         creator="Nathan Couturier",
     )
+    # a section heading never sits alone at the foot of a page
+    story = [
+        x
+        for f in story
+        for x in ([CondPageBreak(25 * mm), f] if isinstance(f, Paragraph) and f.style.name == "h" else [f])
+    ]
     doc.build(story, onFirstPage=_footer, onLaterPages=_footer)
     return OUT
 
