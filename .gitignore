@@ -17,3 +17,12 @@ node_modules/
 build/
 dist/
 .DS_Store
+
+# Exchange and third-party raw downloads: re-fetched by the pipeline, not redistributed
+data/raw/dce/
+data/raw/sina/
+data/raw/shfe/
+data/raw/eastmoney/
+data/raw/sgx/
+data/raw/other/
+data/raw/safe/
