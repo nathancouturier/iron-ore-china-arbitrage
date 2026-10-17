@@ -1,0 +1,7 @@
+date,publisher,published_margin_rmb_t,formula,rb_contract,i_contract,j_contract,rb_close,i_close,j_close,url,independent
+2022-06-01,SDIC Essence Futures (Guotou Anxin),211.4,RB - ((1.6*I + 0.5*J)/0.9 + 900),RB2210,I2209,J2209,,,,https://finance.sina.com.cn/money/future/fmnews/2022-06-02/doc-imizirau6147496.shtml,yes
+2026-01-07,Everbright Futures,-108.7,RB - 1.6*I - 0.5*J - c (c not published),RB2605,I2605,J2605,3187,828,1773,https://notice.10jqka.com.cn/api/original/caf11218edf2d78a.pdf,no
+2026-06-29,Everbright Futures,-170.2,RB - 1.6*I - 0.5*J - c (c not published),RB2610,I2609,J2609,3095,746,1982.5,https://notice.10jqka.com.cn/api/original/9c29bb94621f3df9.pdf,no
+2026-06-30,Everbright Futures,-166.8,RB - 1.6*I - 0.5*J - c (c not published),RB2610,I2609,J2609,3088,747,1958.5,https://notice.10jqka.com.cn/api/original/a5e41d9c00eb87fa.pdf,no
+2026-07-13,Everbright Futures,-149.9,RB - 1.6*I - 0.5*J - c (c not published),RB2610,I2609,J2609,3054,744.5,1865,https://notice.10jqka.com.cn/api/original/f161f2a96a756230.pdf,no
+2026-09-22,Everbright Futures,-89.2,RB - 1.6*I - 0.5*J - c (c not published),RB2701,I2701,J2701,3114,708,1984,https://notice.10jqka.com.cn/api/original/e3f9627771224134.pdf,no

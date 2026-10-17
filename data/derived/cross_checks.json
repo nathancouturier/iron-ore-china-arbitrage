@@ -1,0 +1,592 @@
+[
+ {
+  "title": "DCE official files against Sina (I, J, JM), liquid contract-days",
+  "text": "Share of contract-days with identical settlement and close, by product and year, and the median ratio of Sina to DCE open interest. DCE annual files report double-sided open interest; Sina switches to single-sided from 2020 (ratio 0.5). Sina stores missing settlements as 0 (most of February to July 2020); those days are left out, hence fewer 2020 contract-days. Settlement agreement is lowest in 2018 and 2019; from 2020 settlements match on every liquid contract-day. Pipeline: DCE files to 2024-12-31, Sina from 2025-01-01.",
+  "table": [
+   {
+    "product": "I",
+    "year": 2018,
+    "rows": 429,
+    "settle_identical": 0.9091,
+    "close_identical": 0.9464,
+    "oi_ratio_sina_to_dce": 1.0
+   },
+   {
+    "product": "I",
+    "year": 2019,
+    "rows": 2514,
+    "settle_identical": 0.9825,
+    "close_identical": 0.9797,
+    "oi_ratio_sina_to_dce": 1.0
+   },
+   {
+    "product": "I",
+    "year": 2020,
+    "rows": 1583,
+    "settle_identical": 1.0,
+    "close_identical": 0.981,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "I",
+    "year": 2021,
+    "rows": 2857,
+    "settle_identical": 1.0,
+    "close_identical": 0.9786,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "I",
+    "year": 2022,
+    "rows": 2854,
+    "settle_identical": 1.0,
+    "close_identical": 0.994,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "I",
+    "year": 2023,
+    "rows": 2870,
+    "settle_identical": 1.0,
+    "close_identical": 0.9948,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "I",
+    "year": 2024,
+    "rows": 2845,
+    "settle_identical": 1.0,
+    "close_identical": 0.9965,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "J",
+    "year": 2018,
+    "rows": 343,
+    "settle_identical": 0.9096,
+    "close_identical": 0.9359,
+    "oi_ratio_sina_to_dce": 1.0
+   },
+   {
+    "product": "J",
+    "year": 2019,
+    "rows": 1250,
+    "settle_identical": 0.976,
+    "close_identical": 0.9552,
+    "oi_ratio_sina_to_dce": 1.0
+   },
+   {
+    "product": "J",
+    "year": 2020,
+    "rows": 1082,
+    "settle_identical": 1.0,
+    "close_identical": 0.9704,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "J",
+    "year": 2021,
+    "rows": 2436,
+    "settle_identical": 1.0,
+    "close_identical": 0.975,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "J",
+    "year": 2022,
+    "rows": 1352,
+    "settle_identical": 1.0,
+    "close_identical": 0.9948,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "J",
+    "year": 2023,
+    "rows": 1703,
+    "settle_identical": 1.0,
+    "close_identical": 0.9853,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "J",
+    "year": 2024,
+    "rows": 1564,
+    "settle_identical": 1.0,
+    "close_identical": 0.9866,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "JM",
+    "year": 2018,
+    "rows": 350,
+    "settle_identical": 0.9,
+    "close_identical": 0.96,
+    "oi_ratio_sina_to_dce": 1.0
+   },
+   {
+    "product": "JM",
+    "year": 2019,
+    "rows": 1083,
+    "settle_identical": 0.9788,
+    "close_identical": 0.9594,
+    "oi_ratio_sina_to_dce": 1.0
+   },
+   {
+    "product": "JM",
+    "year": 2020,
+    "rows": 953,
+    "settle_identical": 1.0,
+    "close_identical": 0.979,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "JM",
+    "year": 2021,
+    "rows": 2504,
+    "settle_identical": 1.0,
+    "close_identical": 0.9844,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "JM",
+    "year": 2022,
+    "rows": 1631,
+    "settle_identical": 1.0,
+    "close_identical": 0.9951,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "JM",
+    "year": 2023,
+    "rows": 2258,
+    "settle_identical": 1.0,
+    "close_identical": 0.9894,
+    "oi_ratio_sina_to_dce": 0.5
+   },
+   {
+    "product": "JM",
+    "year": 2024,
+    "rows": 2246,
+    "settle_identical": 1.0,
+    "close_identical": 0.9933,
+    "oi_ratio_sina_to_dce": 0.5
+   }
+  ]
+ },
+ {
+  "title": "SHFE official daily files against Sina (RB, HC), liquid contract-days",
+  "text": "Same comparison for rebar and hot-rolled coil. SHFE files report open interest as published at the time: double-sided to 31 December 2019, single-sided from 2 January 2020 (total rebar open interest falls from 3.58 million to 1.75 million lots overnight); the pipeline halves pre-2020 values.",
+  "table": [
+   {
+    "product": "HC",
+    "year": 2018,
+    "rows": 432,
+    "settle_identical": 0.9676,
+    "close_identical": 0.9375,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "HC",
+    "year": 2019,
+    "rows": 1723,
+    "settle_identical": 1.0,
+    "close_identical": 0.9797,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "HC",
+    "year": 2020,
+    "rows": 1963,
+    "settle_identical": 1.0,
+    "close_identical": 0.9847,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "HC",
+    "year": 2021,
+    "rows": 2658,
+    "settle_identical": 1.0,
+    "close_identical": 0.9786,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "HC",
+    "year": 2022,
+    "rows": 2787,
+    "settle_identical": 1.0,
+    "close_identical": 0.9932,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "HC",
+    "year": 2023,
+    "rows": 2810,
+    "settle_identical": 1.0,
+    "close_identical": 0.9904,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "HC",
+    "year": 2024,
+    "rows": 2798,
+    "settle_identical": 1.0,
+    "close_identical": 0.9968,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "HC",
+    "year": 2025,
+    "rows": 2806,
+    "settle_identical": 1.0,
+    "close_identical": 1.0,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "HC",
+    "year": 2026,
+    "rows": 2121,
+    "settle_identical": 1.0,
+    "close_identical": 1.0,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "RB",
+    "year": 2018,
+    "rows": 655,
+    "settle_identical": 0.9969,
+    "close_identical": 0.9954,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "RB",
+    "year": 2019,
+    "rows": 2726,
+    "settle_identical": 1.0,
+    "close_identical": 0.9938,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "RB",
+    "year": 2020,
+    "rows": 2869,
+    "settle_identical": 1.0,
+    "close_identical": 0.9902,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "RB",
+    "year": 2021,
+    "rows": 2884,
+    "settle_identical": 1.0,
+    "close_identical": 0.9712,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "RB",
+    "year": 2022,
+    "rows": 2865,
+    "settle_identical": 1.0,
+    "close_identical": 0.9937,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "RB",
+    "year": 2023,
+    "rows": 2880,
+    "settle_identical": 1.0,
+    "close_identical": 0.9969,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "RB",
+    "year": 2024,
+    "rows": 2876,
+    "settle_identical": 1.0,
+    "close_identical": 0.9993,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "RB",
+    "year": 2025,
+    "rows": 2897,
+    "settle_identical": 1.0,
+    "close_identical": 1.0,
+    "oi_ratio_sina_to_shfe": 1.0
+   },
+   {
+    "product": "RB",
+    "year": 2026,
+    "rows": 2236,
+    "settle_identical": 1.0,
+    "close_identical": 1.0,
+    "oi_ratio_sina_to_shfe": 1.0
+   }
+  ]
+ },
+ {
+  "title": "Monthly 62% CFR: SGX final settlement, IMF (FRED) and World Bank Pink Sheet",
+  "text": "USD per dry tonne. SGX iron ore futures settle on the monthly average of the index: TSI 62% Fe for contract months to December 2025, Platts IODEX (61% Fe basis from 2 January 2026) from January 2026, so the 2026 rows combine the 62/61 basis spread with the usual gap between the settlement index and the IMF and World Bank series (compare 2025 with 2026).",
+  "table": [
+   {
+    "year": 2015,
+    "months": 1,
+    "sgx_minus_imf_mean": -1.3,
+    "sgx_minus_wb_mean": -0.92,
+    "imf_minus_wb_mean": 0.38,
+    "imf_minus_wb_max_abs": 0.38
+   },
+   {
+    "year": 2016,
+    "months": 12,
+    "sgx_minus_imf_mean": -0.89,
+    "sgx_minus_wb_mean": -0.75,
+    "imf_minus_wb_mean": 0.14,
+    "imf_minus_wb_max_abs": 1.04
+   },
+   {
+    "year": 2017,
+    "months": 12,
+    "sgx_minus_imf_mean": -0.46,
+    "sgx_minus_wb_mean": -1.09,
+    "imf_minus_wb_mean": -0.62,
+    "imf_minus_wb_max_abs": 2.26
+   },
+   {
+    "year": 2018,
+    "months": 12,
+    "sgx_minus_imf_mean": -0.67,
+    "sgx_minus_wb_mean": -0.3,
+    "imf_minus_wb_mean": 0.37,
+    "imf_minus_wb_max_abs": 2.45
+   },
+   {
+    "year": 2019,
+    "months": 12,
+    "sgx_minus_imf_mean": -0.3,
+    "sgx_minus_wb_mean": -0.54,
+    "imf_minus_wb_mean": -0.23,
+    "imf_minus_wb_max_abs": 2.1
+   },
+   {
+    "year": 2020,
+    "months": 12,
+    "sgx_minus_imf_mean": 0.38,
+    "sgx_minus_wb_mean": -0.48,
+    "imf_minus_wb_mean": -0.86,
+    "imf_minus_wb_max_abs": 2.37
+   },
+   {
+    "year": 2021,
+    "months": 12,
+    "sgx_minus_imf_mean": 1.85,
+    "sgx_minus_wb_mean": -1.69,
+    "imf_minus_wb_mean": -3.54,
+    "imf_minus_wb_max_abs": 10.78
+   },
+   {
+    "year": 2022,
+    "months": 12,
+    "sgx_minus_imf_mean": -0.24,
+    "sgx_minus_wb_mean": -0.84,
+    "imf_minus_wb_mean": -0.6,
+    "imf_minus_wb_max_abs": 4.75
+   },
+   {
+    "year": 2023,
+    "months": 12,
+    "sgx_minus_imf_mean": -0.45,
+    "sgx_minus_wb_mean": -0.73,
+    "imf_minus_wb_mean": -0.28,
+    "imf_minus_wb_max_abs": 0.68
+   },
+   {
+    "year": 2024,
+    "months": 12,
+    "sgx_minus_imf_mean": -1.64,
+    "sgx_minus_wb_mean": 0.01,
+    "imf_minus_wb_mean": 1.65,
+    "imf_minus_wb_max_abs": 5.21
+   },
+   {
+    "year": 2025,
+    "months": 12,
+    "sgx_minus_imf_mean": -1.35,
+    "sgx_minus_wb_mean": 2.18,
+    "imf_minus_wb_mean": 3.53,
+    "imf_minus_wb_max_abs": 4.18
+   },
+   {
+    "year": 2026,
+    "months": 7,
+    "sgx_minus_imf_mean": -2.45,
+    "sgx_minus_wb_mean": 0.39,
+    "imf_minus_wb_mean": 2.84,
+    "imf_minus_wb_max_abs": 3.4
+   }
+  ]
+ },
+ {
+  "title": "USD/CNY: FRED DEXCHUS (New York noon) against the PBoC central parity",
+  "text": "CNY per USD; DEXCHUS minus central parity on common days.",
+  "table": [
+   {
+    "year": 2013,
+    "days": 228,
+    "mean_diff": -0.0482,
+    "max_abs_diff": 0.0647
+   },
+   {
+    "year": 2014,
+    "days": 235,
+    "mean_diff": 0.0203,
+    "max_abs_diff": 0.1026
+   },
+   {
+    "year": 2015,
+    "days": 235,
+    "mean_diff": 0.0556,
+    "max_abs_diff": 0.122
+   },
+   {
+    "year": 2016,
+    "days": 235,
+    "mean_diff": 0.0029,
+    "max_abs_diff": 0.0396
+   },
+   {
+    "year": 2017,
+    "days": 235,
+    "mean_diff": 0.0013,
+    "max_abs_diff": 0.0561
+   },
+   {
+    "year": 2018,
+    "days": 233,
+    "mean_diff": 0.0011,
+    "max_abs_diff": 0.068
+   },
+   {
+    "year": 2019,
+    "days": 233,
+    "mean_diff": 0.011,
+    "max_abs_diff": 0.1256
+   },
+   {
+    "year": 2020,
+    "days": 232,
+    "mean_diff": -0.0014,
+    "max_abs_diff": 0.0959
+   },
+   {
+    "year": 2021,
+    "days": 233,
+    "mean_diff": -0.0024,
+    "max_abs_diff": 0.0807
+   },
+   {
+    "year": 2022,
+    "days": 232,
+    "mean_diff": 0.0121,
+    "max_abs_diff": 0.1399
+   },
+   {
+    "year": 2023,
+    "days": 232,
+    "mean_diff": 0.0381,
+    "max_abs_diff": 0.1397
+   },
+   {
+    "year": 2024,
+    "days": 233,
+    "mean_diff": 0.078,
+    "max_abs_diff": 0.1421
+   },
+   {
+    "year": 2025,
+    "days": 233,
+    "mean_diff": 0.0428,
+    "max_abs_diff": 0.1435
+   },
+   {
+    "year": 2026,
+    "days": 179,
+    "mean_diff": -0.0357,
+    "max_abs_diff": 0.0819
+   }
+  ]
+ },
+ {
+  "title": "BCI spot checks",
+  "text": "East Money BCI against index values quoted in the press.",
+  "table": [
+   {
+    "date": "2016-01-29",
+    "published": 211,
+    "east_money": 211,
+    "source": "Splash247: BCI 211 on 29 January 2016, then a record low",
+    "url": "https://splash247.com/?p=40977"
+   },
+   {
+    "date": "2026-07-03",
+    "published": 4100,
+    "east_money": 4100,
+    "source": "Hellenic Shipping News week 27 2026: BCI 4,100",
+    "url": "https://www.hellenicshippingnews.com/?p=1140060"
+   }
+  ]
+ },
+ {
+  "title": "China Customs imports: sum of the monthly bulletins against the year total",
+  "text": "Iron ores and concentrates, million tonnes. Monthly figures as first published (September and October 2024 from the preliminary release) against the January to December total in each December bulletin, which carries later revisions.",
+  "table": [
+   {
+    "year": 2018,
+    "monthly_sum_mt": 1064.77,
+    "year_total_mt": 1064.47,
+    "diff_pct": 0.028
+   },
+   {
+    "year": 2019,
+    "monthly_sum_mt": 1070.58,
+    "year_total_mt": 1068.95,
+    "diff_pct": 0.152
+   },
+   {
+    "year": 2020,
+    "monthly_sum_mt": 1170.37,
+    "year_total_mt": 1170.1,
+    "diff_pct": 0.023
+   },
+   {
+    "year": 2021,
+    "monthly_sum_mt": 1125.63,
+    "year_total_mt": 1124.32,
+    "diff_pct": 0.117
+   },
+   {
+    "year": 2022,
+    "monthly_sum_mt": 1107.76,
+    "year_total_mt": 1106.86,
+    "diff_pct": 0.081
+   },
+   {
+    "year": 2023,
+    "monthly_sum_mt": 1180.61,
+    "year_total_mt": 1179.06,
+    "diff_pct": 0.131
+   },
+   {
+    "year": 2024,
+    "monthly_sum_mt": 1238.15,
+    "year_total_mt": 1236.55,
+    "diff_pct": 0.129
+   },
+   {
+    "year": 2025,
+    "monthly_sum_mt": 1260.22,
+    "year_total_mt": 1258.71,
+    "diff_pct": 0.12
+   }
+  ]
+ }
+]

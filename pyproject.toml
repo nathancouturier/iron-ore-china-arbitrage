@@ -1,0 +1,23 @@
+[project]
+name = "iron-ore-china-arbitrage"
+version = "1.0.0"
+description = "Delivered cost of seaborne iron ore into China against Dalian futures: data pipeline, engine, site and research note."
+requires-python = ">=3.12"
+authors = [{ name = "Nathan Couturier" }]
+license = { text = "MIT" }
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+extend-exclude = ["data", "site", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "PL", "RUF"]
+ignore = ["E501", "PLR0913", "PLR0915", "PLR2004", "PLR0912", "PLR0911", "PLR0917", "PLW0603", "RUF001", "RUF002", "RUF003"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["PLC0415"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

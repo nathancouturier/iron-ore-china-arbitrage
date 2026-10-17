@@ -1,0 +1,29 @@
+# Working notes and local tool settings (not part of the project)
+.work/
+.claude/
+CLAUDE.md
+
+# Local caches
+data/cache/
+.cache/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+node_modules/
+*.egg-info/
+build/
+dist/
+.DS_Store
+
+# Exchange and third-party raw downloads: re-fetched by the pipeline, not redistributed
+data/raw/dce/
+data/raw/sina/
+data/raw/shfe/
+data/raw/eastmoney/
+data/raw/sgx/
+data/raw/other/
+data/raw/safe/
+data/raw/gacc/
