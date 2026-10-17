@@ -7,16 +7,17 @@
     "DEXCHUS": "ok 11941 rows to 2026-10-09",
     "DCOILBRENTEU": "ok 10281 rows to 2026-10-14",
     "SOFR": "ok 2228 rows to 2026-10-15",
-    "DFF": "ok 26405 rows to 2026-10-15"
+    "DFF": "ok 26405 rows to 2026-10-15",
+    "CPIAUCSL": "ok 957 rows to 2026-09-01"
    },
-   "seconds": 0.6
+   "seconds": 0.9
   },
   "worldbank": {
    "ok": true,
    "detail": {
     "pinksheet": "ok 801 rows to 2026-09-01"
    },
-   "seconds": 0.8
+   "seconds": 1.1
   },
   "eastmoney": {
    "ok": true,
@@ -24,42 +25,49 @@
     "bci": "ok 6882 rows 1999-04-30 to 2026-10-16",
     "bdi": "ok 9562 rows 1988-10-19 to 2026-10-16"
    },
-   "seconds": 41.2
+   "seconds": 49.8
   },
   "safe": {
    "ok": true,
    "detail": {
     "safe_central_parity": "ok 3345 rows to 2026-10-16, 0 errors"
    },
-   "seconds": 25.2
+   "seconds": 24.0
   },
   "gacc": {
    "ok": true,
    "detail": {
     "gacc_imports": "ok 21 periods to 2026-09, 0 errors"
    },
-   "seconds": 40.2
+   "seconds": 38.2
+  },
+  "wits": {
+   "ok": true,
+   "detail": {
+    "wits_imports": "ok 3 years to 2025, 0 errors"
+   },
+   "seconds": 9.1
   },
   "sina": {
    "ok": true,
    "detail": {
     "sina": "137 contracts available, 0 errors"
    },
-   "seconds": 114.5
+   "seconds": 110.5
   },
   "shfe": {
    "ok": true,
    "detail": {
     "shfe": "fetched 27, cached 0, nontrading 6, errors 0"
    },
-   "seconds": 24.8
+   "seconds": 26.0
   },
   "sgx": {
    "ok": true,
    "detail": {
-    "sgx": "fetched 7, cached 0, missing 12"
+    "sgx": "fetched 6, cached 0, missing 12"
    },
-   "seconds": 14.0
+   "seconds": 14.7
   }
  },
  "ingest_mode": "incremental"
