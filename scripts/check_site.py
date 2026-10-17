@@ -27,7 +27,7 @@ except ImportError:  # the PDF text check then fails with a clear message
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
-VIEWS = ["meta", "overview", "window", "freight", "mill", "calculator", "method", "downloads"]
+VIEWS = ["meta", "overview", "window", "freight", "mill", "history", "calculator", "method", "downloads"]
 MAX_VIEW_KB = 400
 LONG_DASHES = (chr(0x2014), chr(0x2013))  # em dash, en dash
 PLACEHOLDERS = re.compile(r"\b(TODO|FIXME|TBD|lorem ipsum|placeholder text)\b", re.IGNORECASE)

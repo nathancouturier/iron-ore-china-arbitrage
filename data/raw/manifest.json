@@ -413,6 +413,14 @@
    "client": "WEB"
   }
  },
+ "fred/CPIAUCSL.csv": {
+  "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL",
+  "retrieved_at": "2026-10-17T10:29:48Z",
+  "sha256": "8556b710094027fa4724641d48be620cc37c04abfa15a0c496378cf1146c1549",
+  "bytes": 17763,
+  "redistributed": true,
+  "note": "US CPI-U, all items, 1982-84 = 100, monthly, seasonally adjusted (BLS)"
+ },
  "fred/DCOILBRENTEU.csv": {
   "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DCOILBRENTEU",
   "retrieved_at": "2026-10-17T10:03:56Z",
@@ -46999,6 +47007,550 @@
   "sha256": "9e400c5b0c80f7b73c7e6c30283022c03015517bce6bc96b1f5411e366974485",
   "bytes": 113,
   "redistributed": false
+ },
+ "wits/chn_260111_1992.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1992/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:29:49Z",
+  "sha256": "f96b654b94034da2b3024b03c8609432cb62d7b4c1e9c36f88dd770fd4867845",
+  "bytes": 35857,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_1993.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1993/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:29:51Z",
+  "sha256": "bd00af8906985364af9f56eef3c16168753f2efdea3606f85567fe68d9af8584",
+  "bytes": 38683,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_1994.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1994/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:29:53Z",
+  "sha256": "d2a9865983b03ad68f576ebb9a9b0275577b18f77530996ef37d03587ca44e85",
+  "bytes": 37539,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_1995.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1995/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:29:56Z",
+  "sha256": "ccb06ddf49480cb42290713d296f4fef0a7314d7593a35a59d83991460245b5b",
+  "bytes": 37509,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_1996.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1996/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:29:58Z",
+  "sha256": "7314c17667e334306a7392046896d4db2943f9d296b106e14ef3995967c09de7",
+  "bytes": 36972,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_1997.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1997/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:00Z",
+  "sha256": "340e660df6f93bccfb7ee217a9a7aa95b9984f5ab9922e0369d97cffbbe492da",
+  "bytes": 38090,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_1998.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1998/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:03Z",
+  "sha256": "fc6c6fc2843fbfa5e2c13c2fa5280b087578f54e5c6fac339b298bc9d8333828",
+  "bytes": 38649,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_1999.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1999/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:05Z",
+  "sha256": "9edb19a1116729a20d6b6e774416f9f7534c93d810dcd8ab4d3d210a0d7c799a",
+  "bytes": 36388,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2000.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2000/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:07Z",
+  "sha256": "53fefe3e7dd2d510532c72bbd143e0743c6f970e49615a36f7f68273c43cd98e",
+  "bytes": 36958,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2001.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2001/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:09Z",
+  "sha256": "381e2a31537330c2aa913eb8693b4cbf2c90d78b9393e86d3df560724a210eb0",
+  "bytes": 38093,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2002.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2002/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:12Z",
+  "sha256": "490897bb473fd29acded1be4121061aa4d896bd8abc072de2fd9eac3861982bc",
+  "bytes": 38646,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2003.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2003/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:14Z",
+  "sha256": "6b2987970d5232fcc00388bea7cadc754ed0e6cfef16b6163521fac2b2f4f388",
+  "bytes": 39831,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2004.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2004/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:16Z",
+  "sha256": "8236cae471302d70609098402713f0058db1dc4b48aabbee039ae66e7d93276a",
+  "bytes": 48933,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2005.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2005/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:19Z",
+  "sha256": "5decf6a5710fbba55bb85d29e9ea249737c997c74467b2fdca0629fe66b6402d",
+  "bytes": 48326,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2006.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2006/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:21Z",
+  "sha256": "4680ac90ab0a302912d24819d47fb7c2b5be3c9cc0956c9447ea2e743ca9540d",
+  "bytes": 47793,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2007.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2007/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:23Z",
+  "sha256": "f436628e67bfc84def7351479825262347a71ea9b4960d5663913a4d2c382199",
+  "bytes": 50067,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2008.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2008/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:26Z",
+  "sha256": "1e9e5f221880ab331bf9d2e262da170f5ce501fca4d36294dcd57cec2e0d4d65",
+  "bytes": 50683,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2009.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2009/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:28Z",
+  "sha256": "2e238ad67b5fa150dd61458bb574d5bf2a57116b39a99ae7856c62a5e56a0bee",
+  "bytes": 49523,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2010.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2010/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:30Z",
+  "sha256": "32d5d103cbbee85cdeb400501c89f582fc95e465011a483603050a983a981d8d",
+  "bytes": 54113,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2011.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2011/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:32Z",
+  "sha256": "a8a6250adfd52998fdb4ba2035ce3f185f28fad003b839f576ead2c13fa434d6",
+  "bytes": 63129,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2012.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2012/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:35Z",
+  "sha256": "2463deb8b229c7681dbeecdcf21ac45ca542c600356c5c8489722933b042b249",
+  "bytes": 60935,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2013.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2013/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:37Z",
+  "sha256": "775de8bbdb33d108a6d8c5e83215fbb0184951fa54a4c3da2ef45663297c0855",
+  "bytes": 64359,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2014.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2014/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:39Z",
+  "sha256": "171eff097e3257b2f1f2a77f31ad2e9f8a5fc9640482c6d20f4f66221b4dcccf",
+  "bytes": 64838,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2015.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2015/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:42Z",
+  "sha256": "a39b8e2a2f3b0ac0ca020b2412bc9533d20ecb4ee978763929a1a468c6d0fef5",
+  "bytes": 55756,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2016.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2016/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:44Z",
+  "sha256": "7b7b002a69f31405e773bd5f0db1396325c996b2f303e416c6ffa9acbaa80dc5",
+  "bytes": 51862,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2017.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2017/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:46Z",
+  "sha256": "a0081ea41f2e12957fa5013114218803af9d468aec66ed8f41149298e2f2dca9",
+  "bytes": 53493,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2018.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2018/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:49Z",
+  "sha256": "761a5a99b7567f0c1c27b74de3fde2488c967602a4baf1073638b9677434845b",
+  "bytes": 54504,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2019.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2019/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:51Z",
+  "sha256": "3dff6d90f9745fbbdf172928bbee4223391f6049f23d5c18c0d27c1cb13955ba",
+  "bytes": 57867,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2020.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2020/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:53Z",
+  "sha256": "e5778e00e934e0a8424098f0339c33c14d9136101a58d4a5711b78349a8d84e6",
+  "bytes": 55689,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2021.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2021/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:55Z",
+  "sha256": "7a791829eca09bc457f95a6bd881ea0d6fec52acaf1d4ec6d8d3122a2f17c4f3",
+  "bytes": 59598,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2022.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2022/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:30:58Z",
+  "sha256": "5e3384fe2a98ffba493cef0988460df0c93eab70865ec1502ae19fb94b84704e",
+  "bytes": 59587,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2023.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2023/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:31:00Z",
+  "sha256": "7a5003f12a390da21f40fb6be1183dea0e9c8a22209c8e4eb2a7236a2e58fab1",
+  "bytes": 61846,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2024.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2024/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:31:02Z",
+  "sha256": "4556e71b8fef4801a07c7a80d3bb30e3deaa78ef8f29b036a0cc44c5153f5b6f",
+  "bytes": 64617,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260111_2025.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2025/tradeflow/Imports/partner/ALL/product/260111",
+  "retrieved_at": "2026-10-17T10:31:05Z",
+  "sha256": "7f87b2fb247676dff0ad678e5911d0a92f8f60fb89f8a5534de5ac2ad3736fd5",
+  "bytes": 67914,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260111"
+ },
+ "wits/chn_260112_1992.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1992/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:29:50Z",
+  "sha256": "93b0ef56f4838743285bdeb724a0b46cb99a24ee9a4c4dc3a02fac986e1f656e",
+  "bytes": 34042,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_1993.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1993/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:29:52Z",
+  "sha256": "de2c7210bd266691b566dca0220fcff303c613af681919b782003394aaa3e5c6",
+  "bytes": 36252,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_1994.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1994/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:29:55Z",
+  "sha256": "2440ee3383517ca36b7f91d0847c104a6fa92282134a115591c21f328e454757",
+  "bytes": 32311,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_1995.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1995/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:29:57Z",
+  "sha256": "3be009711a5f9a4ab6140cee85604a2bd729438cd8fb56a85767f948ef746ec9",
+  "bytes": 34006,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_1996.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1996/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:29:59Z",
+  "sha256": "df07599834e201fcff859c87b4ddd2a9f0fa025921fd7c543fe7eca52c3762dd",
+  "bytes": 35677,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_1997.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1997/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:01Z",
+  "sha256": "5e4d6987a56e8bcc26e867a89a13e5d56897fed16485e6aa281cb92a9ebc7f37",
+  "bytes": 35689,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_1998.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1998/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:04Z",
+  "sha256": "c61d94ec628a0efee2c33c94c610ca27dab3e5918ebc4f3c427b8b006fa4f951",
+  "bytes": 35117,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_1999.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/1999/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:06Z",
+  "sha256": "a5bb378952454c5cdcd3f3a551dfe263faa04d90ee23f1c7883cacad9d1f9260",
+  "bytes": 34536,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2000.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2000/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:08Z",
+  "sha256": "f17d04621442a1f8e027e730739e1283e7b0603ffb4059ac6a6a4a881b0edf19",
+  "bytes": 32868,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2001.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2001/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:11Z",
+  "sha256": "3bffd4a7b3b23e5943c9d51872e8f98adebf3c2e5bbdafced9d8aeb2e4ff600f",
+  "bytes": 35682,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2002.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2002/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:13Z",
+  "sha256": "d1cbba18b7052462fb881a32cf7f88dfe27290d7bd0ed52e2a2c74acd69de9cd",
+  "bytes": 35673,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2003.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2003/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:15Z",
+  "sha256": "ce45bb1becce58b57ddcbec77c2066b64ca3066213ceac905e73b31f22e457f7",
+  "bytes": 36272,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2004.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2004/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:18Z",
+  "sha256": "3b256b347e37bb7f4e35549b7e9f489d81238d8d072b5b091abd67843567fe85",
+  "bytes": 40824,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2005.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2005/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:20Z",
+  "sha256": "429288c8323ffdfcaa82eb1a937c8a0aa43deb68d7f9922fafcc0a1c523c5006",
+  "bytes": 41422,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2006.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2006/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:22Z",
+  "sha256": "fac15023cea8579d29a07342671d10d24eb353b9fc68f6d1fc64fc5432d051c8",
+  "bytes": 37484,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2007.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2007/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:24Z",
+  "sha256": "8ba2dc5d905641ef5f63559d5f22399e766ab0ce3a31b1f7e644a2cd577b2e8d",
+  "bytes": 38595,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2008.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2008/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:27Z",
+  "sha256": "b7cf9a15146573392c3447b117976d75104e0783e4cafdb9ecc0697c0adc9d13",
+  "bytes": 40269,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2009.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2009/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:29Z",
+  "sha256": "bb49c222214153954647b28d8d0340e39aef113f5a9a472d5805923b8e127207",
+  "bytes": 41996,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2010.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2010/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:31Z",
+  "sha256": "015a223c3cc756faf377fd4329f14b8fc5bfd927fe5a4b2d5dc1bf2858e3c666",
+  "bytes": 41438,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2011.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2011/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:34Z",
+  "sha256": "b4014fa96ca1f10d1935239ac7dcce034d109aea0eddb8eb7337099e23371ee0",
+  "bytes": 43170,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2012.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2012/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:36Z",
+  "sha256": "9379f2c9f002555c0b4ed3cd448e722c28b8ee927e81501e1ef13df960f9e8b8",
+  "bytes": 43704,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2013.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2013/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:38Z",
+  "sha256": "ab2ca01dbbf16309429dda5caa66a177c3103d7645151dd877c72a93b6362d14",
+  "bytes": 42583,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2014.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2014/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:40Z",
+  "sha256": "09ebef54548d53c4dcd2c1ae217abe64782c0d50890ee6f786821ecb5f7b187b",
+  "bytes": 42523,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2015.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2015/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:43Z",
+  "sha256": "b4af8731ae8ca954108886c40f8ad3cfbd98aa2755eeb0293559ec90e4fddbbb",
+  "bytes": 38622,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2016.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2016/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:45Z",
+  "sha256": "c22613f14811135ff92e7eee0e9f3b88ed05d80028012e83ebf049f29742663e",
+  "bytes": 37492,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2017.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2017/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:47Z",
+  "sha256": "4eb0f7ff2ac94f12dc56ae247620ce325df341c9f353f22ea42b361229b0a1d0",
+  "bytes": 40291,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2018.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2018/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:50Z",
+  "sha256": "e2b96c03b3abc19b2f42e98c1cba21a397a4c332c91f9998191a6415362f9473",
+  "bytes": 41431,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2019.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2019/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:52Z",
+  "sha256": "a108a95242a91740bdab56a89afd48038e4881363da218708a3be02fcf608a91",
+  "bytes": 41928,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2020.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2020/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:54Z",
+  "sha256": "bf831f1ff1040b9f8e86a60d16789832b74b68fef21b17c0ac7ba52cf9304c18",
+  "bytes": 41410,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2021.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2021/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:57Z",
+  "sha256": "2696e7557de4f7e13cd1fe7385c12973b9cd0f96140bd251f808bc2aeb154212",
+  "bytes": 41329,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2022.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2022/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:30:59Z",
+  "sha256": "807ad7fc2e08f8991cc9099d358f22c4ecbf983765212d4fdfe1aa814007c3d6",
+  "bytes": 40209,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2023.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2023/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:31:01Z",
+  "sha256": "e56536d176cf8e386f85828e68ce4ba0b6395173fb64fe879bca48b106d0afcf",
+  "bytes": 38607,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2024.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2024/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:31:03Z",
+  "sha256": "e55c42739d7c2126e953f0c2bc3e47d73d95a219bcba14e6c95e8482351e2717",
+  "bytes": 41300,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
+ },
+ "wits/chn_260112_2025.html": {
+  "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2025/tradeflow/Imports/partner/ALL/product/260112",
+  "retrieved_at": "2026-10-17T10:31:06Z",
+  "sha256": "269f2419a055be365bf0c4b01211e49146d3f36ebedf4e51375e22c33e0c27cb",
+  "bytes": 40298,
+  "redistributed": false,
+  "note": "UN Comtrade via WITS, China imports HS 260112"
  },
  "worldbank/CMO-Historical-Data-Monthly.xlsx": {
   "source_url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",

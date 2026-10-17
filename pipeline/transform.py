@@ -19,7 +19,7 @@ from ironarb.curve_build import constant_maturity_series
 from ironarb.dce_x import x_by_contract, x_table
 from ironarb.params import value
 
-from .ingest import dce, eastmoney, gacc, safe, sgx, shfe, sina
+from .ingest import dce, eastmoney, gacc, safe, sgx, shfe, sina, wits
 
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / "data" / "cache"
@@ -285,7 +285,8 @@ def baltic_series() -> dict[str, str]:
     except FileNotFoundError:
         return {"baltic": "no raw files; snapshot kept"}
     df = bdi.merge(bci, on="date", how="outer").sort_values("date")
-    df = df[df["date"] >= pd.Timestamp("2008-01-01")]
+    # full published history (BDI from October 1988, BCI from April 1999) for the long view
+    df = merge_snapshot(df, path, None if df["date"].min() <= pd.Timestamp("1988-12-31") else df["date"].min())
     df.to_csv(path, index=False)
     return {"baltic": f"{len(df)} days to {df['date'].max().date()}"}
 
@@ -319,6 +320,25 @@ def imports_series() -> dict[str, str]:
     return {"imports": f"{len(new)} periods to {new['end'].max()}"}
 
 
+def wits_series() -> dict[str, str]:
+    """China iron ore imports by partner and year (UN Comtrade via WITS). Years
+    newly parsed replace the snapshot; older years are kept."""
+    path = DERIVED / "china_iron_ore_imports_by_partner_annual.csv"
+    try:
+        new = wits.read()
+    except (FileNotFoundError, ValueError):
+        return {"wits": "no raw files; snapshot kept"}
+    new = new[new["partner"] != "World"].copy()
+    new["qty_t"] = new["qty_kg"] / 1000.0
+    new = new[["year", "hs", "partner", "value_kusd", "qty_t", "url"]]
+    if path.exists():
+        old = pd.read_csv(path, dtype={"hs": str})
+        new = pd.concat([old[~old["year"].isin(new["year"].unique())], new])
+    new = new.sort_values(["year", "hs", "value_kusd"], ascending=[True, True, False])
+    new.to_csv(path, index=False, float_format="%.3f")
+    return {"wits": f"{new['year'].nunique()} years to {new['year'].max()}"}
+
+
 def _months(start: str, end: str) -> list[str]:
     return [str(p) for p in pd.period_range(start, end, freq="M")]
 
@@ -333,4 +353,5 @@ def run() -> dict[str, str]:
     status.update(baltic_series())
     status.update(central_parity_series())
     status.update(imports_series())
+    status.update(wits_series())
     return status

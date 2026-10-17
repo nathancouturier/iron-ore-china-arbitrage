@@ -17,6 +17,7 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 from matplotlib import font_manager
 from PIL import Image as PILImage
@@ -217,6 +218,40 @@ def fig_mill(mill: pd.DataFrame) -> Path:
     return _save(fig, "mill")
 
 
+def fig_history(price: pd.DataFrame, imports: pd.DataFrame, real_label: str) -> Path:
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(FIG_W, 2.15), gridspec_kw={"width_ratios": [1.35, 1]})
+    t = pd.PeriodIndex(price["month"], freq="M").to_timestamp()
+    contract_end = t[(price["basis"] == "contract_fob_brazil").to_numpy()].max()
+    a1.axvspan(t.min(), contract_end, color=PLATE, lw=0)
+    a1.text(
+        t.min(),
+        0.98,
+        " Annual contract, FOB Brazil",
+        transform=a1.get_xaxis_transform(),
+        va="top",
+        fontsize=7,
+        color=STEEL,
+    )
+    a1.plot(t, price["fe62_real_usd_dmt"], color=HEMATITE, lw=0.8, label=real_label)
+    a1.plot(t, price["fe62_usd_dmt"], color=TOPSIDE, lw=0.8, label="Nominal")
+    a1.set_ylabel("USD per dry tonne, 62% Fe eq.")
+    a1.set_title("Iron ore price since 1960")
+    a1.legend(loc="upper left", bbox_to_anchor=(0.0, 0.9))
+    a1.margins(x=0.01)
+    q = imports.pivot(index="year", columns="origin", values="qty_mt").fillna(0.0)
+    colors = {"Australia": PILBARA, "Brazil": SEAWATER, "India": HEMATITE, "South Africa": TOPSIDE, "Other": "#9aa5ad"}
+    bottom = np.zeros(len(q))
+    for o, c in colors.items():
+        if o in q.columns:
+            a2.bar(q.index, q[o], bottom=bottom, color=c, width=0.8, label=o, lw=0)
+            bottom += q[o].to_numpy()
+    a2.set_ylabel("Million tonnes")
+    a2.set_title("China's imports by origin")
+    a2.legend(loc="upper left", ncols=2)
+    fig.tight_layout(w_pad=2.0)
+    return _save(fig, "history")
+
+
 # Document -------------------------------------------------------------------------
 def _fonts() -> None:
     pdfmetrics.registerFont(
@@ -288,6 +323,9 @@ def _footer(canvas, doc) -> None:
     )
     canvas.drawRightString(A4[0] - 18 * mm, 10 * mm, str(doc.page))
     canvas.restoreState()
+
+
+STATE_WORD = {-1: "below the band", 0: "inside the band", 1: "above the band"}
 
 
 def imports_text(a: dict[str, Any]) -> str:
@@ -380,6 +418,11 @@ def build() -> Path:
         "bridge": fig_bridge(last),
         "freight": fig_freight(freight[freight.index >= pd.Timestamp("2014-01-01")], anchors, monthly),
         "mill": fig_mill(mill),
+        "history": fig_history(
+            pd.read_csv(DERIVED / "iron_ore_price_long_monthly.csv"),
+            pd.read_csv(DERIVED / "china_iron_ore_imports_by_origin_annual.csv"),
+            f"Real, {month(a['history']['cpi_base'])} dollars",
+        ),
     }
 
     _fonts()
@@ -408,10 +451,15 @@ def build() -> Path:
     bullets = [
         f"On {day(ld)} a 62% Fe cargo from West Australia bought for delivery to Qingdao in about 45 days cost "
         f"{num(last['landed_rmb_dmt'])} RMB per dry tonne landed, VAT included, against {num(last['dce62_rmb_dmt'])} for 45-day Dalian delivery: a margin of "
-        f"{signed(last['margin_rmb_dmt'])} RMB/dmt, so the window is {state}. The call is close: without the "
+        f"{signed(last['margin_rmb_dmt'])} RMB/dmt, so the window is {state}. Without the "
         f"{num(dsens['lift']['lift_usd_dmt'], 2)} USD/dmt lift that puts 2026 SGX prices on a 62% Fe basis the margin would be "
-        f"{signed(dsens['no_lift']['margin_rmb_dmt'])}, and a CFR price {num(-dsens['cfr_change_to_band_usd'], 1)} USD lower "
-        "would bring it inside the band.",
+        f"{signed(dsens['no_lift']['margin_rmb_dmt'])}"
+        + (
+            f", still {STATE_WORD[dsens['no_lift']['state']]}"
+            if dsens["no_lift"]["state"] == dsens["lift"]["state"]
+            else f", {STATE_WORD[dsens['no_lift']['state']]}"
+        )
+        + f", and a CFR price {num(-dsens['cfr_change_to_band_usd'], 1)} USD lower would bring it inside the band.",
         f"The window has almost never been open. On the daily series (from December 2015) the margin exceeded the "
         f"{num(band)} RMB/dmt cost of using the exchange on {pct(wd['share_open'])} of trading days and never for more than "
         f"{max(r['length'] for r in wd['runs'] if r['state'] == 1)} days in a row; on the monthly baseline it was "
@@ -618,6 +666,36 @@ def build() -> Path:
         ["C5 freight, voyage model", str(fe["C5"]["voyage"]["n"]), f"RMSE {num(fe['C5']['voyage']['rmse'], 2)} USD/t",
          f"{num(TOLERANCE['freight_rmse_usd_t']['C5'], 1)} USD/t"],
     ]  # fmt: skip
+    h = a["history"]
+    story += [
+        P("The long view", "h"),
+        P(
+            "The import margin starts with the Dalian futures in October 2013, but the seaborne price, the delivered "
+            f"cost and China's imports go back much further (Figure 5). In dollars of {month(h['cpi_base'])}, a tonne of "
+            f"62% ore averaged {num(h['real_mean_1960_2003'])} USD from 1960 to 2003 under annual contracts FOB Brazil, "
+            f"against {num(h['real_last_12m_mean'])} over the last twelve months CFR China (the change of basis in 2006 adds "
+            f"the sea freight); the real peak was {num(h['real_peak'])} in {month(h['real_peak_month'])}. The delivered "
+            f"cost in China peaked at {num(h['landed_peak'])} RMB per dry tonne in {month(h['landed_peak_month'])}, when "
+            f"import VAT was 13%, and was {num(h['landed_last'])} in {month(h['landed_last_month'])}. China's imports grew "
+            f"from {num(h['imports_first_mt'])} Mt in {h['imports_first_year']} to {num(h['imports_last_mt'])} Mt in "
+            f"{h['imports_last_year']}: Australia's share went from {pct(h['share_australia_first'], 0)} to "
+            f"{pct(h['share_australia_last'], 0)}, Brazil's from {pct(h['share_brazil_first'], 0)} to "
+            f"{pct(h['share_brazil_last'], 0)}, and India's peaked at {pct(h['share_india_peak'], 0)} in "
+            f"{h['share_india_peak_year']} before falling to {pct(h['share_india_last'], 0)}."
+        ),
+        KeepTogether(
+            [
+                _img(figs["history"]),
+                P(
+                    "Figure 5. Left: World Bank iron ore price as a 62% Fe equivalent, annual contracts FOB Brazil quoted "
+                    "per Fe unit (shaded, to 2005) and spot CFR China from 2006, nominal and deflated by US CPI-U; May "
+                    "1965 is shown as published. Right: China's iron ore imports by origin, HS 260111 and 260112, UN "
+                    "Comtrade via World Bank WITS (within 1% of the China Customs totals from 2018).",
+                    "cap",
+                ),
+            ]
+        ),
+    ]
     story += [
         KeepTogether(
             [
@@ -643,8 +721,10 @@ def build() -> Path:
             "persistent discount is a brand and grade effect. Freight is modeled, with the errors shown above; the "
             "published anchors cluster in 2021 to 2026 and the model has run above the most recent C3 rates "
             f"(mean error {signed(rec_c3, 1)} USD/t on the last five). Port charges are a single assumption. The daily "
-            "series uses SGX futures, lifted from a 61% to a 62% basis in 2026 by one constant; the latest window call "
-            "depends on that lift, and against the World Bank series instead of the IMF one the 2026 spread averages "
+            "series uses SGX futures, lifted from a 61% to a 62% basis in 2026 by one constant, which moves the latest "
+            f"margin by about {num(dsens['lift']['lift_usd_dmt'] * dsens['slope_rmb_per_usd'])} RMB/dmt"
+            + ("" if dsens["no_lift"]["state"] == dsens["lift"]["state"] else " and decides its window state")
+            + "; against the World Bank series instead of the IMF one the 2026 spread averages "
             f"{signed(dsens['lift_world_bank']['lift_usd_dmt'], 2)} USD, which would put the margin at "
             f"{signed(dsens['lift_world_bank']['margin_rmb_dmt'])}. The third episode rests on an expiring contract. "
             "Import volumes come from the English China Customs bulletins, which start in 2018, and the imports test "
@@ -653,14 +733,16 @@ def build() -> Path:
         P("Sources", "h"),
         P(
             "FRED: IMF iron ore (PIORECRUSDM), Federal Reserve USD/CNY (DEXCHUS), New York Fed SOFR, effective federal "
-            "funds rate (DFF), EIA Brent (DCOILBRENTEU); World Bank Pink Sheet; "
+            "funds rate (DFF), EIA Brent (DCOILBRENTEU), BLS US CPI-U (CPIAUCSL); World Bank Pink Sheet; UN Comtrade "
+            "via World Bank WITS; "
             "Dalian Commodity Exchange annual files and rules; Shanghai Futures Exchange daily files; Sina futures history; "
             "SGX daily settlement files; Baltic Capesize Index via East Money; SAFE central parity; China Customs (GACC) "
             "monthly bulletins; searoute; Natural Earth. "
             "Validation: Ruida Futures daily reports, Fastmarkets, Everbright Futures, SDIC Essence Futures, Baltic "
             "Exchange route reports in the shipping press, Platts route assessments. Episode sources: NDRC, MIIT, World Bank Commodity Markets "
             f"Outlook, DCE notices. Data sources with links and retrieval dates, and every validation anchor with its link: "
-            f"{URL}#method. Code: {REPO}."
+            f"{URL}#method. Code: {REPO}.",
+            "cap",
         ),
     ]
 

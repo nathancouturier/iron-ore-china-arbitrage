@@ -92,7 +92,7 @@ h4 { font-size: var(--fs-lead); font-weight: 650; }
   margin: 0 auto;
   padding: 10px var(--gutter);
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: 4px;
 }
 .hatches a {
@@ -123,6 +123,7 @@ main { display: block; min-height: 100vh; }
 /* Panels: flat plate, no shadow */
 .panel { background: #fff; padding: 18px 18px 14px; border-radius: 2px; }
 .panel + .panel { margin-top: 16px; }
+.grid > .panel + .panel { margin-top: 0; } /* the grid gap spaces side-by-side panels */
 .panel--plate { background: var(--plate); }
 .panel h3 { margin-bottom: 4px; }
 .chart-title { font-size: var(--fs-lead); font-weight: 650; font-stretch: 108%; margin: 0 0 2px; max-width: 70ch; }
@@ -233,7 +234,6 @@ tbody tr:nth-child(odd) { background: var(--primer); }
 @media (max-width: 960px) {
   .grid--bridge, .grid--two, .calc { grid-template-columns: minmax(0, 1fr); }
   .hatches__inner { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  #tab-freight { grid-column: span 2; }
   .calc > div:last-child { order: -1; } /* results above the inputs on narrow screens */
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

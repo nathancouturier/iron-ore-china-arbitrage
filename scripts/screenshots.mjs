@@ -17,7 +17,7 @@ async function loadPlaywright() {
 const base = process.argv[2] || 'http://127.0.0.1:8000/';
 const out = process.argv[3] || 'screenshots';
 const drawers = process.argv.includes('--drawers');
-const views = ['overview', 'window', 'freight', 'mill', 'calculator', 'method', 'downloads'];
+const views = ['overview', 'window', 'freight', 'mill', 'history', 'calculator', 'method', 'downloads'];
 const widths = [[1440, 900], [390, 844]];
 fs.mkdirSync(out, { recursive: true });
 

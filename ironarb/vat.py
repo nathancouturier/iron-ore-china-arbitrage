@@ -1,6 +1,10 @@
 """China import value-added tax on iron ore as a dated schedule.
 
-- 17% until 30 April 2018.
+- 17% under the 1994 VAT regulations, then 13% for metal ores from
+  1 May 1994 (Caishui [1994] No. 22, 财税字〔1994〕22号).
+- 17% again from 1 January 2009: import-stage VAT on HS 2601 raised from 13%
+  (Caiguanshui [2008] No. 99, 财关税〔2008〕99号; Caishui [2008] No. 171 for the
+  domestic rate).
 - 16% from 1 May 2018 (Caishui [2018] No. 32, 财税〔2018〕32号).
 - 13% from 1 April 2019 (MOF, STA and GACC Announcement [2019] No. 39,
   财政部 税务总局 海关总署公告2019年第39号).
@@ -19,6 +23,8 @@ import pandas as pd
 # (first day in force, rate)
 SCHEDULE: tuple[tuple[date, float], ...] = (
     (date(1994, 1, 1), 0.17),
+    (date(1994, 5, 1), 0.13),
+    (date(2009, 1, 1), 0.17),
     (date(2018, 5, 1), 0.16),
     (date(2019, 4, 1), 0.13),
 )

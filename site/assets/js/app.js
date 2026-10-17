@@ -1,12 +1,13 @@
 // App shell: hash routing between views, lazy data loading, shared UI pieces.
 import { readTokens, fmtDate, resizeAll, loadECharts } from './charts.js';
 
-const VIEWS = ['overview', 'window', 'freight', 'mill', 'calculator', 'method', 'downloads'];
+const VIEWS = ['overview', 'window', 'freight', 'mill', 'history', 'calculator', 'method', 'downloads'];
 const loaders = {
   overview: () => import('./views/overview.js'),
   window: () => import('./views/window.js'),
   freight: () => import('./views/freight.js'),
   mill: () => import('./views/mill.js'),
+  history: () => import('./views/history.js'),
   calculator: () => import('./views/calculator.js'),
   method: () => import('./views/method.js'),
   downloads: () => import('./views/downloads.js'),
