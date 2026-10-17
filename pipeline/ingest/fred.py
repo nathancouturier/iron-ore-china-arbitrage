@@ -9,6 +9,8 @@ Series and original publishers:
 - SOFR: Secured Overnight Financing Rate, percent, daily (New York Fed), from
   2 April 2018.
 - DFF: Effective federal funds rate, percent, daily (Federal Reserve).
+- CPIAUCSL: US consumer price index for all urban consumers, 1982-84 = 100,
+  monthly, seasonally adjusted (BLS); deflates the long iron ore price.
 """
 
 from __future__ import annotations
@@ -26,6 +28,7 @@ SERIES = {
     "DCOILBRENTEU": "Brent crude oil spot, USD/bbl, daily (EIA)",
     "SOFR": "Secured Overnight Financing Rate, percent, daily (NY Fed)",
     "DFF": "Effective federal funds rate, percent, daily (Federal Reserve)",
+    "CPIAUCSL": "US CPI-U, all items, 1982-84 = 100, monthly, seasonally adjusted (BLS)",
 }
 URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 

@@ -9,7 +9,7 @@ other third parties are re-fetched by the pipeline and not committed.
 ### FRED PIORECRUSDM
 
 - Endpoint: https://fred.stlouisfed.org/graph/fredgraph.csv?id=PIORECRUSDM
-- Retrieved (UTC): 2026-10-16T15:12:22Z
+- Retrieved (UTC): 2026-10-17T10:03:56Z
 - Terms: FRED, public; original publisher credited (IMF, Federal Reserve, EIA, New York Fed)
 - Units: Global price of Iron Ore (IMF), USD/dmt, monthly
 - Rows: 415; range 1992-01-01 to 2026-07-01
@@ -24,7 +24,7 @@ other third parties are re-fetched by the pipeline and not committed.
 ### FRED DEXCHUS
 
 - Endpoint: https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXCHUS
-- Retrieved (UTC): 2026-10-16T15:12:23Z
+- Retrieved (UTC): 2026-10-17T10:03:56Z
 - Terms: FRED, public; original publisher credited (IMF, Federal Reserve, EIA, New York Fed)
 - Units: China / U.S. FX rate, CNY per USD, daily noon buying rate (H.10)
 - Rows: 11,426; range 1981-01-02 to 2026-10-09
@@ -39,7 +39,7 @@ other third parties are re-fetched by the pipeline and not committed.
 ### FRED DCOILBRENTEU
 
 - Endpoint: https://fred.stlouisfed.org/graph/fredgraph.csv?id=DCOILBRENTEU
-- Retrieved (UTC): 2026-10-16T15:12:23Z
+- Retrieved (UTC): 2026-10-17T10:03:56Z
 - Terms: FRED, public; original publisher credited (IMF, Federal Reserve, EIA, New York Fed)
 - Units: Brent crude oil spot, USD/bbl, daily (EIA)
 - Rows: 9,108; range 1987-05-20 to 2026-10-14
@@ -54,7 +54,7 @@ other third parties are re-fetched by the pipeline and not committed.
 ### FRED SOFR
 
 - Endpoint: https://fred.stlouisfed.org/graph/fredgraph.csv?id=SOFR
-- Retrieved (UTC): 2026-10-16T15:12:23Z
+- Retrieved (UTC): 2026-10-17T10:03:56Z
 - Terms: FRED, public; original publisher credited (IMF, Federal Reserve, EIA, New York Fed)
 - Units: Secured Overnight Financing Rate, percent, daily (NY Fed)
 - Rows: 2,132; range 2018-04-03 to 2026-10-15
@@ -69,22 +69,37 @@ other third parties are re-fetched by the pipeline and not committed.
 ### FRED DFF
 
 - Endpoint: https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFF
-- Retrieved (UTC): 2026-10-16T15:12:23Z
+- Retrieved (UTC): 2026-10-17T10:03:56Z
 - Terms: FRED, public; original publisher credited (IMF, Federal Reserve, EIA, New York Fed)
 - Units: Effective federal funds rate, percent, daily (Federal Reserve)
-- Rows: 26,404; range 1954-07-01 to 2026-10-14
+- Rows: 26,405; range 1954-07-01 to 2026-10-15
 
 | date | value |
 |---|---|
 | 1954-07-01 | 1.13 |
 | 1954-07-02 | 1.25 |
-| 2026-10-13 | 3.88 |
 | 2026-10-14 | 3.88 |
+| 2026-10-15 | 3.88 |
+
+### FRED CPIAUCSL
+
+- Endpoint: https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL
+- Retrieved (UTC): 2026-10-17T10:29:48Z
+- Terms: FRED, public; original publisher credited (IMF, Federal Reserve, EIA, New York Fed)
+- Units: US CPI-U, all items, 1982-84 = 100, monthly, seasonally adjusted (BLS)
+- Rows: 956; range 1947-01-01 to 2026-09-01
+
+| date | value |
+|---|---|
+| 1947-01-01 | 21.48 |
+| 1947-02-01 | 21.62 |
+| 2026-08-01 | 334.1 |
+| 2026-09-01 | 336.3 |
 
 ### World Bank Pink Sheet, iron ore
 
 - Endpoint: https://www.worldbank.org/en/research/commodity-markets (monthly workbook, sheet Monthly Prices)
-- Retrieved (UTC): 2026-10-16T15:12:41Z
+- Retrieved (UTC): 2026-10-17T10:03:57Z
 - Terms: CC BY 4.0
 - Units: USD per dry metric tonne, monthly average, 62% Fe fines CFR China
 - Rows: 801; range 1960-01-01 to 2026-09-01
@@ -115,7 +130,7 @@ other third parties are re-fetched by the pipeline and not committed.
 ### Sina per-contract daily history (I, J, JM, RB, HC)
 
 - Endpoint: https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2601
-- Retrieved (UTC): 2026-10-16T15:19:34Z
+- Retrieved (UTC): 2026-10-16T15:19:34Z to 2026-10-17T10:07:38Z
 - Terms: Third-party data, not redistributed; re-fetched by the pipeline
 - Units: Prices RMB per tonne; volume and open interest in lots as published (double-sided before 2020, single-sided after)
 - Rows: 97,258; range 2018-05-07 to 2026-10-16
@@ -131,7 +146,7 @@ other third parties are re-fetched by the pipeline and not committed.
 ### SHFE official daily files (RB, HC)
 
 - Endpoint: https://www.shfe.com.cn/data/tradedata/future/dailydata/kxYYYYMMDD.dat
-- Retrieved (UTC): 2026-10-16T15:15:38Z to 2026-10-16T15:49:59Z
+- Retrieved (UTC): 2026-10-16T15:15:38Z to 2026-10-17T10:08:03Z
 - Terms: Exchange data, not redistributed; re-fetched by the pipeline
 - Units: Prices RMB per tonne; volume and open interest in lots
 - Rows: 74,474; range 2013-10-18 to 2026-10-16
@@ -147,7 +162,7 @@ other third parties are re-fetched by the pipeline and not committed.
 ### Baltic Capesize Index (BCI)
 
 - Endpoint: https://datacenter-web.eastmoney.com/api/data/v1/get (RPT_INDUSTRY_INDEX, EMI00107666)
-- Retrieved (UTC): 2026-10-16T15:14:20Z
+- Retrieved (UTC): 2026-10-17T10:04:15Z
 - Terms: Baltic Exchange index values republished by East Money; not redistributed
 - Units: Index points
 - Rows: 6,882; range 1999-04-30 to 2026-10-16
@@ -162,7 +177,7 @@ other third parties are re-fetched by the pipeline and not committed.
 ### Baltic Dry Index (BDI)
 
 - Endpoint: https://datacenter-web.eastmoney.com/api/data/v1/get (RPT_INDUSTRY_INDEX, EMI00107664)
-- Retrieved (UTC): 2026-10-16T15:14:48Z
+- Retrieved (UTC): 2026-10-17T10:04:38Z
 - Terms: Baltic Exchange index values republished by East Money; not redistributed
 - Units: Index points
 - Rows: 9,562; range 1988-10-19 to 2026-10-16
@@ -177,7 +192,7 @@ other third parties are re-fetched by the pipeline and not committed.
 ### PBoC USD/CNY central parity
 
 - Endpoint: https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do (POST startDate, endDate)
-- Retrieved (UTC): 2026-10-16T15:26:39Z to 2026-10-16T15:27:00Z
+- Retrieved (UTC): 2026-10-17T10:04:40Z to 2026-10-17T10:05:02Z
 - Terms: Official publication (SAFE); raw pages not committed, derived series committed
 - Units: CNY per USD (published per 100 USD)
 - Rows: 3,345; range 2013-01-04 to 2026-10-16
@@ -192,7 +207,7 @@ other third parties are re-fetched by the pipeline and not committed.
 ### China Customs (GACC) monthly iron ore imports
 
 - Endpoint: http://english.customs.gov.cn/statics/report/monthly{year}.html, table (14); preliminary{year}.html, table (6)
-- Retrieved (UTC): 2026-10-16T18:08:57Z to 2026-10-16T18:11:40Z
+- Retrieved (UTC): 2026-10-16T18:08:57Z to 2026-10-17T10:05:42Z
 - Terms: Official statistics; raw pages not committed, derived series committed
 - Units: Iron ores and concentrates, 10,000 tonnes as published (million tonnes in the derived series)
 - Rows: 104; range 2018-01-01 to 2026-09-01
@@ -208,7 +223,7 @@ other third parties are re-fetched by the pipeline and not committed.
 ### SGX iron ore futures (FEF) daily settlement
 
 - Endpoint: https://links.sgx.com/1.0.0/derivatives-daily/{file_id}/FUTURE.zip
-- Retrieved (UTC): 2026-10-16T15:17:31Z to 2026-10-16T15:51:50Z
+- Retrieved (UTC): 2026-10-16T15:17:31Z to 2026-10-17T10:08:17Z
 - Terms: Exchange data, not redistributed; re-fetched by the pipeline
 - Units: USD per dry metric tonne (62% Fe fines CFR China index futures); pre-2018 files carry two implied decimals
 - Rows: 119,526; range 2015-12-25 to 2026-10-15
@@ -339,4 +354,19 @@ Iron ores and concentrates, million tonnes. Monthly figures as first published (
 | 2023 | 1180.61 | 1179.06 | 0.131 |
 | 2024 | 1238.15 | 1236.55 | 0.129 |
 | 2025 | 1260.22 | 1258.71 | 0.12 |
+
+### China imports: UN Comtrade (via WITS) against China Customs year totals
+
+Iron ore imports, million tonnes: the sum over partners of UN Comtrade HS 260111 and 260112 (via World Bank WITS), used for the long view by origin, against the January to December total of the China Customs December bulletin (HS 2601, which also covers roasted pyrites).
+
+| year | comtrade_mt | customs_mt | diff_pct |
+|---|---|---|---|
+| 2018 | 1064 | 1064 | -0.033 |
+| 2019 | 1069 | 1069 | -0.028 |
+| 2020 | 1170 | 1170 | -0.051 |
+| 2021 | 1120 | 1124 | -0.378 |
+| 2022 | 1107 | 1107 | 0 |
+| 2023 | 1169 | 1179 | -0.861 |
+| 2024 | 1236 | 1237 | -0.044 |
+| 2025 | 1260 | 1259 | 0.12 |
 

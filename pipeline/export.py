@@ -14,7 +14,7 @@ import pandas as pd
 from ironarb.params import LOAD_DAYS_NOTE, PARAMS, PORT_COSTS_NOTE, ROUTES, VESSEL
 from ironarb.vat import SCHEDULE
 
-from . import geo, inputs
+from . import geo, history, inputs
 from .anchors import TOLERANCE
 from .ingest.common import load_manifest
 
@@ -96,6 +96,27 @@ DOWNLOAD_TEXT = {
         "Fe premium per 0.1% computed from the exchange rule for each half-year window, used to put 61% contracts "
         "on a 62% basis.",
     ),
+    "iron_ore_price_long_monthly.csv": (
+        "Iron ore price since 1960, monthly",
+        "World Bank Pink Sheet iron ore series as published (US cents per dry tonne unit for the annual contracts "
+        "to 2005, USD per dry tonne for the spot price from 2006), its regime and basis, the 62% Fe equivalent in "
+        "USD per dry tonne and the same in dollars of the latest CPI month (US CPI-U).",
+    ),
+    "landed_cost_long_monthly.csv": (
+        "Delivered cost since 2006, monthly",
+        "Landed cost of a 62% Fe cargo in RMB per dry tonne from the World Bank spot price, with every bridge "
+        "component and the Dalian 45-day 62% equivalent from 2014.",
+    ),
+    "china_iron_ore_imports_by_origin_annual.csv": (
+        "China iron ore imports by origin since 1992",
+        "Annual tonnage (customs weight), value (USD, CIF) and unit value for Australia, Brazil, India, South Africa "
+        "and other origins, HS 260111 and 260112, from UN Comtrade via World Bank WITS.",
+    ),
+    "baltic_indices_monthly.csv": (
+        "Baltic indices since 1988, monthly averages",
+        "Monthly averages of the Baltic Dry Index (from October 1988) and the Baltic Capesize Index (from April 1999), "
+        "index points as published.",
+    ),
     "china_iron_ore_imports_monthly.csv": (
         "China iron ore imports, monthly",
         "Iron ores and concentrates, million tonnes, from the China Customs (GACC) English monthly bulletins, "
@@ -127,6 +148,59 @@ DOWNLOAD_TEXT = {
         "Dated Singapore HSFO and VLSFO prices used to map Brent to the bunker price.",
     ),
 }
+
+
+def history_block(a: dict[str, Any]) -> dict[str, Any]:
+    """Long view: price since 1960, delivered cost since 2006, imports by origin
+    since 1992, Baltic indices since 1988 (monthly averages)."""
+    p = pd.read_csv(DERIVED / "iron_ore_price_long_monthly.csv")
+    lc = pd.read_csv(DERIVED / "landed_cost_long_monthly.csv")
+    o = pd.read_csv(DERIVED / "china_iron_ore_imports_by_origin_annual.csv")
+    b = history.baltic_monthly()
+    DL.mkdir(parents=True, exist_ok=True)
+    b.reset_index().assign(month=lambda x: x["month"].astype(str)).to_csv(
+        DL / "baltic_indices_monthly.csv", index=False, float_format="%.1f"
+    )
+    years = sorted(o["year"].unique().tolist())
+    q = o.pivot(index="year", columns="origin", values="qty_mt").reindex(years).fillna(0.0)
+    uv = o.pivot(index="year", columns="origin", values="unit_value_usd_t").reindex(years)
+    tot = history.imports_total()
+    origins = [*history.ORIGINS, "Other"]
+    return {
+        "summary": a["history"],
+        "params": {k: v["value"] for k, v in PARAMS.items()},
+        "regimes": [
+            {"start": r.start, "end": r.end, "label": r.label, "basis": r.basis, "unit": r.unit, "fe_pct": r.fe_pct}
+            for r in history.REGIMES
+        ],
+        "price": {
+            "months": p["month"].tolist(),
+            "nominal": [_r(v, 2) for v in p["fe62_usd_dmt"]],
+            "real": [_r(v, 2) for v in p["fe62_real_usd_dmt"]],
+            "native": [_r(v, 2) for v in p["wb_native"]],
+        },
+        "landed": {
+            "months": lc["month"].tolist(),
+            "landed": [_r(v, 1) for v in lc["landed_rmb_dmt"]],
+            "dalian": [_r(v, 1) for v in lc["dce62_rmb_dmt"]],
+            "cfr": [_r(v, 2) for v in lc["cfr62_usd_dmt"]],
+            "usdcny": [_r(v, 4) for v in lc["usdcny"]],
+            "vat": [_r(v, 2) for v in lc["vat_rate"]],
+        },
+        "imports": {
+            "years": years,
+            "origins": origins,
+            "qty_mt": {k: [_r(v, 2) for v in q.get(k, pd.Series(0.0, index=years))] for k in origins},
+            "unit_value": {k: [_r(v, 2) for v in uv.get(k, pd.Series(np.nan, index=years))] for k in origins},
+            "total_mt": [_r(v, 2) for v in tot["qty_mt"]],
+            "unit_value_all": [_r(v, 2) for v in tot["unit_value_usd_t"]],
+        },
+        "baltic": {
+            "months": [str(m) for m in b.index],
+            "bdi": [_r(v, 0) for v in b["bdi_pts"]],
+            "bci": [_r(v, 0) for v in b["bci_pts"]],
+        },
+    }
 
 
 def imports_block(a: dict[str, Any]) -> dict[str, Any]:
@@ -180,7 +254,7 @@ def build_meta(a: dict[str, Any], daily: pd.DataFrame, monthly: pd.DataFrame) ->
     imports = pd.read_csv(DERIVED / "china_iron_ore_imports_monthly.csv", dtype={"end": str})
     fred = {
         s: pd.read_csv(ROOT / "data" / "raw" / "fred" / f"{s}.csv")
-        for s in ["PIORECRUSDM", "DEXCHUS", "DCOILBRENTEU", "SOFR", "DFF"]
+        for s in ["PIORECRUSDM", "DEXCHUS", "DCOILBRENTEU", "SOFR", "DFF", "CPIAUCSL"]
     }
 
     def last_fred(s: str) -> str:
@@ -261,6 +335,26 @@ def build_meta(a: dict[str, Any], daily: pd.DataFrame, monthly: pd.DataFrame) ->
             "safe",
             "safe/",
             "https://www.safe.gov.cn/safe/rmbhlzjj/index.html",
+        ),
+        "wits": src(
+            "UN Comtrade via World Bank WITS, China iron ore imports by partner",
+            str(
+                int(
+                    pd.read_csv(DERIVED / "china_iron_ore_imports_by_partner_annual.csv", usecols=["year"])[
+                        "year"
+                    ].max()
+                )
+            ),
+            "wits",
+            "wits/",
+            "https://wits.worldbank.org/",
+        ),
+        "cpi": src(
+            "US consumer prices, CPI-U (FRED CPIAUCSL)",
+            last_fred("CPIAUCSL")[:7],
+            "fred",
+            "fred/CPIAUCSL",
+            "https://fred.stlouisfed.org/series/CPIAUCSL",
         ),
         "gacc": src(
             "China Customs (GACC) monthly iron ore imports",
@@ -617,6 +711,9 @@ def run() -> dict[str, str]:
     }
     sizes["method"] = _write("method", _clean(method))
 
+    # Long view (D050 to D054) ----------------------------------------------------------
+    sizes["history"] = _write("history", _clean(history_block(a)))
+
     # CSV downloads -------------------------------------------------------------------
     DL.mkdir(parents=True, exist_ok=True)
     files = {
@@ -644,6 +741,10 @@ def run() -> dict[str, str]:
     for extra, src in [
         ("dce_x_schedule.csv", DERIVED / "dce_x_schedule.csv"),
         ("china_iron_ore_imports_monthly.csv", DERIVED / "china_iron_ore_imports_monthly.csv"),
+        ("iron_ore_price_long_monthly.csv", DERIVED / "iron_ore_price_long_monthly.csv"),
+        ("landed_cost_long_monthly.csv", DERIVED / "landed_cost_long_monthly.csv"),
+        ("china_iron_ore_imports_by_origin_annual.csv", DERIVED / "china_iron_ore_imports_by_origin_annual.csv"),
+        ("baltic_indices_monthly.csv", DL / "baltic_indices_monthly.csv"),
         ("anchors_import_cost.csv", ROOT / "data" / "anchors" / "ruida_reports.csv"),
         ("anchors_port_price.csv", ROOT / "data" / "anchors" / "fastmarkets_port.csv"),
         ("anchors_mill_margin.csv", ROOT / "data" / "anchors" / "mill_margin.csv"),

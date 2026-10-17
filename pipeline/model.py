@@ -15,7 +15,7 @@ import pandas as pd
 from ironarb.params import PARAMS, ROUTES, VESSEL
 from ironarb.voyage import financing_days
 
-from . import analysis, anchors, freight_model, inputs, mill_model
+from . import analysis, anchors, freight_model, history, inputs, mill_model
 from .margin_model import Assumptions, build_voyages, daily_margin, monthly_margin
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -250,6 +250,15 @@ def run() -> dict[str, str]:
     }
 
     # Validation anchors
+    # Long history (D050 to D054)
+    hp = history.long_price()
+    hl = history.long_landed(a)
+    hi = history.imports_by_origin()
+    hb = history.baltic_monthly()
+    for frame, name in ((hp, "iron_ore_price_long_monthly.csv"), (hl, "landed_cost_long_monthly.csv")):
+        frame.set_axis(frame.index.astype(str)).to_csv(DERIVED / name, index_label="month", float_format="%.4f")
+    hi.to_csv(DERIVED / "china_iron_ore_imports_by_origin_annual.csv", index=False, float_format="%.4f")
+    out["history"] = history.summary(hp, hl, hi, hb)
     # China imports against the window (D041 to D043)
     imports = pd.read_csv(DERIVED / "china_iron_ore_imports_monthly.csv", dtype={"start": str, "end": str})
     out["imports_test"] = analysis.imports_test(m["margin_rmb_dmt"], imports)

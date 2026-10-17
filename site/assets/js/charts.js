@@ -33,6 +33,7 @@ const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 export function fmtDate(iso) {
   if (!iso) return 'n/a';
   const [y, m, d] = iso.split('-').map(Number);
+  if (!m) return String(y);
   return d ? `${d} ${MONTHS[m - 1]} ${y}` : `${MONTHS[m - 1]} ${y}`;
 }
 export function fmtMonth(iso) {

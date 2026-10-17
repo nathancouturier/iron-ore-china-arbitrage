@@ -158,6 +158,7 @@ def checks() -> list[dict]:
         {"title": "BCI spot checks", "text": "East Money BCI against index values quoted in the press.", "table": tab}
     )
     out.append(gacc_check())
+    out.append(wits_check())
     return out
 
 
@@ -189,6 +190,41 @@ def gacc_check(previous: dict | None = None) -> dict:
             "Iron ores and concentrates, million tonnes. Monthly figures as first published (September and October "
             "2024 from the preliminary release) against the January to December total in each December bulletin, "
             "which carries later revisions."
+        ),
+        "table": [rows[y] for y in sorted(rows)],
+    }
+
+
+WITS_TITLE = "China imports: UN Comtrade (via WITS) against China Customs year totals"
+
+
+def wits_check(previous: dict | None = None) -> dict:
+    """Annual tonnage summed over partners (HS 260111 and 260112, UN Comtrade via
+    WITS) against the China Customs year total for HS 2601; years whose December
+    bulletin is not cached keep their row from ``previous``."""
+    w = pd.read_csv(ROOT / "data" / "derived" / "china_iron_ore_imports_by_partner_annual.csv", dtype={"hs": str})
+    by_year = w.groupby("year")["qty_t"].sum() / 1e6
+    rows = {r["year"]: r for r in (previous or {}).get("table", [])}
+    for y, total in gacc.year_totals().items():
+        if y not in by_year.index:
+            continue
+        diff = 100.0 * (by_year[y] / total - 1.0)
+        if abs(diff) > 2.0:
+            raise ValidationError(f"Comtrade {y}: {by_year[y]:.2f} Mt against China Customs {total:.2f} Mt")
+        rows[y] = {
+            "year": y,
+            "comtrade_mt": round(float(by_year[y]), 2),
+            "customs_mt": round(total, 2),
+            "diff_pct": round(diff, 3),
+        }
+    if not rows:
+        raise FileNotFoundError("no overlapping year")
+    return {
+        "title": WITS_TITLE,
+        "text": (
+            "Iron ore imports, million tonnes: the sum over partners of UN Comtrade HS 260111 and 260112 (via World "
+            "Bank WITS), used for the long view by origin, against the January to December total of the China "
+            "Customs December bulletin (HS 2601, which also covers roasted pyrites)."
         ),
         "table": [rows[y] for y in sorted(rows)],
     }
@@ -231,16 +267,18 @@ def run() -> dict[str, str]:
         res = checks()
     except (FileNotFoundError, ValueError, KeyError, ImportError) as exc:
         prev = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else []
-        old = next((c for c in prev if c["title"] == GACC_TITLE), None)
-        try:
-            g = gacc_check(old)
-        except (FileNotFoundError, KeyError):
+        fresh = []
+        for title, fn in ((GACC_TITLE, gacc_check), (WITS_TITLE, wits_check)):
+            try:
+                fresh.append(fn(next((c for c in prev if c["title"] == title), None)))
+            except (FileNotFoundError, KeyError):
+                pass
+        if not fresh:
             return {"validate": f"cross-checks kept from last full rebuild ({type(exc).__name__})"}
-        res = [c for c in prev if c["title"] != GACC_TITLE] + [g]
+        titles = {c["title"] for c in fresh}
+        res = [c for c in prev if c["title"] not in titles] + fresh
         OUT.write_text(json.dumps(res, indent=1, default=str) + "\n", encoding="utf-8")
-        return {
-            "validate": f"cross-checks kept from last full rebuild ({type(exc).__name__}); China Customs check updated"
-        }
+        return {"validate": f"cross-checks kept from last full rebuild ({type(exc).__name__}); imports checks updated"}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(res, indent=1, default=str) + "\n", encoding="utf-8")
     return {"validate": f"{len(res)} cross-checks written"}
