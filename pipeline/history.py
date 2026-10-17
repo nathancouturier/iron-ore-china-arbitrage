@@ -109,7 +109,7 @@ def long_price() -> pd.DataFrame:
 def long_landed(a: Assumptions | None = None, start: str = "2006-01") -> pd.DataFrame:
     """Delivered cost of a 62% cargo (C5 voyage) in RMB per dry tonne, monthly,
     from the World Bank spot series, with the dated VAT schedule and today's port
-    and financing assumptions; the Dalian 45-day price from 2014 alongside."""
+    and financing assumptions; the Dalian 45-day price from October 2013 alongside."""
     a = a or Assumptions()
     p = long_price()
     p = p[(p.index >= pd.Period(start, "M")) & (p["basis"] == "spot_cfr_china")]

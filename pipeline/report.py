@@ -246,6 +246,7 @@ def fig_history(price: pd.DataFrame, imports: pd.DataFrame, real_label: str) -> 
             a2.bar(q.index, q[o], bottom=bottom, color=c, width=0.8, label=o, lw=0)
             bottom += q[o].to_numpy()
     a2.set_ylabel("Million tonnes")
+    a2.set_ylim(0, bottom.max() * 1.35)  # room for the legend above the bars
     a2.set_title("China's imports by origin")
     a2.legend(loc="upper left", ncols=2)
     fig.tight_layout(w_pad=2.0)
@@ -670,8 +671,8 @@ def build() -> Path:
     story += [
         P("The long view", "h"),
         P(
-            "The import margin starts with the Dalian futures in October 2013, but the seaborne price, the delivered "
-            f"cost and China's imports go back much further (Figure 5). In dollars of {month(h['cpi_base'])}, a tonne of "
+            "The margin needs Dalian futures, listed in October 2013; the seaborne price, delivered cost and "
+            f"China's imports go back further (price and imports in Figure 5). In dollars of {month(h['cpi_base'])}, a tonne of "
             f"62% ore averaged {num(h['real_mean_1960_2003'])} USD from 1960 to 2003 under annual contracts FOB Brazil, "
             f"against {num(h['real_last_12m_mean'])} over the last twelve months CFR China (the change of basis in 2006 adds "
             f"the sea freight); the real peak was {num(h['real_peak'])} in {month(h['real_peak_month'])}. The delivered "
