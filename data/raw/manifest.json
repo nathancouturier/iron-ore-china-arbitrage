@@ -381,9 +381,9 @@
  },
  "eastmoney/bci.json": {
   "source_url": "https://datacenter-web.eastmoney.com/api/data/v1/get",
-  "retrieved_at": "2026-10-17T12:51:51Z",
-  "sha256": "7007556d3c6caa8c9e697e17a3afc33ec2cb92c51d4cc2b6e41b7c97cf3ed581",
-  "bytes": 446878,
+  "retrieved_at": "2026-10-19T13:14:23Z",
+  "sha256": "3e9118bab757c7364de94f67df630625ddb2956c6f0f99b717dfa3dcac81e892",
+  "bytes": 446943,
   "redistributed": false,
   "params": {
    "sortColumns": "REPORT_DATE",
@@ -398,9 +398,9 @@
  },
  "eastmoney/bdi.json": {
   "source_url": "https://datacenter-web.eastmoney.com/api/data/v1/get",
-  "retrieved_at": "2026-10-17T12:52:17Z",
-  "sha256": "f8c7da052a338ddb56a1eb268cf305dd980d37aaab96ce5d2c16f09aea96d794",
-  "bytes": 619843,
+  "retrieved_at": "2026-10-19T13:14:53Z",
+  "sha256": "da3ac95f6b50d83eadeb770ea95fb9112b75f3890244c1252bb402660e10d058",
+  "bytes": 619908,
   "redistributed": false,
   "params": {
    "sortColumns": "REPORT_DATE",
@@ -415,7 +415,7 @@
  },
  "fred/CPIAUCSL.csv": {
   "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL",
-  "retrieved_at": "2026-10-17T12:51:26Z",
+  "retrieved_at": "2026-10-19T13:14:03Z",
   "sha256": "8556b710094027fa4724641d48be620cc37c04abfa15a0c496378cf1146c1549",
   "bytes": 17763,
   "redistributed": true,
@@ -423,7 +423,7 @@
  },
  "fred/DCOILBRENTEU.csv": {
   "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DCOILBRENTEU",
-  "retrieved_at": "2026-10-17T12:51:26Z",
+  "retrieved_at": "2026-10-19T13:14:03Z",
   "sha256": "cf9f077822a7620434e86b7d48aa44bada7ef99f57726d50035ae50b549e9011",
   "bytes": 170111,
   "redistributed": true,
@@ -431,7 +431,7 @@
  },
  "fred/DEXCHUS.csv": {
   "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXCHUS",
-  "retrieved_at": "2026-10-17T12:51:26Z",
+  "retrieved_at": "2026-10-19T13:14:03Z",
   "sha256": "8265144a91eb9a7573c8919754ff48d1a84e219a1fb92b18a321c4e13afa4cd3",
   "bytes": 211873,
   "redistributed": true,
@@ -439,7 +439,7 @@
  },
  "fred/DFF.csv": {
   "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFF",
-  "retrieved_at": "2026-10-17T12:51:26Z",
+  "retrieved_at": "2026-10-19T13:14:03Z",
   "sha256": "ef5dcd0f83f925eb6f44c94a6f381ab01e1965822cc91a6cec45e4c146de15bb",
   "bytes": 424315,
   "redistributed": true,
@@ -447,7 +447,7 @@
  },
  "fred/PIORECRUSDM.csv": {
   "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=PIORECRUSDM",
-  "retrieved_at": "2026-10-17T12:51:25Z",
+  "retrieved_at": "2026-10-19T13:14:02Z",
   "sha256": "94f2e617c942cd5e04b16cc39a4bb3cf2518c101a901fc9e79cd66d3d4848328",
   "bytes": 12189,
   "redistributed": true,
@@ -455,9 +455,9 @@
  },
  "fred/SOFR.csv": {
   "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=SOFR",
-  "retrieved_at": "2026-10-17T12:51:26Z",
-  "sha256": "39525eb3fe251efcbff16df807e07e3e8ce9a581fd1f08ffecda6ac6cf792844",
-  "bytes": 35286,
+  "retrieved_at": "2026-10-19T13:14:03Z",
+  "sha256": "96dd96826727df2c45a1f1e16c176f7a39bbb7e25c13762db2c738d595e7cd53",
+  "bytes": 35302,
   "redistributed": true,
   "note": "Secured Overnight Financing Rate, percent, daily (NY Fed)"
  },
@@ -519,7 +519,7 @@
  },
  "gacc/index_2025.html": {
   "source_url": "http://english.customs.gov.cn/statics/report/monthly2025.html",
-  "retrieved_at": "2026-10-17T12:52:44Z",
+  "retrieved_at": "2026-10-19T13:15:20Z",
   "sha256": "14f6fc765cd0f223c0c34f66077150f53a6eabfde52235fb207d231d72947f4c",
   "bytes": 40286,
   "redistributed": false,
@@ -527,7 +527,7 @@
  },
  "gacc/index_2026.html": {
   "source_url": "http://english.customs.gov.cn/statics/report/monthly.html",
-  "retrieved_at": "2026-10-17T12:53:04Z",
+  "retrieved_at": "2026-10-19T13:15:41Z",
   "sha256": "d74af93a321be3d39dde33b701402417910d79f7d1d0fc045c09a82052788c1b",
   "bytes": 34183,
   "redistributed": false,
@@ -551,7 +551,7 @@
  },
  "gacc/p6_2026-09.html": {
   "source_url": "http://english.customs.gov.cn/Statics/6192bee0-d609-4238-94f9-9f901428b1ef.html",
-  "retrieved_at": "2026-10-17T12:53:18Z",
+  "retrieved_at": "2026-10-19T13:15:55Z",
   "sha256": "0ddde28a173cb2cf352c655cd5a1575aa5c9923c99bfa836fb0e127fbaa6a75f",
   "bytes": 42185,
   "redistributed": false,
@@ -575,7 +575,7 @@
  },
  "gacc/prelim_index_2026.html": {
   "source_url": "http://english.customs.gov.cn/statics/report/preliminary.html",
-  "retrieved_at": "2026-10-17T12:53:17Z",
+  "retrieved_at": "2026-10-19T13:15:54Z",
   "sha256": "d642d66ceb9400ea962a97cc7a5ca95c58683e1ad4e643335c88280bf9be1536",
   "bytes": 27769,
   "redistributed": false,
@@ -1231,7 +1231,7 @@
  },
  "gacc/t14_2025-01.html": {
   "source_url": "http://english.customs.gov.cn/Statics/2788fd3a-8af4-4e87-b61f-fdba22f7c831.html",
-  "retrieved_at": "2026-10-17T12:52:46Z",
+  "retrieved_at": "2026-10-19T13:15:21Z",
   "sha256": "415725e121fb24290823770b6ad1547a8b9d8e3e434f5233156d0cbb7969001c",
   "bytes": 251917,
   "redistributed": false,
@@ -1239,7 +1239,7 @@
  },
  "gacc/t14_2025-02.html": {
   "source_url": "http://english.customs.gov.cn/Statics/113e0622-eb9c-463a-8ca8-035e88f32f76.html",
-  "retrieved_at": "2026-10-17T12:52:48Z",
+  "retrieved_at": "2026-10-19T13:15:22Z",
   "sha256": "e80fec8e6ae40129d718493d4e569a20cf0e84815196026f9482454a6aa1c8d0",
   "bytes": 251915,
   "redistributed": false,
@@ -1247,7 +1247,7 @@
  },
  "gacc/t14_2025-03.html": {
   "source_url": "http://english.customs.gov.cn/Statics/3341a51d-979f-400b-88a0-c55b58201b09.html",
-  "retrieved_at": "2026-10-17T12:52:49Z",
+  "retrieved_at": "2026-10-19T13:15:25Z",
   "sha256": "b9e146a5aa236ad0e75bd10a479b9589d69c91e825d2f5ec67172b4ce0e8fa71",
   "bytes": 252065,
   "redistributed": false,
@@ -1255,7 +1255,7 @@
  },
  "gacc/t14_2025-04.html": {
   "source_url": "http://english.customs.gov.cn/Statics/0a3eb106-4465-4b6d-8b99-864289b0b088.html",
-  "retrieved_at": "2026-10-17T12:52:51Z",
+  "retrieved_at": "2026-10-19T13:15:27Z",
   "sha256": "f9b4a76f8c38b18f042caafe32b710559ae258648c011aa6010ba30900c9d71e",
   "bytes": 252120,
   "redistributed": false,
@@ -1263,7 +1263,7 @@
  },
  "gacc/t14_2025-05.html": {
   "source_url": "http://english.customs.gov.cn/Statics/4654ed9a-040c-4575-9a7a-ac10a020bb2a.html",
-  "retrieved_at": "2026-10-17T12:52:52Z",
+  "retrieved_at": "2026-10-19T13:15:28Z",
   "sha256": "37a52d0c4d0f3eac2c31cfa59a0ebb4502513e717e018099d16fb8911e511442",
   "bytes": 252154,
   "redistributed": false,
@@ -1271,7 +1271,7 @@
  },
  "gacc/t14_2025-06.html": {
   "source_url": "http://english.customs.gov.cn/Statics/546cbce8-9275-4842-9b53-ddc3a31892ae.html",
-  "retrieved_at": "2026-10-17T12:52:53Z",
+  "retrieved_at": "2026-10-19T13:15:30Z",
   "sha256": "2b4279c6632e37142e86f8367f03d6be91fb75820e5c3a16131473863f53429e",
   "bytes": 252214,
   "redistributed": false,
@@ -1279,7 +1279,7 @@
  },
  "gacc/t14_2025-07.html": {
   "source_url": "http://english.customs.gov.cn/Statics/9b78753e-680d-46de-80fa-905c70151989.html",
-  "retrieved_at": "2026-10-17T12:52:55Z",
+  "retrieved_at": "2026-10-19T13:15:31Z",
   "sha256": "f6f561ad57f8b67d630aeaca1db7f66505a00286e40717f88f5f945f712a7cd6",
   "bytes": 252233,
   "redistributed": false,
@@ -1287,7 +1287,7 @@
  },
  "gacc/t14_2025-08.html": {
   "source_url": "http://english.customs.gov.cn/Statics/27f7821a-8460-4854-b78f-a437948ca16d.html",
-  "retrieved_at": "2026-10-17T12:52:56Z",
+  "retrieved_at": "2026-10-19T13:15:32Z",
   "sha256": "4d257acd15b72662b98ec5429a111d7ed1ae101634be473065d6a0e519646de6",
   "bytes": 252244,
   "redistributed": false,
@@ -1295,7 +1295,7 @@
  },
  "gacc/t14_2025-09.html": {
   "source_url": "http://english.customs.gov.cn/Statics/0bde2885-0bce-47fe-8d1a-2000a153ffcc.html",
-  "retrieved_at": "2026-10-17T12:52:58Z",
+  "retrieved_at": "2026-10-19T13:15:34Z",
   "sha256": "781de07c7e19c821a6691250ee7710049b2e397df2d17c571689ba2f34005d22",
   "bytes": 252239,
   "redistributed": false,
@@ -1303,7 +1303,7 @@
  },
  "gacc/t14_2025-10.html": {
   "source_url": "http://english.customs.gov.cn/Statics/1cb2e30e-cdad-44ba-8eab-5b8d1a62e193.html",
-  "retrieved_at": "2026-10-17T12:52:59Z",
+  "retrieved_at": "2026-10-19T13:15:36Z",
   "sha256": "0124d5f8e6aba6ce409228d65c47d73a82966e66214d7bd93601dd6a8ed5d94d",
   "bytes": 252263,
   "redistributed": false,
@@ -1311,7 +1311,7 @@
  },
  "gacc/t14_2025-11.html": {
   "source_url": "http://english.customs.gov.cn/Statics/875a01f9-11d8-41be-9da0-f2473de7f3ef.html",
-  "retrieved_at": "2026-10-17T12:53:01Z",
+  "retrieved_at": "2026-10-19T13:15:38Z",
   "sha256": "b9f1666ee9db9aad5f1c06f40f95cf2f1d78b5345d6f5df84bc639103bf0cbd1",
   "bytes": 252267,
   "redistributed": false,
@@ -1319,7 +1319,7 @@
  },
  "gacc/t14_2025-12.html": {
   "source_url": "http://english.customs.gov.cn/Statics/c8c25c56-74ff-42fe-83de-272b15d79f45.html",
-  "retrieved_at": "2026-10-17T12:53:02Z",
+  "retrieved_at": "2026-10-19T13:15:39Z",
   "sha256": "90774942cdc99a4c1252aa51b480924591a723a6d2a649403ee026d6924a421a",
   "bytes": 252280,
   "redistributed": false,
@@ -1327,7 +1327,7 @@
  },
  "gacc/t14_2026-01.html": {
   "source_url": "http://english.customs.gov.cn/Statics/93b3ac7a-57ec-41e5-9ecf-ac5b90e70ad3.html",
-  "retrieved_at": "2026-10-17T12:53:05Z",
+  "retrieved_at": "2026-10-19T13:15:42Z",
   "sha256": "60597df4ca1181e80abb0115144e622bdce919ffcf30ac8dc1cf79109f397e77",
   "bytes": 103218,
   "redistributed": false,
@@ -1335,7 +1335,7 @@
  },
  "gacc/t14_2026-02.html": {
   "source_url": "http://english.customs.gov.cn/Statics/010f42a9-0e59-4a1e-a9c3-0445d4261b5c.html",
-  "retrieved_at": "2026-10-17T12:53:07Z",
+  "retrieved_at": "2026-10-19T13:15:44Z",
   "sha256": "16f8f28b44eb3c5dbfe5a32e9900ea3755fb04640b0828cc73f7cc6f33e841fd",
   "bytes": 129069,
   "redistributed": false,
@@ -1343,7 +1343,7 @@
  },
  "gacc/t14_2026-03.html": {
   "source_url": "http://english.customs.gov.cn/Statics/5c7d3091-1ebb-4614-ab63-db474b16ad14.html",
-  "retrieved_at": "2026-10-17T12:53:08Z",
+  "retrieved_at": "2026-10-19T13:15:45Z",
   "sha256": "705c6f4f03a262dc42271c5def45a2452d3758d5806f60daf26d587f073b3dbe",
   "bytes": 129124,
   "redistributed": false,
@@ -1351,7 +1351,7 @@
  },
  "gacc/t14_2026-04.html": {
   "source_url": "http://english.customs.gov.cn/Statics/8a5a4748-f96f-4252-8a68-cfd3e8e0dbc4.html",
-  "retrieved_at": "2026-10-17T12:53:09Z",
+  "retrieved_at": "2026-10-19T13:15:47Z",
   "sha256": "52885887606fbf029ce6056ee72cd2e1cdf531fd7daf1b701aebf12b7635412b",
   "bytes": 255741,
   "redistributed": false,
@@ -1359,7 +1359,7 @@
  },
  "gacc/t14_2026-05.html": {
   "source_url": "http://english.customs.gov.cn/Statics/66af1275-fa63-4fcb-82f9-d2e9770a8e6b.html",
-  "retrieved_at": "2026-10-17T12:53:11Z",
+  "retrieved_at": "2026-10-19T13:15:48Z",
   "sha256": "4e7c403a5a03204240187bd3bea10ec49aa1cd54244881a529bb08aa795dd3ea",
   "bytes": 128535,
   "redistributed": false,
@@ -1367,7 +1367,7 @@
  },
  "gacc/t14_2026-06.html": {
   "source_url": "http://english.customs.gov.cn/Statics/e8a76dfa-0cd3-44ba-ac42-239109c0c283.html",
-  "retrieved_at": "2026-10-17T12:53:12Z",
+  "retrieved_at": "2026-10-19T13:15:50Z",
   "sha256": "fe99c006eefd9f4790f0358840ffb1d46746bea741aa6203344f42d5f025bb9b",
   "bytes": 124007,
   "redistributed": false,
@@ -1375,7 +1375,7 @@
  },
  "gacc/t14_2026-07.html": {
   "source_url": "http://english.customs.gov.cn/Statics/e50833c5-2b72-43c7-9b7a-46f8ed6bbb60.html",
-  "retrieved_at": "2026-10-17T12:53:13Z",
+  "retrieved_at": "2026-10-19T13:15:51Z",
   "sha256": "6a786ff3007b0b7fca67c2b52e526429e11a518436fe09ffdfaef8fb7f1c0516",
   "bytes": 124052,
   "redistributed": false,
@@ -1383,7 +1383,7 @@
  },
  "gacc/t14_2026-08.html": {
   "source_url": "http://english.customs.gov.cn/Statics/4b78370a-cd59-4e25-b483-5ef203143664.html",
-  "retrieved_at": "2026-10-17T12:53:15Z",
+  "retrieved_at": "2026-10-19T13:15:52Z",
   "sha256": "36bf056f1be9a74b4c995c8aaa5eb2888feae3d8110f07b6264e8e40491770c7",
   "bytes": 124072,
   "redistributed": false,
@@ -1391,7 +1391,7 @@
  },
  "safe/central_parity_2013.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:19Z",
+  "retrieved_at": "2026-10-19T13:14:55Z",
   "sha256": "72a45a059a80a1a3e01e43f3815909139918a85473817d6ef6b12251b9a4175d",
   "bytes": 592279,
   "redistributed": false,
@@ -1403,7 +1403,7 @@
  },
  "safe/central_parity_2014.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:20Z",
+  "retrieved_at": "2026-10-19T13:14:57Z",
   "sha256": "db074b696d21d0355e7cfc0ba8d714020deec6f9deab95e6974bd491b01886be",
   "bytes": 613219,
   "redistributed": false,
@@ -1415,7 +1415,7 @@
  },
  "safe/central_parity_2015.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:22Z",
+  "retrieved_at": "2026-10-19T13:14:59Z",
   "sha256": "980d88fb4a3b4a38625bbb611c97b85c906f16e781b0bd5f6586bc1671862224",
   "bytes": 612090,
   "redistributed": false,
@@ -1427,7 +1427,7 @@
  },
  "safe/central_parity_2016.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:24Z",
+  "retrieved_at": "2026-10-19T13:15:00Z",
   "sha256": "05d1369c5783e75932a7221aca4b13c1d8eb5d0d4998b6b5c4bbbf98d83ecbd2",
   "bytes": 615655,
   "redistributed": false,
@@ -1439,7 +1439,7 @@
  },
  "safe/central_parity_2017.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:25Z",
+  "retrieved_at": "2026-10-19T13:15:02Z",
   "sha256": "96f9eba03f55664c296fae8343f66221efa347fb8c9e07e12223e774817e1731",
   "bytes": 626431,
   "redistributed": false,
@@ -1451,7 +1451,7 @@
  },
  "safe/central_parity_2018.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:27Z",
+  "retrieved_at": "2026-10-19T13:15:03Z",
   "sha256": "13f4ca041c1f8384569aa0c372a0d08824f04f4b6ec0f585c8f013740509ec1f",
   "bytes": 624936,
   "redistributed": false,
@@ -1463,7 +1463,7 @@
  },
  "safe/central_parity_2019.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:29Z",
+  "retrieved_at": "2026-10-19T13:15:05Z",
   "sha256": "08969a2e2d3f7b2e64dbd70e23e3cbd3359b07932db644ec65556eafe7be9980",
   "bytes": 627593,
   "redistributed": false,
@@ -1475,7 +1475,7 @@
  },
  "safe/central_parity_2020.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:30Z",
+  "retrieved_at": "2026-10-19T13:15:07Z",
   "sha256": "250f52949a909a8d773faa2c3c25b296e2bfca521efc3d54432362c631764d00",
   "bytes": 625300,
   "redistributed": false,
@@ -1487,7 +1487,7 @@
  },
  "safe/central_parity_2021.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:32Z",
+  "retrieved_at": "2026-10-19T13:15:08Z",
   "sha256": "d2127800c1a00e57012980183b6bfe80204959bc12a7ea5b540afb6f21d573fb",
   "bytes": 625597,
   "redistributed": false,
@@ -1499,7 +1499,7 @@
  },
  "safe/central_parity_2022.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:33Z",
+  "retrieved_at": "2026-10-19T13:15:10Z",
   "sha256": "00e208f428a409d9983464c33af89fd26d7ce3b9b49ddc172876484954008901",
   "bytes": 623134,
   "redistributed": false,
@@ -1511,7 +1511,7 @@
  },
  "safe/central_parity_2023.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:35Z",
+  "retrieved_at": "2026-10-19T13:15:12Z",
   "sha256": "bb00a647af3b04ea17b17eb784d86c2b94cfff17a40e1c44603e1b838ede2448",
   "bytes": 623075,
   "redistributed": false,
@@ -1523,7 +1523,7 @@
  },
  "safe/central_parity_2024.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:37Z",
+  "retrieved_at": "2026-10-19T13:15:13Z",
   "sha256": "c32b271c7b74077d9f4af309c32b3c389d493a281f1a55a03109430c3147899d",
   "bytes": 626745,
   "redistributed": false,
@@ -1535,7 +1535,7 @@
  },
  "safe/central_parity_2025.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:38Z",
+  "retrieved_at": "2026-10-19T13:15:15Z",
   "sha256": "5ea3e9fd308dd344716b8fdabfd35f51e33019346d5d5ac29124362aaeb299d6",
   "bytes": 626713,
   "redistributed": false,
@@ -1547,13 +1547,13 @@
  },
  "safe/central_parity_2026.html": {
   "source_url": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
-  "retrieved_at": "2026-10-17T12:52:40Z",
-  "sha256": "d63eda214a4b378c82d08b449c828bc8929b9e83babe9a070b950dfc5193c42a",
-  "bytes": 487514,
+  "retrieved_at": "2026-10-19T13:15:17Z",
+  "sha256": "ffb0124ab8bbc1cc6d122d3faa14d4437d444f1702e0725603779b333093cc02",
+  "bytes": 490043,
   "redistributed": false,
   "params": {
    "startDate": "2026-01-01",
-   "endDate": "2026-10-17"
+   "endDate": "2026-10-19"
   },
   "note": "PBoC central parity via SAFE"
  },
@@ -21208,42 +21208,42 @@
  },
  "sgx/zip/7617.zip": {
   "source_url": "https://links.sgx.com/1.0.0/derivatives-daily/7617/FUTURE.zip",
-  "retrieved_at": "2026-10-17T12:56:00Z",
+  "retrieved_at": "2026-10-19T13:18:29Z",
   "sha256": "3a48db47abaefc3fe6f1730d8d0e4d3f34cd5ad9e674cf1ed4af009cf5434dd6",
   "bytes": 22550,
   "redistributed": false
  },
  "sgx/zip/7618.zip": {
   "source_url": "https://links.sgx.com/1.0.0/derivatives-daily/7618/FUTURE.zip",
-  "retrieved_at": "2026-10-17T12:56:00Z",
+  "retrieved_at": "2026-10-19T13:18:29Z",
   "sha256": "7ab915a1e1187302481c92c68e96b41f85c7452b12745e6e93ee3f26dee84f56",
   "bytes": 25534,
   "redistributed": false
  },
  "sgx/zip/7619.zip": {
   "source_url": "https://links.sgx.com/1.0.0/derivatives-daily/7619/FUTURE.zip",
-  "retrieved_at": "2026-10-17T12:56:00Z",
+  "retrieved_at": "2026-10-19T13:18:29Z",
   "sha256": "851f03a77b767cf2e25eeb186953eb17457ef298db3c115e656325cd88cbf0d7",
   "bytes": 25620,
   "redistributed": false
  },
  "sgx/zip/7620.zip": {
   "source_url": "https://links.sgx.com/1.0.0/derivatives-daily/7620/FUTURE.zip",
-  "retrieved_at": "2026-10-17T12:56:00Z",
+  "retrieved_at": "2026-10-19T13:18:29Z",
   "sha256": "225b56ca440f7276302838549df1a38c34a86389111a8cde13e9f923a5d7d95c",
   "bytes": 25653,
   "redistributed": false
  },
  "sgx/zip/7621.zip": {
   "source_url": "https://links.sgx.com/1.0.0/derivatives-daily/7621/FUTURE.zip",
-  "retrieved_at": "2026-10-17T12:56:00Z",
+  "retrieved_at": "2026-10-19T13:18:29Z",
   "sha256": "a2e60cbb983e9327d58842b3eefac67e163066545d0028a001e3b841296932eb",
   "bytes": 25796,
   "redistributed": false
  },
  "sgx/zip/7622.zip": {
   "source_url": "https://links.sgx.com/1.0.0/derivatives-daily/7622/FUTURE.zip",
-  "retrieved_at": "2026-10-17T12:56:00Z",
+  "retrieved_at": "2026-10-19T13:18:29Z",
   "sha256": "5699c87f3c4091c43c451663fef808f158189ae7ee8ccae8716ff0aa85a60697",
   "bytes": 25737,
   "redistributed": false
@@ -43251,184 +43251,191 @@
  },
  "shfe/2026/kx20260904.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260904.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "e730972b79526aeb0a3ca794231a2a9301fcbf8567e6ece8d63e84729eaf0809",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "d3f20d5c7c640e58fa40118a30d61e9c61017ede1fa0438a6e3826f38bad81f0",
   "bytes": 15957,
   "redistributed": false
  },
  "shfe/2026/kx20260907.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260907.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "3784217e7cec90095b93bd1154edc4740a18066dab32dfefab454d767abea956",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "f581a63c70c002222b5599ae8b1ab8fa1819ba42bc69b454859be8644fcdb3b1",
   "bytes": 16202,
   "redistributed": false
  },
  "shfe/2026/kx20260908.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260908.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "2355fdb4d31871e993cac6c242ab321cfd988a228f00747d373eedeef55fcaf9",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "5ce72f140cd801a6466620035434c24924b2e54561e2080a724837b65e9b2856",
   "bytes": 16139,
   "redistributed": false
  },
  "shfe/2026/kx20260909.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260909.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "ac19d3d8874845216290e2c6111b0384e8765aa2086f8c9de3fa9a293c8d3dd6",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "108435f3293cac6b78b1097d7ccc0dc7e268532bca776971b6448b33b25de290",
   "bytes": 16200,
   "redistributed": false
  },
  "shfe/2026/kx20260910.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260910.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "b99be8842a6c9bcacce1db574478d392fde2292a99cf9b095c68cdec150f2c4c",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "df76412404def1f98e52c61e391809e610b3d07826ce4f8d09cb8ac3ac908f2d",
   "bytes": 16264,
   "redistributed": false
  },
  "shfe/2026/kx20260911.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260911.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "173adde164160ced44268a0e0e27797f6bf53cc228638b0894142a998629b220",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "c04d3f9980e28ffa38f83218aec4d032d4a9819518a86f35a05d13056464a42e",
   "bytes": 16689,
   "redistributed": false
  },
  "shfe/2026/kx20260914.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260914.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "0cbb464b62fc4ac8fc2a013aa01db768ad0b99992558141a4bf42b1443322462",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "f7eef8f08538bb0f9f32961d99488fb0e9c588f98b1090aab348760a53964947",
   "bytes": 16421,
   "redistributed": false
  },
  "shfe/2026/kx20260915.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260915.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "6b1b0847d22f1a67fa097018654ef1ec1ee0737885fe04167db09614883daec0",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "7c9f0822062f88c39e7078c91fc0f54e84a04271f9baa87bfcce35fc12134a65",
   "bytes": 16308,
   "redistributed": false
  },
  "shfe/2026/kx20260916.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260916.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "ec134638405847a9df978b77c204bbedd0e9f57d35301e9ad11be5b88687f2b3",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "abba7ec714122d352719d4615a08733fa35255611e908b7790222311c223d2f0",
   "bytes": 15883,
   "redistributed": false
  },
  "shfe/2026/kx20260917.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260917.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "72a236756d482c6d0f5ed5b4df1026ec0d7e6708b316a02ab913305dd936171e",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "ec08dd0471920e3ed2c308443dbdf857629d3aefb6f83aae9e35beac760c7fdc",
   "bytes": 16079,
   "redistributed": false
  },
  "shfe/2026/kx20260918.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260918.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "5f6e376e5ec1e40412a946f8621cf1b63c7e83c57444bcf103218ef12278821f",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "8a856a76a535606593c29db5384912c9cc9812f688744a2dd7a9204d5aa7c51c",
   "bytes": 16267,
   "redistributed": false
  },
  "shfe/2026/kx20260921.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260921.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "826e75e11f14cdbdae8423a4648a47c48ed10fbeb51c82eb5175fe84f921d359",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "730bd817f806f967101c8eb4de3633513224bf8d2ff126f4cc200aeb26c997fd",
   "bytes": 16069,
   "redistributed": false
  },
  "shfe/2026/kx20260922.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260922.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "47bfd544b5960c5ebdeb9904ef7b0fd8c8f227c0dabc668a574d7f6eaf1e401d",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "4953bfcb67b1faf0adfaaf95714670473b908eeedf67f740d3ee689bc2501fae",
   "bytes": 15817,
   "redistributed": false
  },
  "shfe/2026/kx20260923.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260923.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "4e7704768399b4b44543eb4993776e4989b63d22d1af4b0ee4d588d975d89a3b",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "12c4687d0fec928dd0183c9d0ece9349b4eb09af81b6043b433604b70aef3a75",
   "bytes": 15991,
   "redistributed": false
  },
  "shfe/2026/kx20260924.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260924.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "9bd9381432d2aa04abb190cb4e4050ec37915c3f769eceffe3bdff79abf02ebd",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "3d499e0f8f8e31606fe34a03df5deec09e432980c2036ae2de537327b61b18c3",
   "bytes": 16176,
   "redistributed": false
  },
  "shfe/2026/kx20260928.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260928.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "f6594e0bee2b436e096ae6574e598dda9bf27f55c5387e83f1784123eb2fd05c",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "e34734ec1342480d7fc5da51eab9efb3abe09e74c7845d47da8362b46d92c91e",
   "bytes": 16226,
   "redistributed": false
  },
  "shfe/2026/kx20260929.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260929.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "95a6f2028599ee649935ba4670a32e28bcb145d4d0046ca51849f02a9b82c018",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "4ebffb05cd54fd709d79230da92f7fd7574e44cf778eeb5ef771c92203284844",
   "bytes": 16385,
   "redistributed": false
  },
  "shfe/2026/kx20260930.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260930.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "4ef045439d42ec2ba54e50b70eaea0705a0f11b0ea486e897ac48a80b93dd71e",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "a6deef488b1cb8b0a3ce97cee796727ad635a36bdae10a4d917b030046d2b2ec",
   "bytes": 16544,
   "redistributed": false
  },
  "shfe/2026/kx20261008.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20261008.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "a82412d016c7a65c6428e23a10c303ca9411d2c3639bf2787cf8cd96a40bb7b4",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "c596106754e9384f619de77fd2f35587376ce077f1c43ddf5ca58b48228aa39a",
   "bytes": 16639,
   "redistributed": false
  },
  "shfe/2026/kx20261009.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20261009.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "02eb38b1c86558e384296f3d67385d3ea37416a25856450b0f53ddf483e62c30",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "4e0e14e6914a6efd6b0d1a6caa737bf168f30980f1395164dc60bc831723850d",
   "bytes": 16634,
   "redistributed": false
  },
  "shfe/2026/kx20261012.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20261012.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "5b86672f898e59a9202b9777e4b933769d042f330ea7cbcd1a120ee0efdcdcbf",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "730caefb3a097ebeca8ec44798f3960f1bc36796387c0b5d60ebaa1ab3386bf6",
   "bytes": 16175,
   "redistributed": false
  },
  "shfe/2026/kx20261013.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20261013.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "0a483f18deccaaffd33a4e6989fd07c112eed57db75710f7384a3729314c6924",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "0f6ebf40214e1b2bdbfea50817b54be6efca211646bebc4ded37008ecb7f8764",
   "bytes": 16392,
   "redistributed": false
  },
  "shfe/2026/kx20261014.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20261014.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "8d590aab264849104a1b748725130de0587a176586b9d612e188c0e83f2d4c58",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "3d59c708421d4646a3824ffa60e90277636f5c09e857279a98fccf382ea1ad83",
   "bytes": 16424,
   "redistributed": false
  },
  "shfe/2026/kx20261015.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20261015.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "17122ceec56c5b4d3c5c1e3cf1790ef9d1a8b27eed2d9ec90620c784e231077f",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "ad9a87fd9701f4db0aca6bdb13ca0827acaaaaf1a837639290c771ee50b14e96",
   "bytes": 16522,
   "redistributed": false
  },
  "shfe/2026/kx20261016.dat.gz": {
   "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20261016.dat",
-  "retrieved_at": "2026-10-17T12:55:45Z",
-  "sha256": "e13a7b5164ed77d1a492031e6c176127fcee371ba0ad2d437fbde16792edea9a",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "5fd58e1e49971d38825d5167baf6eafe65dcf06bab235d344c75ea0bfa4c357d",
   "bytes": 16329,
+  "redistributed": false
+ },
+ "shfe/2026/kx20261019.dat.gz": {
+  "source_url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20261019.dat",
+  "retrieved_at": "2026-10-19T13:18:14Z",
+  "sha256": "25040db91e5320553cea2b90c4d2b6cd3ba9588410caf87821f207ac0ac2fa5b",
+  "bytes": 16129,
   "redistributed": false
  },
  "sina/HC0.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC0",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "fc0512a0872b422e96a87414de5232acb7502046e8bc12ecad3b7fe63408acb6",
-  "bytes": 366534,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "5b937f4d73700f4ba5779b8ed6d9689740d9689a22ffc3db0f2540aae4421f6e",
+  "bytes": 366655,
   "redistributed": false
  },
  "sina/HC1905.json": {
@@ -43958,198 +43965,198 @@
  },
  "sina/HC2508.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2508",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "e73c16f0de26bb21c600f4f9e3eb3a01b973c4bfcd9d5a7772b68caae786fcec",
   "bytes": 26227,
   "redistributed": false
  },
  "sina/HC2509.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2509",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "466fce9be25b77d95405768d40581ac93cf4c2252cdb058ce9a7cf353b56ab5f",
   "bytes": 27425,
   "redistributed": false
  },
  "sina/HC2510.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2510",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "0484f70ca0f2c0c411a82b2b48621fb073bf977862291473d088201323f7efd7",
   "bytes": 28890,
   "redistributed": false
  },
  "sina/HC2511.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2511",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "0b1c6c9060f391b71fe40854cace3c4112e0dec0a8a9e329498ddfe9f2f34d24",
   "bytes": 25823,
   "redistributed": false
  },
  "sina/HC2512.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2512",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "4ad69368f09fe9feb9690fb48a773353935c275d1db55bb089d4ebf0da5c25a2",
   "bytes": 24019,
   "redistributed": false
  },
  "sina/HC2601.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2601",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "4926aae075aa0628272d325bba8aa3e9b9965e58469349b784270610a6c1c267",
   "bytes": 28644,
   "redistributed": false
  },
  "sina/HC2602.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2602",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "876c59783d5d019cd70ef76128134068771562e65467efd2e88852e55c1548f7",
   "bytes": 26142,
   "redistributed": false
  },
  "sina/HC2603.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2603",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "0d83926547b905d3eacbfc6db42c1dc73f5c8e3d9f779018f338f0f4344cefe7",
   "bytes": 25893,
   "redistributed": false
  },
  "sina/HC2604.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2604",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "72f4597d29635da9f2993517c8662f6fe5448794697f6c13b9c39fa31ec0f2ae",
   "bytes": 26696,
   "redistributed": false
  },
  "sina/HC2605.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2605",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "d616502806479c64388a62bd66c90e1cedd5f921354f0f10bdaec89f66a20fd7",
   "bytes": 28673,
   "redistributed": false
  },
  "sina/HC2606.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2606",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "964899f0d538fd83dc84646eda2b6c4dd0bf506303031411a3af0c37ae8b8a5b",
   "bytes": 26438,
   "redistributed": false
  },
  "sina/HC2607.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2607",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "50506736242ffd19720caa6bc7d0e9ecd7401378e5cf94ed1ed0e60c341f1591",
   "bytes": 27805,
   "redistributed": false
  },
  "sina/HC2608.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2608",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "9b0ef8c153555e968e1dc3eb384a5182916656167bd5ad634a21291e2de179be",
   "bytes": 26326,
   "redistributed": false
  },
  "sina/HC2609.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2609",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "d1b76aa877739b39381ad1bb4205581d696e3080f4844c6f9a8e4b07ab48afb3",
   "bytes": 27738,
   "redistributed": false
  },
  "sina/HC2610.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2610",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "65384bec2308a5d020b11ba95a2e5165ab888ba1e2b020e414d54024e18ae5fe",
   "bytes": 28791,
   "redistributed": false
  },
  "sina/HC2611.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2611",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "3a896df9fe3a32a61a0146fa16619466fa146370705325c1e48a224301bceefd",
-  "bytes": 24854,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "60cecc0e4fae62465bb7ace90b84234fbe4ce862d8d646bd0adca4123b2a1e8f",
+  "bytes": 24972,
   "redistributed": false
  },
  "sina/HC2612.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2612",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "6c908d917de0200b4df2bacfb1ceb31ac2ecdb9f0daba06ce9d8c3f46aeabdf6",
-  "bytes": 21478,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "d176d480ad86abc4b2f60cea52d8c35f4cc2f82221bdfb6ea8b6f7384f7f9c97",
+  "bytes": 21593,
   "redistributed": false
  },
  "sina/HC2701.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2701",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "1d11a57f196ad73bdf0f48be7ad6b22f3f235e93b2e557004ce07ae98ec5324b",
-  "bytes": 21036,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "d5599e82fa6fd33931fb784fc62bb2e077a8098b65ceac6cde5975d702668463",
+  "bytes": 21157,
   "redistributed": false
  },
  "sina/HC2702.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2702",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "b0d813d56f2ee8c5498bc7b31463447009554ce97dd30ae6b7f936341021abd0",
-  "bytes": 14675,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "fcdc91638c4ed77556a4f804060556c1e44118e5ead60383fdd8cd68c37e949c",
+  "bytes": 14789,
   "redistributed": false
  },
  "sina/HC2703.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2703",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "9ae5921cbb4a9f74b49a77c232bdb760789bb152ecf14a25000445d2c2829842",
-  "bytes": 14990,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "b53ae0892c83c4d567f614bb8ae807f1006b9d5b903f6592e476d2442f9a15f0",
+  "bytes": 15109,
   "redistributed": false
  },
  "sina/HC2704.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2704",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "17e71b59f00389b048a4c37519e464c98aeca72017ab2815826802dc3abff8d5",
-  "bytes": 12627,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "4d25c8bfd4b5a68fa7444293bab0dbf80849a3d423085a3e44716f78e6f9c1c0",
+  "bytes": 12740,
   "redistributed": false
  },
  "sina/HC2705.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2705",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "049a9c96140f489f6dd1876184a0c7897b0b7341bbb9f272c429f0b32bb728c8",
-  "bytes": 11889,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "dce85e367e82beba35d8d79fbe16839d84ec1bfa0def0616e21d9e4c11bcfe0d",
+  "bytes": 12007,
   "redistributed": false
  },
  "sina/HC2706.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2706",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "68681e3fea56b0af90121164bc1f2490d1d92562e254077c667da05d694f429e",
-  "bytes": 5095,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "6da43dfc7123e1b476547460bbe5b1826405dca7c3399b74a3618fc9a8c38634",
+  "bytes": 5206,
   "redistributed": false
  },
  "sina/HC2707.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2707",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "0851e4a8338db0d644e64b1da5cc9f27a43b60c3ad80bf69571d7b9aeb67aba1",
-  "bytes": 5434,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "943eca733bc13911e276c8a5ccc8cbae2dae9260f7927bf7f160ac2f2aa5d9e2",
+  "bytes": 5546,
   "redistributed": false
  },
  "sina/HC2708.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2708",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "fae6713a14f0573111d69278fcda80b886f2e68affecaa36c612aa4fcbdef891",
   "bytes": 3560,
   "redistributed": false
  },
  "sina/HC2709.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2709",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "14dd62229295f820da3a5f915ec22d5c1b9064f03070bd63cc6b74880c26d968",
   "bytes": 1442,
   "redistributed": false
  },
  "sina/HC2710.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=HC2710",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "d2019e1b423adedbba0eb2b585008d1ac695e0d36b7be93fdd93c4640db8a802",
-  "bytes": 113,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "8bf29209bd06114e1dd856ace19da401f213edae8c4acb37f76ef4d7c83cdab6",
+  "bytes": 225,
   "redistributed": false
  },
  "sina/I0.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I0",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "1fedd1915808263dae25dcee751f21f927d6bfe5c173463fb6b7ed68bc065d7e",
-  "bytes": 365510,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "1e247b45422b4bd3362492163049bb23c3d5270925856b85adac96fa4c6f6f89",
+  "bytes": 365625,
   "redistributed": false
  },
  "sina/I1905.json": {
@@ -44679,191 +44686,191 @@
  },
  "sina/I2508.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2508",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "eb3dc4af151afe1ef42f92d48aaf81a41bf89a49936a4c18b92d02c1fb901da3",
   "bytes": 26387,
   "redistributed": false
  },
  "sina/I2509.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2509",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "ca730cea4f348d8474d0607ccb2a403ca0f3c55f538c1334476d872f46daa5cb",
   "bytes": 27225,
   "redistributed": false
  },
  "sina/I2510.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2510",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "b98ab6d7f03cb149090a928ebe90434d887b2266fd9820b290cfd06c0ca49812",
   "bytes": 26929,
   "redistributed": false
  },
  "sina/I2511.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2511",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "3e2fce52a2b8673378596bdbfe7ca3a083628454e047f5597d6b8228fd1d2b7e",
   "bytes": 26720,
   "redistributed": false
  },
  "sina/I2512.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2512",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "47856322a4f5ff69f9c90f9e77a8d69514517f7bcef4027d198c96bdad096638",
   "bytes": 26485,
   "redistributed": false
  },
  "sina/I2601.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2601",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "5d40c62302fd6e82ff3cf685fe38d6813641faa362b11725c024cc603d138f6b",
   "bytes": 27510,
   "redistributed": false
  },
  "sina/I2602.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2602",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "82c5958576e36092f13399ff6e41cbdc12f9961f8aa2330485037f30713118bf",
   "bytes": 26169,
   "redistributed": false
  },
  "sina/I2603.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2603",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "0d51cf4f19f7fbcc8998eca5f827af3e935d6c16480421555d0836a711252e67",
   "bytes": 26599,
   "redistributed": false
  },
  "sina/I2604.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2604",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "e09449b86a923772b415d838698858d214b0ea841e9c90d52b75d3683876cc6f",
   "bytes": 26362,
   "redistributed": false
  },
  "sina/I2605.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2605",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "5dd6a0e15eeb45a5aed60dbb43a3742647eeb4b0cb8a5413d494496592d6ed42",
   "bytes": 27371,
   "redistributed": false
  },
  "sina/I2606.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2606",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "c5bff9ba28af1b10e30da7836a6f2c4f23b1111a6eb13c730ecd6cf6ab3f00ec",
   "bytes": 26305,
   "redistributed": false
  },
  "sina/I2607.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2607",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "bdc0f4ba95e369d59c72b9147ef6c25b6ae2cf34e8b5fbff759f5685d326f5a6",
   "bytes": 26328,
   "redistributed": false
  },
  "sina/I2608.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2608",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "c7f110a7dca18a54f410adbb976fdebbb6a63443c089af3f166ea6f3b2c1421d",
   "bytes": 26150,
   "redistributed": false
  },
  "sina/I2609.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2609",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "696e3f4795352f881e44cdef32dccecda91478b68182f50f2eb065582742e9fe",
   "bytes": 27358,
   "redistributed": false
  },
  "sina/I2610.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2610",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "1806e99cf467ce3fa6d31ac00b20625ed4477d9abb79ddaa71801bdd53283770",
-  "bytes": 26005,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "9e57b2ee61d8f0a807bb62d90d94b07ce542f42eaa30e81325647281b619c7db",
+  "bytes": 26112,
   "redistributed": false
  },
  "sina/I2611.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2611",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "b5cdbba59a744e36e581537880f3c148a2e3681c455957ab2bdccb765843e15e",
-  "bytes": 24624,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "2f39eb187b2fc7f7acb6fe8f3a939fbacbc4475547487e4888a4513ed6080ef6",
+  "bytes": 24737,
   "redistributed": false
  },
  "sina/I2612.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2612",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "d21d14851b3988b6d9449eea63e81646e9ff1a21b8b0c84c4f98f046f39f5d1e",
-  "bytes": 22371,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "921607b78ba70b70d1003b070937e92e51fed6865ea32fd1353b89457b360fbc",
+  "bytes": 22483,
   "redistributed": false
  },
  "sina/I2701.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2701",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "1da53f5eab565f5d2f3827d790b721dd2dce314a6ee7c6b7c1a1ee81118a9354",
-  "bytes": 20184,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "f308beacf9bd49f6d36ddb7e52e58e7620eb279d164ad75b30308460be7fc127",
+  "bytes": 20299,
   "redistributed": false
  },
  "sina/I2702.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2702",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "9906daaae544e4c0a66d27108aaa6a96277124b193f91d62a7982491f969df24",
-  "bytes": 17580,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "dc92cef2d9fbebce4e0137b2c1ae2971d2c32c9b339fa3444c7d26133a57b08a",
+  "bytes": 17692,
   "redistributed": false
  },
  "sina/I2703.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2703",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "6136d89f18d82a20ba961d44e0cd777193738a38652ad18ddb8124773d45725c",
-  "bytes": 16028,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "3eae1d3ff2cf0f848575bfef13d76d23db2141018826c43415d2a70c7e87e0c2",
+  "bytes": 16140,
   "redistributed": false
  },
  "sina/I2704.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2704",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "ef8ea92580c3011f53f30f035e009f7ddc9d3c8cd7b8656e74a129309ac0d893",
-  "bytes": 13582,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "01a5617b19ace4bd7fd5b5180c999fa2f9fcb891c696950f14ee03d4828b1d76",
+  "bytes": 13693,
   "redistributed": false
  },
  "sina/I2705.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2705",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "94dcc0bee86963f212cfbaed74cf3420d8503d8d503e52a7e410ef065e7bd732",
-  "bytes": 11366,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "b53ef04b93a47ced2ad2fb9664f3a46a20892248fefa3b3abe20b91089165730",
+  "bytes": 11480,
   "redistributed": false
  },
  "sina/I2706.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2706",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "97c79cdbae4e0b2e6c920b4f5482d4a47c25580e2b5addb1dc7a605a6c0e7908",
-  "bytes": 9240,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "5ff7c478f7681f25d0f1a2cfa9545f92460c8b51adf73746ef52412535b65480",
+  "bytes": 9351,
   "redistributed": false
  },
  "sina/I2707.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2707",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "5ea9b15f66aec31397142b529b8a55c2daf8430fbe151e4ba7cc5d0f8129da35",
-  "bytes": 6907,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "4fe339cc3790ab3c8da8d9cddcac9f685243db83af487f72326a72295b53b0f4",
+  "bytes": 7018,
   "redistributed": false
  },
  "sina/I2708.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2708",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "1cbba948941d237a5a94c97655fd11131875d5a4d53e8e3f0234db7cec528e79",
-  "bytes": 4319,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "ea3d4d5ab700d2018a3df4ad4179df87c35c34d79f5db8f19391e5f44b4827d0",
+  "bytes": 4430,
   "redistributed": false
  },
  "sina/I2709.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=I2709",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "5701dfdedc5fe770b7be0b9fab73b48004f9f2f4ea77ac104af56f2e7ca88b35",
-  "bytes": 1995,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "94a24c3b186b9ae7906c81859bd7061b518abcf0bb92d6d5bbbd8a10448b8136",
+  "bytes": 2107,
   "redistributed": false
  },
  "sina/J0.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J0",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "fef52ea2ec9f067d9ec84a019ece2e62147d9371db0ed9a96238773f46b21326",
-  "bytes": 445370,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "79d80472829264b1564accc3edee52f175892a5fc8a2121e72e98a761fbeac5a",
+  "bytes": 445488,
   "redistributed": false
  },
  "sina/J1905.json": {
@@ -45393,191 +45400,191 @@
  },
  "sina/J2508.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2508",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "870e681cd706d988abe310a433aac37c5b72b51b7afaebcfffd51556e777cb8e",
   "bytes": 13815,
   "redistributed": false
  },
  "sina/J2509.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2509",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "fd2e97f573f412d609ee1a765915f024baf8dd53835d1a404808db06d75e462e",
   "bytes": 26880,
   "redistributed": false
  },
  "sina/J2510.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2510",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "71318c2f9a7d8dbca7173df48d3ac38fa9c48302ec8c1d861280914403a5f8a8",
   "bytes": 15606,
   "redistributed": false
  },
  "sina/J2511.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2511",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "c893d555270b8111dffd54ce130ed94b35ea02d52a4c1cffefd5d4f229950018",
   "bytes": 17253,
   "redistributed": false
  },
  "sina/J2512.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2512",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "34742f2f8464bbe41139508c11c15c4ab4314b3c9513e1364265b0551625e5c0",
   "bytes": 17607,
   "redistributed": false
  },
  "sina/J2601.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2601",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "264129d00c531459b557e5425b78b90d486c7af8c6367aa3cb5eb69f1814f8d1",
   "bytes": 26633,
   "redistributed": false
  },
  "sina/J2602.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2602",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "29f9b3a7d920db5e8f5917527f972365a715d735901f4bd41b343f96dfd55478",
   "bytes": 19262,
   "redistributed": false
  },
  "sina/J2603.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2603",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "d0bb6bc21cd2209436013a06b1f68c72a4e2809ec7822d4f97ab5b608b8fb4aa",
   "bytes": 15496,
   "redistributed": false
  },
  "sina/J2604.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2604",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "8ef4396ce3d519c5a7ae58ea361ed06b8c2def6d2b0a048db155d0eb4d9723f9",
   "bytes": 14534,
   "redistributed": false
  },
  "sina/J2605.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2605",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "575e936e26967dc75b36d513265de541fecb4c766395cc28e231e4962d2b4505",
   "bytes": 27706,
   "redistributed": false
  },
  "sina/J2606.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2606",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "c94cf5251337238201b98346d1ad4c7306790286af5dc8c83413d271d4579220",
   "bytes": 17249,
   "redistributed": false
  },
  "sina/J2607.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2607",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "094e3b44029d23b8c1319216211ddf123c3ecc57dd39d6f0c56cfc3aa878e6de",
   "bytes": 15802,
   "redistributed": false
  },
  "sina/J2608.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2608",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "95f299703cc686ddfdea693df3b9b210575b251a2ce9f0e2c416b80ee9c4920c",
   "bytes": 15450,
   "redistributed": false
  },
  "sina/J2609.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2609",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "14ac22055d4154bc94a0febfd3fe2a86b4661aaee87149c29a4142f5c9d82801",
   "bytes": 27659,
   "redistributed": false
  },
  "sina/J2610.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2610",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "62cedae4839101d27f3c6b9c1e7446a30c814dd6048a9c2a8c66487baeebd1e9",
   "bytes": 19143,
   "redistributed": false
  },
  "sina/J2611.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2611",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "caa0c0379cea4da96008491ff02e60983e893c8a2dfba5d468139cfafd353023",
-  "bytes": 14815,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "3cfc4ef89cabe0a6371b34657129d8ac6f304dfbc1cd99e2263191dc2e8a00aa",
+  "bytes": 14930,
   "redistributed": false
  },
  "sina/J2612.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2612",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "a4d783d612f05a441bb3adf6e99ecd413b2087fb10df43f1240a9c8b2ef7fa63",
-  "bytes": 15211,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "d9f0bc70574bbcdea18dcb80917607d1b6d1fa6f2cb2c24680bb18aea6132b24",
+  "bytes": 15325,
   "redistributed": false
  },
  "sina/J2701.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2701",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "15a33b1fccc550295151b93ce4c8d25119103291c9aed78b568e2a50dcdf956c",
-  "bytes": 20625,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "a8596f4a9fdcaa4593d470c96d65f2665cdef001374befa12f2922f321df444e",
+  "bytes": 20743,
   "redistributed": false
  },
  "sina/J2702.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2702",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "fe0484080828973d36edcc794ab15c22a5acf200d1267bf17a13a033537fb799",
-  "bytes": 11693,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "0d5d4518c90e3fcb25df1f9d0bc2bb950ce967e9ae93ee6172e3e9f0923a7140",
+  "bytes": 11807,
   "redistributed": false
  },
  "sina/J2703.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2703",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "354f5cf9039f5c635931b90448e3ec72349183ec6b55fab238c3e80a76c25c86",
-  "bytes": 9618,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "6819fb05db17d103696964f59ac46bb1c95a343437bf7b1665dc973187876c9d",
+  "bytes": 9731,
   "redistributed": false
  },
  "sina/J2704.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2704",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "d98edbecb21b064275d00075ab9e0f9574facc9cb37c33bb23f9b5c4a2fc0f83",
-  "bytes": 7676,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "dbcc6419819292c8655a0407426bdb803eb2d4e93cebee0eb975e876c1630c3d",
+  "bytes": 7789,
   "redistributed": false
  },
  "sina/J2705.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2705",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "81ba054a3cc09064bd21cbd8b569e4eb20d5475d15977a10ce1c9857940fef82",
-  "bytes": 11270,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "4909a3e42120733f6be664689188d00b1718b578f27a3e90fa635e6d458db05e",
+  "bytes": 11386,
   "redistributed": false
  },
  "sina/J2706.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2706",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "b5836657cd145a84e7af9edffee7e0afd42b46e6c966992e841c5a2a60032f42",
-  "bytes": 4085,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "b9a5d45ef39a2c1593a1b500cb97506cb6c3a90c0e8ee2383224455db80f026b",
+  "bytes": 4195,
   "redistributed": false
  },
  "sina/J2707.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2707",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "c41e42f82a4ef4dccd63f238ffc13365cc72bc008f13f598d52edd67405ed77a",
-  "bytes": 1541,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "91a01f89a8081b5631c130b41026b6d624583f942c709e28cb70168fad306fe7",
+  "bytes": 1651,
   "redistributed": false
  },
  "sina/J2708.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2708",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "f25242f6056c9658768754944e3ddabafe6fa289cbeeea158afa00c3275278ce",
-  "bytes": 1324,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "0a6f51ec0ad9f1d2f837be96c0f7874e9a86011dce78da5a1fafc272fced2011",
+  "bytes": 1434,
   "redistributed": false
  },
  "sina/J2709.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=J2709",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "82b8d611e3187cef07f45fcb66cbab54c0bc1a08223131814a8ce98d90119ddb",
-  "bytes": 661,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "375ba0a96cb35244c173fa2bc3a8479bc44419d5c182002eb5a56bddf4393285",
+  "bytes": 772,
   "redistributed": false
  },
  "sina/JM0.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM0",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "655aac98a4053d7b4b4b7bcaefc17db734af040b833aae05bbbb759ad0894e71",
-  "bytes": 388906,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "5d6f15f27dc05e835c000eca58bb5aceefbdbf269e9c5cc2993e8111f2951452",
+  "bytes": 389026,
   "redistributed": false
  },
  "sina/JM1905.json": {
@@ -46107,191 +46114,191 @@
  },
  "sina/JM2508.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2508",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "716d55d7b283aef8f0d67bf2ff6e5a77127394ad055332dbc52468d52a77f0e8",
   "bytes": 22592,
   "redistributed": false
  },
  "sina/JM2509.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2509",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "df485a206ec4a9886ad24874596cf42f7e8f78c8163d9eb21b491f29ecda2489",
   "bytes": 27897,
   "redistributed": false
  },
  "sina/JM2510.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2510",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "572114fc9489437c872b9f2217a26365c099986eeb8ed321f79b7fdd6c724e95",
   "bytes": 24626,
   "redistributed": false
  },
  "sina/JM2511.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2511",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "3eb557300c3c25c5dacd26b9fd3ebb5da0ef1d58bd0658fa4c8279ad05992ba2",
   "bytes": 24589,
   "redistributed": false
  },
  "sina/JM2512.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2512",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "d17deceb002e61b0350e17eeabb3a7f7067a2afa28660417acf454fdcb2945c0",
   "bytes": 26569,
   "redistributed": false
  },
  "sina/JM2601.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2601",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "50f8b7fce8521ca82784ac65786fdfb6e9b3012bb1b96ef9404c251c2fc8bf97",
   "bytes": 28372,
   "redistributed": false
  },
  "sina/JM2602.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2602",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "f1f6c136de151a3035ece38a341719aeb89b627fb6a34f400d1e6cd3db65bb49",
   "bytes": 25581,
   "redistributed": false
  },
  "sina/JM2603.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2603",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "45100705a5baecff0f8395d873788de59220495c4460f224cf64277b86726fed",
   "bytes": 26190,
   "redistributed": false
  },
  "sina/JM2604.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2604",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "eb32048b4834d22d35ea9e370c6f3ad48287b2d997f89362746191debf5c16a7",
   "bytes": 26479,
   "redistributed": false
  },
  "sina/JM2605.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2605",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "49bb28fb3ef28d47bd423e309fb1080d2bb42999ef0b4766685defce002752b2",
   "bytes": 28224,
   "redistributed": false
  },
  "sina/JM2606.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2606",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "58bf88670527691ab59b1eac1b1a8fe727cd4bee1ee389fee1d1efb8e8b6e6de",
   "bytes": 27168,
   "redistributed": false
  },
  "sina/JM2607.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2607",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "42f0fe21c4d3f13cdb1a4b137679b888252f06b209e9b6769d7232c57f7a546d",
   "bytes": 27416,
   "redistributed": false
  },
  "sina/JM2608.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2608",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "3dcd5d8b5364ed3710bda9ca087b1a3404861857a0cf9086dd7c9c53fcd87e36",
   "bytes": 27632,
   "redistributed": false
  },
  "sina/JM2609.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2609",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "2ded4ee0ccab4acde51e0abf679996f8b4161f3623a92924a3b909f86bc6c552",
   "bytes": 28686,
   "redistributed": false
  },
  "sina/JM2610.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2610",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "7e4ef81dab6567572ef970ab52880c8fff1a982a7db54159ad48d0157d22adcb",
-  "bytes": 27431,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "3c291254d908aaa06bfecbc9acc8529010460165703b23f218530ccfd853a3d1",
+  "bytes": 27543,
   "redistributed": false
  },
  "sina/JM2611.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2611",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "f9bb15e49fc105d25f5afb9f5d94115593b13e08bcf149542b618c4aa02f1f22",
-  "bytes": 25531,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "743b1a2af690f556dcba47fbc4df141c79be9a9b0382f4562341a002cca65263",
+  "bytes": 25649,
   "redistributed": false
  },
  "sina/JM2612.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2612",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "f60f520267b1434dc9a4f4d3737cddaf1eeb302d9c95a226d6e758890cfd98a8",
-  "bytes": 23211,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "15ca97a732db6e3250c67014ab74f6ce5588cc2603440339667e51f70b485389",
+  "bytes": 23329,
   "redistributed": false
  },
  "sina/JM2701.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2701",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "5b0d1f9d3dfa0a7eb19e1bbf106a04bad60e331e1bbafe02c179e1ff4eabeec5",
-  "bytes": 21093,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "444ff2929ea8c53786982ac3d1a7cbf41f6e0b095ff2ad98a1990a989f00e474",
+  "bytes": 21213,
   "redistributed": false
  },
  "sina/JM2702.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2702",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "9cc8c35f28999b48aff0344e91889bc03db9d8344fe196e9ef84d73240257a96",
-  "bytes": 18123,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "4c299217814a2cf512e165d2f1a6202d05ec9a54631be926337d587556c30575",
+  "bytes": 18241,
   "redistributed": false
  },
  "sina/JM2703.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2703",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "48c40a1c46fd2b2ddfff31cf9f27cb86fbb83c5133bf58add75da1555e71ad3e",
-  "bytes": 16455,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "68e14d66f1bddfef31ec59ba90df0322fe929be9f1878aca0dcfab8c9c09c652",
+  "bytes": 16572,
   "redistributed": false
  },
  "sina/JM2704.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2704",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "af2dbb0fb74d3d09a6d61be78dd76e109af111f43e16f2bcde150b52db73635a",
-  "bytes": 13730,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "44a549578961447fe6afddd9961bf27638fab0aecfa0b1a204db594f6937ec72",
+  "bytes": 13846,
   "redistributed": false
  },
  "sina/JM2705.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2705",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "4dd4aae5df86698e2a4839edd967568c26bb2ef86ac33a6f28cd4523adc0a5bb",
-  "bytes": 11842,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "8a9adf4b79e627ebb6fdaa75e0465c01759d04527f4df22fc32fe1fff74d9abb",
+  "bytes": 11960,
   "redistributed": false
  },
  "sina/JM2706.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2706",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "c93da068e16ad00c5b7ce45fb5bcde6e97ea38aef1030d547458c27d32496e6e",
-  "bytes": 9337,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "6dfef018c4b5d42302dc619b511ac69d359d1997741db6eea466a438f868db87",
+  "bytes": 9451,
   "redistributed": false
  },
  "sina/JM2707.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2707",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "fd0bf6de51561a9666dcfd7fec3c34fddedb52a80620ddc0d5a1f025136f06d4",
-  "bytes": 6854,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "8d0f3e2861bfd7e74877df3e0f28926240f09fa19d9d62bb4cc078562e8ecaf5",
+  "bytes": 6967,
   "redistributed": false
  },
  "sina/JM2708.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2708",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "a90a83959e973e0b22571bbcd1227071c29f5e7dd8a588c1bccda2f0e0e1354d",
-  "bytes": 4274,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "48a1ed24419abcdbed949e8cac79e6d8f7a126886312299369b59a533837ec00",
+  "bytes": 4387,
   "redistributed": false
  },
  "sina/JM2709.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=JM2709",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "78a84e8dc2dd063ce68f00850f11e0237da1f178076945abbaa2e4bdcdd2f4d8",
-  "bytes": 2051,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "5b5ef629c3af8df28d88b3fc68c9e8aef555ebd816e57be9f925d0e0597eb01d",
+  "bytes": 2167,
   "redistributed": false
  },
  "sina/RB0.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB0",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "9baf15d31097ff0e91b9ca2be1235e087104dc4530cbd8a977731b5792bf058c",
-  "bytes": 517160,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "860549b989125bb7bbdd08ae95eb334ccfba9493e8355a6a154a0b636ba59823",
+  "bytes": 517281,
   "redistributed": false
  },
  "sina/RB1905.json": {
@@ -46821,191 +46828,191 @@
  },
  "sina/RB2508.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2508",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "36ada2cb336c9b1601d0b5f9b9b641c55c76f71a9ba8f5357637d16451f6ef7e",
   "bytes": 27644,
   "redistributed": false
  },
  "sina/RB2509.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2509",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "943e227f97ebb2529a1356cc15e39f3bb1183031fdd249e3af9edd835bd4b902",
   "bytes": 28061,
   "redistributed": false
  },
  "sina/RB2510.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2510",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "31a5b49b0b6f960b9fdaa215287909b1942eca8080bf4eda227bb45544bf93c1",
   "bytes": 29132,
   "redistributed": false
  },
  "sina/RB2511.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2511",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "d94cc29e5f0c29d96dac40c149f78ff62ad619310739bb2131522fa1bc665547",
   "bytes": 28364,
   "redistributed": false
  },
  "sina/RB2512.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2512",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "867289d6e9e91e4f5e21892330b5926a724e61559ea251fd98e2121ca2db534b",
   "bytes": 27155,
   "redistributed": false
  },
  "sina/RB2601.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2601",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "7084ad01d2a3cf05dc12949a5421baf0113cdf883cb2a12dd4d913d2624dea77",
   "bytes": 28834,
   "redistributed": false
  },
  "sina/RB2602.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2602",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "8f1457c8dbd7702feef5ac2e178ac2485b1c91b83685d8b6061541c26361ce19",
   "bytes": 27706,
   "redistributed": false
  },
  "sina/RB2603.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2603",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "30408c66b8c81e1229cce21e565b3d4ecf6e7f42304013ead6af1bf9eea28ba4",
   "bytes": 28214,
   "redistributed": false
  },
  "sina/RB2604.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2604",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "a56cb78333f773fc9b4cd41cb3e8fa77c0f212729c825d9650bf5124d9aa29a7",
   "bytes": 27306,
   "redistributed": false
  },
  "sina/RB2605.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2605",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "3e444f88fe2d2b051f7cf09a238f8d01250dac15ce63c2317a25e0a5c0c4c195",
   "bytes": 28822,
   "redistributed": false
  },
  "sina/RB2606.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2606",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "5d851ae78ae29e91b6c195291afa2e5a4a073e3780c168a5cf0037670ea0a47c",
   "bytes": 27144,
   "redistributed": false
  },
  "sina/RB2607.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2607",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "ddf17b032286a165678e473344b55f9787a75cb231257d0d6c033fa01839ca54",
   "bytes": 28373,
   "redistributed": false
  },
  "sina/RB2608.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2608",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "62ecda9fe659d7f6d30f27c97770ddba40a27ebb816fb60b334e382232daec65",
   "bytes": 27257,
   "redistributed": false
  },
  "sina/RB2609.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2609",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "4cbab5d68bf913ef9d62d5326816d106197dd483bf71cf27bfea4dd6969c619a",
   "bytes": 28175,
   "redistributed": false
  },
  "sina/RB2610.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2610",
-  "retrieved_at": "2026-10-17T12:55:19Z",
+  "retrieved_at": "2026-10-19T13:17:43Z",
   "sha256": "8153593325d2661e4f165973fdfb5e01a6fc2e503f3500dd7c2bee1c59bdef6f",
   "bytes": 28898,
   "redistributed": false
  },
  "sina/RB2611.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2611",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "e7dd3aecc52b5f8c46638555ed280c5dec2be442899fb70a2e38b3db63d74666",
-  "bytes": 25560,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "a6214d99ba391c33337b877ad510767539677333c5c1bb8a3dee0b2e930f2dcb",
+  "bytes": 25678,
   "redistributed": false
  },
  "sina/RB2612.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2612",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "90ec54e1ed576c5296d768169bacb8012d47870ed9435b71e4bf3a791f70c4d6",
-  "bytes": 22867,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "4d2fd62a989d562ee59937f2e24efa7688145bbd5ba45e4babe0dc4812a0562e",
+  "bytes": 22982,
   "redistributed": false
  },
  "sina/RB2701.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2701",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "ca762949550eaeae7ce596eaceb0041fadc8b26c24bb2b5073ab5caddf19eaca",
-  "bytes": 21197,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "5ee2c23aa8adc6950a46bef2ee1ebc93d207c9f2afae00e4b181f176327da395",
+  "bytes": 21318,
   "redistributed": false
  },
  "sina/RB2702.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2702",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "0fe6bd6670a7523e0eda5f6be4ae4b72bcef422b00a5d2e64e55d6ba5a0921be",
-  "bytes": 17769,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "663278dee051b465ae7eab353e0afade734a488a89f87ce7459d03140c376054",
+  "bytes": 17884,
   "redistributed": false
  },
  "sina/RB2703.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2703",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "7a6129f4141556d1318f8fea3fe801ca2cab198e5aac809c31c0650d1c7df944",
-  "bytes": 16545,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "cd6af8f82f8a9f503a3aaae141be4113d58fc831b09d78a42eebca366ebff966",
+  "bytes": 16664,
   "redistributed": false
  },
  "sina/RB2704.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2704",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "7e778a5129d3d02d1970606825bac27b41a2e5c22b327f1882e7dfe77e4d20c6",
-  "bytes": 13972,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "3695d1cd3cd312bd7ff730a1c46f9ee110d68136ad884d3ca67ab1f4eb933546",
+  "bytes": 14088,
   "redistributed": false
  },
  "sina/RB2705.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2705",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "f52e72c7c43660339182284544ecc9d8ade17cf8931e872d4ed88c5a4bdf3b6c",
-  "bytes": 12064,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "877bee6d205ac0cdf477cbfb658ad9cf803044f312b3e517516454c76d54b559",
+  "bytes": 12183,
   "redistributed": false
  },
  "sina/RB2706.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2706",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "142a7f1698ffafba02a683ca97b8c20b3a43116ad2d400a070cd5a60238aef26",
-  "bytes": 9155,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "613bd38f7071422e5ea3f6f7a0c2ceef49235b46b30f8f1692ce688cb3353d4e",
+  "bytes": 9269,
   "redistributed": false
  },
  "sina/RB2707.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2707",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "57d56d44dd45375854ba051c9faea1f5ffabe782244a01794cf99830fc6b604c",
-  "bytes": 6913,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "16ccc35dba2603cb80637ee48ce32ba9cf5c20860f03120d700d5ef50d5d4e65",
+  "bytes": 7027,
   "redistributed": false
  },
  "sina/RB2708.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2708",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "cadcc16a0d10d43fbb293e25899ad161d1b7444855ec7cea957ab6ae7974c873",
-  "bytes": 4283,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "03a933011834f1df7b340bafc244fa113a9a520939f85acae1abb71f1944b588",
+  "bytes": 4396,
   "redistributed": false
  },
  "sina/RB2709.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2709",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "69ecc584c761805ed2a86170b867fc8e101e9a49bb52c47dc08e9bd8efc6d4b9",
-  "bytes": 1918,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "20abd607e58177e2baab08e131c9862a1bbd627a4f366d82955fd85aaebbe7db",
+  "bytes": 2031,
   "redistributed": false
  },
  "sina/RB2710.json": {
   "source_url": "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var%20_X=/InnerFuturesNewService.getDailyKLine?symbol=RB2710",
-  "retrieved_at": "2026-10-17T12:55:19Z",
-  "sha256": "9e400c5b0c80f7b73c7e6c30283022c03015517bce6bc96b1f5411e366974485",
-  "bytes": 113,
+  "retrieved_at": "2026-10-19T13:17:43Z",
+  "sha256": "ead529b5155f5c365ada90f97a767c4030868629c5d2ccac09bd1540ec6ee8fe",
+  "bytes": 227,
   "redistributed": false
  },
  "wits/chn_260111_1992.html": {
@@ -47258,24 +47265,24 @@
  },
  "wits/chn_260111_2023.html": {
   "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2023/tradeflow/Imports/partner/ALL/product/260111",
-  "retrieved_at": "2026-10-17T12:53:20Z",
-  "sha256": "c98ef4194b5452c87b70c5150b478110f389f6847406cae97bca54bc6a1fcfda",
+  "retrieved_at": "2026-10-19T13:15:56Z",
+  "sha256": "eb896d8c4ea2f357c5f8a962ceefd47f0baf49c3cffbb2f1b0f9855ca1004c5a",
   "bytes": 61846,
   "redistributed": false,
   "note": "UN Comtrade via WITS, China imports HS 260111"
  },
  "wits/chn_260111_2024.html": {
   "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2024/tradeflow/Imports/partner/ALL/product/260111",
-  "retrieved_at": "2026-10-17T12:53:23Z",
-  "sha256": "1829c1b843e056398be3c9ba304529eacfc8b9eb3a7cc02f13a23bdda5719cf9",
+  "retrieved_at": "2026-10-19T13:15:59Z",
+  "sha256": "dd228212b70d282b3a3b059d3301aa908fcd0bc481009c5be0b4b84d440cd5a7",
   "bytes": 64617,
   "redistributed": false,
   "note": "UN Comtrade via WITS, China imports HS 260111"
  },
  "wits/chn_260111_2025.html": {
   "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2025/tradeflow/Imports/partner/ALL/product/260111",
-  "retrieved_at": "2026-10-17T12:53:26Z",
-  "sha256": "df808a97a3bb229cf54fd5f5312f2eb14bcd52a54f61b53396e45b8814a95ccd",
+  "retrieved_at": "2026-10-19T13:16:01Z",
+  "sha256": "55429394fd6abb57eb4e0c8d35147d58ceaf7f6887264ff72721bf1b86b55fbc",
   "bytes": 67914,
   "redistributed": false,
   "note": "UN Comtrade via WITS, China imports HS 260111"
@@ -47530,31 +47537,31 @@
  },
  "wits/chn_260112_2023.html": {
   "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2023/tradeflow/Imports/partner/ALL/product/260112",
-  "retrieved_at": "2026-10-17T12:53:21Z",
-  "sha256": "46633a45250de8131d800120c49e62b5827c2224de1756608a99e15bb7f81c6c",
+  "retrieved_at": "2026-10-19T13:15:58Z",
+  "sha256": "1433a80a780b11253667434f557431fee7ee99104d7c4f5af01b095746551ab3",
   "bytes": 38607,
   "redistributed": false,
   "note": "UN Comtrade via WITS, China imports HS 260112"
  },
  "wits/chn_260112_2024.html": {
   "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2024/tradeflow/Imports/partner/ALL/product/260112",
-  "retrieved_at": "2026-10-17T12:53:24Z",
-  "sha256": "b8c68314baef8209623e41ac6cafbcbc724927cc0b9a05ad3d34fbee2ab8c2ba",
+  "retrieved_at": "2026-10-19T13:16:00Z",
+  "sha256": "9f3b921f714ccc7dcd010a5f98b1339d0c2ebe123cd5eb3b1f9216e340c54a7f",
   "bytes": 41300,
   "redistributed": false,
   "note": "UN Comtrade via WITS, China imports HS 260112"
  },
  "wits/chn_260112_2025.html": {
   "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/CHN/year/2025/tradeflow/Imports/partner/ALL/product/260112",
-  "retrieved_at": "2026-10-17T12:53:27Z",
-  "sha256": "2a2c8857312fe3f8b05f9b405b4383a9c34a10887c536143e811900d8b96edbf",
+  "retrieved_at": "2026-10-19T13:16:02Z",
+  "sha256": "384156ac520ef8e14a779b8250b9c41132e596c6c56a9d663a4380822dd3e64f",
   "bytes": 40298,
   "redistributed": false,
   "note": "UN Comtrade via WITS, China imports HS 260112"
  },
  "worldbank/CMO-Historical-Data-Monthly.xlsx": {
   "source_url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-  "retrieved_at": "2026-10-17T12:51:27Z",
+  "retrieved_at": "2026-10-19T13:14:03Z",
   "sha256": "ea1c350827878ea3bbe30e3cda16a13fd3bd5b409b8458940dc94a36b5a33154",
   "bytes": 586099,
   "redistributed": true,

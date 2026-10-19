@@ -108,7 +108,7 @@
      "n": 90,
      "mae": 1.5380411937170304,
      "rmse": 2.0431493038781485,
-     "bias": -0.04265388982038405,
+     "bias": -0.042653889820383976,
      "mape": 0.05898382271512455,
      "rel_q10": -0.09780764701376468,
      "rel_q90": 0.08977040281828592
@@ -117,15 +117,15 @@
      "n": 90,
      "mae": 1.3360182304293948,
      "rmse": 1.6546579884926025,
-     "bias": 0.0068857636660706175,
+     "bias": 0.006885763666069355,
      "mape": 0.057238600769182725,
-     "rel_q10": -0.07257387849927538,
-     "rel_q90": 0.08224178888398309
+     "rel_q10": -0.07257387849927534,
+     "rel_q90": 0.08224178888398317
     },
     "stat_coef": {
-     "const": 1.7225788642175728,
-     "bci": 0.003889960705113594,
-     "brent": 0.1459663581236573
+     "const": 1.7225788642175726,
+     "bci": 0.0038899607051135895,
+     "brent": 0.14596635812365732
     }
    },
    "C5": {
@@ -140,15 +140,15 @@
     },
     "stat_loo": {
      "n": 91,
-     "mae": 0.7361787075802672,
+     "mae": 0.7361787075802669,
      "rmse": 0.915219772461021,
-     "bias": -0.0004128240826549637,
+     "bias": -0.0004128240826549833,
      "mape": 0.06862817383102575,
-     "rel_q10": -0.09137776039009603,
-     "rel_q90": 0.1296236914745924
+     "rel_q10": -0.09137776039009628,
+     "rel_q90": 0.12962369147459266
     },
     "stat_coef": {
-     "const": 2.358036978603012,
+     "const": 2.3580369786030078,
      "bci": 0.0017635066759154618,
      "brent": 0.0369701424419291
     }
@@ -166,9 +166,9 @@
     "quote": "Splash247, early February 2016: C3 all-time low of 5.325 on 28 January 2016 (article not reachable from the build environment; figure not re-read)",
     "bci_pts": 216.0,
     "brent_usd_bbl": 33.01,
-    "c3_voyage_usd_wmt": 5.573233013971287,
-    "voyage_model": 5.573233013971287,
-    "stat_model_loo": 7.649913513778974,
+    "c3_voyage_usd_wmt": 5.573233013971291,
+    "voyage_model": 5.573233013971291,
+    "stat_model_loo": 7.649913513778978,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -182,9 +182,9 @@
     "quote": "Splash247, early February 2016: C3 at 5.473 with the BCI at 217 (article not reachable from the build environment; figure not re-read)",
     "bci_pts": 217.0,
     "brent_usd_bbl": 30.98,
-    "c3_voyage_usd_wmt": 5.361701210490105,
-    "voyage_model": 5.361701210490105,
-    "stat_model_loo": 7.312500789228828,
+    "c3_voyage_usd_wmt": 5.361701210490109,
+    "voyage_model": 5.361701210490109,
+    "stat_model_loo": 7.312500789228825,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -200,7 +200,7 @@
     "brent_usd_bbl": 77.51,
     "c3_voyage_usd_wmt": 26.778592421351284,
     "voyage_model": 26.778592421351284,
-    "stat_model_loo": 26.703674876358086,
+    "stat_model_loo": 26.70367487635807,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -216,7 +216,7 @@
     "brent_usd_bbl": 77.14,
     "c3_voyage_usd_wmt": 27.737393761110784,
     "voyage_model": 27.737393761110784,
-    "stat_model_loo": 27.522446274570846,
+    "stat_model_loo": 27.52244627457085,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -248,7 +248,7 @@
     "brent_usd_bbl": 70.9,
     "c3_voyage_usd_wmt": 31.560156637508957,
     "voyage_model": 31.560156637508957,
-    "stat_model_loo": 30.555798015537896,
+    "stat_model_loo": 30.555798015537892,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -264,7 +264,7 @@
     "brent_usd_bbl": 68.61,
     "c3_voyage_usd_wmt": 33.948828418589926,
     "voyage_model": 33.948828418589926,
-    "stat_model_loo": 32.526392954181944,
+    "stat_model_loo": 32.52639295418196,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -280,7 +280,7 @@
     "brent_usd_bbl": 65.51,
     "c3_voyage_usd_wmt": 36.38322441758085,
     "voyage_model": 36.38322441758085,
-    "stat_model_loo": 34.484027773044645,
+    "stat_model_loo": 34.48402777304464,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -296,7 +296,7 @@
     "brent_usd_bbl": 72.26,
     "c3_voyage_usd_wmt": 37.96803786168893,
     "voyage_model": 37.96803786168893,
-    "stat_model_loo": 36.277481878687894,
+    "stat_model_loo": 36.2774818786879,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -312,7 +312,7 @@
     "brent_usd_bbl": 72.44,
     "c3_voyage_usd_wmt": 35.33227762885314,
     "voyage_model": 35.33227762885314,
-    "stat_model_loo": 34.07722367162024,
+    "stat_model_loo": 34.077223671620246,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -360,7 +360,7 @@
     "brent_usd_bbl": 80.24,
     "c3_voyage_usd_wmt": 27.568191482193406,
     "voyage_model": 27.568191482193406,
-    "stat_model_loo": 27.497914552035084,
+    "stat_model_loo": 27.497914552035073,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -376,7 +376,7 @@
     "brent_usd_bbl": 72.37,
     "c3_voyage_usd_wmt": 27.9024090532964,
     "voyage_model": 27.9024090532964,
-    "stat_model_loo": 27.473309384080846,
+    "stat_model_loo": 27.473309384080853,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -392,7 +392,7 @@
     "brent_usd_bbl": 70.71,
     "c3_voyage_usd_wmt": 30.767829611443652,
     "voyage_model": 30.767829611443652,
-    "stat_model_loo": 29.942077746539915,
+    "stat_model_loo": 29.942077746539912,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -408,7 +408,7 @@
     "brent_usd_bbl": 82.28,
     "c3_voyage_usd_wmt": 22.56124832422148,
     "voyage_model": 22.56124832422148,
-    "stat_model_loo": 23.208954132042408,
+    "stat_model_loo": 23.2089541320424,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -424,7 +424,7 @@
     "brent_usd_bbl": 87.17,
     "c3_voyage_usd_wmt": 18.993405986160294,
     "voyage_model": 18.993405986160294,
-    "stat_model_loo": 20.291507732767727,
+    "stat_model_loo": 20.291507732767723,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -440,7 +440,7 @@
     "brent_usd_bbl": 97.5,
     "c3_voyage_usd_wmt": 21.90346827271783,
     "voyage_model": 21.90346827271783,
-    "stat_model_loo": 23.170266240071044,
+    "stat_model_loo": 23.17026624007104,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -456,7 +456,7 @@
     "brent_usd_bbl": 98.56,
     "c3_voyage_usd_wmt": 21.29491498062909,
     "voyage_model": 21.29491498062909,
-    "stat_model_loo": 22.71537155758527,
+    "stat_model_loo": 22.715371557585275,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -472,7 +472,7 @@
     "brent_usd_bbl": 114.32,
     "c3_voyage_usd_wmt": 27.35755490028432,
     "voyage_model": 27.35755490028432,
-    "stat_model_loo": 28.559702891902862,
+    "stat_model_loo": 28.55970289190287,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -488,7 +488,7 @@
     "brent_usd_bbl": 122.67,
     "c3_voyage_usd_wmt": 25.198185030400946,
     "voyage_model": 25.198185030400946,
-    "stat_model_loo": 27.013747225162682,
+    "stat_model_loo": 27.01374722516268,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -504,7 +504,7 @@
     "brent_usd_bbl": 101.26,
     "c3_voyage_usd_wmt": 20.53040715436104,
     "voyage_model": 20.53040715436104,
-    "stat_model_loo": 22.023759563296267,
+    "stat_model_loo": 22.023759563296263,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -536,7 +536,7 @@
     "brent_usd_bbl": 112.12,
     "c3_voyage_usd_wmt": 33.07713170446716,
     "voyage_model": 33.07713170446716,
-    "stat_model_loo": 33.399169776637876,
+    "stat_model_loo": 33.39916977663787,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -568,7 +568,7 @@
     "brent_usd_bbl": 127.44,
     "c3_voyage_usd_wmt": 27.959603439691,
     "voyage_model": 27.959603439691,
-    "stat_model_loo": 29.403070769717374,
+    "stat_model_loo": 29.40307076971737,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -584,7 +584,7 @@
     "brent_usd_bbl": 117.36,
     "c3_voyage_usd_wmt": 26.805519851574346,
     "voyage_model": 26.805519851574346,
-    "stat_model_loo": 28.08509697348699,
+    "stat_model_loo": 28.085096973486987,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -632,7 +632,7 @@
     "brent_usd_bbl": 100.31,
     "c3_voyage_usd_wmt": 20.263673812004548,
     "voyage_model": 20.263673812004548,
-    "stat_model_loo": 21.843984991106872,
+    "stat_model_loo": 21.84398499110688,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -664,7 +664,7 @@
     "brent_usd_bbl": 94.64,
     "c3_voyage_usd_wmt": 20.70884279331518,
     "voyage_model": 20.70884279331518,
-    "stat_model_loo": 22.08556870532189,
+    "stat_model_loo": 22.085568705321887,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -680,7 +680,7 @@
     "brent_usd_bbl": 83.4,
     "c3_voyage_usd_wmt": 19.042731408051182,
     "voyage_model": 19.042731408051182,
-    "stat_model_loo": 20.195032329234756,
+    "stat_model_loo": 20.195032329234763,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -696,7 +696,7 @@
     "brent_usd_bbl": 77.11,
     "c3_voyage_usd_wmt": 18.35116736455502,
     "voyage_model": 18.35116736455502,
-    "stat_model_loo": 19.341300227612432,
+    "stat_model_loo": 19.341300227612443,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -712,7 +712,7 @@
     "brent_usd_bbl": 83.43,
     "c3_voyage_usd_wmt": 17.643597567412613,
     "voyage_model": 17.643597567412613,
-    "stat_model_loo": 18.985911757647163,
+    "stat_model_loo": 18.98591175764716,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -728,7 +728,7 @@
     "brent_usd_bbl": 83.78,
     "c3_voyage_usd_wmt": 17.74116229811571,
     "voyage_model": 17.74116229811571,
-    "stat_model_loo": 19.084402365210572,
+    "stat_model_loo": 19.08440236521057,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -744,7 +744,7 @@
     "brent_usd_bbl": 85.36,
     "c3_voyage_usd_wmt": 14.46805831429172,
     "voyage_model": 14.46805831429172,
-    "stat_model_loo": 16.23235592471055,
+    "stat_model_loo": 16.232355924710543,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -760,7 +760,7 @@
     "brent_usd_bbl": 81.97,
     "c3_voyage_usd_wmt": 12.86732328469736,
     "voyage_model": 12.86732328469736,
-    "stat_model_loo": 14.673253019893075,
+    "stat_model_loo": 14.673253019893068,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -776,7 +776,7 @@
     "brent_usd_bbl": 79.55,
     "c3_voyage_usd_wmt": 13.095108426332384,
     "voyage_model": 13.095108426332384,
-    "stat_model_loo": 14.7843023126057,
+    "stat_model_loo": 14.784302312605698,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -792,7 +792,7 @@
     "brent_usd_bbl": 81.24,
     "c3_voyage_usd_wmt": 14.696824943634454,
     "voyage_model": 14.696824943634454,
-    "stat_model_loo": 16.276696210880885,
+    "stat_model_loo": 16.276696210880882,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -808,7 +808,7 @@
     "brent_usd_bbl": 81.32,
     "c3_voyage_usd_wmt": 21.855411152410053,
     "voyage_model": 21.855411152410053,
-    "stat_model_loo": 22.540806412310808,
+    "stat_model_loo": 22.540806412310804,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -824,7 +824,7 @@
     "brent_usd_bbl": 91.79,
     "c3_voyage_usd_wmt": 17.509413914806863,
     "voyage_model": 17.509413914806863,
-    "stat_model_loo": 19.154694225237456,
+    "stat_model_loo": 19.154694225237453,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -840,7 +840,7 @@
     "brent_usd_bbl": 87.86,
     "c3_voyage_usd_wmt": 27.180241380988825,
     "voyage_model": 27.180241380988825,
-    "stat_model_loo": 27.431362502744996,
+    "stat_model_loo": 27.431362502744985,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -856,7 +856,7 @@
     "brent_usd_bbl": 94.33,
     "c3_voyage_usd_wmt": 28.073122138881352,
     "voyage_model": 28.073122138881352,
-    "stat_model_loo": 28.471094475359894,
+    "stat_model_loo": 28.471094475359898,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -888,7 +888,7 @@
     "brent_usd_bbl": 81.22,
     "c3_voyage_usd_wmt": 23.90699483881937,
     "voyage_model": 23.90699483881937,
-    "stat_model_loo": 24.346675779761817,
+    "stat_model_loo": 24.346675779761814,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -920,7 +920,7 @@
     "brent_usd_bbl": 85.84,
     "c3_voyage_usd_wmt": 24.607775408720297,
     "voyage_model": 24.607775408720297,
-    "stat_model_loo": 25.09907197132672,
+    "stat_model_loo": 25.099071971326726,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -936,7 +936,7 @@
     "brent_usd_bbl": 84.18,
     "c3_voyage_usd_wmt": 25.985406008712733,
     "voyage_model": 25.985406008712733,
-    "stat_model_loo": 26.24468444844421,
+    "stat_model_loo": 26.244684448444204,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -952,7 +952,7 @@
     "brent_usd_bbl": 84.82,
     "c3_voyage_usd_wmt": 29.783013939587867,
     "voyage_model": 29.783013939587867,
-    "stat_model_loo": 29.58700676596802,
+    "stat_model_loo": 29.587006765968017,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -968,7 +968,7 @@
     "brent_usd_bbl": 82.24,
     "c3_voyage_usd_wmt": 23.641909953633885,
     "voyage_model": 23.641909953633885,
-    "stat_model_loo": 24.121013999294256,
+    "stat_model_loo": 24.121013999294252,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1016,7 +1016,7 @@
     "brent_usd_bbl": 81.35,
     "c3_voyage_usd_wmt": 23.257611557306216,
     "voyage_model": 23.257611557306216,
-    "stat_model_loo": 23.753931971095483,
+    "stat_model_loo": 23.753931971095486,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1048,7 +1048,7 @@
     "brent_usd_bbl": 80.2,
     "c3_voyage_usd_wmt": 25.280103476624646,
     "voyage_model": 25.280103476624646,
-    "stat_model_loo": 25.45318565302689,
+    "stat_model_loo": 25.453185653026893,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1064,7 +1064,7 @@
     "brent_usd_bbl": 79.32,
     "c3_voyage_usd_wmt": 27.805623164585576,
     "voyage_model": 27.805623164585576,
-    "stat_model_loo": 27.65938135382425,
+    "stat_model_loo": 27.65938135382426,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1080,7 +1080,7 @@
     "brent_usd_bbl": 72.75,
     "c3_voyage_usd_wmt": 20.667551461590396,
     "voyage_model": 20.667551461590396,
-    "stat_model_loo": 21.17909004355013,
+    "stat_model_loo": 21.17909004355014,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1096,7 +1096,7 @@
     "brent_usd_bbl": 74.04,
     "c3_voyage_usd_wmt": 21.00825461242748,
     "voyage_model": 21.00825461242748,
-    "stat_model_loo": 21.528967475656806,
+    "stat_model_loo": 21.528967475656792,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1128,7 +1128,7 @@
     "brent_usd_bbl": 73.78,
     "c3_voyage_usd_wmt": 17.486224284015215,
     "voyage_model": 17.486224284015215,
-    "stat_model_loo": 18.486855609122166,
+    "stat_model_loo": 18.486855609122156,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1144,7 +1144,7 @@
     "brent_usd_bbl": 74.89,
     "c3_voyage_usd_wmt": 16.410358862743895,
     "voyage_model": 16.410358862743895,
-    "stat_model_loo": 17.604176847657374,
+    "stat_model_loo": 17.604176847657367,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1160,7 +1160,7 @@
     "brent_usd_bbl": 73.19,
     "c3_voyage_usd_wmt": 15.535644158864985,
     "voyage_model": 15.535644158864985,
-    "stat_model_loo": 16.73671082433534,
+    "stat_model_loo": 16.736710824335333,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1176,7 +1176,7 @@
     "brent_usd_bbl": 79.76,
     "c3_voyage_usd_wmt": 17.848451132709428,
     "voyage_model": 17.848451132709428,
-    "stat_model_loo": 19.01726922451696,
+    "stat_model_loo": 19.017269224516966,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1208,7 +1208,7 @@
     "brent_usd_bbl": 72.64,
     "c3_voyage_usd_wmt": 22.44087347618313,
     "voyage_model": 22.44087347618313,
-    "stat_model_loo": 22.706229047115716,
+    "stat_model_loo": 22.706229047115727,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1224,7 +1224,7 @@
     "brent_usd_bbl": 68.36,
     "c3_voyage_usd_wmt": 19.861617634541613,
     "voyage_model": 19.861617634541613,
-    "stat_model_loo": 20.300174933232142,
+    "stat_model_loo": 20.300174933232146,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1240,7 +1240,7 @@
     "brent_usd_bbl": 66.99,
     "c3_voyage_usd_wmt": 18.21519567788029,
     "voyage_model": 18.21519567788029,
-    "stat_model_loo": 18.825728506488048,
+    "stat_model_loo": 18.825728506488044,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1288,7 +1288,7 @@
     "brent_usd_bbl": 69.23,
     "c3_voyage_usd_wmt": 27.164085179707595,
     "voyage_model": 27.164085179707595,
-    "stat_model_loo": 26.77339975700577,
+    "stat_model_loo": 26.773399757005773,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1304,7 +1304,7 @@
     "brent_usd_bbl": 67.87,
     "c3_voyage_usd_wmt": 23.60221657818413,
     "voyage_model": 23.60221657818413,
-    "stat_model_loo": 23.57109400275616,
+    "stat_model_loo": 23.57109400275615,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1320,7 +1320,7 @@
     "brent_usd_bbl": 71.15,
     "c3_voyage_usd_wmt": 26.50268282488051,
     "voyage_model": 26.50268282488051,
-    "stat_model_loo": 26.223033246349125,
+    "stat_model_loo": 26.22303324634913,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1336,7 +1336,7 @@
     "brent_usd_bbl": 63.7,
     "c3_voyage_usd_wmt": 24.19106723161721,
     "voyage_model": 24.19106723161721,
-    "stat_model_loo": 23.940329541616443,
+    "stat_model_loo": 23.94032954161644,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1384,7 +1384,7 @@
     "brent_usd_bbl": 124.16,
     "c3_voyage_usd_wmt": 37.881429133624415,
     "voyage_model": 37.881429133624415,
-    "stat_model_loo": 36.72152985948938,
+    "stat_model_loo": 36.72152985948939,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1400,7 +1400,7 @@
     "brent_usd_bbl": 103.48,
     "c3_voyage_usd_wmt": 38.56799711352054,
     "voyage_model": 38.56799711352054,
-    "stat_model_loo": 36.072218684693425,
+    "stat_model_loo": 36.07221868469342,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1416,7 +1416,7 @@
     "brent_usd_bbl": 68.68,
     "c3_voyage_usd_wmt": 30.020471739980188,
     "voyage_model": 30.020471739980188,
-    "stat_model_loo": 27.62404004362707,
+    "stat_model_loo": 27.624040043627083,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1448,7 +1448,7 @@
     "brent_usd_bbl": 85.01,
     "c3_voyage_usd_wmt": 32.0564266612396,
     "voyage_model": 32.0564266612396,
-    "stat_model_loo": 30.0216163925054,
+    "stat_model_loo": 30.021616392505415,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1464,7 +1464,7 @@
     "brent_usd_bbl": 100.31,
     "c3_voyage_usd_wmt": 34.896276449427646,
     "voyage_model": 34.896276449427646,
-    "stat_model_loo": 32.99309643638803,
+    "stat_model_loo": 32.99309643638802,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1512,7 +1512,7 @@
     "brent_usd_bbl": 89.75,
     "c3_voyage_usd_wmt": 38.705459614864836,
     "voyage_model": 38.705459614864836,
-    "stat_model_loo": 35.47057093205721,
+    "stat_model_loo": 35.47057093205718,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1544,7 +1544,7 @@
     "brent_usd_bbl": 118.06,
     "c3_voyage_usd_wmt": 45.895662359377816,
     "voyage_model": 45.895662359377816,
-    "stat_model_loo": 42.64730107784902,
+    "stat_model_loo": 42.647301077849,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1560,7 +1560,7 @@
     "brent_usd_bbl": 119.66,
     "c3_voyage_usd_wmt": 44.57213233460051,
     "voyage_model": 44.57213233460051,
-    "stat_model_loo": 41.5215333280422,
+    "stat_model_loo": 41.52153332804219,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1576,7 +1576,7 @@
     "brent_usd_bbl": 135.51,
     "c3_voyage_usd_wmt": 43.01519832891227,
     "voyage_model": 43.01519832891227,
-    "stat_model_loo": 41.486270382580855,
+    "stat_model_loo": 41.48627038258085,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1592,7 +1592,7 @@
     "brent_usd_bbl": 130.03,
     "c3_voyage_usd_wmt": 38.89704960840507,
     "voyage_model": 38.89704960840507,
-    "stat_model_loo": 37.93097847496418,
+    "stat_model_loo": 37.93097847496417,
     "c5_voyage_usd_wmt": null
    },
    {
@@ -1624,7 +1624,7 @@
     "brent_usd_bbl": 74.46,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 10.516729707686356,
-    "stat_model_loo": 11.187245285592478,
+    "stat_model_loo": 11.187245285592477,
     "c5_voyage_usd_wmt": 10.516729707686356
    },
    {
@@ -1640,7 +1640,7 @@
     "brent_usd_bbl": 70.9,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 12.659899631899089,
-    "stat_model_loo": 13.33584861075456,
+    "stat_model_loo": 13.335848610754557,
     "c5_voyage_usd_wmt": 12.659899631899089
    },
    {
@@ -1656,7 +1656,7 @@
     "brent_usd_bbl": 68.61,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 13.601443064052974,
-    "stat_model_loo": 14.30037745874473,
+    "stat_model_loo": 14.300377458744729,
     "c5_voyage_usd_wmt": 13.601443064052974
    },
    {
@@ -1688,7 +1688,7 @@
     "brent_usd_bbl": 72.44,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 14.109057741508911,
-    "stat_model_loo": 14.889421425930843,
+    "stat_model_loo": 14.889421425930841,
     "c5_voyage_usd_wmt": 14.109057741508911
    },
    {
@@ -1704,7 +1704,7 @@
     "brent_usd_bbl": 74.64,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 15.675425740281662,
-    "stat_model_loo": 16.415013801564328,
+    "stat_model_loo": 16.41501380156433,
     "c5_voyage_usd_wmt": 15.675425740281662
    },
    {
@@ -1720,7 +1720,7 @@
     "brent_usd_bbl": 77.42,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 17.47332367013754,
-    "stat_model_loo": 18.170150680450988,
+    "stat_model_loo": 18.17015068045098,
     "c5_voyage_usd_wmt": 17.47332367013754
    },
    {
@@ -1752,7 +1752,7 @@
     "brent_usd_bbl": 82.43,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 10.56571287064866,
-    "stat_model_loo": 11.193982062327205,
+    "stat_model_loo": 11.193982062327203,
     "c5_voyage_usd_wmt": 10.56571287064866
    },
    {
@@ -1768,7 +1768,7 @@
     "brent_usd_bbl": 82.9,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 11.546879768815899,
-    "stat_model_loo": 12.176887540951876,
+    "stat_model_loo": 12.176887540951874,
     "c5_voyage_usd_wmt": 11.546879768815899
    },
    {
@@ -1784,7 +1784,7 @@
     "brent_usd_bbl": 80.24,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 11.046078202701082,
-    "stat_model_loo": 11.678001981095775,
+    "stat_model_loo": 11.67800198109578,
     "c5_voyage_usd_wmt": 11.046078202701082
    },
    {
@@ -1832,7 +1832,7 @@
     "brent_usd_bbl": 74.98,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 12.933942876238293,
-    "stat_model_loo": 13.639580242141093,
+    "stat_model_loo": 13.639580242141099,
     "c5_voyage_usd_wmt": 12.933942876238293
    },
    {
@@ -1848,7 +1848,7 @@
     "brent_usd_bbl": 82.28,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 9.092670364833092,
-    "stat_model_loo": 9.689562895942842,
+    "stat_model_loo": 9.689562895942844,
     "c5_voyage_usd_wmt": 9.092670364833092
    },
    {
@@ -1864,7 +1864,7 @@
     "brent_usd_bbl": 87.17,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 7.6755885232312115,
-    "stat_model_loo": 8.245230517124451,
+    "stat_model_loo": 8.245230517124446,
     "c5_voyage_usd_wmt": 7.6755885232312115
    },
    {
@@ -1880,7 +1880,7 @@
     "brent_usd_bbl": 91.47,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 6.680417509186219,
-    "stat_model_loo": 7.170364092655749,
+    "stat_model_loo": 7.170364092655754,
     "c5_voyage_usd_wmt": 6.680417509186219
    },
    {
@@ -1896,7 +1896,7 @@
     "brent_usd_bbl": 97.5,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 8.726723833440886,
-    "stat_model_loo": 9.252983138665718,
+    "stat_model_loo": 9.252983138665716,
     "c5_voyage_usd_wmt": 8.726723833440886
    },
    {
@@ -1912,7 +1912,7 @@
     "brent_usd_bbl": 98.56,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 8.483365696804697,
-    "stat_model_loo": 8.988686082577651,
+    "stat_model_loo": 8.988686082577653,
     "c5_voyage_usd_wmt": 8.483365696804697
    },
    {
@@ -1928,7 +1928,7 @@
     "brent_usd_bbl": 122.67,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 9.81828082350759,
-    "stat_model_loo": 10.112978647259496,
+    "stat_model_loo": 10.112978647259498,
     "c5_voyage_usd_wmt": 9.81828082350759
    },
    {
@@ -1944,7 +1944,7 @@
     "brent_usd_bbl": 101.26,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 8.167637334672277,
-    "stat_model_loo": 8.628846342783616,
+    "stat_model_loo": 8.628846342783612,
     "c5_voyage_usd_wmt": 8.167637334672277
    },
    {
@@ -1960,7 +1960,7 @@
     "brent_usd_bbl": 112.12,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 12.945836272950814,
-    "stat_model_loo": 13.401297525943614,
+    "stat_model_loo": 13.401297525943615,
     "c5_voyage_usd_wmt": 12.945836272950814
    },
    {
@@ -1976,7 +1976,7 @@
     "brent_usd_bbl": 121.19,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 11.367566155562312,
-    "stat_model_loo": 11.812151910213425,
+    "stat_model_loo": 11.812151910213428,
     "c5_voyage_usd_wmt": 11.367566155562312
    },
    {
@@ -1992,7 +1992,7 @@
     "brent_usd_bbl": 127.44,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 10.852518538645791,
-    "stat_model_loo": 11.142310710217313,
+    "stat_model_loo": 11.14231071021731,
     "c5_voyage_usd_wmt": 10.852518538645791
    },
    {
@@ -2024,7 +2024,7 @@
     "brent_usd_bbl": 103.7,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 8.043552820949392,
-    "stat_model_loo": 8.525423131366207,
+    "stat_model_loo": 8.52542313136621,
     "c5_voyage_usd_wmt": 8.043552820949392
    },
    {
@@ -2040,7 +2040,7 @@
     "brent_usd_bbl": 101.13,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 6.375413122649465,
-    "stat_model_loo": 6.778214926040584,
+    "stat_model_loo": 6.778214926040581,
     "c5_voyage_usd_wmt": 6.375413122649465
    },
    {
@@ -2056,7 +2056,7 @@
     "brent_usd_bbl": 93.09,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 6.600302082204141,
-    "stat_model_loo": 7.0246956387346415,
+    "stat_model_loo": 7.024695638734641,
     "c5_voyage_usd_wmt": 6.600302082204141
    },
    {
@@ -2072,7 +2072,7 @@
     "brent_usd_bbl": 84.29,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 8.784766299180692,
-    "stat_model_loo": 9.35186379768013,
+    "stat_model_loo": 9.351863797680128,
     "c5_voyage_usd_wmt": 8.784766299180692
    },
    {
@@ -2104,7 +2104,7 @@
     "brent_usd_bbl": 98.88,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 9.716072771537398,
-    "stat_model_loo": 10.261783177643672,
+    "stat_model_loo": 10.261783177643675,
     "c5_voyage_usd_wmt": 9.716072771537398
    },
    {
@@ -2120,7 +2120,7 @@
     "brent_usd_bbl": 94.64,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 8.285122240339293,
-    "stat_model_loo": 8.805628311028217,
+    "stat_model_loo": 8.805628311028215,
     "c5_voyage_usd_wmt": 8.285122240339293
    },
    {
@@ -2136,7 +2136,7 @@
     "brent_usd_bbl": 83.4,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 7.722249453734304,
-    "stat_model_loo": 8.271689874064286,
+    "stat_model_loo": 8.271689874064288,
     "c5_voyage_usd_wmt": 7.722249453734304
    },
    {
@@ -2168,7 +2168,7 @@
     "brent_usd_bbl": 83.78,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 7.215554466579246,
-    "stat_model_loo": 7.788755352717314,
+    "stat_model_loo": 7.788755352717316,
     "c5_voyage_usd_wmt": 7.215554466579246
    },
    {
@@ -2184,7 +2184,7 @@
     "brent_usd_bbl": 85.36,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 5.936784589736177,
-    "stat_model_loo": 6.461606425493509,
+    "stat_model_loo": 6.461606425493511,
     "c5_voyage_usd_wmt": 5.936784589736177
    },
    {
@@ -2216,7 +2216,7 @@
     "brent_usd_bbl": 79.55,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 5.447711452443962,
-    "stat_model_loo": 5.973344958059219,
+    "stat_model_loo": 5.9733449580592195,
     "c5_voyage_usd_wmt": 5.447711452443962
    },
    {
@@ -2248,7 +2248,7 @@
     "brent_usd_bbl": 79.19,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 7.638300707511368,
-    "stat_model_loo": 8.228839860113194,
+    "stat_model_loo": 8.228839860113196,
     "c5_voyage_usd_wmt": 7.638300707511368
    },
    {
@@ -2296,7 +2296,7 @@
     "brent_usd_bbl": 91.79,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 7.06726607671298,
-    "stat_model_loo": 7.565588206734827,
+    "stat_model_loo": 7.565588206734829,
     "c5_voyage_usd_wmt": 7.06726607671298
    },
    {
@@ -2312,7 +2312,7 @@
     "brent_usd_bbl": 93.72,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 11.509471008628891,
-    "stat_model_loo": 12.11280800084028,
+    "stat_model_loo": 12.112808000840275,
     "c5_voyage_usd_wmt": 11.509471008628891
    },
    {
@@ -2328,7 +2328,7 @@
     "brent_usd_bbl": 79.49,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 11.376621294398785,
-    "stat_model_loo": 12.040389272057855,
+    "stat_model_loo": 12.040389272057858,
     "c5_voyage_usd_wmt": 11.376621294398785
    },
    {
@@ -2344,7 +2344,7 @@
     "brent_usd_bbl": 84.88,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 9.227741470811884,
-    "stat_model_loo": 9.814585941731634,
+    "stat_model_loo": 9.814585941731636,
     "c5_voyage_usd_wmt": 9.227741470811884
    },
    {
@@ -2376,7 +2376,7 @@
     "brent_usd_bbl": 84.29,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 12.311771403869683,
-    "stat_model_loo": 12.93490498828572,
+    "stat_model_loo": 12.934904988285714,
     "c5_voyage_usd_wmt": 12.311771403869683
    },
    {
@@ -2408,7 +2408,7 @@
     "brent_usd_bbl": 78.12,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 9.899889709506365,
-    "stat_model_loo": 10.522787714612662,
+    "stat_model_loo": 10.522787714612663,
     "c5_voyage_usd_wmt": 9.899889709506365
    },
    {
@@ -2472,7 +2472,7 @@
     "brent_usd_bbl": 78.35,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 8.748713003757922,
-    "stat_model_loo": 9.350829194741985,
+    "stat_model_loo": 9.350829194741983,
     "c5_voyage_usd_wmt": 8.748713003757922
    },
    {
@@ -2488,7 +2488,7 @@
     "brent_usd_bbl": 79.32,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 11.144728969924955,
-    "stat_model_loo": 11.812883940630204,
+    "stat_model_loo": 11.812883940630202,
     "c5_voyage_usd_wmt": 11.144728969924955
    },
    {
@@ -2504,7 +2504,7 @@
     "brent_usd_bbl": 80.27,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 9.706744074198074,
-    "stat_model_loo": 10.329146055411147,
+    "stat_model_loo": 10.329146055411146,
     "c5_voyage_usd_wmt": 9.706744074198074
    },
    {
@@ -2536,7 +2536,7 @@
     "brent_usd_bbl": 73.63,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 7.7251894323424635,
-    "stat_model_loo": 8.33285865548342,
+    "stat_model_loo": 8.332858655483422,
     "c5_voyage_usd_wmt": 7.7251894323424635
    },
    {
@@ -2552,7 +2552,7 @@
     "brent_usd_bbl": 74.04,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 8.551658054175567,
-    "stat_model_loo": 9.167570696954108,
+    "stat_model_loo": 9.167570696954112,
     "c5_voyage_usd_wmt": 8.551658054175567
    },
    {
@@ -2568,7 +2568,7 @@
     "brent_usd_bbl": 73.78,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 7.189966648043309,
-    "stat_model_loo": 7.802964349313767,
+    "stat_model_loo": 7.802964349313766,
     "c5_voyage_usd_wmt": 7.189966648043309
    },
    {
@@ -2584,7 +2584,7 @@
     "brent_usd_bbl": 74.89,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 6.765317963310107,
-    "stat_model_loo": 7.3649231791405025,
+    "stat_model_loo": 7.364923179140502,
     "c5_voyage_usd_wmt": 6.765317963310107
    },
    {
@@ -2616,7 +2616,7 @@
     "brent_usd_bbl": 79.76,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 7.286484418395556,
-    "stat_model_loo": 7.898871041134067,
+    "stat_model_loo": 7.898871041134068,
     "c5_voyage_usd_wmt": 7.286484418395556
    },
    {
@@ -2632,7 +2632,7 @@
     "brent_usd_bbl": 74.88,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 6.294406923005618,
-    "stat_model_loo": 6.887347396333427,
+    "stat_model_loo": 6.8873473963334275,
     "c5_voyage_usd_wmt": 6.294406923005618
    },
    {
@@ -2648,7 +2648,7 @@
     "brent_usd_bbl": 74.76,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 7.7199716847086375,
-    "stat_model_loo": 8.291977983792318,
+    "stat_model_loo": 8.29197798379232,
     "c5_voyage_usd_wmt": 7.7199716847086375
    },
    {
@@ -2664,7 +2664,7 @@
     "brent_usd_bbl": 72.64,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 9.116548029126877,
-    "stat_model_loo": 9.771026901964142,
+    "stat_model_loo": 9.771026901964143,
     "c5_voyage_usd_wmt": 9.116548029126877
    },
    {
@@ -2696,7 +2696,7 @@
     "brent_usd_bbl": 66.99,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 7.521840404817546,
-    "stat_model_loo": 8.17732849307697,
+    "stat_model_loo": 8.177328493076969,
     "c5_voyage_usd_wmt": 7.521840404817546
    },
    {
@@ -2712,7 +2712,7 @@
     "brent_usd_bbl": 65.2,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 7.671043835043248,
-    "stat_model_loo": 8.331810646909743,
+    "stat_model_loo": 8.33181064690974,
     "c5_voyage_usd_wmt": 7.671043835043248
    },
    {
@@ -2728,7 +2728,7 @@
     "brent_usd_bbl": 69.23,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 10.970122792809871,
-    "stat_model_loo": 11.70921869968125,
+    "stat_model_loo": 11.709218699681248,
     "c5_voyage_usd_wmt": 10.970122792809871
    },
    {
@@ -2744,7 +2744,7 @@
     "brent_usd_bbl": 70.55,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 10.102677808170107,
-    "stat_model_loo": 10.781331486661028,
+    "stat_model_loo": 10.78133148666103,
     "c5_voyage_usd_wmt": 10.102677808170107
    },
    {
@@ -2760,7 +2760,7 @@
     "brent_usd_bbl": 67.87,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 9.601050128562946,
-    "stat_model_loo": 10.28213655056061,
+    "stat_model_loo": 10.282136550560613,
     "c5_voyage_usd_wmt": 9.601050128562946
    },
    {
@@ -2824,7 +2824,7 @@
     "brent_usd_bbl": 124.16,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 14.717842805909084,
-    "stat_model_loo": 14.596577750630955,
+    "stat_model_loo": 14.596577750630958,
     "c5_voyage_usd_wmt": 14.717842805909084
    },
    {
@@ -2840,7 +2840,7 @@
     "brent_usd_bbl": 103.48,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 15.13485525488147,
-    "stat_model_loo": 14.893918834085197,
+    "stat_model_loo": 14.893918834085195,
     "c5_voyage_usd_wmt": 15.13485525488147
    },
    {
@@ -2856,7 +2856,7 @@
     "brent_usd_bbl": 68.68,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 12.080025220094637,
-    "stat_model_loo": 12.123626237008416,
+    "stat_model_loo": 12.123626237008414,
     "c5_voyage_usd_wmt": 12.080025220094637
    },
    {
@@ -2872,7 +2872,7 @@
     "brent_usd_bbl": 74.34,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 13.363701735796182,
-    "stat_model_loo": 13.315383306536805,
+    "stat_model_loo": 13.315383306536807,
     "c5_voyage_usd_wmt": 13.363701735796182
    },
    {
@@ -2888,7 +2888,7 @@
     "brent_usd_bbl": 85.01,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 12.74887182498644,
-    "stat_model_loo": 12.740617356597344,
+    "stat_model_loo": 12.740617356597342,
     "c5_voyage_usd_wmt": 12.74887182498644
    },
    {
@@ -2904,7 +2904,7 @@
     "brent_usd_bbl": 100.31,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 13.736485840693323,
-    "stat_model_loo": 13.640836148783803,
+    "stat_model_loo": 13.640836148783807,
     "c5_voyage_usd_wmt": 13.736485840693323
    },
    {
@@ -2936,7 +2936,7 @@
     "brent_usd_bbl": 89.65,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 14.747091433564426,
-    "stat_model_loo": 14.535609426471447,
+    "stat_model_loo": 14.535609426471446,
     "c5_voyage_usd_wmt": 14.747091433564426
    },
    {
@@ -2968,7 +2968,7 @@
     "brent_usd_bbl": 102.24,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 17.868199780384618,
-    "stat_model_loo": 17.422412437840496,
+    "stat_model_loo": 17.4224124378405,
     "c5_voyage_usd_wmt": 17.868199780384618
    },
    {
@@ -2984,7 +2984,7 @@
     "brent_usd_bbl": 118.06,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 17.865240093573675,
-    "stat_model_loo": 17.409943763208187,
+    "stat_model_loo": 17.40994376320818,
     "c5_voyage_usd_wmt": 17.865240093573675
    },
    {
@@ -3000,7 +3000,7 @@
     "brent_usd_bbl": 119.66,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 17.341122765792143,
-    "stat_model_loo": 16.984709578367017,
+    "stat_model_loo": 16.98470957836701,
     "c5_voyage_usd_wmt": 17.341122765792143
    },
    {
@@ -3048,16 +3048,16 @@
     "brent_usd_bbl": 130.03,
     "c3_voyage_usd_wmt": null,
     "voyage_model": 15.068133286452673,
-    "stat_model_loo": 14.873908982952855,
+    "stat_model_loo": 14.873908982952853,
     "c5_voyage_usd_wmt": 15.068133286452673
    }
   ],
   "tc_calibration": {
    "BCI 2014 basis, linear (to Sep 2020)": {
-    "a": 655.1427017334497,
-    "b": 7.078535511686556,
+    "a": 655.142701733457,
+    "b": 7.078535511686554,
     "n": 11,
-    "resid_sd": 1073.280063411895,
+    "resid_sd": 1073.2800634118955,
     "r2": 0.9921553370445674,
     "extra": {
      "kind": "linear",
@@ -3101,8 +3101,8 @@
   },
   "bunker_calibration": {
    "HSFO 380 cst (before 2020)": {
-    "a": -41.17540331353035,
-    "b": 6.687361458578026,
+    "a": -41.1754033135304,
+    "b": 6.687361458578028,
     "n": 34,
     "resid_sd": 37.79291695814951,
     "r2": 0.8365584175442464,
@@ -3112,29 +3112,29 @@
     "a": -11.643290374614706,
     "b": 7.91613168680971,
     "n": 73,
-    "resid_sd": 76.43874390779132,
+    "resid_sd": 76.4387439077913,
     "r2": 0.8417596106404419,
     "extra": {}
    }
   },
   "sensitivity": {
-   "date": "2026-10-16",
+   "date": "2026-10-19",
    "base": {
-    "c3_voyage_usd_wmt": 33.1293744063193,
-    "c5_voyage_usd_wmt": 12.860558800895417
+    "c3_voyage_usd_wmt": 33.69615613591541,
+    "c5_voyage_usd_wmt": 13.07999451638136
    },
    "speed_14kn": {
     "latest": {
-     "c3_voyage_usd_wmt": 35.21163157717834,
-     "c5_voyage_usd_wmt": 13.520690919631512
+     "c3_voyage_usd_wmt": 35.70644037739472,
+     "c5_voyage_usd_wmt": 13.71730926028595
     },
     "evaluation": {
      "C3": {
       "n": 90,
-      "mae": 1.431605267840126,
+      "mae": 1.4316052678401263,
       "rmse": 1.9605209437838527,
       "bias": 0.9577737820538775,
-      "mape": 0.056483679575781376,
+      "mape": 0.0564836795757814,
       "rel_q10": -0.029093240463979653,
       "rel_q90": 0.10657830527597424
      },
@@ -3155,22 +3155,22 @@
    },
    "port_costs": {
     "0.5": {
-     "c3_voyage_usd_wmt": 32.35538059826977,
-     "c5_voyage_usd_wmt": 12.086564992845881
+     "c3_voyage_usd_wmt": 32.92216232786587,
+     "c5_voyage_usd_wmt": 12.306000708331824
     },
     "1.5": {
-     "c3_voyage_usd_wmt": 33.90336821436884,
-     "c5_voyage_usd_wmt": 13.634552608944954
+     "c3_voyage_usd_wmt": 34.47014994396494,
+     "c5_voyage_usd_wmt": 13.853988324430896
     }
    },
    "c3_minus_c5_vs_bci": {
-    "a": 3.8027889678206597,
-    "b": 0.003335181057941126,
-    "r2": 0.8281814701172386,
-    "corr": 0.910044762699747,
-    "n": 3324,
-    "mean": 11.186474471153028,
-    "min": 1.5360610663019232,
+    "a": 3.802133610438374,
+    "b": 0.003336236374194716,
+    "r2": 0.8279866675343064,
+    "corr": 0.9099377272837448,
+    "n": 3325,
+    "mean": 11.189310467287884,
+    "min": 1.5360610663019258,
     "max": 35.52327721411615
    }
   },
@@ -4540,36 +4540,36 @@
  },
  "daily_sensitivity": {
   "date": "2026-10-16",
-  "margin_rmb_dmt": -48.94144187996517,
-  "slope_rmb_per_usd": 7.584262582920138,
+  "margin_rmb_dmt": -48.937564559103066,
+  "slope_rmb_per_usd": 7.584221205215277,
   "lift": {
    "lift_usd_dmt": 2.4470319432120413,
-   "margin_rmb_dmt": -48.94144187996517,
+   "margin_rmb_dmt": -48.937564559103066,
    "state": -1
   },
   "no_lift": {
    "lift_usd_dmt": 0.0,
-   "margin_rmb_dmt": -30.38250907385173,
+   "margin_rmb_dmt": -30.378733005555155,
    "state": -1
   },
   "lift_min": {
    "lift_usd_dmt": 1.1972727272727042,
-   "margin_rmb_dmt": -39.462939820856846,
+   "margin_rmb_dmt": -39.459114212162724,
    "state": -1
   },
   "lift_max": {
    "lift_usd_dmt": 3.5956521739129954,
-   "margin_rmb_dmt": -57.65287931765551,
+   "margin_rmb_dmt": -57.648954469524504,
    "state": -1
   },
   "lift_world_bank": {
    "lift_usd_dmt": -0.15555555555555778,
-   "margin_rmb_dmt": -29.20273489428636,
+   "margin_rmb_dmt": -29.198965262521654,
    "state": -1
   },
-  "cfr_change_to_band_usd": -3.156726394716557,
-  "cfr_change_to_open_usd": -9.749325141574383,
-  "dalian_change_to_open_rmb": 73.94144187996517
+  "cfr_change_to_band_usd": -3.156232381861758,
+  "cfr_change_to_open_usd": -9.748867096368448,
+  "dalian_change_to_open_rmb": 73.93756455910307
  },
  "window_monthly": {
   "n": 151,
@@ -4647,9 +4647,9 @@
   "n_inside_runs": 109,
   "mean_inside_run": 4.532110091743119,
   "mean_closed_run": 21.729166666666668,
-  "mean": -66.74514644448332,
+  "mean": -66.7451449549248,
   "median": -56.9576157878364,
-  "sd": 63.22887036196136,
+  "sd": 63.2288707815915,
   "p05": -222.62473273064782,
   "p25": -75.3485832614852,
   "p75": -31.961708792929755,
@@ -6017,17 +6017,17 @@
   {
    "period": "2022-03-07 00:00:00",
    "margin": -366.21392061418715,
-   "deviation": -299.4687741697038
+   "deviation": -299.46877565926235
   },
   {
    "period": "2021-07-15 00:00:00",
    "margin": -344.1280585874415,
-   "deviation": -277.38291214295816
+   "deviation": -277.3829136325167
   },
   {
    "period": "2016-05-09 00:00:00",
    "margin": 58.62775232089041,
-   "deviation": 125.37289876537373
+   "deviation": 125.3728972758152
   }
  ],
  "curve_robustness": {
@@ -6042,9 +6042,9 @@
    "n_inside_runs": 112,
    "mean_inside_run": 4.392857142857143,
    "mean_closed_run": 20.94,
-   "mean": -67.01196726661163,
+   "mean": -67.0119657770531,
    "median": -56.91010138500178,
-   "sd": 62.87973614269516,
+   "sd": 62.8797365709784,
    "p05": -222.62473273064782,
    "p25": -75.3485832614852,
    "p75": -31.992939960816727,
@@ -6159,15 +6159,15 @@
   "rho_se": 0.040523504156850465,
   "long_run_mean": -79.83305477953836,
   "half_life": 4.98353327418344,
-  "boot_rho_lo": 0.741732131796322,
+  "boot_rho_lo": 0.7417321317963219,
   "boot_rho_hi": 0.9192685068887264,
-  "boot_half_life_lo": 2.320025261019798,
+  "boot_half_life_lo": 2.3200252610197976,
   "boot_half_life_hi": 8.234398518757404,
-  "boot_half_life_median": 4.205984981619232,
+  "boot_half_life_median": 4.205984981619236,
   "boot_share_nonstationary": 0.0,
   "boot_n_boot": 2000,
-  "adf_stat": -2.3264118833055782,
-  "adf_p": 0.16359103848526785,
+  "adf_stat": -2.3264118833055796,
+  "adf_p": 0.16359103848526735,
   "adf_lags": 4,
   "adf_nobs": 146,
   "adf_crit_5pct": -2.881548071241103,
@@ -6175,19 +6175,19 @@
  },
  "convergence_daily": {
   "n": 2603,
-  "rho": 0.9697886889083781,
-  "rho_se": 0.0047623237172358885,
-  "long_run_mean": -67.50751285311358,
-  "half_life": 22.59495468482036,
-  "boot_rho_lo": 0.9567151842930411,
-  "boot_rho_hi": 0.977088850202149,
-  "boot_half_life_lo": 15.664504175334883,
-  "boot_half_life_hi": 29.90579330788949,
-  "boot_half_life_median": 21.76024615375271,
+  "rho": 0.9697886985982097,
+  "rho_se": 0.0047623234952092934,
+  "long_run_mean": -67.50746377180805,
+  "half_life": 22.594962044124355,
+  "boot_rho_lo": 0.956715263885298,
+  "boot_rho_hi": 0.9770888587798684,
+  "boot_half_life_lo": 15.664533626247373,
+  "boot_half_life_hi": 29.90580463501545,
+  "boot_half_life_median": 21.760273979221186,
   "boot_share_nonstationary": 0.0,
   "boot_n_boot": 2000,
-  "adf_stat": -3.416738051028979,
-  "adf_p": 0.010401335967799297,
+  "adf_stat": -3.4167363412404494,
+  "adf_p": 0.010401391602993637,
   "adf_lags": 27,
   "adf_nobs": 2575,
   "adf_crit_5pct": -2.86266308749922,
@@ -6254,89 +6254,89 @@
  "mill_test_rebar": [
   {
    "horizon_days": 21,
-   "n_obs": 2382,
-   "n_signal_days": 577,
-   "mean_fwd_signal_pct": 0.8330804184248704,
+   "n_obs": 2383,
+   "n_signal_days": 578,
+   "mean_fwd_signal_pct": 0.8184580439154685,
    "mean_fwd_other_pct": -0.13330575029974986,
-   "effect_pct": 0.9663861687246202,
-   "ci_lo_pct": -1.7848864725668385,
-   "ci_hi_pct": 4.224210509533345,
-   "nw_t": 0.6710751255045663,
+   "effect_pct": 0.9517637942152184,
+   "ci_lo_pct": -1.7641803936858376,
+   "ci_hi_pct": 4.180482423592407,
+   "nw_t": 0.6610033480363999,
    "sample_start": "2016-11-22",
-   "sample_end": "2026-09-09"
+   "sample_end": "2026-09-10"
   },
   {
    "horizon_days": 42,
-   "n_obs": 2361,
-   "n_signal_days": 556,
-   "mean_fwd_signal_pct": 3.3093745608066656,
+   "n_obs": 2362,
+   "n_signal_days": 557,
+   "mean_fwd_signal_pct": 3.295368076518846,
    "mean_fwd_other_pct": -0.709770397326097,
-   "effect_pct": 4.019144958132762,
-   "ci_lo_pct": -1.0498020112690425,
-   "ci_hi_pct": 9.743651025571525,
-   "nw_t": 1.5021296507382709,
+   "effect_pct": 4.0051384738449425,
+   "ci_lo_pct": -1.1058142442503485,
+   "ci_hi_pct": 9.762331162862045,
+   "nw_t": 1.4976091576044972,
    "sample_start": "2016-11-22",
-   "sample_end": "2026-08-11"
+   "sample_end": "2026-08-12"
   },
   {
    "horizon_days": 63,
-   "n_obs": 2340,
-   "n_signal_days": 540,
-   "mean_fwd_signal_pct": 4.8637484142863165,
+   "n_obs": 2341,
+   "n_signal_days": 541,
+   "mean_fwd_signal_pct": 4.837940980137731,
    "mean_fwd_other_pct": -1.0502161607185287,
-   "effect_pct": 5.9139645750048455,
-   "ci_lo_pct": -0.9957024074833097,
-   "ci_hi_pct": 13.129163898085624,
-   "nw_t": 1.5721756454411988,
+   "effect_pct": 5.88815714085626,
+   "ci_lo_pct": -1.0390014477595606,
+   "ci_hi_pct": 13.095501426839553,
+   "nw_t": 1.5652827315777622,
    "sample_start": "2016-11-22",
-   "sample_end": "2026-07-13"
+   "sample_end": "2026-07-14"
   }
  ],
  "mill_test_hrc": [
   {
    "horizon_days": 21,
-   "n_obs": 2278,
-   "n_signal_days": 357,
-   "mean_fwd_signal_pct": 1.6496980737636542,
+   "n_obs": 2279,
+   "n_signal_days": 358,
+   "mean_fwd_signal_pct": 1.6238088276134501,
    "mean_fwd_other_pct": 0.13300531452668304,
-   "effect_pct": 1.5166927592369712,
-   "ci_lo_pct": -1.1600510416541987,
-   "ci_hi_pct": 4.579575200268419,
-   "nw_t": 1.0583688686437482,
+   "effect_pct": 1.4908035130867672,
+   "ci_lo_pct": -1.1450451564940014,
+   "ci_hi_pct": 4.577307045669834,
+   "nw_t": 1.0391210266846935,
    "sample_start": "2017-04-27",
-   "sample_end": "2026-09-09"
+   "sample_end": "2026-09-10"
   },
   {
    "horizon_days": 42,
-   "n_obs": 2257,
+   "n_obs": 2258,
    "n_signal_days": 340,
    "mean_fwd_signal_pct": 5.318206945536512,
-   "mean_fwd_other_pct": 0.08813259401452911,
-   "effect_pct": 5.230074351521983,
-   "ci_lo_pct": 0.4454152669293719,
-   "ci_hi_pct": 10.463354688523355,
-   "nw_t": 2.211613039496837,
+   "mean_fwd_other_pct": 0.08574449715242109,
+   "effect_pct": 5.232462448384091,
+   "ci_lo_pct": 0.4580742507627264,
+   "ci_hi_pct": 10.48228565217764,
+   "nw_t": 2.213160526524101,
    "sample_start": "2017-04-27",
-   "sample_end": "2026-08-11"
+   "sample_end": "2026-08-12"
   },
   {
    "horizon_days": 63,
-   "n_obs": 2236,
+   "n_obs": 2237,
    "n_signal_days": 340,
    "mean_fwd_signal_pct": 5.774950554170993,
-   "mean_fwd_other_pct": 0.4609823018652016,
-   "effect_pct": 5.313968252305791,
-   "ci_lo_pct": -0.9702617319158082,
-   "ci_hi_pct": 12.675158569098507,
-   "nw_t": 1.5274120567178724,
+   "mean_fwd_other_pct": 0.4559432635088689,
+   "effect_pct": 5.319007290662125,
+   "ci_lo_pct": -0.9902008297991274,
+   "ci_hi_pct": 12.687486850371108,
+   "nw_t": 1.5295133549209405,
    "sample_start": "2017-04-27",
-   "sample_end": "2026-07-13"
+   "sample_end": "2026-07-14"
   }
  ],
  "mill_sensitivity": {
-  "950.0": 61.75,
-  "1080.0": -68.25,
-  "1250.0": -238.25
+  "950.0": 71.0,
+  "1080.0": -59.0,
+  "1250.0": -229.0
  },
  "history": {
   "cpi_base": "2026-09",
@@ -6891,10 +6891,10 @@
     "horizon_months": 3,
     "n_obs": 64,
     "effect_pp": 2.467681790578837,
-    "ci_lo_pp": -3.1806277318752323,
-    "ci_hi_pp": 8.115991313032906,
-    "nw_t": 0.8563015695770683,
-    "intercept_pp": 8.338696986348104,
+    "ci_lo_pp": -3.1806277318752767,
+    "ci_hi_pp": 8.115991313032952,
+    "nw_t": 0.8563015695770615,
+    "intercept_pp": 8.338696986348102,
     "mean_growth_pct": 4.530693684578951,
     "sample_start": "2018-12",
     "sample_end": "2026-06"
