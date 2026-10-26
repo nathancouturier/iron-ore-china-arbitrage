@@ -3,71 +3,71 @@
   "fred": {
    "ok": true,
    "detail": {
-    "PIORECRUSDM": "ok 415 rows to 2026-07-01",
-    "DEXCHUS": "ok 11941 rows to 2026-10-09",
-    "DCOILBRENTEU": "ok 10281 rows to 2026-10-14",
-    "SOFR": "ok 2229 rows to 2026-10-16",
-    "DFF": "ok 26405 rows to 2026-10-15",
+    "PIORECRUSDM": "ok 417 rows to 2026-09-01",
+    "DEXCHUS": "ok 11946 rows to 2026-10-16",
+    "DCOILBRENTEU": "ok 10285 rows to 2026-10-20",
+    "SOFR": "ok 2234 rows to 2026-10-23",
+    "DFF": "ok 26412 rows to 2026-10-22",
     "CPIAUCSL": "ok 957 rows to 2026-09-01"
    },
-   "seconds": 1.2
+   "seconds": 0.5
   },
   "worldbank": {
    "ok": true,
    "detail": {
     "pinksheet": "ok 801 rows to 2026-09-01"
    },
-   "seconds": 0.7
+   "seconds": 0.8
   },
   "eastmoney": {
    "ok": true,
    "detail": {
-    "bci": "ok 6883 rows 1999-04-30 to 2026-10-19",
-    "bdi": "ok 9563 rows 1988-10-19 to 2026-10-19"
+    "bci": "ok 6888 rows 1999-04-30 to 2026-10-26",
+    "bdi": "ok 9568 rows 1988-10-19 to 2026-10-26"
    },
-   "seconds": 49.5
+   "seconds": 48.5
   },
   "safe": {
    "ok": true,
    "detail": {
-    "safe_central_parity": "ok 3346 rows to 2026-10-19, 0 errors"
+    "safe_central_parity": "ok 3351 rows to 2026-10-26, 0 errors"
    },
-   "seconds": 24.6
+   "seconds": 24.5
   },
   "gacc": {
    "ok": true,
    "detail": {
     "gacc_imports": "ok 21 periods to 2026-09, 0 errors"
    },
-   "seconds": 38.4
+   "seconds": 38.3
   },
   "wits": {
    "ok": true,
    "detail": {
     "wits_imports": "ok 3 years to 2025, 0 errors"
    },
-   "seconds": 7.1
+   "seconds": 6.9
   },
   "sina": {
    "ok": true,
    "detail": {
-    "sina": "137 contracts available, 0 errors"
+    "sina": "140 contracts available, 0 errors"
    },
-   "seconds": 100.0
+   "seconds": 95.0
   },
   "shfe": {
    "ok": true,
    "detail": {
     "shfe": "fetched 26, cached 0, nontrading 6, errors 0"
    },
-   "seconds": 30.8
+   "seconds": 19.6
   },
   "sgx": {
    "ok": true,
    "detail": {
-    "sgx": "fetched 6, cached 0, missing 12"
+    "sgx": "fetched 11, cached 0, missing 12"
    },
-   "seconds": 15.0
+   "seconds": 20.3
   }
  },
  "ingest_mode": "incremental"
