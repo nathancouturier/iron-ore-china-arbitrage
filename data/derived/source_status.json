@@ -4,13 +4,13 @@
    "ok": true,
    "detail": {
     "PIORECRUSDM": "ok 417 rows to 2026-09-01",
-    "DEXCHUS": "ok 11946 rows to 2026-10-16",
-    "DCOILBRENTEU": "ok 10285 rows to 2026-10-20",
-    "SOFR": "ok 2234 rows to 2026-10-23",
-    "DFF": "ok 26412 rows to 2026-10-22",
+    "DEXCHUS": "ok 11951 rows to 2026-10-23",
+    "DCOILBRENTEU": "ok 10290 rows to 2026-10-27",
+    "SOFR": "ok 2239 rows to 2026-10-30",
+    "DFF": "ok 26419 rows to 2026-10-29",
     "CPIAUCSL": "ok 957 rows to 2026-09-01"
    },
-   "seconds": 0.5
+   "seconds": 1.5
   },
   "worldbank": {
    "ok": true,
@@ -22,52 +22,52 @@
   "eastmoney": {
    "ok": true,
    "detail": {
-    "bci": "ok 6888 rows 1999-04-30 to 2026-10-26",
-    "bdi": "ok 9568 rows 1988-10-19 to 2026-10-26"
+    "bci": "ok 6893 rows 1999-04-30 to 2026-11-02",
+    "bdi": "ok 9573 rows 1988-10-19 to 2026-11-02"
    },
-   "seconds": 48.5
+   "seconds": 51.2
   },
   "safe": {
    "ok": true,
    "detail": {
-    "safe_central_parity": "ok 3351 rows to 2026-10-26, 0 errors"
+    "safe_central_parity": "ok 3356 rows to 2026-11-02, 0 errors"
    },
-   "seconds": 24.5
+   "seconds": 23.4
   },
   "gacc": {
    "ok": true,
    "detail": {
     "gacc_imports": "ok 21 periods to 2026-09, 0 errors"
    },
-   "seconds": 38.3
+   "seconds": 35.8
   },
   "wits": {
    "ok": true,
    "detail": {
     "wits_imports": "ok 3 years to 2025, 0 errors"
    },
-   "seconds": 6.9
+   "seconds": 7.3
   },
   "sina": {
    "ok": true,
    "detail": {
-    "sina": "140 contracts available, 0 errors"
+    "sina": "135 contracts available, 0 errors"
    },
-   "seconds": 95.0
+   "seconds": 91.5
   },
   "shfe": {
    "ok": true,
    "detail": {
     "shfe": "fetched 26, cached 0, nontrading 6, errors 0"
    },
-   "seconds": 19.6
+   "seconds": 27.7
   },
   "sgx": {
    "ok": true,
    "detail": {
     "sgx": "fetched 11, cached 0, missing 12"
    },
-   "seconds": 20.3
+   "seconds": 32.8
   }
  },
  "ingest_mode": "incremental"
