@@ -4,70 +4,70 @@
    "ok": true,
    "detail": {
     "PIORECRUSDM": "ok 417 rows to 2026-09-01",
-    "DEXCHUS": "ok 11951 rows to 2026-10-23",
-    "DCOILBRENTEU": "ok 10290 rows to 2026-10-27",
-    "SOFR": "ok 2239 rows to 2026-10-30",
-    "DFF": "ok 26419 rows to 2026-10-29",
+    "DEXCHUS": "ok 11956 rows to 2026-10-30",
+    "DCOILBRENTEU": "ok 10295 rows to 2026-11-03",
+    "SOFR": "ok 2244 rows to 2026-11-06",
+    "DFF": "ok 26426 rows to 2026-11-05",
     "CPIAUCSL": "ok 957 rows to 2026-09-01"
    },
-   "seconds": 1.5
+   "seconds": 1.4
   },
   "worldbank": {
    "ok": true,
    "detail": {
-    "pinksheet": "ok 801 rows to 2026-09-01"
+    "pinksheet": "ok 802 rows to 2026-10-01"
    },
-   "seconds": 0.8
+   "seconds": 1.2
   },
   "eastmoney": {
    "ok": true,
    "detail": {
-    "bci": "ok 6893 rows 1999-04-30 to 2026-11-02",
-    "bdi": "ok 9573 rows 1988-10-19 to 2026-11-02"
+    "bci": "ok 6900 rows 1999-04-30 to 2026-11-09",
+    "bdi": "ok 9580 rows 1988-10-19 to 2026-11-09"
    },
-   "seconds": 51.2
+   "seconds": 47.5
   },
   "safe": {
    "ok": true,
    "detail": {
-    "safe_central_parity": "ok 3356 rows to 2026-11-02, 0 errors"
+    "safe_central_parity": "ok 3361 rows to 2026-11-09, 0 errors"
    },
-   "seconds": 23.4
+   "seconds": 24.3
   },
   "gacc": {
    "ok": true,
    "detail": {
     "gacc_imports": "ok 21 periods to 2026-09, 0 errors"
    },
-   "seconds": 35.8
+   "seconds": 39.5
   },
   "wits": {
    "ok": true,
    "detail": {
     "wits_imports": "ok 3 years to 2025, 0 errors"
    },
-   "seconds": 7.3
+   "seconds": 7.6
   },
   "sina": {
    "ok": true,
    "detail": {
     "sina": "135 contracts available, 0 errors"
    },
-   "seconds": 91.5
+   "seconds": 95.7
   },
   "shfe": {
    "ok": true,
    "detail": {
     "shfe": "fetched 26, cached 0, nontrading 6, errors 0"
    },
-   "seconds": 27.7
+   "seconds": 21.8
   },
   "sgx": {
    "ok": true,
    "detail": {
     "sgx": "fetched 11, cached 0, missing 12"
    },
-   "seconds": 32.8
+   "seconds": 18.2
   }
  },
  "ingest_mode": "incremental"
