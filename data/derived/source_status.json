@@ -4,70 +4,70 @@
    "ok": true,
    "detail": {
     "PIORECRUSDM": "ok 417 rows to 2026-09-01",
-    "DEXCHUS": "ok 11956 rows to 2026-10-30",
-    "DCOILBRENTEU": "ok 10295 rows to 2026-11-03",
-    "SOFR": "ok 2244 rows to 2026-11-06",
-    "DFF": "ok 26426 rows to 2026-11-05",
-    "CPIAUCSL": "ok 957 rows to 2026-09-01"
+    "DEXCHUS": "ok 11961 rows to 2026-11-06",
+    "DCOILBRENTEU": "ok 10301 rows to 2026-11-11",
+    "SOFR": "ok 2249 rows to 2026-11-13",
+    "DFF": "ok 26433 rows to 2026-11-12",
+    "CPIAUCSL": "ok 958 rows to 2026-10-01"
    },
-   "seconds": 1.4
+   "seconds": 0.5
   },
   "worldbank": {
    "ok": true,
    "detail": {
     "pinksheet": "ok 802 rows to 2026-10-01"
    },
-   "seconds": 1.2
+   "seconds": 0.7
   },
   "eastmoney": {
    "ok": true,
    "detail": {
-    "bci": "ok 6900 rows 1999-04-30 to 2026-11-09",
-    "bdi": "ok 9580 rows 1988-10-19 to 2026-11-09"
+    "bci": "ok 6907 rows 1999-04-30 to 2026-11-16",
+    "bdi": "ok 9587 rows 1988-10-19 to 2026-11-16"
    },
-   "seconds": 47.5
+   "seconds": 74.0
   },
   "safe": {
    "ok": true,
    "detail": {
-    "safe_central_parity": "ok 3361 rows to 2026-11-09, 0 errors"
+    "safe_central_parity": "ok 3366 rows to 2026-11-16, 0 errors"
    },
-   "seconds": 24.3
+   "seconds": 24.7
   },
   "gacc": {
    "ok": true,
    "detail": {
-    "gacc_imports": "ok 21 periods to 2026-09, 0 errors"
+    "gacc_imports": "ok 22 periods to 2026-10, 0 errors"
    },
-   "seconds": 39.5
+   "seconds": 40.9
   },
   "wits": {
    "ok": true,
    "detail": {
     "wits_imports": "ok 3 years to 2025, 0 errors"
    },
-   "seconds": 7.6
+   "seconds": 7.5
   },
   "sina": {
    "ok": true,
    "detail": {
-    "sina": "135 contracts available, 0 errors"
+    "sina": "136 contracts available, 0 errors"
    },
-   "seconds": 95.7
+   "seconds": 101.8
   },
   "shfe": {
    "ok": true,
    "detail": {
-    "shfe": "fetched 26, cached 0, nontrading 6, errors 0"
+    "shfe": "fetched 28, cached 0, nontrading 4, errors 0"
    },
-   "seconds": 21.8
+   "seconds": 25.6
   },
   "sgx": {
    "ok": true,
    "detail": {
     "sgx": "fetched 11, cached 0, missing 12"
    },
-   "seconds": 18.2
+   "seconds": 18.7
   }
  },
  "ingest_mode": "incremental"
